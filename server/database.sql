@@ -19,6 +19,7 @@
 --  distributing VARCHAR (200),
 --  story VARCHAR (1000),
 --  approved BOOLEAN default false
+-- comments VARCHAR (3000)
 --  );
 -- 
 

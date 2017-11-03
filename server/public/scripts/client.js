@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -30,6 +30,9 @@ myApp.config(function($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
+    })
+    .when('/form', {
+      templateUrl: '/views/templates/form.html'
     })
     .otherwise({
       redirectTo: 'home'

@@ -1,0 +1,30 @@
+-- CREATE TABLE prospects (
+--  id serial primary key,
+--  firstname VARCHAR (200),
+--  lastname VARCHAR (200),
+--  email VARCHAR (200),
+--  phone VARCHAR (20),
+--  company VARCHAR (200),
+--  image VARCHAR (3000),
+--  "how-they-heard" VARCHAR (600),
+--  mentor BOOLEAN default false,
+--  mentee BOOLEAN default false,
+--  "involvement-level" VARCHAR (200),
+--  "role/affiliation" VARCHAR (200),
+--  "how-to-help" VARCHAR (600),
+--  experience VARCHAR (1000),
+--  struggle VARCHAR (2000),
+--  ecosystem VARCHAR (200),
+--  "scope-size" VARCHAR (600),
+--  distributing VARCHAR (200),
+--  story VARCHAR (1000),
+--  approved BOOLEAN default false
+--  );
+-- 
+
+
+-- CREATE TABLE users (
+-- id SERIAL PRIMARY KEY,
+-- username varchar(55),
+-- password varchar(60)
+-- );

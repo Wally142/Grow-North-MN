@@ -44,4 +44,11 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         });
       }
     }
+
+    vm.passwordReset = function() {
+      console.log('Send reset email');
+      $http.get('/mailer').then(function(response){
+        console.log(response);
+      });
+    }
 });

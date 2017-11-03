@@ -11,7 +11,7 @@ body, html {
 }
 
 .instructions {
-  background-color: #333333;
+  background-color: #37594D;
   color: #DDDDDD;
   padding: 15px;
 }
@@ -78,3 +78,23 @@ li a:hover {
   text-decoration: underline;
   color: #eee;
 }
+
+
+/* Dashboard Styling */
+
+.dashCard {
+  background-color: #f5f5f5;
+}
+
+.footerCaption{
+  text-align: center;
+}
+
+.gridFooter {
+  background-color: #37594D;
+}
+
+md-card {
+  padding: 1%;
+}
+

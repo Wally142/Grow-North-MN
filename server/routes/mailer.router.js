@@ -9,16 +9,16 @@ var nodemailer = require('nodemailer');
 router.get('/:email', function(req, res, next){
     var email = req.params.email;
     var reset_deadline = new Date(Date.now() + 3600000);
-    console.log('Email:', email);
-    console.log('Token reset:', reset_deadline);
+    console.log (email, reset_deadline);
+
     async.waterfall([
-        function(done) {
+        function(callback) {
           crypto.randomBytes(20, function(err, buffer) {
             var token = buffer.toString('hex');
-            done(err, token);
+            callback(err, token);
           });
         },
-        function(token, done){
+        function(token, callback){
             pool.connect(function(err, client, done){
                 if (err){
                     console.log('Error connecting:', err);
@@ -27,14 +27,11 @@ router.get('/:email', function(req, res, next){
                     var query = 'UPDATE users SET reset_token = $1, reset_token_expires = $2 WHERE email = $3';
 
                     client.query(query, values, function(error){
-                        done(error, token);
-                        if (error){
-                            console.log("Error inserting data:", error);
-                        }
+                        done();
+                        callback(error, token)
                     })
                 }
-            })
-            done(token);
+            });
         },
 
 
@@ -54,6 +51,7 @@ router.get('/:email', function(req, res, next){
         //   });
         // },
         function(token, done) {
+            console.log('Sending email')
             var transporter = nodemailer.createTransport({
                 service: 'Hotmail',
                 auth: {

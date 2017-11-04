@@ -7,7 +7,8 @@ myApp.controller('FormController', function (FormService) {
   vm.radioSelect = null;
 
   vm.formInput = {
-    name: null,
+    firstname: null,
+    lastname: null,
     email: null,
     phone: null,
     company: null,

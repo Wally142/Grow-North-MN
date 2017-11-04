@@ -9,8 +9,15 @@
                 </md-card-title-text>
             </md-card-title>
             <md-input-container>
-                <label>Name</label>
-                <input name="name" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.name" required>
+                <label>First Name</label>
+                <input name="firstname" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.firstname" required>
+                <div ng-messages="surveyForm.referral.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Last Name</label>
+                <input name="lastname" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.lastname" required>
                 <div ng-messages="surveyForm.referral.$error">
                     <div ng-message="required">This information is required.</div>
                 </div>
@@ -53,28 +60,31 @@
             <md-input-container>
                 <md-checkbox ng-model="FC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
             </md-input-container>
-            <!-- <p>Please select at least one of the following:</p>
+            <p>Please select at least one of the following:</p>
             <md-input-container>
-                <md-checkbox ng-model="FC.formInput.mentor" ng-required="!(FC.formInput.mentor || FC.formInput.mentee)">Are you interesting in mentoring?</md-checkbox>
+                <md-checkbox ng-model="FC.formInput.mentor">Are you interesting in mentoring?</md-checkbox>
             </md-input-container>
             <md-input-container>
-                <md-checkbox ng-model="FC.formInput.mentee" ng-required="!(FC.formInput.mentor || FC.formInput.mentee)">Are you seeking help from a mentor?</md-checkbox>
-            </md-input-container> -->
-            <md-input-container>
-                    <p>Please select one of the following:</p>
-                <md-radio-group ng-model="FC.radioSelect" ng-change="FC.detectRadio()">
-                    <md-radio-button value="mentor" required>
+                <md-checkbox ng-model="FC.formInput.mentee">Are you seeking help from a mentor?</md-checkbox>
+            </md-input-container>
+            <!-- <md-input-container>
+                <p>Please select one of the following:</p>
+                <md-radio-group ng-model="FC.radioSelect" ng-change="FC.detectRadio()" ng-required='true'>
+                    <md-radio-button value="mentor">
                         I'm interested in mentoring.
                     </md-radio-button>
-                    <md-radio-button value="mentee" required>
+                    <md-radio-button value="mentee">
                         I'm interested in connecting with a mentor.
                     </md-radio-button>
-                    <md-radio-button value="both" required>
+                    <md-radio-button value="both">
                         All the options!!
                     </md-radio-button>
                 </md-radio-group>
-            </md-input-container>
-            <md-button class="md-raised" type="submit">Next</md-button>
+            </md-input-container> -->
+            <md-button class="md-raised" type="submit" ng-hide="!(FC.formInput.mentor || FC.formInput.mentee)">Next</md-button>
+            <md-button class="md-raised" type="submit" ng-show="!(FC.formInput.mentor || FC.formInput.mentee)" ng-disabled="true">Next
+                <md-tooltip md-direction="top">Please click a checkbox</md-tooltip>
+            </md-button>            
         </md-card>
     </form>
     <!-- Start of Form 2 -->
@@ -170,7 +180,7 @@
                 inciderint mea at, ius et liber debet singulis, ut fierent constituto mediocritatem eam. No lorem quaerendum
                 per, eum eu nostro legimus.</p>
             <md-input-container>
-                <md-checkbox ng-model="FC.formInput.legal" required>Do you agree to these terms?</md-checkbox>
+                <md-checkbox ng-model="FC.formInput.legal" ng-required='true'>Do you agree to these terms?</md-checkbox>
             </md-input-container>
             <md-button class="md-raised" ng-click="FC.page=1">Previous</md-button>
             <md-button class="md-raised" type="submit">Next</md-button>

@@ -3,37 +3,68 @@ var path = require('path');
 var async = require('async');
 var crypto = require('crypto');
 var pool = require('../modules/pool.js')
+var encryptLib = require('../modules/encryption');
 
 var nodemailer = require('nodemailer');
 
-router.get('/reset/:email/:token', function(req, res){
+router.get('/reset/:email/:token', function(req, res, next){
     var email = req.params.email;
     var reset_token = req.params.token;
 
     console.log('Hit /reset/reset');
     console.log('email:', email);
     console.log('Reset token:', reset_token);
-    res.sendStatus(200);
 
-    // async.waterfall([
-    //     function(callback){
-    //         pool.connect(function(err, client, done){
-    //             if (err){
-    //                 console.log('Error connecting:', err);
-    //             }else{
-    //                 client.query('SELECT reset_token, reset_token_expires WHERE email = $1', [email], function(error, result){
-    //                     done();
-    //                     callback(error, queryResult);
-    //                 })
-    //             }
-    //         })
-    //     },
-    //     function(queryResult, callback){
-    //         if (queryResult.
-    //     }
-    // ])
-
-    
+    async.waterfall([
+        function(callback){
+            pool.connect(function(err, client, done){
+                if (err){
+                    console.log('Error connecting:', err);
+                }else{
+                    client.query('SELECT reset_token, reset_token_expires FROM users WHERE email = $1', [email], function(error, result){
+                        done();
+                        console.log('RESULT:', result);
+                        var tokendata = result.rows[0];
+                        callback(error, tokendata);
+                    })
+                }
+            })
+        },
+        function(tokendata, callback){
+            console.log('queryResult:', tokendata);
+            console.log('Reset token from query:', tokendata.reset_token);
+            console.log('Token expiration from query:', tokendata.reset_token_expires);
+            if (reset_token != tokendata.reset_token ||
+                new Date(tokendata.reset_token_expires).getTime() < new Date(Date.now()).getTime()){
+                    callback(null, 'Token invalid or expired');
+            }else{
+                crypto.randomBytes(4, function(err, buffer){
+                    var newPass = buffer.toString('hex');
+                    callback(err, newPass);
+                })
+            }
+        },
+        function(newPass, callback){
+            console.log('newPass:', newPass);
+            if (newPass === 'Token invalid or expired'){
+                callback(null, 'Task cancelled');
+            }else{
+                var password = encryptLib.encryptPassword(newPass);
+                pool.connect(function(err, client, done) {
+                    if (err){
+                        console.log('Connection error:', err);
+                    }else{
+                        client.query('UPDATE users SET password = $1 where email = $2', [password, email], function (err){
+                            callback(err, newPass);
+                        })
+                    }
+                })
+            }
+        }
+    ], function(err, newPass) {
+        if (err) return next(err);
+        res.send(newPass);
+      });
 })
 
 router.get('/:email', function(req, res, next){
@@ -64,23 +95,6 @@ router.get('/:email', function(req, res, next){
                 }
             });
         },
-
-
-        // function(token, done) {
-        //   User.findOne({ email: req.body.email }, function(err, user) {
-        //     if (!user) {
-        //       req.flash('error', 'No account with that email address exists.');
-        //       return res.redirect('/forgot');
-        //     }
-    
-        //     user.resetPasswordToken = token;
-        //     user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-    
-        //     user.save(function(err) {
-        //       done(err, token, user);
-        //     });
-        //   });
-        // },
         function(token, done) {
             console.log('Sending email')
             var transporter = nodemailer.createTransport({
@@ -94,9 +108,11 @@ router.get('/:email', function(req, res, next){
                 from: 'evanmobile@hotmail.com',
                 to: 'evanjkearney@gmail.com',
                 subject: 'Grow North App Password Reset',
+                // CHANGE THIS MESSAGE AT SOME POINT
+                // WHAT URL AFTER DEPLOY???
                 html: '<p>You\'re receiving this email because a password reset request was sent to the Grow North App.</p>' +
                 '<a href="http://localhost:5000/reset/reset/evanjkearney@gmail.com/' + token + '">Click here to reset password</a>' +
-                '<p>If you didn\'t make this request... that\'s pretty concerning. IS THIS CHANGING?</p>' 
+                '<p>If you didn\'t make this request... that\'s pretty concerning.</p>' 
             };
             transporter.sendMail(mailOptions, function(err, info){
                 done(err, 'done');
@@ -104,6 +120,7 @@ router.get('/:email', function(req, res, next){
         }
       ], function(err) {
         if (err) return next(err);
+        res.sendStatus('200');
       });
 })
 

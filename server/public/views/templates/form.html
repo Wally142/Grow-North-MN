@@ -97,7 +97,7 @@
             </md-card-title>
             <md-input-container ng-if="FC.formInput.mentor">
                 <!-- make a checkbox system -->
-                <label>Level of Involvement?</label>
+                <label>Level of involvement?</label>
                 <input name="involvement" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.involvement" required>
                 <div ng-messages="surveyForm.involvement.$error">
                     <div ng-message="required">This information is required.</div>
@@ -140,7 +140,7 @@
                 </div>
             </md-input-container>
             <md-input-container ng-if="FC.formInput.mentee">
-                <label>What is your business's yearly revenue</label>
+                <label>What is your business's yearly revenue?</label>
                 <input name="revenue" md-maxlength="500" type="text" ng-model="FC.formInput.revenue" required>
                 <div ng-messages="surveyForm.revenue.$error">
                     <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
@@ -191,10 +191,43 @@
         <md-card layout-padding ng-show="FC.page===3" flex>
             <md-card-title>
                 <md-card-title-text>
-                    Form 4
+                    Confirm your information
                 </md-card-title-text>
             </md-card-title>
-            <p>SUMMARY OF ALL ENTERED DATA</p>
+            <md-card layout-padding>
+            <div>
+                <h4>Contact Info</h4>
+                <p>{{ FC.formInput.firstname }} {{ FC.formInput.lastname }}</p>
+                <p>{{ FC.formInput.email }}</p>
+                <p>{{ FC.formInput.phone }}</p>
+                <p>{{ FC.formInput.title }}, {{ FC.formInput.company }}</p>
+                <hr>
+                <p>First Name: {{ FC.formInput.firstname }}</p>
+                <p>Last Name: {{ FC.formInput.lastname }}</p>
+                <p>Email: {{ FC.formInput.email }}</p>
+                <p>Phone: {{ FC.formInput.phone }}</p>
+                <p>Company: {{ FC.formInput.company }}</p>
+                <p>Title: {{ FC.formInput.title }}</p>
+                <hr>
+                <p>How did you hear about Grow North?<br>{{ FC.formInput.email }}</p>
+                <p>Do we have permission to discuss your business with others in our network?<br><span ng-show="FC.formInput.permission">Yes</span><span ng-show="!FC.formInput.permission">No</span></p>
+                <p>Are you interesting in mentoring?<br><span ng-show="FC.formInput.mentor">Yes</span><span ng-show="!FC.formInput.mentor">No</span></p>
+                <p>Are you seeking help from a mentor?<br><span ng-show="FC.formInput.mentee">Yes</span><span ng-show="!FC.formInput.mentee">No</span></p>
+                <div ng-show="FC.formInput.mentor">
+                <p>Level of involvement?<br>{{FC.formInput.involvement}}</p>
+                <p>How can I help?<br>{{FC.formInput.howHelp}}</p>
+                <p>Provide a specific example of your experience with a startup.<br>{{FC.formInput.experience}}</p>
+                </div>
+                <div ng-show="FC.formInput.mentee">                        
+                <p>What are you struggling with?<br>{{FC.formInput.struggle}}</p>
+                <p>What ecosystem does your business reside in?<br>{{FC.formInput.ecosystem}}</p>
+                <p>How many employees do you have?<br>{{FC.formInput.employees}}</p>
+                <p>What is your business's yearly revenue?<br>{{FC.formInput.revenue}}</p>
+                <p>What is your distribution area?<br>{{FC.formInput.distribution}}</p>
+                <p>What's your story?<br>{{FC.formInput.story}}</p>
+                </div>
+            </div>
+            </md-card>
             <md-button class="md-raised" ng-click="FC.page=2">Previous</md-button>
             <md-button class="md-raised" type="submit">Submit</md-button>
         </md-card>

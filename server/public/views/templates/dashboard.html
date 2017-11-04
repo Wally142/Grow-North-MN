@@ -1,0 +1,85 @@
+<md-content class="dashboard" >
+    <md-card class="dashSearch">
+        <md-content class="md-padding" layout="row" layout-align="center">
+            <md-nav-bar md-selected-nav-item="currentNavItem" class="navItem" nav-bar-aria-label="navigation links">
+                <md-nav-item md-nav-href="#/dashboard" name="Dashboard">Admin Dashboard</md-nav-item>
+                <md-nav-item md-nav-href="#/directory" name="Directory">Directory</md-nav-item>
+                <md-input-container class="md-icon-float md-block">
+                    <!-- Use floating label instead of placeholder -->
+                    <md-icon md-svg-src="../../img/magnify.svg" class="search"></md-icon>
+                    <input ng-model="" type="text" placeholder="Search">
+                </md-input-container>
+            </md-nav-bar>
+        </md-content>
+    </md-card>
+    <md-card class="dashMetrics" flex="33">
+        <md-grid-list
+            md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+            md-row-height-gt-md="1:1" md-row-height="2:2"
+            md-gutter="12px" md-gutter-gt-sm="8px">
+            <md-grid-tile class="dashCard"
+                md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <h2>123</h2>
+                <md-grid-tile-footer class="gridFooter" layout="column">
+                    <p class="footerCaption">Number of Mentors</p>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="dashCard"
+                md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <h2>456</h2>
+                <md-grid-tile-footer class="gridFooter" layout="column">
+                    <p class="footerCaption">Number of Mentees</p>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="dashCard"
+                md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <h2>789</h2>
+                <md-grid-tile-footer class="gridFooter" layout="column">
+                    <p class="footerCaption">Total Connections Made</p>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+            <md-grid-tile class="dashCard"
+                md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+                <h2>!@*#$%^</h2>
+                <md-grid-tile-footer class="gridFooter" layout="column">
+                    <p class="footerCaption">some other stat</p>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-card>
+
+    <md-card class="awaitingApproval">
+       <!-- <h2>Intake forms awaiting approval go here!</h2>
+       <section layout="row">
+           <div flex> -->
+               <md-toolbar class="approvalList" layout="row" layout-align="center">
+                   <div class="md-toolbar-tools">
+                       <!-- add in ng-show and ng-hide for button clicks to toggle sorting -->
+                       <md-button><i class="material-icons">arrow_drop_down</i>Name
+                       </md-button>
+                       <md-button><i class="material-icons">arrow_drop_down</i>Phone
+                       </md-button>
+                       <md-button><i class="material-icons">arrow_drop_up</i>Email
+                       </md-button>
+                       <md-button><i class="material-icons">arrow_drop_down</i>Date Submitted
+                       </md-button>
+                   </div>
+               </md-toolbar>
+               <md-content>
+                   <md-list>
+                       <md-list-item class="adminApproval md-2-line" layout="row">
+                           <div class="md-list-item-text">
+                               <p>Hey! This will be ng-repeated eventually, and clickable too!</p>
+                           </div>
+                       </md-list-item>
+                       <md-list-item class="adminApproval md-2-line" layout="row">
+                            <div class="md-list-item-text">
+                                <p>Hey! This will be ng-repeated eventually, and clickable too!</p>
+                            </div>
+                        </md-list-item>
+                   </md-list>
+               </md-content>
+           </div>
+       </section>
+    </md-card>
+</md-content>

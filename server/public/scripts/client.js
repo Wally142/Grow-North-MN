@@ -35,6 +35,9 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/form.html',
       controller: 'FormController as FC'
     })
+    .when('/dashboard', {
+      templateUrl: '/views/templates/dashboard.html'
+    })
     .otherwise({
       redirectTo: 'home'
     });

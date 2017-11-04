@@ -1,7 +1,25 @@
-myApp.factory('ProspectsService', function ($http, $location) {
+myApp.service('ProspectsService', function ($http, $location) {
     console.log('ProspectsService Loaded');
 
+    var self = this;
+    self.mentorNum = { list: []}
+    self.menteeNum = { list: []}
 
+    self.getMentorNumbers = function () {
+        console.log('In getMentorNumbers');
+        $http.get('/metrics/mentors').then(function (response) {
+            console.log(response);
+            self.mentorNum.list = response.data;
+        })
+    }
+
+    self.getMenteeNumbers = function () {
+        console.log('In getMenteeNumbers');
+        $http.get('/metrics/mentees').then(function (response) {
+            console.log(response);
+            self.menteeNum.list = response.data;
+        })
+    }
 
 
 

@@ -7,7 +7,7 @@
 --  company VARCHAR (200),
 --  image VARCHAR (3000),
 --  title VARCHAR (200),
---  heard VARCHAR (600),
+--  referral VARCHAR (600),
 --  permission BOOLEAN default false,
 --  mentor BOOLEAN default false,
 --  mentee BOOLEAN default false,
@@ -18,7 +18,7 @@
 --  ecosystem VARCHAR (200),
 --  employees VARCHAR (600),
 --  revenue VARCHAR (600),
---  distributing VARCHAR (200),
+--  distribution VARCHAR (200),
 --  story VARCHAR (1000),
 --  comments VARCHAR (3000),
 --  approved BOOLEAN default false

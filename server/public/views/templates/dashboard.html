@@ -1,4 +1,4 @@
-<md-content class="dashboard" >
+<md-content class="dashboard" ng-init="MC.getMentorNumbers()">
     <md-card class="dashSearch">
         <md-content class="md-padding" layout="row" layout-align="center">
             <md-nav-bar md-selected-nav-item="currentNavItem" class="navItem" nav-bar-aria-label="navigation links">
@@ -7,7 +7,7 @@
                 <md-input-container class="md-icon-float md-block">
                     <!-- Use floating label instead of placeholder -->
                     <md-icon md-svg-src="../../img/magnify.svg" class="search"></md-icon>
-                    <input ng-model="" type="text" placeholder="Search">
+                    <input type="text" placeholder="Search">
                 </md-input-container>
             </md-nav-bar>
         </md-content>
@@ -17,16 +17,16 @@
             md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
             md-row-height-gt-md="1:1" md-row-height="2:2"
             md-gutter="12px" md-gutter-gt-sm="8px">
-            <md-grid-tile class="dashCard"
+            <md-grid-tile ng-repeat="person in MC.mentorNum.list | filter:query as results" class="dashCard"
                 md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
-                <h2>123</h2>
+                <h2>{{results.length}}</h2>
                 <md-grid-tile-footer class="gridFooter" layout="column">
                     <p class="footerCaption">Number of Mentors</p>
                 </md-grid-tile-footer>
             </md-grid-tile>
-            <md-grid-tile class="dashCard"
+            <md-grid-tile ng-repeat="person in MC.mentorNum.list | filter:query as results" class="dashCard"
                 md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
-                <h2>456</h2>
+                <h2>{{results.length}}</h2>
                 <md-grid-tile-footer class="gridFooter" layout="column">
                     <p class="footerCaption">Number of Mentees</p>
                 </md-grid-tile-footer>

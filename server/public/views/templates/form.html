@@ -1,1 +1,195 @@
 <h1>form page...</h1>
+<md-content>
+    <form name="surveyForm" ng-submit="FC.page=1" layout="row">
+        <div flex="15"></div>
+        <md-card layout-padding ng-show="FC.page===0" flex>
+            <md-card-title>
+                <md-card-title-text>
+                    Tell us about yourself
+                </md-card-title-text>
+            </md-card-title>
+            <md-input-container>
+                <label>Name</label>
+                <input name="name" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.name" required>
+                <div ng-messages="surveyForm.referral.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Email</label>
+                <input name="email" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.email" required>
+                <div ng-messages="surveyForm.email.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Phone</label>
+                <input name="phone" md-maxlength="10" maxlength="10" type="text" ng-model="FC.formInput.phone" required>
+                <div ng-messages="surveyForm.phone.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Company</label>
+                <input name="company" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.company" required>
+                <div ng-messages="surveyForm.company.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Job Title</label>
+                <input name="title" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.title" required>
+                <div ng-messages="surveyForm.title.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>How did you hear about Grow North?</label>
+                <input name="referral" md-maxlength="500" type="text" ng-model="FC.formInput.referral" required>
+                <div ng-messages="surveyForm.referral.$error">
+                    <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <md-checkbox ng-model="FC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
+            </md-input-container>
+            <!-- <p>Please select at least one of the following:</p>
+            <md-input-container>
+                <md-checkbox ng-model="FC.formInput.mentor" ng-required="!(FC.formInput.mentor || FC.formInput.mentee)">Are you interesting in mentoring?</md-checkbox>
+            </md-input-container>
+            <md-input-container>
+                <md-checkbox ng-model="FC.formInput.mentee" ng-required="!(FC.formInput.mentor || FC.formInput.mentee)">Are you seeking help from a mentor?</md-checkbox>
+            </md-input-container> -->
+            <md-input-container>
+                    <p>Please select one of the following:</p>
+                <md-radio-group ng-model="FC.radioSelect" ng-change="FC.detectRadio()">
+                    <md-radio-button value="mentor" required>
+                        I'm interested in mentoring.
+                    </md-radio-button>
+                    <md-radio-button value="mentee" required>
+                        I'm interested in connecting with a mentor.
+                    </md-radio-button>
+                    <md-radio-button value="both" required>
+                        All the options!!
+                    </md-radio-button>
+                </md-radio-group>
+            </md-input-container>
+            <md-button class="md-raised" type="submit">Next</md-button>
+        </md-card>
+    </form>
+    <!-- Start of Form 2 -->
+    <form name="surveyForm" ng-submit="FC.page=2" layout="row">
+        <md-card layout-padding ng-show="FC.page===1" flex>
+            <md-card-title>
+                <md-card-title-text>
+                    Tell us MORE about yourself
+                </md-card-title-text>
+            </md-card-title>
+            <md-input-container ng-if="FC.formInput.mentor">
+                <!-- make a checkbox system -->
+                <label>Level of Involvement?</label>
+                <input name="involvement" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.involvement" required>
+                <div ng-messages="surveyForm.involvement.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentor">
+                <!-- possibly revise due to redundancy -->
+                <label>How can I help?</label>
+                <input name="howhelp" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.howhelp" required>
+                <div ng-messages="surveyForm.howhelp.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentor">
+                <label>Provide a specific example of your experience with a startup.</label>
+                <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="FC.formInput.experience" required></textarea>
+                <div ng-messages="surveyForm.experience.$error">
+                    <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentee">
+                <label>What are you struggling with?</label>
+                <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.struggle" required>
+                <div ng-messages="surveyForm.struggle.$error">
+                    <div ng-message="required">This information is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentee">
+                <label>What ecosystem does your business reside in?</label>
+                <input name="ecosystem" md-maxlength="500" type="text" ng-model="FC.formInput.ecosystem" required>
+                <div ng-messages="surveyForm.ecosystem.$error">
+                    <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentee">
+                <label>How many employees do you have?</label>
+                <input name="employees" md-maxlength="500" type="text" ng-model="FC.formInput.employees" required>
+                <div ng-messages="surveyForm.employees.$error">
+                    <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentee">
+                <label>What is your business's yearly revenue</label>
+                <input name="revenue" md-maxlength="500" type="text" ng-model="FC.formInput.revenue" required>
+                <div ng-messages="surveyForm.revenue.$error">
+                    <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentee">
+                <label>What is your distribution area?</label>
+                <input name="distribution" md-maxlength="500" type="text" ng-model="FC.formInput.distribution" required>
+                <div ng-messages="surveyForm.distribution.$error">
+                    <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                </div>
+            </md-input-container>
+            <md-input-container ng-if="FC.formInput.mentee">
+                <label>What's your story?</label>
+                <textarea rows="4" name="story" md-maxlength="500" type="text" ng-model="FC.formInput.story" required></textarea>
+                <div ng-messages="surveyForm.story.$error">
+                    <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                </div>
+            </md-input-container>
+            <md-button class="md-raised" ng-click="FC.page=0">Previous</md-button>
+            <md-button class="md-raised" type="submit">Next</md-button>
+        </md-card>
+    </form>
+    <!-- Start of Form 3 -->
+    <form name="surveyForm" ng-submit="FC.page=3" layout="row">
+        <md-card layout-padding ng-show="FC.page===2" flex>
+            <md-card-title>
+                <md-card-title-text>
+                    Form 3
+                </md-card-title-text>
+            </md-card-title>
+            <p>Lorem ipsum dolor sit amet, sed graeci virtute voluptatum no, nostro utamur usu ad. Eam in perfecto oportere,
+                qui alterum tibique reprimique ad. Ea inimicus deterruisset vis, ei exerci animal dissentiet usu, quo labores
+                accumsan ex. At sea quis purto. Eam impedit legendos prodesset in, per melius denique reformidans ex, nisl
+                iracundia duo ei. An facer tollit malorum quo, quem copiosae gubergren sed in. Nihil aperiri qui ei, deleniti
+                eleifend signiferumque an usu. Suavitate voluptatum mel eu, his cu putant copiosae erroribus. Omnes recusabo
+                inciderint mea at, ius et liber debet singulis, ut fierent constituto mediocritatem eam. No lorem quaerendum
+                per, eum eu nostro legimus.</p>
+            <md-input-container>
+                <md-checkbox ng-model="FC.formInput.legal" required>Do you agree to these terms?</md-checkbox>
+            </md-input-container>
+            <md-button class="md-raised" ng-click="FC.page=1">Previous</md-button>
+            <md-button class="md-raised" type="submit">Next</md-button>
+        </md-card>
+    </form>
+    <!-- Form 4 -->
+    <form name="surveyForm" ng-submit="FC.grabInputs()" layout="row">
+        <md-card layout-padding ng-show="FC.page===3" flex>
+            <md-card-title>
+                <md-card-title-text>
+                    Form 4
+                </md-card-title-text>
+            </md-card-title>
+            <p>SUMMARY OF ALL ENTERED DATA</p>
+            <md-button class="md-raised" ng-click="FC.page=2">Previous</md-button>
+            <md-button class="md-raised" type="submit">Submit</md-button>
+        </md-card>
+        <div flex="15"></div>
+    </form>
+</md-content>
+
+<!-- separate forms -->

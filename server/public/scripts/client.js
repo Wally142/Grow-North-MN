@@ -32,7 +32,8 @@ myApp.config(function($routeProvider, $locationProvider) {
       }
     })
     .when('/form', {
-      templateUrl: '/views/templates/form.html'
+      templateUrl: '/views/templates/form.html',
+      controller: 'FormController as FC'
     })
     .when('/dashboard', {
       templateUrl: '/views/templates/dashboard.html'

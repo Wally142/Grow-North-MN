@@ -2,10 +2,15 @@ var router = require('express').Router();
 var path = require('path');
 var async = require('async');
 var crypto = require('crypto');
+var pool = require('../modules/pool.js')
 
 var nodemailer = require('nodemailer');
 
-router.get('/', function(req, res){
+router.get('/:email', function(req, res, next){
+    var email = req.params.email;
+    var reset_deadline = new Date(Date.now() + 3600000);
+    console.log('Email:', email);
+    console.log('Token reset:', reset_deadline);
     async.waterfall([
         function(done) {
           crypto.randomBytes(20, function(err, buffer) {
@@ -13,6 +18,26 @@ router.get('/', function(req, res){
             done(err, token);
           });
         },
+        function(token, done){
+            pool.connect(function(err, client, done){
+                if (err){
+                    console.log('Error connecting:', err);
+                }else{
+                    var values = [token, reset_deadline, email];
+                    var query = 'UPDATE users SET reset_token = $1, reset_token_expires = $2 WHERE email = $3';
+
+                    client.query(query, values, function(error){
+                        done(error, token);
+                        if (error){
+                            console.log("Error inserting data:", error);
+                        }
+                    })
+                }
+            })
+            done(token);
+        },
+
+
         // function(token, done) {
         //   User.findOne({ email: req.body.email }, function(err, user) {
         //     if (!user) {
@@ -33,7 +58,7 @@ router.get('/', function(req, res){
                 service: 'Hotmail',
                 auth: {
                     user: 'evanmobile@hotmail.com',
-                    pass: 'im@sk00l'
+                    pass: process.env.MAILERPASSWORD
                 }
             });
             var mailOptions = {

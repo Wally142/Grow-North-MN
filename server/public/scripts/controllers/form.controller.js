@@ -17,7 +17,7 @@ myApp.controller('FormController', function (FormService) {
     mentor: false,
     mentee: false,
     involvement: null,
-    howHelp: null,
+    howhelp: null,
     experience: null,
     struggle: null,
     ecosystem: null,

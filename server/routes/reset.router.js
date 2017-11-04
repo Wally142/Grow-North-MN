@@ -6,6 +6,36 @@ var pool = require('../modules/pool.js')
 
 var nodemailer = require('nodemailer');
 
+router.get('/reset/:email/:token', function(req, res){
+    var email = req.params.email;
+    var reset_token = req.params.token;
+
+    console.log('Hit /reset/reset');
+    console.log('email:', email);
+    console.log('Reset token:', reset_token);
+    res.sendStatus(200);
+
+    // async.waterfall([
+    //     function(callback){
+    //         pool.connect(function(err, client, done){
+    //             if (err){
+    //                 console.log('Error connecting:', err);
+    //             }else{
+    //                 client.query('SELECT reset_token, reset_token_expires WHERE email = $1', [email], function(error, result){
+    //                     done();
+    //                     callback(error, queryResult);
+    //                 })
+    //             }
+    //         })
+    //     },
+    //     function(queryResult, callback){
+    //         if (queryResult.
+    //     }
+    // ])
+
+    
+})
+
 router.get('/:email', function(req, res, next){
     var email = req.params.email;
     var reset_deadline = new Date(Date.now() + 3600000);
@@ -28,6 +58,7 @@ router.get('/:email', function(req, res, next){
 
                     client.query(query, values, function(error){
                         done();
+                        // TRY THIS WITHOUT token LATER???
                         callback(error, token)
                     })
                 }
@@ -64,8 +95,8 @@ router.get('/:email', function(req, res, next){
                 to: 'evanjkearney@gmail.com',
                 subject: 'Grow North App Password Reset',
                 html: '<p>You\'re receiving this email because a password reset request was sent to the Grow North App.</p>' +
-                '<a href="http://localhost:5000/#/mailer/' + token + '">Click here to reset password</a>' +
-                '<p>If you didn\'t make this request... that\'s pretty concerning.</p>' 
+                '<a href="http://localhost:5000/reset/reset/evanjkearney@gmail.com/' + token + '">Click here to reset password</a>' +
+                '<p>If you didn\'t make this request... that\'s pretty concerning. IS THIS CHANGING?</p>' 
             };
             transporter.sendMail(mailOptions, function(err, info){
                 done(err, 'done');

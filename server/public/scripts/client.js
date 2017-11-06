@@ -3,7 +3,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('');
-  console.log('myApp -- config')
+  console.log('myApp -- config');
   $routeProvider
     .when('/home', {
       templateUrl: '/views/templates/home.html',
@@ -42,6 +42,10 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
     .when('/dashboard', {
       templateUrl: '/views/templates/dashboard.html',
       controller: 'MetricsController as MC'
+    })
+    .when('/directory', {
+      templateUrl: '/views/templates/directory.html',
+      controller: 'DirectoryController as DC'
     })
     .otherwise({
       redirectTo: 'home'

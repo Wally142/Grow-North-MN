@@ -50,5 +50,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       $http.get('/reset/' + email).then(function(response){
         console.log(response);
       });
+      vm.email = '';
+      vm.message = 'Check your email. You should receive instructions on how to reset your password.'
     }
 });

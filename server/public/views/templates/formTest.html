@@ -83,8 +83,10 @@
             </md-card>
             <div flex="10"></div>
         </div>
-            <md-button class="md-accent md-raised" ng-click="FC.page=2">Previous</md-button>
-            <md-button class="md-primary md-raised" type="submit">Submit</md-button>
+        <div layout="row" layout-align="space-around center">
+            <md-button  ng-click="FC.page=2" flex="30">Previous</md-button>
+            <md-button class="md-primary md-raised" type="submit" flex="30">Submit</md-button>
+        </div>
     </md-card>
     <div flex="15"></div>
 </section>

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider) {
@@ -30,6 +30,14 @@ myApp.config(function($routeProvider, $locationProvider) {
           return UserService.getuser();
         }
       }
+    })
+    .when('/form', {
+      templateUrl: '/views/templates/form.html',
+      controller: 'FormController as FC'
+    })
+    .when('/dashboard', {
+      templateUrl: '/views/templates/dashboard.html',
+      controller: 'MetricsController as MC'
     })
     .otherwise({
       redirectTo: 'home'

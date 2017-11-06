@@ -11,7 +11,7 @@ body, html {
 }
 
 .instructions {
-  background-color: #333333;
+  background-color: #37594D;
   color: #DDDDDD;
   padding: 15px;
 }
@@ -77,4 +77,50 @@ li a {
 li a:hover {
   text-decoration: underline;
   color: #eee;
+}
+
+
+/* Dashboard Styling */
+
+md-card {
+  padding: 1%;
+}
+
+.dashSearch {
+  text-align: center;
+}
+
+md-nav-bar md-nav-ink-bar {
+  background: 	#447063 !important;
+}
+
+.md-button._md-nav-button {
+  color: #447063;
+}
+
+md-grid-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center !important;
+}
+.dashCard {
+  background-color: #f9f9f9;
+  display: flex;
+  align-items: center !important;
+  align-content: center center;
+}
+.dashCard h2 {
+  font-size: 4em;
+}
+
+.footerCaption{
+  text-align: center;
+}
+.gridFooter {
+  background-color: 	#447063;
+  color: #f9f9f9
+}
+
+.md-toolbar-tools {
+  background: 	#447063;
 }

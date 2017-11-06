@@ -3,24 +3,28 @@
 
     <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
     <div>
+        <md-button ng-click="emailUpdate=!emailUpdate">Update email</md-button>
+    </div>
+    <div ng-show="emailUpdate" layout="column">
         <md-input-container>
             <label>Update email</label>
             <input type="email" ng-model="uc.email">
         </md-input-container>
-        <md-button ng-click="uc.updateEmail()">Submit</md-button>
+        <md-button ng-click="uc.updateEmail(uc.email)">Submit</md-button>
     </div>
     
     <div>
-        <md-button ng-click="passwordUpdate">Update password</md-button>
+        <md-button ng-click="passwordUpdate=!passwordUpdate">Update password</md-button>
     </div>
-    <div ng-show="passwordUpdate">
+    <div ng-show="passwordUpdate" layout="column">
         <md-input-container>
-            <label>Your new password</label>
+            <label>Enter your new password</label>
             <input type="password" ng-model="uc.password">
         </md-input-container>
         <md-input-container>
             <label>Confirm your new password</label>
             <input type="password" ng-model="uc.passwordConfirm">
         </md-input-container>
+        <md-button ng-click="uc.updatePassword()">Submit</md-button>
     </div>
 </div>

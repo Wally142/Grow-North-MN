@@ -10,8 +10,15 @@
             </md-card-title>
             <div layout="row">
                 <md-input-container flex="50">
-                    <label>Name</label>
-                    <input name="name" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.name" required>
+                    <label>First Name</label>
+                    <input name="firstname" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.firstname" required>
+                    <div ng-messages="surveyForm.referral.$error">
+                        <div ng-message="required">This information is required.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex="50">
+                    <label>Last Name</label>
+                    <input name="lastname" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.lastname" required>
                     <div ng-messages="surveyForm.referral.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>

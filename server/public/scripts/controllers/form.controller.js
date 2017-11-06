@@ -4,7 +4,7 @@ myApp.controller('FormController', function (FormService) {
 
   vm.page = 0;
 
-  vm.radioSelect = null;
+  vm.radioSelect = 'mentor';
 
   vm.formInput = {
     firstname: null,
@@ -15,7 +15,7 @@ myApp.controller('FormController', function (FormService) {
     title: null,
     referral: null,
     permission: false,
-    mentor: false,
+    mentor: true,
     mentee: false,
     involvement: null,
     howhelp: null,

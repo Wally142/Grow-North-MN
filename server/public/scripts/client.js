@@ -1,7 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages']);
 
 /// Routes ///
-myApp.config(function($routeProvider, $locationProvider) {
+myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('');
   console.log('myApp -- config')
   $routeProvider
@@ -35,6 +35,10 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/form.html',
       controller: 'FormController as FC'
     })
+    .when('/test', {
+      templateUrl: '/views/templates/formTest.html',
+      controller: 'FormController as FC'
+    })
     .when('/dashboard', {
       templateUrl: '/views/templates/dashboard.html',
       controller: 'MetricsController as MC'
@@ -42,4 +46,8 @@ myApp.config(function($routeProvider, $locationProvider) {
     .otherwise({
       redirectTo: 'home'
     });
+
+  $mdThemingProvider.theme('default').primaryPalette('green').accentPalette('green', {
+    'default': '400'
+  });
 });

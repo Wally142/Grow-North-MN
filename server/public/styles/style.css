@@ -124,3 +124,13 @@ md-grid-list {
 .md-toolbar-tools {
   background: 	#447063;
 }
+
+.surveyAnswer {
+  margin-top: 3px;
+  color: #777777;
+  font-style: italic;
+}
+
+#confirmCard {
+  background-color: #e8ffe7;
+}

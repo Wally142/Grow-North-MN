@@ -45,9 +45,9 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       }
     }
 
-    vm.passwordReset = function() {
+    vm.passwordReset = function(email) {
       console.log('Send reset email');
-      $http.get('/reset/evanjkearney@gmail.com').then(function(response){
+      $http.get('/reset/' + email).then(function(response){
         console.log(response);
       });
     }

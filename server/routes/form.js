@@ -15,7 +15,7 @@ router.post('/form', function (req, res) {
             client.query(queryString, items, function (queryErr, resultObj) {
                 done();
                 if (queryErr) {
-                    console.log(queryErr)
+                    console.log(queryErr);
                     res.sendStatus(500);
                 } else {
 
@@ -23,7 +23,7 @@ router.post('/form', function (req, res) {
                 }
             });
         }
-    })
+    });
 
 }); //end post route
 

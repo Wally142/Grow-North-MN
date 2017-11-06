@@ -51,7 +51,43 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
       redirectTo: 'home'
     });
 
-  $mdThemingProvider.theme('default').primaryPalette('green').accentPalette('green', {
-    'default': '400'
+  $mdThemingProvider.definePalette('growNorth', {
+    '50': 'e7ebea',
+    '100': 'c3cdca',
+    '200': '9baca7',
+    '300': '728b84',
+    '400': '547269',
+    '500': '36594f',
+    '600': '305148',
+    '700': '29483f',
+    '800': '223e36',
+    '900': '162e26',
+    'A100': '427063',
+    'A200': '3dffbb',
+    'A400': '0affa9',
+    'A700': '00f09c',
+    'contrastDefaultColor': 'light',
+    'contrastDarkColors': [
+      '50',
+      '100',
+      '200',
+      '300',
+      'A100',
+      'A200',
+      'A400',
+      'A700'
+    ],
+    'contrastLightColors': [
+      '400',
+      '500',
+      '600',
+      '700',
+      '800',
+      '900'
+    ]
   });
+
+  $mdThemingProvider.theme('default').primaryPalette('growNorth').accentPalette('growNorth' ,{
+    'default': '400'
+  })
 });

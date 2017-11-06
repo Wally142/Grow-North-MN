@@ -21,6 +21,7 @@
 --  distribution VARCHAR (200),
 --  story VARCHAR (1000),
 --  comments VARCHAR (3000),
+--  startdate TIMESTAMP DEFAULT current_timestamp,
 --  approved BOOLEAN default false
 --  );
 

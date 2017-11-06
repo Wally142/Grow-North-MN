@@ -2,27 +2,27 @@ myApp.controller('MetricsController', function (ProspectsService) {
     console.log('MetricsController created');
     var vm = this;
     
-    vm.mentors = { list: [] }
-    vm.mentee = { list: [] }
-    vm.connections = { list: [] }
+    vm.mentors = { list: [] };
+    vm.mentee = { list: [] };
+    vm.connections = { list: [] };
 
     vm.getMentorNumbers = function (){
-        ProspectsService.getMentorNumbers()
+        ProspectsService.getMentorNumbers();
         vm.mentors = ProspectsService.mentorNum
-        console.log('metrics controller hit with', vm.mentors)
+        console.log('metrics controller hit with', vm.mentors);
         // return vm.mentors;
     }
 
     vm.getMenteeNumbers = function () {
-        ProspectsService.getMenteeNumbers()
+        ProspectsService.getMenteeNumbers();
         vm.mentee = ProspectsService.menteeNum
-        console.log('metrics controller hit with', vm.mentee)
+        console.log('metrics controller hit with', vm.mentee);
     }
 
     vm.getConnectionNumbers = function () {
-        ProspectsService.getConnectionNumbers()
+        ProspectsService.getConnectionNumbers();
         vm.connections = ProspectsService.connectionsNum
-        console.log('metrics controller hit with', vm.connections)
+        console.log('metrics controller hit with', vm.connections);
     }
 
 

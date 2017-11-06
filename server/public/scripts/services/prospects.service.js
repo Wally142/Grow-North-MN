@@ -4,6 +4,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     var self = this;
     self.mentorNum = { list: []}
     self.menteeNum = { list: []}
+    self.connectionsNum = {list: []}
 
     self.getMentorNumbers = function () {
         console.log('In getMentorNumbers');
@@ -21,6 +22,13 @@ myApp.service('ProspectsService', function ($http, $location) {
         })
     }
 
+    self.getConnectionNumbers = function () {
+        console.log('In getConnections');
+        $http.get('/metrics/connections').then(function (response) {
+            console.log(response);
+            self.connectionsNum.list = response.data;
+        })
+    }
 
 
 
@@ -41,5 +49,6 @@ myApp.service('ProspectsService', function ($http, $location) {
 
 
 
-    
+
+
 });

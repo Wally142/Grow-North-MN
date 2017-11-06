@@ -1,3 +1,5 @@
+-- CREATE DATABASE grow-north;
+
 -- CREATE TABLE prospects (
 --  id serial primary key,
 --  firstname VARCHAR (200),
@@ -32,7 +34,7 @@
 -- );
 
 -- ALTER TABLE connections add constraint person1_cannot_be_equal_to_person2_CHK CHECK (person1 <> person2);
--- ALTER TABLE connections add UNIQUE (person1, person2)
+-- ALTER TABLE connections add UNIQUE (person1, person2);
 
 -- CREATE TABLE users (
 -- id SERIAL PRIMARY KEY,

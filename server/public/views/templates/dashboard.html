@@ -42,7 +42,7 @@
         </md-grid-list>
     </md-card>
 
-    <md-card class="awaitingApproval">
+    <md-card class="awaitingApproval" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()">
        <!-- <h2>Intake forms awaiting approval go here!</h2>
        <section layout="row">
            <div flex> -->
@@ -61,16 +61,27 @@
                </md-toolbar>
                <md-content>
                    <md-list>
-                       <md-list-item class="adminApproval md-2-line" layout="row">
+                       <md-list-item class="adminApproval md-2-line" layout="row" ng-repeat="listing in DC.approval.list" ng-value="listing.id">
                            <div class="md-list-item-text">
-                               <p>Hey! This will be ng-repeated eventually, and clickable too!</p>
+                               <p>{{listing.firstname}} {{listing.lastname}}</p>
                            </div>
+                           <div class="md-list-item-text">
+                                <p>{{listing.phone}}</p>
+                            </div>
+                            <div class="md-list-item-text">
+                                <p>{{listing.email}}</p>
+                            </div>
+                            <div class="md-list-item-text">
+                                <p>{{listing.startdate | date: 'MMMM d, y h:mm a'}}</p>
+                            </div>
+                            <md-button ng-click="DC.approve(listing.id, listing.approved)">Approve</md-button>
+                            <md-button ng-click="DC.delete(listing.id)">Delete</md-button>
                        </md-list-item>
-                       <md-list-item class="adminApproval md-2-line" layout="row">
+                       <!-- <md-list-item class="adminApproval md-2-line" layout="row">
                             <div class="md-list-item-text">
                                 <p>Hey! This will be ng-repeated eventually, and clickable too!</p>
                             </div>
-                        </md-list-item>
+                        </md-list-item> -->
                    </md-list>
                </md-content>
            </div>

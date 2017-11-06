@@ -9,6 +9,7 @@ var sessionConfig = require('./modules/session.config');
 var indexRouter = require('./routes/index.router');
 var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
+var resetRouter = require('./routes/reset.router');
 var formRouter= require('./routes/form');
 var metricsRouter = require('./routes/metrics');
 var directoryRouter = require('./routes/directory');
@@ -18,6 +19,9 @@ var port = process.env.PORT || 5000;
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+// Environment variables
+require('dotenv').config();
 
 // Serve back static files
 app.use(express.static('./server/public'));
@@ -32,6 +36,7 @@ app.use(passport.session());
 // Routes
 app.use('/register', registerRouter);
 app.use('/user', userRouter);
+app.use('/reset', resetRouter);
 app.use('/form', formRouter);
 app.use('/metrics', metricsRouter);
 app.use('/directory', directoryRouter);

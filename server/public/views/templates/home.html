@@ -14,5 +14,19 @@
           <input class="btn btn-default" type="submit" name="submit" value="Log In" />
           <a href="#register">Register</a>
       </div>
+      <div>
+          <button ng-click="reset=true">
+              Password reset
+          </button>
+          <div ng-show="reset">
+            <md-input-container>
+                <label>Your email</label>
+                <input ng-model="lc.email" type="email">
+            </md-input-container>
+            <md-button ng-click="lc.passwordReset(lc.email)">
+                Submit
+            </md-button>
+          </div>
+      </div>
     </form>
 </div>

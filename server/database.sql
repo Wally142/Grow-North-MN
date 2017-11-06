@@ -24,11 +24,18 @@
 --  approved BOOLEAN default false
 --  );
 
+-- CREATE TABLE connections (
+-- id serial primary key,
+-- person1 int references prospects (id),
+-- person2 int references prospects (id)
+-- );
 
-
+-- ALTER TABLE connections add constraint person1_cannot_be_equal_to_person2_CHK CHECK (person1 <> person2);
+-- ALTER TABLE connections add UNIQUE (person1, person2)
 
 -- CREATE TABLE users (
 -- id SERIAL PRIMARY KEY,
 -- username varchar(55),
--- password varchar(60)
+-- password varchar(60),
+-- email varchar(100)
 -- );

@@ -60,10 +60,32 @@ router.get('/reset/:email/:token', function(req, res, next){
                     }
                 })
             }
+        },
+        function(newPass, callback){
+            var transporter = nodemailer.createTransport({
+                service: 'Hotmail',
+                auth: {
+                    user: 'evanmobile@hotmail.com',
+                    pass: process.env.MAILERPASSWORD
+                }
+            });
+            var mailOptions = {
+                from: 'evanmobile@hotmail.com',
+                to: email,
+                subject: 'Grow North App Password Reset',
+                // CHANGE THIS MESSAGE AT SOME POINT
+                // WHAT URL AFTER DEPLOY???
+                html: '<p>Your password has been changed to ' + newPass + '</p>' +
+                '<p>You are advised to change your password immediately</p>'
+            };
+            transporter.sendMail(mailOptions, function(err, info){
+                callback(err, 'done');
+            });
         }
     ], function(err, newPass) {
+        console.log('Redirecting');
         if (err) return next(err);
-        res.send(newPass);
+        res.redirect('/');
       });
 })
 
@@ -106,12 +128,13 @@ router.get('/:email', function(req, res, next){
             });
             var mailOptions = {
                 from: 'evanmobile@hotmail.com',
-                to: 'evanjkearney@gmail.com',
+                to: email,
                 subject: 'Grow North App Password Reset',
                 // CHANGE THIS MESSAGE AT SOME POINT
                 // WHAT URL AFTER DEPLOY???
                 html: '<p>You\'re receiving this email because a password reset request was sent to the Grow North App.</p>' +
                 '<a href="http://localhost:5000/reset/reset/evanjkearney@gmail.com/' + token + '">Click here to reset password</a>' +
+                '<p>You will receive an email with your new password shortly, and will be redirected to the Grow North login page</p>' +
                 '<p>If you didn\'t make this request... that\'s pretty concerning.</p>' 
             };
             transporter.sendMail(mailOptions, function(err, info){

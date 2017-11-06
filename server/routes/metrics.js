@@ -21,7 +21,7 @@ router.get('/mentors', function (req, res) {
             });
         }
     });
-});// end  GET
+});// end  GET mentors
 
 router.get('/mentees', function (req, res) {
     console.log('get Mentees');
@@ -36,13 +36,34 @@ router.get('/mentees', function (req, res) {
                     console.log(queryErr)
                     res.sendStatus(500);
                 } else {
-                    console.log(resultObj.rows);
+                    console.log("mentEE", resultObj.rows);
                     res.send(resultObj.rows);
                 }
             });
         }
     });
-});// end Get
+});// end Get mentees
+
+router.get('/connections', function (req, res) {
+    console.log('get connections');
+    pool.connect(function (error, client, done) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(404);
+        } else {
+            client.query("SELECT * FROM connections;", function (queryErr, resultObj) {
+                done();
+                if (queryErr) {
+                    console.log(queryErr)
+                    res.sendStatus(500);
+                } else {
+                    console.log("connections", resultObj.rows);
+                    res.send(resultObj.rows);
+                }
+            });
+        }
+    });
+});// end Get connections
 
 
 module.exports = router;

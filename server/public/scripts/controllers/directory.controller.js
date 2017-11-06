@@ -8,4 +8,8 @@ myApp.controller('DirectoryController', function (ProspectsService) {
         vm.directory = ProspectsService.directory;
         console.log('directory controller hit with', vm.directory);
     };
+
+    vm.showInfo = function(){
+        alert('Yo!');
+    };
 }); // end controller

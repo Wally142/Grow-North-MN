@@ -37,6 +37,11 @@ myApp.factory('UserService', function($http, $location){
 
       $http.put('/user/email', data).then(function(response){
         console.log(response);
+        if (response.status === 201){
+          userObject.message = 'Email changed successfully.'
+        }else{
+          userObject.message = 'There was an error changing your email.'
+        }
       })
     },
 
@@ -45,6 +50,11 @@ myApp.factory('UserService', function($http, $location){
 
       $http.put('/user/password', data).then(function(response){
         console.log(response);
+        if (response.status === 201){
+          userObject.message = 'Password changed successfully.'
+        }else{
+          userObject.message = 'There was an error changing your password.'
+        }
       })
     }
   };

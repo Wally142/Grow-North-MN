@@ -8,4 +8,12 @@ myApp.controller('UserController', function(UserService) {
     UserService.updateEmail(email);
     vm.email = '';
   }
+
+  vm.updatePassword = function(password){
+    if (vm.password === vm.passwordConfirm){
+      UserService.updatePassword(password);
+      vm.password = '';
+      vm.passwordConfirm = '';
+    }
+  }
 });

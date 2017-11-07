@@ -38,6 +38,14 @@ myApp.factory('UserService', function($http, $location){
       $http.put('/user/email', data).then(function(response){
         console.log(response);
       })
+    },
+
+    updatePassword : function(newPassword){
+      var data = {newPassword: newPassword}
+
+      $http.put('/user/password', data).then(function(response){
+        console.log(response);
+      })
     }
   };
 });

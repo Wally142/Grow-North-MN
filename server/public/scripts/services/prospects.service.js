@@ -6,6 +6,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.menteeNum = { list: []};
     self.connectionsNum = {list: []};
     self.directory = {list:[]};
+    self.approval = {list:[]};
 
     self.getMentorNumbers = function () {
         console.log('In getMentorNumbers');
@@ -39,25 +40,40 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    self.getApproval = function () {
+        console.log('In getApproval');
+        $http.get('/directory/unapproved').then(function (response) {
+            console.log(response);
+            self.approval.list = response.data;
+        });
+    };
 
+    self.deleteApproval = function(id) {
+        var thisId = id;
+        console.log('in Delete Approval function');
+        return $http({
+            method: 'DELETE',
+            url: '/directory/unapproved/' + thisId
+        }).then(function(response) {
+            console.log('deleteApproval response:', response);
+            self.getApproval();
+        });
+    }; // end deleteApproval
 
+    self.updateApproval = function(id, status) {
+        var thisId = id;
+        var listingStatus = {
+            approved: status
+        };
+        console.log('in UPDATE APPROVAL', listingStatus);
+        $http({
+            method: 'PUT',
+            url: '/directory/unapproved/' + thisId,
+            data: listingStatus
+        }).then(function (response) {
+            console.log('Approval Update response:', response); 
+            self.getApproval();
+        });
+    };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
+}); // end service

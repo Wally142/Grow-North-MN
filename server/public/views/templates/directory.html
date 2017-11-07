@@ -1,5 +1,54 @@
-<md-content class="directory" ng-init="DC.getDirectory()">
-    <div ng-repeat="listing in DC.directory.list">
-        <p>{{listing}}</p>
-    </div>
+<div flex='80'>
+    <md-content class="directory" ng-init="DC.getDirectory()">
+        <md-list>
+            <md-list-item class="adminApproval md-2-line" layout="row">
+                <div flex="25">
+                    Name
+                </div>
+                <div flex="15">
+                    Phone
+                </div>
+                <div flex="20">
+                    Email
+                </div>
+                <div flex="20">
+                    Date Entered
+                </div>
+                <div flex="5">
+                    Mentor
+                </div>
+                <div flex="5">
+                    Mentee
+                </div>
+            </md-list-item>
+            <md-list-item class="adminApproval md-2-line" ng-click="DC.showInfo()" layout="row" ng-repeat="listing in DC.directory.list">
+                <div flex="25">
+                    {{ listing.lastname }}, {{ listing.firstname }}
+                </div>
+                <div flex="15">
+                    {{ listing.phone }}
+                </div>
+                <div flex="20">
+                    {{ listing.email }}
+                </div>
+                <div flex="20">
+                    {{ listing.startdate | date: 'longDate' }}
+                </div>
+                <div flex="5">
+                    <span ng-if="listing.mentor">Yes</span>
+                    <span ng-if="!listing.mentor">No</span>
+                </div>
+                <div flex="5">
+                    <span ng-if="listing.mentee">Yes</span>
+                    <span ng-if="!listing.mentee">No</span>
+                </div>
+            </md-list-item>
+        </md-list>
+        <hr>
+        <div ng-repeat="listing in DC.directory.list">
+            <p>
+                {{ listing }}
+            </p>
+        </div>
     </md-content>
+</div>

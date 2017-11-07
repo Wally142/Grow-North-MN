@@ -1,32 +1,53 @@
-<h1>form page...</h1>
 <md-content layout="row">
     <div flex="15"></div>
-    <md-card layout-padding ng-show="FC.page===0" flex>
-        <form name="surveyForm" ng-submit="FC.page=1">
+    <md-card layout-padding ng-show="SC.page===0" flex>
+        <form name="surveyForm0" ng-submit="SC.form0Nav(1)">
             <md-card-title>
                 <md-card-title-text>
                     Tell us about yourself
                 </md-card-title-text>
             </md-card-title>
+            <div layout="row" layout-align="center center" layout-margin>
+                <div flex="10"></div>
+                <img src="../../img/numeric-1-box.png">
+                <md-progress-linear md-mode="determinate" value="0" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-2-box-outline.png" ng-click="SC.form0Nav(1)">
+                <md-progress-linear md-mode="determinate" value="0" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-3-box-outline.png" ng-click="SC.form0Nav(2)">
+                <md-progress-linear md-mode="determinate" value="0" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form0Nav(3)">
+                <div flex="10"></div>
+            </div>
+            <!-- <div layout="row" layout-align="center center" layout-margin>
+                <div flex="5"></div>
+                <div flex="10">Test</div>
+                <div flex="15"></div>
+                <div flex="10">Test</div>
+                <div flex="15"></div>
+                <div flex="10">Test</div>
+                <div flex="15"></div>
+                <div flex="10">Test</div>
+                <div flex="5"></div>
+            </div> -->
             <div layout="row">
                 <md-input-container flex="50">
                     <label>First Name</label>
-                    <input name="firstname" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.firstname" required>
-                    <div ng-messages="surveyForm.referral.$error">
+                    <input type="text" name="firstname" md-maxlength="50" md-minlength="1" maxlength="50" ng-model="SC.formInput.firstname" required>
+                    <div ng-messages="surveyForm0.referral.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="50">
                     <label>Last Name</label>
-                    <input name="lastname" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.lastname" required>
-                    <div ng-messages="surveyForm.referral.$error">
+                    <input name="lastname" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.lastname" required>
+                    <div ng-messages="surveyForm0.referral.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="50">
                     <label>Email</label>
-                    <input name="email" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.email" required>
-                    <div ng-messages="surveyForm.email.$error">
+                    <input name="email" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.email" required>
+                    <div ng-messages="surveyForm0.email.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
@@ -34,50 +55,55 @@
             <div layout="row">
                 <md-input-container flex="33">
                     <label>Phone</label>
-                    <input name="phone" md-maxlength="10" maxlength="10" type="text" ng-model="FC.formInput.phone" required>
-                    <div ng-messages="surveyForm.phone.$error">
+                    <input name="phone" md-maxlength="10" maxlength="10" type="text" ng-model="SC.formInput.phone" required>
+                    <div ng-messages="surveyForm0.phone.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="33">
                     <label>Company</label>
-                    <input name="company" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.company" required>
-                    <div ng-messages="surveyForm.company.$error">
+                    <input name="company" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.company" required>
+                    <div ng-messages="surveyForm0.company.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container flex="33">
                     <label>Job Title</label>
-                    <input name="title" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.title" required>
-                    <div ng-messages="surveyForm.title.$error">
+                    <input name="title" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.title" required>
+                    <div ng-messages="surveyForm0.title.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
             </div>
             <div layout="row">
-                <md-input-container flex="50">
+                <md-input-container flex>
                     <label>How did you hear about Grow North?</label>
-                    <input name="referral" md-maxlength="500" type="text" ng-model="FC.formInput.referral" required>
-                    <div ng-messages="surveyForm.referral.$error">
+                    <input name="referral" md-maxlength="500" type="text" ng-model="SC.formInput.referral" required>
+                    <div ng-messages="surveyForm0.referral.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-                <md-input-container flex="50">
-                    <md-checkbox ng-model="FC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
-                </md-input-container>
             </div>
-            <!-- <p>Please select at least one of the following:</p> -->
-            <!-- <md-input-container>
-                <md-checkbox ng-model="FC.formInput.mentor" ng-required="!(FC.formInput.mentor || FC.formInput.mentee)">Are you interesting in mentoring?</md-checkbox>
-                <md-checkbox ng-model="FC.formInput.mentee" ng-required="!(FC.formInput.mentor || FC.formInput.mentee)">Are you seeking help from a mentor?</md-checkbox>
-                <label>Are you interesting in mentoring?</label>
-                <input type="checkbox" ng-required="!(FC.formInput.mentor || FC.formInput.mentee)">
-            </md-input-container> -->
-            <!-- ng-required="!(FC.formInput.mentor || FC.formInput.mentee)" -->
             <div layout="row">
-                <md-input-container flex>
+                <div layout="column" layout-align="center center">
+                <md-input-container flex="50">
+                    <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
+                </md-input-container>
+                </div>
+            <md-input-container flex>
+                <p><strong>Please select at least one of the following:</strong></p>
+                <md-checkbox name="mentor" ng-model="SC.formInput.mentor" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you interesting in mentoring?</md-checkbox>
+                <md-checkbox name="mentee" ng-model="SC.formInput.mentee" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you seeking help from a mentor?</md-checkbox>
+                <div ng-messages="surveyForm0.mentor.$error && surveyForm0.mentee.$error">
+                    <div ng-message="required">You must select an option before proceeding</div>
+                </div>
+                <!-- <label>Are you interesting in mentoring?</label> -->
+                <!-- <input type="checkbox" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)"> -->
+            </md-input-container>
+            <!-- ng-required="!(SC.formInput.mentor || SC.formInput.mentee)" -->
+                <!-- <md-input-container flex>
                     <p>Please select one of the following:</p>
-                    <md-radio-group ng-model="FC.radioSelect" ng-change="FC.detectRadio()">
+                    <md-radio-group ng-model="SC.radioSelect" ng-change="SC.detectRadio()">
                         <md-radio-button value="mentor" selected>
                             I'm interested in mentoring.
                         </md-radio-button>
@@ -88,7 +114,7 @@
                             All the options!!
                         </md-radio-button>
                     </md-radio-group>
-                </md-input-container>
+                </md-input-container> -->
             </div>
             <div layout="row">
                 <md-button class="md-raised" type="submit" flex>Next</md-button>
@@ -96,102 +122,124 @@
         </form>
     </md-card>
     <!-- Start of Form 2 -->
-    <md-card layout-padding ng-show="FC.page===1" flex>
-        <form name="surveyForm" ng-submit="FC.page=2">
+    <md-card layout-padding ng-show="SC.page===1" flex>
+        <form name="surveyForm1" ng-submit="SC.form0Nav(2)">
             <md-card-title>
                 <md-card-title-text>
                     Tell us MORE about yourself
                 </md-card-title-text>
             </md-card-title>
+            <div layout="row" layout-align="center center" layout-margin>
+                <div flex="10"></div>
+                <img src="../../img/numeric-1-box.png" ng-click="SC.form1Nav(0)">
+                <md-progress-linear md-mode="determinate" value="100" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-2-box.png">
+                <md-progress-linear md-mode="determinate" value="0" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-3-box-outline.png" ng-click="SC.form1Nav(2)">
+                <md-progress-linear md-mode="determinate" value="0" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form1Nav(3)">
+                <div flex="10"></div>
+            </div>
             <div layout="row">
-                <md-input-container ng-if="FC.formInput.mentor" flex="50">
+                <md-input-container ng-if="SC.formInput.mentor" flex="50">
                     <!-- make a checkbox system -->
                     <label>Level of Involvement?</label>
-                    <input name="involvement" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.involvement" required>
+                    <input name="involvement" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.involvement" required>
                     <div ng-messages="surveyForm.involvement.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-if="FC.formInput.mentor" flex="50">
+                <md-input-container ng-if="SC.formInput.mentor" flex="50">
                     <!-- possibly revise due to redundancy -->
                     <label>How can I help?</label>
-                    <input name="howhelp" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.howhelp" required>
+                    <input name="howhelp" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.howhelp" required>
                     <div ng-messages="surveyForm.howhelp.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
             </div>
             <div layout="row">
-                <md-input-container ng-if="FC.formInput.mentor" flex="50">
+                <md-input-container ng-if="SC.formInput.mentor" flex="50">
                     <label>Provide a specific example of your experience with a startup.</label>
-                    <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="FC.formInput.experience" required></textarea>
+                    <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="SC.formInput.experience" required></textarea>
                     <div ng-messages="surveyForm.experience.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-if="FC.formInput.mentee" flex="50">
+                <md-input-container ng-if="SC.formInput.mentee" flex="50">
                     <label>What are you struggling with?</label>
-                    <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="FC.formInput.struggle" required>
+                    <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.struggle" required>
                     <div ng-messages="surveyForm.struggle.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
             </div>
             <div layout="row">
-            <md-input-container ng-if="FC.formInput.mentee" flex="50">
+            <md-input-container ng-if="SC.formInput.mentee" flex="50">
                 <label>What ecosystem does your business reside in?</label>
-                <input name="ecosystem" md-maxlength="500" type="text" ng-model="FC.formInput.ecosystem" required>
+                <input name="ecosystem" md-maxlength="500" type="text" ng-model="SC.formInput.ecosystem" required>
                 <div ng-messages="surveyForm.ecosystem.$error">
                     <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                 </div>
             </md-input-container>
-            <md-input-container ng-if="FC.formInput.mentee" flex="50">
+            <md-input-container ng-if="SC.formInput.mentee" flex="50">
                 <label>How many employees do you have?</label>
-                <input name="employees" md-maxlength="500" type="text" ng-model="FC.formInput.employees" required>
+                <input name="employees" md-maxlength="500" type="text" ng-model="SC.formInput.employees" required>
                 <div ng-messages="surveyForm.employees.$error">
                     <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                 </div>
             </md-input-container>
             </div>
             <div layout="row">
-            <md-input-container ng-if="FC.formInput.mentee" flex="50">
+            <md-input-container ng-if="SC.formInput.mentee" flex="50">
                 <label>What is your business's yearly revenue</label>
-                <input name="revenue" md-maxlength="500" type="text" ng-model="FC.formInput.revenue" required>
+                <input name="revenue" md-maxlength="500" type="text" ng-model="SC.formInput.revenue" required>
                 <div ng-messages="surveyForm.revenue.$error">
                     <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                 </div>
             </md-input-container>
-            <md-input-container ng-if="FC.formInput.mentee" flex="50">
+            <md-input-container ng-if="SC.formInput.mentee" flex="50">
                 <label>What is your distribution area?</label>
-                <input name="distribution" md-maxlength="500" type="text" ng-model="FC.formInput.distribution" required>
+                <input name="distribution" md-maxlength="500" type="text" ng-model="SC.formInput.distribution" required>
                 <div ng-messages="surveyForm.distribution.$error">
                     <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                 </div>
             </md-input-container>
             </div>
             <div layout="row">
-            <md-input-container ng-if="FC.formInput.mentee" flex="50">
+            <md-input-container ng-if="SC.formInput.mentee" flex="50">
                 <label>What's your story?</label>
-                <textarea rows="4" name="story" md-maxlength="500" type="text" ng-model="FC.formInput.story" required></textarea>
+                <textarea rows="4" name="story" md-maxlength="500" type="text" ng-model="SC.formInput.story" required></textarea>
                 <div ng-messages="surveyForm.story.$error">
                     <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                 </div>
             </md-input-container>
             </div>
             <div layout="row">
-            <md-button class="md-raised" ng-click="FC.page=0" flex="50">Previous</md-button>
+            <md-button class="md-raised" ng-click="SC.page=0" flex="50">Previous</md-button>
             <md-button class="md-raised" type="submit" flex>Next</md-button>
             </div>
         </form>
     </md-card>
     <!-- Start of Form 3 -->
-    <md-card layout-padding ng-show="FC.page===2" flex>
-        <form name="surveyForm" ng-submit="FC.page=3">
+    <md-card layout-padding ng-show="SC.page===2" flex>
+        <form name="surveyForm2" ng-submit="SC.form2Nav(3)">
             <md-card-title>
                 <md-card-title-text>
                     Form 3
                 </md-card-title-text>
             </md-card-title>
+            <div layout="row" layout-align="center center" layout-margin>
+                <div flex="10"></div>
+                <img src="../../img/numeric-1-box.png" ng-click="SC.form2Nav(0)">
+                <md-progress-linear md-mode="determinate" value="100" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-2-box.png" ng-click="SC.form2Nav(1)">
+                <md-progress-linear md-mode="determinate" value="100" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-3-box.png">
+                <md-progress-linear md-mode="determinate" value="0" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form2Nav(3)">
+                <div flex="10"></div>
+            </div>
             <p>Lorem ipsum dolor sit amet, sed graeci virtute voluptatum no, nostro utamur usu ad. Eam in perfecto oportere,
                 qui alterum tibique reprimique ad. Ea inimicus deterruisset vis, ei exerci animal dissentiet usu, quo labores
                 accumsan ex. At sea quis purto. Eam impedit legendos prodesset in, per melius denique reformidans ex, nisl
@@ -200,23 +248,105 @@
                 inciderint mea at, ius et liber debet singulis, ut fierent constituto mediocritatem eam. No lorem quaerendum
                 per, eum eu nostro legimus.</p>
             <md-input-container>
-                <md-checkbox ng-model="FC.formInput.legal" required>Do you agree to these terms?</md-checkbox>
+                <md-checkbox ng-model="SC.formInput.legal" required>Do you agree to these terms?</md-checkbox>
             </md-input-container>
-            <md-button class="md-raised" ng-click="FC.page=1">Previous</md-button>
+            <md-button class="md-raised" ng-click="SC.page=1">Previous</md-button>
             <md-button class="md-raised" type="submit">Next</md-button>
         </form>
     </md-card>
     <!-- Form 4 -->
-    <md-card layout-padding ng-show="FC.page===3" flex>
-        <form name="surveyForm" ng-submit="FC.grabInputs()">
+    <md-card layout-padding ng-show="SC.page===3" flex>
+        <form name="surveyForm3" ng-submit="SC.grabInputs()">
             <md-card-title>
                 <md-card-title-text>
-                    Form 4
+                    Confirm your information
                 </md-card-title-text>
             </md-card-title>
-            <p>SUMMARY OF ALL ENTERED DATA</p>
-            <md-button class="md-raised" ng-click="FC.page=2">Previous</md-button>
-            <md-button class="md-raised" type="submit">Submit</md-button>
+            <div layout="row" layout-align="center center" layout-margin>
+                <div flex="10"></div>
+                <img src="../../img/numeric-1-box.png" ng-click="SC.form3Nav(0)">
+                <md-progress-linear md-mode="determinate" value="100" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-2-box.png" ng-click="SC.form3Nav(1)">
+                <md-progress-linear md-mode="determinate" value="100" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-3-box.png" ng-click="SC.form3Nav(2)">
+                <md-progress-linear md-mode="determinate" value="100" flex="20"></md-progress-linear>
+                <img src="../../img/numeric-4-box.png">
+                <div flex="10"></div>
+            </div>
+            <div layout="row" layout-margin>
+                <div flex="10"></div>
+                <md-card layout-padding id="confirmCard" flex>
+                    <div>
+                        <h4>Contact Info</h4>
+                        <p>{{SC.formInput.firstname}} {{SC.formInput.firstname}}</p>
+                        <p>{{SC.formInput.email}}</p>
+                        <p>{{SC.formInput.phone}}</p>
+                        <p>{{SC.formInput.title}}, {{SC.formInput.company}}</p>
+                        <md-divider></md-divider>
+                        <p>How did you hear about Grow North?
+                            <br>
+                            <span class="surveyAnswer">{{SC.formInput.referral}}</span>
+                        </p>
+                        <p>Do we have permission to discuss your business with others in our network?
+                            <br>
+                            <span class="surveyAnswer">{{SC.formInput.permission}}</span>
+                        </p>
+                        <p>Are you interesting in mentoring?
+                            <br>
+                            <span class="surveyAnswer">{{SC.formInput.mentor}}</span>
+                        </p>
+                        <p>Are you seeking help from a mentor?
+                            <br>
+                            <span class="surveyAnswer">{{SC.formInput.mentee}}</span>
+                        </p>
+                        <div>
+                            <p>Level of involvement?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.involvement}}</span>
+                            </p>
+                            <p>How can I help?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.howHelp}}</span>
+                            </p>
+                            <p>Provide a specific example of your experience with a startup.
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.experience}}</span>
+                            </p>
+                        </div>
+                        <div>
+                            <p>What are you struggling with?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.struggle}}</span>
+                            </p>
+                            <p>What ecosystem does your business reside in?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.ecosystem}}</span>
+                            </p>
+                            <p>How many employees do you have?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.employees}}</span>
+                            </p>
+                            <p>What is your business's yearly revenue?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.revenue}}</span>
+                            </p>
+                            <p>What is your distribution area?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.distribution}}</span>
+                            </p>
+                            <p>What's your story?
+                                <br>
+                                <span class="surveyAnswer">{{SC.formInput.story}}</span>
+                            </p>
+                        </div>
+                    </div>
+                </md-card>
+                <div flex="10"></div>
+            </div>
+            <div layout="row" layout-align="space-around center">
+                <md-button ng-click="SC.page=2" flex="30">Previous</md-button>
+                <md-button class="md-primary md-raised" type="submit" flex="30">Submit</md-button>
+            </div>
         </form>
     </md-card>
     <div flex="15"></div>

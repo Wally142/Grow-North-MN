@@ -7,6 +7,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.connectionsNum = {list: []};
     self.directory = {list:[]};
     self.approval = {list:[]};
+    self.profile = {list: []};
 
     self.getMentorNumbers = function () {
         console.log('In getMentorNumbers');
@@ -78,7 +79,7 @@ myApp.service('ProspectsService', function ($http, $location) {
 
     self.getProfile = function (id) {
         var thisId = id;
-        console.log('In getProfile');
+        console.log('In getProfile with id: ', thisId);
         $http.get('/profiles/' + thisId).then(function (response) {
             console.log(response);
             self.profile.list = response.data;

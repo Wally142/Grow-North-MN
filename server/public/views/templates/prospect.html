@@ -1,4 +1,21 @@
-<p>Prospect data page... below.</p>
-<p>{{ DC.testObj.list }} </p>
-{{ 10 + 10}}
-
+<md-dialog aria-label="profile view" flex="75">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ profile.list[0].firstname }} {{ profile.list[0].lastname }}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    X
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <p>testing.... {{ profile }} </p>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <md-button ng-click="testFunc()" class="md-raised md-primary">CLICK HERE</md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

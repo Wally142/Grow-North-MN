@@ -10,6 +10,10 @@ myApp.controller('DirectoryController', function (ProspectsService) {
         console.log('directory controller hit with', vm.directory);
     };
 
+    vm.showInfo = function(){
+        alert('Yo!')
+    };
+    
     vm.getApproval = function() {
         ProspectsService.getApproval();
         vm.approval = ProspectsService.approval;

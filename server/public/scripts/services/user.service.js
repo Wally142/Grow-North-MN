@@ -30,6 +30,32 @@ myApp.factory('UserService', function($http, $location){
         console.log('UserService -- logout -- logged out');
         $location.path("/home");
       });
+    },
+
+    updateEmail : function(email){
+      var data = {email: email}
+
+      $http.put('/user/email', data).then(function(response){
+        console.log(response);
+        if (response.status === 201){
+          userObject.message = 'Email changed successfully.'
+        }else{
+          userObject.message = 'There was an error changing your email.'
+        }
+      })
+    },
+
+    updatePassword : function(newPassword){
+      var data = {newPassword: newPassword}
+
+      $http.put('/user/password', data).then(function(response){
+        console.log(response);
+        if (response.status === 201){
+          userObject.message = 'Password changed successfully.'
+        }else{
+          userObject.message = 'There was an error changing your password.'
+        }
+      })
     }
   };
 });

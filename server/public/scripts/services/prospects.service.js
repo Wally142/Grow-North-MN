@@ -76,4 +76,13 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    self.getProfile = function (id) {
+        var thisId = id;
+        console.log('In getProfile');
+        $http.get('/profiles/' + thisId).then(function (response) {
+            console.log(response);
+            self.profile.list = response.data;
+        });
+    };
+
 }); // end service

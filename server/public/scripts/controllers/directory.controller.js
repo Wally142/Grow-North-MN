@@ -6,6 +6,9 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     vm.testObj = {
         list: 'this is a string'
     };
+    vm.profile = {
+        list: []
+    };
 
     vm.getDirectory = function () {
         ProspectsService.getDirectory();
@@ -72,5 +75,11 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         ProspectsService.updateApproval(id, status);
         console.log('you clicked me!', id, status);
 
+    };
+
+    vm.getProfile = function (id) {
+        ProspectsService.getProfile(id);
+        vm.profile = ProspectsService.profile;
+        console.log('directory controller hit with', vm.profile);
     };
 }); // end controller

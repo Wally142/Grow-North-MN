@@ -8,6 +8,8 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.directory = {list:[]};
     self.approval = {list:[]};
 
+
+    // metrics display functions 
     self.getMentorNumbers = function () {
         console.log('In getMentorNumbers');
         $http.get('/metrics/mentors').then(function (response) {
@@ -32,6 +34,7 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    // directory display and edit functions
     self.getDirectory = function () {
         console.log('In getDirectory');
         $http.get('/directory').then(function (response) {

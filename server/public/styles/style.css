@@ -135,3 +135,13 @@ md-grid-list {
   background-color: #e8ffe7;
   /* background-color: #E7EBEA; */
 }
+
+/* directory profile view */
+#avatar {
+  float: right;
+}
+
+.detailsQuestions {
+  font-weight: bold;
+  font-size: 14px;
+}

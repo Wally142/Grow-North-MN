@@ -78,9 +78,9 @@ ul {
   overflow: hidden;
 }
 
-li {
+/* li {
   float: left;
-}
+} */
 
 li a {
   display: block;
@@ -182,4 +182,12 @@ md-card.dashMetrics {
 
 md-card.awaitingApproval {
   padding: 0;
+/* directory profile view */
+#avatarDiv {
+  float: right;
+}
+
+.detailsQuestions {
+  font-weight: bold;
+  font-size: 14px;
 }

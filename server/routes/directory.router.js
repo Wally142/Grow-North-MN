@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
             console.log(error);
             res.sendStatus(404);
         } else {
-            client.query("SELECT firstname, lastname, email, phone, startdate, mentor, mentee FROM prospects WHERE approved = true", function (queryErr, resultObj) {
+            client.query("SELECT id, firstname, lastname, email, phone, startdate, mentor, mentee FROM prospects WHERE approved = true", function (queryErr, resultObj) {
                 done();
                 if (queryErr) {
                     console.log(queryErr);
@@ -94,8 +94,5 @@ router.put('/unapproved/:id', function(req, res){
         }
         });
 }); // end UPDATE unapproved
-
-
-
 
 module.exports = router;

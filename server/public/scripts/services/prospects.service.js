@@ -86,17 +86,17 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    self.deleteProfile = function(id) {
+        var thisId = id;
+        console.log('in Delete Profile function');
+        return $http({
+            method: 'DELETE',
+            url: '/directory/unapproved/' + thisId
+        }).then(function(response) {
+            console.log('deleteApproval response:', response);
+        });
+    }; // end deleteApproval
     
-
-
-
-
-
-
-
-
-
-
     
     self.updateComments = function (id, comment) {
         var thisId = id;

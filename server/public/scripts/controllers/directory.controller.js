@@ -11,20 +11,8 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         console.log('directory controller hit with', vm.directory);
     };
 
-    vm.showAlert = function (prospectId) {
-        console.log('alert func called with id: ', prospectId);
-        // call getProspectInfo func
-        $mdDialog.show(
-            $mdDialog.alert()
-                .title('This is an alert... !!')
-                .textContent('Description of prospect goes here')
-                .ok('Close')
-                .clickOutsideToClose(true)
-        );
-    };
-
-    $scope.showAdvanced = function (ev, id) {
-        console.log('showAdvanced called for user: ', id);
+    $scope.showProfile = function (ev, id) {
+        console.log('showProfile called for user: ', id);
         vm.getProfile(id);
         console.log('prospect profile', vm.profile.list);
         $mdDialog.show({
@@ -57,7 +45,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
             console.log('delete account func called for user id: ', id);
             ProspectsService.deleteProfile(id);
             $mdDialog.cancel();
-            // vm.getDirectory();
+            vm.getDirectory();
         };
     };
 

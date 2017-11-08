@@ -21,7 +21,7 @@
                     Mentee
                 </div>
             </md-list-item>
-            <md-list-item class="adminApproval md-2-line" ng-click="showAdvanced($event, listing.id)" layout="row" ng-repeat="listing in DC.directory.list">
+            <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.directory.list">
                 <div flex="25">
                     {{ listing.lastname }}, {{ listing.firstname }}
                 </div>
@@ -44,18 +44,5 @@
                 </div>
             </md-list-item>
         </md-list>
-
-        <!-- <md-button class="md-primary md-raised" ng-click="showAdvanced($event, listing.id)">
-            Alert Dialog
-          </md-button>
-        <p id='myDialog'>This is a prospective test</p>
-
-
-        <hr>
-        <div ng-repeat="listing in DC.directory.list" ng-click="showAdvanced($event, listing)">
-            <p>
-                {{ listing }}
-            </p>
-        </div> -->
     </md-content>
 </div>

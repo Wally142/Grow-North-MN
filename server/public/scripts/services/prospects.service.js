@@ -7,6 +7,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.connectionsNum = {list: []};
     self.directory = {list:[]};
     self.approval = {list:[]};
+    self.profile = {list: []};
 
 
     // metrics display functions 
@@ -79,4 +80,40 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    self.getProfile = function (id) {
+        var thisId = id;
+        console.log('In getProfile with id: ', thisId);
+        $http.get('/profiles/' + thisId).then(function (response) {
+            console.log(response);
+            self.profile.list = response.data;
+        });
+    };
+
+    self.deleteProfile = function(id) {
+        var thisId = id;
+        console.log('in Delete Profile function');
+        return $http({
+            method: 'DELETE',
+            url: '/directory/unapproved/' + thisId
+        }).then(function(response) {
+            console.log('deleteApproval response:', response);
+        });
+    }; // end deleteApproval
+    
+    
+    self.updateComments = function (id, comment) {
+        var thisId = id;
+        var newComment = {
+            comments: comment
+        };
+        console.log('in UPDATE APPROVAL', comment);
+        $http({
+            method: 'PUT',
+            url: '/profiles/' + thisId,
+            data: newComment
+        }).then(function (response) {
+            console.log('Approval Update response:', response);
+            self.getProfile();
+        });
+    };
 }); // end service

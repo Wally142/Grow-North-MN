@@ -33,11 +33,11 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
     })
     .when('/form', {
       templateUrl: '/views/templates/form.html',
-      controller: 'FormController as FC'
+      controller: 'SurveyController as SC'
     })
     .when('/test', {
       templateUrl: '/views/templates/formTest.html',
-      controller: 'FormController as FC'
+      controller: 'SurveyController as SC'
     })
     .when('/dashboard', {
       templateUrl: '/views/templates/dashboard.html',

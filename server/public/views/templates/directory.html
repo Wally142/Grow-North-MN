@@ -21,11 +21,11 @@
                     Mentee
                 </div>
             </md-list-item>
-            <md-list-item class="adminApproval md-2-line" ng-click="DC.showInfo()" layout="row" ng-repeat="listing in DC.directory.list">
+            <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.directory.list">
                 <div flex="25">
                     {{ listing.lastname }}, {{ listing.firstname }}
                 </div>
-                <div flex="15">
+                <div flex="10">
                     {{ listing.phone }}
                 </div>
                 <div flex="20">
@@ -44,11 +44,5 @@
                 </div>
             </md-list-item>
         </md-list>
-        <hr>
-        <div ng-repeat="listing in DC.directory.list">
-            <p>
-                {{ listing }}
-            </p>
-        </div>
     </md-content>
 </div>

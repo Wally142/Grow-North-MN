@@ -44,6 +44,8 @@
                     <md-content class="md-padding">
                         <div>
                             <p class="detailsQuestions">Referred by</p>
+                            <button ng-click="updateDetails(profile.list[0].id, detailIn, referral)">update me</button>
+                            <input type="text", ng-model="detailIn">
                             <p>{{ profile.list[0].referral }}</p>
                             <p class="detailsQuestions">Involvement</p>
                             <p>{{ profile.list[0].involvement }}</p>

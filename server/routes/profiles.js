@@ -27,6 +27,7 @@ router.get('/:id', function (req, res) {
 router.put('/:id', function (req, res) {
     console.log('in updateComments with', req.params.id);
     var dbId = req.params.id;
+    var newComment = req.body.comments;
    
     console.log('comments' );
 

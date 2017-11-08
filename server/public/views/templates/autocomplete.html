@@ -1,0 +1,22 @@
+<md-content class="profile" ng-init="DC.getDirectory()">
+    <md-card class="profile">
+        <md-content class="md-padding">
+            <md-autocomplete ng-click="DC.getSearch()"
+                md-selected-item="DC.selectedItem"
+                md-search-text-change="DC.searchTextChange(DC.searchText)"
+                md-search-text="DC.searchText"
+                md-selected-item-change="DC.selectedItemChange(item)"
+                md-items="item in DC.querySearch(DC.searchText)"
+                md-item-text="item.display"
+                md-min-length="0"
+                placeholder="Search the directory">
+                <md-item-template>
+                    <span-md-highlight-text="DC.searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+                <md-not-found>
+                    No results matching "{{DC.searchText}}" were found.
+                </md-not-found>
+            </md-autocomplete>
+        </md-content>
+    </md-card>
+</md-content>

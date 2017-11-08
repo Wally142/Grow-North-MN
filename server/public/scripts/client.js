@@ -47,6 +47,10 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
       templateUrl: '/views/templates/directory.html',
       controller: 'DirectoryController as DC'
     })
+    .when('/autocomplete', {
+      templateUrl: '/views/templates/autocomplete.html',
+      controller: 'DirectoryController as DC'
+    })
     .otherwise({
       redirectTo: 'home'
     });
@@ -89,5 +93,5 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
 
   $mdThemingProvider.theme('default').primaryPalette('growNorth').accentPalette('growNorth' ,{
     'default': '400'
-  })
+  });
 });

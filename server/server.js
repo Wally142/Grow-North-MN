@@ -13,11 +13,8 @@ var resetRouter = require('./routes/reset.router');
 var formRouter= require('./routes/form');
 var metricsRouter = require('./routes/metrics');
 var directoryRouter = require('./routes/directory');
-<<<<<<< HEAD
 var searchRouter = require('./routes/autocomplete');
-=======
 var profilesRouter = require('./routes/profiles');
->>>>>>> master
 
 var port = process.env.PORT || 5000;
 

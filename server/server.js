@@ -36,14 +36,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/register', registerRouter);
-app.use('/user', userRouter);
-app.use('/reset', resetRouter);
-app.use('/form', formRouter);
-app.use('/metrics', metricsRouter);
-app.use('/directory', directoryRouter);
-app.use('/autocomplete', searchRouter);
-app.use('/profiles', profilesRouter);
+app.use('/registerRoute', registerRouter);
+app.use('/userRoute', userRouter);
+app.use('/resetRoute', resetRouter);
+app.use('/formRoute', formRouter);
+app.use('/metricsRoute', metricsRouter);
+app.use('/directoryRoute', directoryRouter);
+app.use('/autocompleteRoute', searchRouter);
+app.use('/profilesRoute', profilesRouter);
 
 
 // Catch all bucket, must be last!

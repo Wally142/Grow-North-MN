@@ -94,7 +94,7 @@ myApp.service('ProspectsService', function ($http, $location) {
         console.log('in Delete Profile function');
         return $http({
             method: 'DELETE',
-            url: '/directory/unapproved/' + thisId
+            url: '/directoryRoute/unapproved/' + thisId
         }).then(function(response) {
             console.log('deleteApproval response:', response);
         });
@@ -109,7 +109,7 @@ myApp.service('ProspectsService', function ($http, $location) {
         console.log('in UPDATE APPROVAL', comment);
         $http({
             method: 'PUT',
-            url: '/profiles/' + thisId,
+            url: '/profilesRoute/' + thisId,
             data: newComment
         }).then(function (response) {
             console.log('Approval Update response:', response);

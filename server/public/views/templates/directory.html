@@ -22,7 +22,7 @@
                     Mentee
                 </div>
             </md-list-item>
-            <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.directory.list">
+            <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.directory.list track by $index">
                 <div flex="25">
                     {{ listing.lastname }}, {{ listing.firstname }}
                 </div>

@@ -54,11 +54,11 @@ router.put('/:id', function (req, res) {
 router.put('/info/:id', function (req, res) {
     console.log('in updateComments with', req.params.id);
     var dbId = req.params.id;
-    var update = req.body.column;
+    var update = req.body.update;
     var item = req.body.item;
 
 
-    console.log('comments');
+    console.log('comments', update, item);
 
     pool.connect(function (error, client, done) {
         if (error) {

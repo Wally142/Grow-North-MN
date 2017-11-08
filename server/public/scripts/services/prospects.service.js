@@ -123,10 +123,10 @@ myApp.service('ProspectsService', function ($http, $location) {
             item: details,
             update: column
         };
-        console.log('in UPDATE APPROVAL', comment);
+        console.log('in UPDATE Details',id, info);
         $http({
             method: 'PUT',
-            url: '/profiles/info' + thisId,
+            url: '/profilesRoute/info/' + thisId,
             data: info
         }).then(function (response) {
             console.log('Approval Update response:', response);

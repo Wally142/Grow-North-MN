@@ -13,7 +13,10 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="Profile">
                     <md-content class="md-padding">
-                        <img id="avatar" src="/img/avatar.png" height="100px" />
+                        <div layout="column" id="avatarDiv">
+                            <img src="/img/avatar.png" height="100px" />
+                            <md-button ng-click="delete(profile.list[0].id)" class="md-raised md-primary">Delete</md-button>
+                        </div>
                         <md-dialog-content>
                             <div class="md-dialog-content">
                                 <div>
@@ -35,9 +38,6 @@
                                 <p>testing.... {{ profile }} </p>
                             </div>
                         </md-dialog-content>
-                        <md-dialog-actions layout="row">
-                            <md-button ng-click="testFunc()" class="md-raised md-primary">CLICK HERE</md-button>
-                        </md-dialog-actions>
                     </md-content>
                 </md-tab>
                 <md-tab label="Details">
@@ -68,7 +68,7 @@
                 </md-tab>
                 <md-tab label="Notes">
                     <md-content class="md-padding">
-                        <p>CLIENT'S NOTES ON PROSPECT</p>
+                        <p>CLIENT'S NOTES ON PROSPECT: {{ profile.list[0].comments }}</p>
                         <md-button>Add Note</md-button>
                     </md-content>
                 </md-tab>

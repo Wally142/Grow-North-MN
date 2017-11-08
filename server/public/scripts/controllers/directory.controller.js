@@ -53,8 +53,11 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         $scope.cancel = function () {
             $mdDialog.cancel();
         };
-        $scope.testFunc = function () {
-            console.log('dialogue box testFunc called');
+        $scope.delete = function (id) {
+            console.log('delete account func called for user id: ', id);
+            ProspectsService.deleteProfile(id);
+            $mdDialog.cancel();
+            // vm.getDirectory();
         };
     };
 

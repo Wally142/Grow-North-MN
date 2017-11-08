@@ -1,6 +1,7 @@
-<md-content layout="row">
+<div ng-include="'views/partials/header.html'"></div>
+<md-content id="formContent" layout="row">
     <div flex="15"></div>
-    <md-card layout-padding ng-show="SC.page===0" flex>
+    <md-card layout-padding ng-show="SC.page===0" flex id="formCard">
         <form name="surveyForm0" ng-submit="SC.form0Nav(1)">
             <md-card-title>
                 <md-card-title-text>
@@ -85,7 +86,7 @@
                 </md-input-container>
             </div>
             <div layout="row">
-                <div layout="column" layout-align="center center">
+                <div flex="50" layout="column" layout-align="center center">
                 <md-input-container flex="50">
                     <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
                 </md-input-container>

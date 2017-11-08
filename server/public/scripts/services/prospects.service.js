@@ -96,5 +96,21 @@ myApp.service('ProspectsService', function ($http, $location) {
             console.log('deleteApproval response:', response);
         });
     }; // end deleteApproval
-
+    
+    
+    self.updateComments = function (id, comment) {
+        var thisId = id;
+        var newComment = {
+            comments: comment
+        };
+        console.log('in UPDATE APPROVAL', comment);
+        $http({
+            method: 'PUT',
+            url: '/profiles/' + thisId,
+            data: newComment
+        }).then(function (response) {
+            console.log('Approval Update response:', response);
+            self.getProfile();
+        });
+    };
 }); // end service

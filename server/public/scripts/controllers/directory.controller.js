@@ -81,4 +81,9 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         ProspectsService.getProfile(id);
         vm.profile = ProspectsService.profile;
     };
+
+    vm.getComments = function (id, comment) {
+        ProspectsServices.updateComments(id, comment);
+        console.log('service comment', id, comment);
+    }
 }); // end controller

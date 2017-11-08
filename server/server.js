@@ -13,6 +13,7 @@ var resetRouter = require('./routes/reset.router');
 var formRouter= require('./routes/form');
 var metricsRouter = require('./routes/metrics');
 var directoryRouter = require('./routes/directory');
+var searchRouter = require('./routes/autocomplete');
 var profilesRouter = require('./routes/profiles');
 
 var port = process.env.PORT || 5000;
@@ -41,7 +42,9 @@ app.use('/reset', resetRouter);
 app.use('/form', formRouter);
 app.use('/metrics', metricsRouter);
 app.use('/directory', directoryRouter);
+app.use('/autocomplete', searchRouter);
 app.use('/profiles', profilesRouter);
+
 
 // Catch all bucket, must be last!
 app.use('/', indexRouter);

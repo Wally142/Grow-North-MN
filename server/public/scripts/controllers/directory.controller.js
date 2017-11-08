@@ -1,4 +1,3 @@
-myApp.controller('DirectoryController', function (ProspectsService, $http) {
 myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdDialog) {
     console.log('DirectoryController created');
     var vm = this;
@@ -152,7 +151,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     };
     
 
-    });
+
 
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);

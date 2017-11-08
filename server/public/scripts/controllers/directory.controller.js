@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 myApp.controller('DirectoryController', function (ProspectsService, $http) {
-=======
 myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdDialog) {
->>>>>>> master
     console.log('DirectoryController created');
     var vm = this;
     vm.directory = { list: [] };
@@ -51,7 +48,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
             $mdDialog.cancel();
             vm.getDirectory();
         };
-    };
+    }
 
     vm.getApproval = function () {
         ProspectsService.getApproval();
@@ -66,7 +63,6 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     vm.approve = function (id, status) {
         ProspectsService.updateApproval(id, status);
         console.log('you clicked me!', id, status);
-<<<<<<< HEAD
     };
 
     // vm.query = function(searchText) {
@@ -145,9 +141,8 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         // vm.searchText = "";
     };
     
-=======
 
-    };
+    });
 
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);
@@ -157,6 +152,5 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     vm.getComments = function (id, comment) {
         ProspectsServices.updateComments(id, comment);
         console.log('service comment', id, comment);
-    }
->>>>>>> master
+    };
 }); // end controller

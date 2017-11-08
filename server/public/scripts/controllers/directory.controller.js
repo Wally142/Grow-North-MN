@@ -1,4 +1,4 @@
-myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdDialog) {
+myApp.controller('DirectoryController', function (ProspectsService, $http, $scope, $mdDialog) {
     console.log('DirectoryController created');
     $scope.currentNavItem = 'directory'; // tells nav bar which item to indicate as 'selected'
     var vm = this;
@@ -50,17 +50,16 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
             vm.getDirectory();
         };
 
-        $scope.updateComments = function(id, comment) {
+        $scope.updateComments = function (id, comment) {
             console.log('comment func called with id and comment: ', id, comment);
             ProspectsService.updateComments(id, comment);
-            console.log('service comment', id, comment);
         };
-    }
 
-    vm.getApproval = function () {
-        ProspectsService.getApproval();
-        vm.approval = ProspectsService.approval;
-        console.log('directory controller hit with', vm.approval);
+        $scope.updateDetails = function (id, details, column) {
+            console.log('update details with', id, details, column);
+            ProspectsService.updateDetails(id, details, column);
+
+        }
     };
 
     vm.delete = function (id) {
@@ -71,26 +70,32 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         ProspectsService.updateApproval(id, status);
         console.log('you clicked me!', id, status);
     };
-  
-    vm.getSearch = function(){
-        
-        vm.searchTextChange = function(text) {
+
+    vm.getApproval = function () {
+        ProspectsService.getApproval();
+        vm.approval = ProspectsService.approval;
+        console.log('directory controller hit with', vm.approval);
+    };
+
+    vm.getSearch = function () {
+
+        vm.searchTextChange = function (text) {
             console.log('Text changed to', text);
         };
 
-        vm.selectedItemChange = function(item) {
+        vm.selectedItemChange = function (item) {
             console.log('Item changed to', item);
         };
 
-        vm.loadAll = function() {
+        vm.loadAll = function () {
             // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
             var list = [];
             console.log('DIRECTORY:', vm.directory.list);
-            for (var i = 0; i < vm.directory.list.length; i++){
+            for (var i = 0; i < vm.directory.list.length; i++) {
                 list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
             }
             console.log('LIST:', list);
-            var allListings = list.map(function(name){
+            var allListings = list.map(function (name) {
                 return {
                     value: name.toLowerCase(),
                     display: name
@@ -99,26 +104,26 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
             return allListings;
         };
 
-        vm.createFilterFor = function(query) {
+        vm.createFilterFor = function (query) {
             var lowerCaseQuery = angular.lowercase(query);
             return function filterFn(listing) {
                 return (listing.value.indexOf(lowerCaseQuery) === 0);
             };
         };
-    
-        vm.querySearch = function(query) {
+
+        vm.querySearch = function (query) {
             if (query) {
-                var results = query ? vm.listings.filter( vm.createFilterFor(query) ) : vm.listings;
+                var results = query ? vm.listings.filter(vm.createFilterFor(query)) : vm.listings;
                 return results;
             } else {
                 return [];
             }
-          };
+        };
 
         vm.listings = vm.loadAll();
         // vm.searchText = "";
     };
-    
+
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);
         vm.profile = ProspectsService.profile;

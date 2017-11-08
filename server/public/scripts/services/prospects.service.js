@@ -116,4 +116,21 @@ myApp.service('ProspectsService', function ($http, $location) {
             self.getProfile(thisId);
         });
     };
+
+    self.updateDetails = function (id, details, column) {
+        var thisId = id;
+        var info = {
+            item: details,
+            update: column
+        };
+        console.log('in UPDATE Details',id, info);
+        $http({
+            method: 'PUT',
+            url: '/profilesRoute/info/' + thisId,
+            data: info
+        }).then(function (response) {
+            console.log('Approval Update response:', response);
+            self.getProfile(thisId);
+        });
+    };
 }); // end service

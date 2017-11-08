@@ -10,11 +10,11 @@ var indexRouter = require('./routes/index.router');
 var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
 var resetRouter = require('./routes/reset.router');
-var formRouter= require('./routes/form');
-var metricsRouter = require('./routes/metrics');
-var directoryRouter = require('./routes/directory');
-var searchRouter = require('./routes/autocomplete');
-var profilesRouter = require('./routes/profiles');
+var formRouter= require('./routes/form.router');
+var metricsRouter = require('./routes/metrics.router');
+var directoryRouter = require('./routes/directory.router');
+var searchRouter = require('./routes/autocomplete.router');
+var profilesRouter = require('./routes/profiles.router');
 
 var port = process.env.PORT || 5000;
 
@@ -36,14 +36,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/register', registerRouter);
-app.use('/user', userRouter);
-app.use('/reset', resetRouter);
-app.use('/form', formRouter);
-app.use('/metrics', metricsRouter);
-app.use('/directory', directoryRouter);
-app.use('/autocomplete', searchRouter);
-app.use('/profiles', profilesRouter);
+app.use('/registerRoute', registerRouter);
+app.use('/userRoute', userRouter);
+app.use('/resetRoute', resetRouter);
+app.use('/formRoute', formRouter);
+app.use('/metricsRoute', metricsRouter);
+app.use('/directoryRoute', directoryRouter);
+app.use('/autocompleteRoute', searchRouter);
+app.use('/profilesRoute', profilesRouter);
 
 
 // Catch all bucket, must be last!

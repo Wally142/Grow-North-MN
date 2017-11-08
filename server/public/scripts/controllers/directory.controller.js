@@ -141,7 +141,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     };
     
 
-  
+
 
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);

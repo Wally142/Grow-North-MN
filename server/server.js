@@ -10,11 +10,11 @@ var indexRouter = require('./routes/index.router');
 var userRouter = require('./routes/user.router');
 var registerRouter = require('./routes/register.router');
 var resetRouter = require('./routes/reset.router');
-var formRouter= require('./routes/form');
-var metricsRouter = require('./routes/metrics');
-var directoryRouter = require('./routes/directory');
-var searchRouter = require('./routes/autocomplete');
-var profilesRouter = require('./routes/profiles');
+var formRouter= require('./routes/form.router');
+var metricsRouter = require('./routes/metrics.router');
+var directoryRouter = require('./routes/directory.router');
+var searchRouter = require('./routes/autocomplete.router');
+var profilesRouter = require('./routes/profiles.router');
 
 var port = process.env.PORT || 5000;
 

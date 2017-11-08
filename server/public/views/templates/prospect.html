@@ -1,4 +1,79 @@
-<p>Prospect data page... below.</p>
-<p>{{ DC.testObj.list }} </p>
-{{ 10 + 10}}
+<md-dialog aria-label="profile view" flex="75">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ profile.list[0].firstname }} {{ profile.list[0].lastname }}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    X
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Profile">
+                    <md-content class="md-padding">
+                        <img id="avatar" src="/img/avatar.png" height="100px" />
+                        <md-dialog-content>
+                            <div class="md-dialog-content">
+                                <div>
+                                    <p>
+                                        {{ profile.list[0].email }}
+                                    </p>
+                                    <p>
+                                        {{ profile.list[0].phone }}
+                                    </p>
+                                    <p>
+                                        {{ profile.list[0].title }}, {{ profile.list[0].company }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p>
+                                        Connections made:
+                                    </p>
+                                </div>
+                                <p>testing.... {{ profile }} </p>
+                            </div>
+                        </md-dialog-content>
+                        <md-dialog-actions layout="row">
+                            <md-button ng-click="testFunc()" class="md-raised md-primary">CLICK HERE</md-button>
+                        </md-dialog-actions>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Details">
+                    <md-content class="md-padding">
+                        <div>
+                            <p class="detailsQuestions">Referred by</p>
+                            <p>{{ profile.list[0].referral }}</p>
+                            <p class="detailsQuestions">Involvement</p>
+                            <p>{{ profile.list[0].involvement }}</p>
+                            <p class="detailsQuestions">How do they want to help</p>
+                            <p>{{ profile.list[0].howhelp }}</p>
+                            <p class="detailsQuestions">Experience</p>
+                            <p>{{ profile.list[0].experience }}</p>
+                            <p class="detailsQuestions">Struggles</p>
+                            <p>{{ profile.list[0].struggle }}</p>
+                            <p class="detailsQuestions">Ecosystem</p>
+                            <p>{{ profile.list[0].ecosystem }}</p>
+                            <p class="detailsQuestions"># of Employees</p>
+                            <p>{{ profile.list[0].employees }}</p>
+                            <p class="detailsQuestions">Revenue</p>
+                            <p>{{ profile.list[0].revenue }}</p>
+                            <p class="detailsQuestions">Distribution area</p>
+                            <p>{{ profile.list[0].distribution }}</p>
+                            <p class="detailsQuestions">Story</p>
+                            <p>{{ profile.list[0].story }}</p>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Notes">
+                    <md-content class="md-padding">
+                        <p>CLIENT'S NOTES ON PROSPECT</p>
+                        <md-button>Add Note</md-button>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
 
+    </form>
+</md-dialog>

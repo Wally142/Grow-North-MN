@@ -3,12 +3,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     var vm = this;
     vm.directory = { list: [] };
     vm.approval = { list: [] };
-    vm.testObj = {
-        list: 'this is a string'
-    };
-    vm.profile = {
-        list: []
-    };
+    vm.profile = ProspectsService.profile;
 
     vm.getDirectory = function () {
         ProspectsService.getDirectory();
@@ -19,7 +14,6 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     vm.showAlert = function (prospectId) {
         console.log('alert func called with id: ', prospectId);
         // call getProspectInfo func
-
         $mdDialog.show(
             $mdDialog.alert()
                 .title('This is an alert... !!')
@@ -29,9 +23,10 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         );
     };
 
-    $scope.showAdvanced = function (ev, prospectData) {
-        console.log('showAdvanced called for user: ', prospectData);
-
+    $scope.showAdvanced = function (ev, id) {
+        console.log('showAdvanced called for user: ', id);
+        vm.getProfile(id);
+        console.log('prospect profile', vm.profile.list);
         $mdDialog.show({
             controller: DialogController,
             templateUrl: '/views/templates/prospect.html',
@@ -40,24 +35,26 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
             clickOutsideToClose: true,
             fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
         })
-        .then(function (answer) {
-            $scope.status = 'You said the information was "' + answer + '".';
-        }, function () {
-            $scope.status = 'You cancelled the dialog.';
-        });
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
     };
 
-    function DialogController($scope, $mdDialog) {
+    function DialogController(ProspectsService, $scope, $mdDialog) {
+        $scope.profile = ProspectsService.profile;
         $scope.hide = function () {
             $mdDialog.hide();
         };
-
+        $scope.answer = function (answer) {
+            $mdDialog.hide(answer);
+        };
         $scope.cancel = function () {
             $mdDialog.cancel();
         };
-
-        $scope.answer = function (answer) {
-            $mdDialog.hide(answer);
+        $scope.testFunc = function () {
+            console.log('dialogue box testFunc called');
         };
     };
 
@@ -80,6 +77,5 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);
         vm.profile = ProspectsService.profile;
-        console.log('directory controller hit with', vm.profile);
     };
 }); // end controller

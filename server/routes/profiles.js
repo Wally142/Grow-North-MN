@@ -23,3 +23,5 @@ router.get('/:id', function (req, res) {
         }
     });
 });// end  GET profile
+
+module.exports = router;

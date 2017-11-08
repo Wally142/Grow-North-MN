@@ -54,10 +54,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
             ProspectsService.updateComments(id, comment);
             console.log('service comment', id, comment);
         };
-    };
-
     }
-
 
     vm.getApproval = function () {
         ProspectsService.getApproval();
@@ -73,36 +70,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         ProspectsService.updateApproval(id, status);
         console.log('you clicked me!', id, status);
     };
-
-    // vm.query = function(searchText) {
-    //     return $http.get('/directory').then(function(result){
-    //         var list = [];
-    //         for (var i = 0; i < result.data.length; i++){
-    //             list.push(result.data[i].firstname + ' ' + result.data[i].lastname);
-    //         }
-    //         return list;
-    //     })
-    // }
-
-    // search functions
-
-    
-    // function querySearch (query) {
-    //     var results = query ? self.listings.filter( createFilterFor(query) ) : self.listings,
-    //         deferred;
-    //     if (self.simulateQuery) {
-    //       deferred = $q.defer();
-    //       $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-    //       return deferred.promise;
-    //     } else {
-    //       return results;
-    //     }
-    //   }
-
-    
-
-
-      
+  
     vm.getSearch = function(){
         
         vm.searchTextChange = function(text) {
@@ -150,9 +118,6 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         // vm.searchText = "";
     };
     
-
-
-
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);
         vm.profile = ProspectsService.profile;

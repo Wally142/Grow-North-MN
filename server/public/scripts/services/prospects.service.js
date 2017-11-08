@@ -13,7 +13,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     // metrics display functions 
     self.getMentorNumbers = function () {
         console.log('In getMentorNumbers');
-        $http.get('/metrics/mentors').then(function (response) {
+        $http.get('/metricsRoute/mentors').then(function (response) {
             console.log(response);
             self.mentorNum.list = response.data;
         });
@@ -21,7 +21,7 @@ myApp.service('ProspectsService', function ($http, $location) {
 
     self.getMenteeNumbers = function () {
         console.log('In getMenteeNumbers');
-        $http.get('/metrics/mentees').then(function (response) {
+        $http.get('/metricsRoute/mentees').then(function (response) {
             console.log(response);
             self.menteeNum.list = response.data;
         });
@@ -29,7 +29,7 @@ myApp.service('ProspectsService', function ($http, $location) {
 
     self.getConnectionNumbers = function () {
         console.log('In getConnections');
-        $http.get('/metrics/connections').then(function (response) {
+        $http.get('/metricsRoute/connections').then(function (response) {
             console.log(response);
             self.connectionsNum.list = response.data;
         });
@@ -38,7 +38,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     // directory display and edit functions
     self.getDirectory = function () {
         console.log('In getDirectory');
-        $http.get('/directory').then(function (response) {
+        $http.get('/directoryRoute').then(function (response) {
             console.log(response);
             self.directory.list = response.data;
         });
@@ -46,7 +46,7 @@ myApp.service('ProspectsService', function ($http, $location) {
 
     self.getApproval = function () {
         console.log('In getApproval');
-        $http.get('/directory/unapproved').then(function (response) {
+        $http.get('/directoryRoute/unapproved').then(function (response) {
             console.log(response);
             self.approval.list = response.data;
         });
@@ -57,7 +57,7 @@ myApp.service('ProspectsService', function ($http, $location) {
         console.log('in Delete Approval function');
         return $http({
             method: 'DELETE',
-            url: '/directory/unapproved/' + thisId
+            url: '/directoryRoute/unapproved/' + thisId
         }).then(function(response) {
             console.log('deleteApproval response:', response);
             self.getApproval();
@@ -72,7 +72,7 @@ myApp.service('ProspectsService', function ($http, $location) {
         console.log('in UPDATE APPROVAL', listingStatus);
         $http({
             method: 'PUT',
-            url: '/directory/unapproved/' + thisId,
+            url: '/directoryRoute/unapproved/' + thisId,
             data: listingStatus
         }).then(function (response) {
             console.log('Approval Update response:', response); 
@@ -83,7 +83,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.getProfile = function (id) {
         var thisId = id;
         console.log('In getProfile with id: ', thisId);
-        $http.get('/profiles/' + thisId).then(function (response) {
+        $http.get('/profilesRoute/' + thisId).then(function (response) {
             console.log(response);
             self.profile.list = response.data;
         });

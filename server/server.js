@@ -47,7 +47,7 @@ app.use('/profiles', profilesRouter);
 
 
 // Catch all bucket, must be last!
-app.use('/', indexRouter);
+app.use('/*', indexRouter);
 
 // Listen //
 app.listen(port, function(){

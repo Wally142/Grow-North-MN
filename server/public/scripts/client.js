@@ -55,6 +55,8 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
       redirectTo: 'home'
     });
 
+  $locationProvider.html5Mode(true);
+
   $mdThemingProvider.definePalette('growNorth', {
     '50': 'e7ebea',
     '100': 'c3cdca',

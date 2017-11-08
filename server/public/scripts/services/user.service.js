@@ -8,7 +8,7 @@ myApp.factory('UserService', function($http, $location){
 
     getuser : function(){
       console.log('UserService -- getuser');
-      $http.get('/user').then(function(response) {
+      $http.get('/userRoute').then(function(response) {
           if(response.data.username) {
               // user has a curret session on the server
               userObject.userName = response.data.username;
@@ -26,7 +26,7 @@ myApp.factory('UserService', function($http, $location){
 
     logout : function() {
       console.log('UserService -- logout');
-      $http.get('/user/logout').then(function(response) {
+      $http.get('/userRoute/logout').then(function(response) {
         console.log('UserService -- logout -- logged out');
         $location.path("/home");
       });
@@ -35,7 +35,7 @@ myApp.factory('UserService', function($http, $location){
     updateEmail : function(email){
       var data = {email: email}
 
-      $http.put('/user/email', data).then(function(response){
+      $http.put('/userRoute/email', data).then(function(response){
         console.log(response);
         if (response.status === 201){
           userObject.message = 'Email changed successfully.'
@@ -48,7 +48,7 @@ myApp.factory('UserService', function($http, $location){
     updatePassword : function(newPassword){
       var data = {newPassword: newPassword}
 
-      $http.put('/user/password', data).then(function(response){
+      $http.put('/userRoute/password', data).then(function(response){
         console.log(response);
         if (response.status === 201){
           userObject.message = 'Password changed successfully.'

@@ -6,7 +6,7 @@ myApp.service('FormService', function($http){
         console.log('Post contact');
         $http({
             method: 'POST',
-            url: '/form/form',
+            url: '/formRoute/form',
             data: contact
         }).then(function (response) {
             console.log('in service POST with', response);

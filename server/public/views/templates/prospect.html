@@ -69,7 +69,8 @@
                 <md-tab label="Notes">
                     <md-content class="md-padding">
                         <p>CLIENT'S NOTES ON PROSPECT: {{ profile.list[0].comments }}</p>
-                        <md-button>Add Note</md-button>
+                        <textarea ng-model="commentIn" ng-value="profile.list[0].comments"></textarea>
+                        <md-button ng-click="updateComments(profile.list[0].id, commentIn)">Add Comment</md-button>
                     </md-content>
                 </md-tab>
             </md-tabs>

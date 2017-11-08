@@ -86,4 +86,31 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    
+
+
+
+
+
+
+
+
+
+
+    
+    self.updateComments = function (id, comment) {
+        var thisId = id;
+        var newComment = {
+            comments: comment
+        };
+        console.log('in UPDATE APPROVAL', comment);
+        $http({
+            method: 'PUT',
+            url: '/profiles/' + thisId,
+            data: newComment
+        }).then(function (response) {
+            console.log('Approval Update response:', response);
+            self.getProfile();
+        });
+    };
 }); // end service

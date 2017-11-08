@@ -110,7 +110,7 @@ myApp.service('ProspectsService', function ($http, $location) {
             data: newComment
         }).then(function (response) {
             console.log('Approval Update response:', response);
-            self.getProfile();
+            self.getProfile(thisId);
         });
     };
 }); // end service

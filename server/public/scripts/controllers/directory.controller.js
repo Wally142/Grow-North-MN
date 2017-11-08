@@ -32,6 +32,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
 
     function DialogController(ProspectsService, $scope, $mdDialog) {
         $scope.profile = ProspectsService.profile;
+        $scope.commentIn = '';
         $scope.hide = function () {
             $mdDialog.hide();
         };
@@ -46,6 +47,11 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
             ProspectsService.deleteProfile(id);
             $mdDialog.cancel();
             vm.getDirectory();
+        };
+        $scope.updateComments = function(id, comment) {
+            console.log('comment func called with id and comment: ', id, comment);
+            ProspectsService.updateComments(id, comment);
+            console.log('service comment', id, comment);
         };
     };
 
@@ -70,8 +76,9 @@ myApp.controller('DirectoryController', function (ProspectsService, $scope, $mdD
         vm.profile = ProspectsService.profile;
     };
 
-    vm.getComments = function (id, comment) {
-        ProspectsServices.updateComments(id, comment);
-        console.log('service comment', id, comment);
-    }
+    // vm.updateComments = function (id, comment) {
+    //     console.log('comment func called with id and comment: ', id, comment);        
+    //     ProspectsServices.updateComments(id, comment);
+    //     console.log('service comment', id, comment);
+    // }
 }); // end controller

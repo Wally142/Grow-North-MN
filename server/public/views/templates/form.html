@@ -1,5 +1,5 @@
 <div ng-include="'views/partials/header.html'"></div>
-<md-content id="formContent" layout="row">
+<md-content id="formContent" class="colorContent" layout="row">
     <div flex="15"></div>
     <md-card layout-padding ng-show="SC.page===0" flex id="formCard">
         <form name="surveyForm0" ng-submit="SC.form0Nav(1)">
@@ -279,7 +279,7 @@
                 <md-card layout-padding id="confirmCard" flex>
                     <div>
                         <h4>Contact Info</h4>
-                        <p>{{SC.formInput.firstname}} {{SC.formInput.firstname}}</p>
+                        <p>{{SC.formInput.firstname}} {{SC.formInput.lastname}}</p>
                         <p>{{SC.formInput.email}}</p>
                         <p>{{SC.formInput.phone}}</p>
                         <p>{{SC.formInput.title}}, {{SC.formInput.company}}</p>

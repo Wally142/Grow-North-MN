@@ -21,7 +21,7 @@ html {
   height: 100px;
 }
 
-md-content {
+md-content.colorContent {
   background-color: #36594f;
 }
 
@@ -182,6 +182,7 @@ md-card.dashMetrics {
 
 md-card.awaitingApproval {
   padding: 0;
+}
 /* directory profile view */
 #avatarDiv {
   float: right;

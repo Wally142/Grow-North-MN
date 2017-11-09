@@ -133,7 +133,7 @@ router.get('/:email', function(req, res, next){
                 // CHANGE THIS MESSAGE AT SOME POINT
                 // WHAT URL AFTER DEPLOY???
                 html: '<p>You\'re receiving this email because a password reset request was sent to the Grow North App.</p>' +
-                '<a href="http://localhost:5000/reset/reset/evanjkearney@gmail.com/' + token + '">Click here to reset password</a>' +
+                '<a href="http://localhost:5000/resetRoute/reset/' + email + '/' + token + '">Click here to reset password</a>' +
                 '<p>You will receive an email with your new password shortly, and will be redirected to the Grow North login page</p>' +
                 '<p>If you didn\'t make this request... that\'s pretty concerning.</p>' 
             };

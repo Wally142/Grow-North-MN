@@ -8,6 +8,11 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
     .when('/home', {
       templateUrl: '/views/templates/home.html',
       controller: 'LoginController as lc',
+      resolve: {
+        getuser : function(UserService){
+          return UserService.getuser();
+        }
+      }
     })
     .when('/register', {
       templateUrl: '/views/templates/register.html',

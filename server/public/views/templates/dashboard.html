@@ -65,40 +65,70 @@
         <!-- <h2>Intake forms awaiting approval go here!</h2>
        <section layout="row">
            <div flex> -->
-        <md-toolbar class="approvalList" layout="row" layout-align="center">
-            <div class="md-toolbar-tools">
+        <md-toolbar class="approvalList">
+            <div class="md-toolbar-tools" layout="row">
                 <!-- add in ng-show and ng-hide for button clicks to toggle sorting -->
-                <md-button>
+                <!-- <md-button>
                     <i class="material-icons">arrow_drop_down</i>Name
+                </md-button> -->
+                <div flex="20">
+                <md-button ng-show="MC.sortMethod!=='name'" ng-click="MC.sort('name')">Name</md-button>
+                <md-button ng-show="MC.sortMethod=='name' && MC.reverse == true" ng-click="MC.sort('name')">Name
+                    <i class="material-icons">arrow_drop_up</i>
                 </md-button>
-                <md-button>
-                    <i class="material-icons">arrow_drop_down</i>Phone
+                <md-button ng-show="MC.sortMethod=='name' && MC.reverse == false" ng-click="MC.sort('name')">Name
+                    <i class="material-icons">arrow_drop_down</i>
                 </md-button>
-                <md-button>
-                    <i class="material-icons">arrow_drop_up</i>Email
+                </div>
+                <div flex="20">
+                <md-button>Phone</md-button>
+                <!-- <md-button ng-show="MC.sortMethod=='phone' && MC.reverse == true" ng-click="MC.sort('phone')">Phone
+                    <i class="material-icons">arrow_drop_up</i>
                 </md-button>
-                <md-button>
-                    <i class="material-icons">arrow_drop_down</i>Date Submitted
+                <md-button ng-show="MC.sortMethod=='phone' && MC.reverse == false" ng-click="MC.sort('phone')">Phone
+                    <i class="material-icons">arrow_drop_down</i>
+                </md-button> -->
+                </div>
+                <div flex="20">
+                <md-button>Email</md-button>
+                <!-- <md-button ng-show="MC.sortMethod=='email' && MC.reverse == true" ng-click="MC.sort('email')">Email
+                    <i class="material-icons">arrow_drop_up</i>
                 </md-button>
+                <md-button ng-show="MC.sortMethod=='email' && MC.reverse == false" ng-click="MC.sort('email')">Email
+                    <i class="material-icons">arrow_drop_down</i>
+                </md-button> -->
+                </div>
+                <div flex="20">
+                <md-button ng-show="MC.sortMethod!=='date'" ng-click="MC.sort('date')">Date Submitted</md-button>
+                <md-button ng-show="MC.sortMethod=='date' && MC.reverse == true" ng-click="MC.sort('date')">Date Submitted
+                    <i class="material-icons">arrow_drop_up</i>
+                </md-button>
+                <md-button ng-show="MC.sortMethod=='date' && MC.reverse == false" ng-click="MC.sort('date')">Date Submitted
+                    <i class="material-icons">arrow_drop_down</i>
+                </md-button>
+                </div>
+                <div flex="20"></div>
             </div>
         </md-toolbar>
         <md-content>
             <md-list>
-                <md-list-item class="adminApproval md-2-line" layout="row" ng-repeat="listing in DC.approval.list" ng-value="listing.id">
-                    <div class="md-list-item-text">
+                <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse" ng-value="listing.id">
+                    <div class="md-list-item-text" flex="20">
                         <p>{{listing.firstname}} {{listing.lastname}}</p>
                     </div>
-                    <div class="md-list-item-text">
+                    <div class="md-list-item-text" flex="20">
                         <p>{{listing.phone}}</p>
                     </div>
-                    <div class="md-list-item-text">
+                    <div class="md-list-item-text" flex="20">
                         <p>{{listing.email}}</p>
                     </div>
-                    <div class="md-list-item-text">
+                    <div class="md-list-item-text" flex="20">
                         <p>{{listing.startdate | date: 'MMMM d, y h:mm a'}}</p>
                     </div>
+                    <div flex="20">
                     <md-button ng-click="DC.approve(listing.id, listing.approved)">Approve</md-button>
                     <md-button ng-click="DC.delete(listing.id)">Delete</md-button>
+                    </div>
                 </md-list-item>
                 <!-- <md-list-item class="adminApproval md-2-line" layout="row">
                             <div class="md-list-item-text">

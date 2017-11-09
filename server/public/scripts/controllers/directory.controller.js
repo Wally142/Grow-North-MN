@@ -67,7 +67,54 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
             $scope.editBoolean[input] = !$scope.editBoolean[input];
             console.log('$scope.editBoolean: ', $scope.editBoolean[input]);  
         };
-    };
+
+        $scope.getSearch = function () {
+            
+            $scope.searchTextChange = function (text) {
+                        console.log('Text changed to', text);
+                    };
+            
+                    $scope.selectedItemChange = function (item) {
+                        console.log('Item changed to', item);
+                    };
+            
+                    $scope.loadAll = function () {
+                        // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
+                        var list = [];
+                        console.log('DIRECTORY:', vm.directory.list);
+                        for (var i = 0; i < vm.directory.list.length; i++) {
+                            list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
+                        }
+                        console.log('LIST:', list);
+                        var allListings = list.map(function (name) {
+                            return {
+                                value: name.toLowerCase(),
+                                display: name
+                            };
+                        });
+                        return allListings;
+                    };
+            
+                    $scope.createFilterFor = function (query) {
+                        var lowerCaseQuery = angular.lowercase(query);
+                        return function filterFn(listing) {
+                            return (listing.value.indexOf(lowerCaseQuery) === 0);
+                        };
+                    };
+            
+                    $scope.querySearch = function (query) {
+                        if (query) {
+                            var results = query ? $scope.listings.filter($scope.createFilterFor(query)) : $scope.listings;
+                            return results;
+                        } else {
+                            return [];
+                        }
+                    };
+            
+                    $scope.listings = $scope.loadAll();
+                    // vm.searchText = "";
+                };
+    }
 
     vm.delete = function (id) {
         ProspectsService.deleteApproval(id);
@@ -84,52 +131,52 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
         console.log('directory controller hit with', vm.approval);
     };
 
-    vm.getSearch = function () {
+    // vm.getSearch = function () {
 
-        vm.searchTextChange = function (text) {
-            console.log('Text changed to', text);
-        };
+    //     vm.searchTextChange = function (text) {
+    //         console.log('Text changed to', text);
+    //     };
 
-        vm.selectedItemChange = function (item) {
-            console.log('Item changed to', item);
-        };
+    //     vm.selectedItemChange = function (item) {
+    //         console.log('Item changed to', item);
+    //     };
 
-        vm.loadAll = function () {
-            // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
-            var list = [];
-            console.log('DIRECTORY:', vm.directory.list);
-            for (var i = 0; i < vm.directory.list.length; i++) {
-                list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
-            }
-            console.log('LIST:', list);
-            var allListings = list.map(function (name) {
-                return {
-                    value: name.toLowerCase(),
-                    display: name
-                };
-            });
-            return allListings;
-        };
+    //     vm.loadAll = function () {
+    //         // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
+    //         var list = [];
+    //         console.log('DIRECTORY:', vm.directory.list);
+    //         for (var i = 0; i < vm.directory.list.length; i++) {
+    //             list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
+    //         }
+    //         console.log('LIST:', list);
+    //         var allListings = list.map(function (name) {
+    //             return {
+    //                 value: name.toLowerCase(),
+    //                 display: name
+    //             };
+    //         });
+    //         return allListings;
+    //     };
 
-        vm.createFilterFor = function (query) {
-            var lowerCaseQuery = angular.lowercase(query);
-            return function filterFn(listing) {
-                return (listing.value.indexOf(lowerCaseQuery) === 0);
-            };
-        };
+    //     vm.createFilterFor = function (query) {
+    //         var lowerCaseQuery = angular.lowercase(query);
+    //         return function filterFn(listing) {
+    //             return (listing.value.indexOf(lowerCaseQuery) === 0);
+    //         };
+    //     };
 
-        vm.querySearch = function (query) {
-            if (query) {
-                var results = query ? vm.listings.filter(vm.createFilterFor(query)) : vm.listings;
-                return results;
-            } else {
-                return [];
-            }
-        };
+    //     vm.querySearch = function (query) {
+    //         if (query) {
+    //             var results = query ? vm.listings.filter(vm.createFilterFor(query)) : [];
+    //             return results;
+    //         } else {
+    //             return [];
+    //         }
+    //     };
 
-        vm.listings = vm.loadAll();
-        // vm.searchText = "";
-    };
+    //     vm.listings = vm.loadAll();
+    //     // vm.searchText = "";
+    // };
 
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);

@@ -79,7 +79,24 @@
                                     <p class="detailsQuestions">
                                         Connections made:
                                     </p>
-                                    <p></p>
+                                    <p>Add a Connection:</p>
+                                        <md-autocomplete ng-click="getSearch()"
+                                        md-selected-item="selectedItem"
+                                        md-search-text-change="searchTextChange(searchText)"
+                                        md-search-text="searchText"
+                                        md-selected-item-change="selectedItemChange(item)"
+                                        md-items="item in querySearch(searchText)"
+                                        md-item-text="item.display"
+                                        md-min-length="0"
+                                        placeholder="Search the directory">
+                                        <md-item-template>
+                                            <span-md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                                        </md-item-template>
+                                        <md-not-found>
+                                            No results matching "{{searchText}}" were found.
+                                        </md-not-found>
+                                    </md-autocomplete>
+                                    
                                 </div>
                             </div>
                         </md-dialog-content>

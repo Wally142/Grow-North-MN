@@ -7,6 +7,13 @@ myApp.controller('MetricsController', function (ProspectsService, $scope) {
     vm.mentors = { list: [] };
     vm.mentee = { list: [] };
     vm.connections = { list: [] };
+    vm.sortMethod = 'name';
+    vm.reverse = false;
+
+    vm.sort = function (method) {
+        vm.reverse = (vm.sortMethod === method) ? !vm.reverse : false;
+        vm.sortMethod = method;
+    }
 
     vm.getMentorNumbers = function (){
         ProspectsService.getMentorNumbers();

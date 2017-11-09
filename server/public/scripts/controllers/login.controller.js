@@ -7,6 +7,8 @@ myApp.controller('LoginController', function($http, $location, UserService) {
     };
     vm.message = '';
 
+    UserService.getuser('/home');
+
     vm.login = function() {
       console.log('LoginController -- login');
       if(vm.user.username === '' || vm.user.password === '') {
@@ -17,7 +19,8 @@ myApp.controller('LoginController', function($http, $location, UserService) {
           if(response.data.username) {
             console.log('LoginController -- login -- success: ', response.data);
             // location works with SPA (ng-route)
-            $location.path('/user'); // http://localhost:5000/#/user
+            UserService.userObject.loggedIn = true;
+            $location.path('/dashboard'); // http://localhost:5000/#/user
           } else {
             console.log('LoginController -- login -- failure: ', response);
             vm.message = "Wrong!!";
@@ -35,7 +38,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         vm.message = "Choose a username and password!";
       } else {
         console.log('LoginController -- registerUser -- sending to server...', vm.user);
-        $http.post('/register', vm.user).then(function(response) {
+        $http.post('/registerRoute', vm.user).then(function(response) {
           console.log('LoginController -- registerUser -- success');
           $location.path('/home');
         }).catch(function(response) {
@@ -47,7 +50,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
 
     vm.passwordReset = function(email) {
       console.log('Send reset email');
-      $http.get('/reset/' + email).then(function(response){
+      $http.get('/resetRoute/' + email).then(function(response){
         console.log(response);
       });
       vm.email = '';

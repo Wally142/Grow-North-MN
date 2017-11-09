@@ -1,17 +1,22 @@
 myApp.factory('UserService', function($http, $location){
   console.log('UserService Loaded');
 
-  var userObject = {};
+  var userObject = {
+    loggedIn: false
+  };
 
   return {
     userObject : userObject,
 
-    getuser : function(){
+    getuser : function(view){
       console.log('UserService -- getuser');
       $http.get('/userRoute').then(function(response) {
           if(response.data.username) {
               // user has a curret session on the server
               userObject.userName = response.data.username;
+              if (view === '/home'){
+                $location.path('dashboard');
+              };
               console.log('UserService -- getuser -- User Data: ', userObject.userName);
           } else {
               console.log('UserService -- getuser -- failure');
@@ -56,6 +61,10 @@ myApp.factory('UserService', function($http, $location){
           userObject.message = 'There was an error changing your password.'
         }
       })
+    },
+
+    loggedIn : function(){
+      return userObject.loggedIn;
     }
   };
 });

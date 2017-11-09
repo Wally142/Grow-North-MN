@@ -34,6 +34,18 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
     function DialogController(ProspectsService, $scope, $mdDialog) {
         $scope.profile = ProspectsService.profile;
         $scope.commentIn = '';
+        $scope.editBoolean = {
+            referral: false,
+            involvement: false,
+            howhelp: false,
+            experience: false,
+            struggle: false,
+            ecosystem: false,
+            employees: false,
+            revenue: false,
+            distribution: false,
+            story: false
+        };
         $scope.hide = function () {
             $mdDialog.hide();
         };
@@ -58,8 +70,12 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
         $scope.updateDetails = function (id, details, column) {
             console.log('update details with', id, details, column);
             ProspectsService.updateDetails(id, details, column);
-
-        }
+            $scope.editBoolean[column] = !$scope.editBoolean[column];
+        };
+        $scope.showEdit = function(input){
+            $scope.editBoolean[input] = !$scope.editBoolean[input];
+            console.log('$scope.editBoolean: ', $scope.editBoolean[input]);  
+        };
     };
 
     vm.delete = function (id) {

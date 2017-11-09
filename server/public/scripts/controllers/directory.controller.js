@@ -34,18 +34,8 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
     function DialogController(ProspectsService, $scope, $mdDialog) {
         $scope.profile = ProspectsService.profile;
         $scope.commentIn = '';
-        $scope.editBoolean = {
-            referral: false,
-            involvement: false,
-            howhelp: false,
-            experience: false,
-            struggle: false,
-            ecosystem: false,
-            employees: false,
-            revenue: false,
-            distribution: false,
-            story: false
-        };
+        // holds true/false values for ng-shows
+        $scope.editBoolean = {};
         $scope.hide = function () {
             $mdDialog.hide();
         };
@@ -65,6 +55,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
         $scope.updateComments = function (id, comment) {
             console.log('comment func called with id and comment: ', id, comment);
             ProspectsService.updateComments(id, comment);
+            $scope.editBoolean.comments = !$scope.editBoolean.comments;
         };
 
         $scope.updateDetails = function (id, details, column) {

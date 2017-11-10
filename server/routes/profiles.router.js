@@ -102,4 +102,30 @@ router.put('/info/:id', function (req, res) {
     });
 }); // end UPDATE comments
 
+router.post('/connections', function (req, res) {
+    console.log('in connections post', req.body);
+    var connect = req.body;
+    pool.connect(function (error, client, done) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(404);
+        } else {
+            var queryString = 'INSERT INTO connections (person1, person2) VALUES ($1, $2)';
+            var items = [connect.person1, connect.person2];
+            client.query(queryString, items, function (queryErr, resultObj) {
+                done();
+                if (queryErr) {
+                    console.log(queryErr);
+                    res.sendStatus(500);
+                } else {
+
+                    res.sendStatus(201);
+                }
+            });
+        }
+    });
+
+}); //end post connection
+
+
 module.exports = router;

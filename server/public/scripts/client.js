@@ -101,4 +101,6 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
   $mdThemingProvider.theme('default').primaryPalette('growNorth').accentPalette('growNorth' ,{
     'default': '400'
   });
+
+  $mdThemingProvider.theme('alt').primaryPalette('grey').accentPalette('grey');
 });

@@ -192,3 +192,7 @@ md-card.awaitingApproval {
   font-weight: bold;
   font-size: 14px;
 }
+
+#testBtn {
+  width: 10px;
+}

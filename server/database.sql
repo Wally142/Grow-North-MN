@@ -29,8 +29,8 @@ CREATE TABLE prospects (
 
 CREATE TABLE connections (
 id serial primary key,
-person1 int UNIQUE references prospects (id) ON DELETE CASCADE,
-person2 int UNIQUE references prospects (id) ON DELETE CASCADE,
+person1 int references prospects (id) ON DELETE CASCADE,
+person2 int references prospects (id) ON DELETE CASCADE,
 constraint person1_cannot_be_equal_to_person2_CHK CHECK (person1 <> person2)
 );
 

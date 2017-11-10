@@ -35,7 +35,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
             });
     };
 
-    function DialogController(ProspectsService, $scope, $mdDialog) {
+    function DialogController(ProspectsService, $scope, $mdDialog, $route) {
         $scope.profile = ProspectsService.profile;
         $scope.connections = ProspectsService.connections;
 
@@ -77,9 +77,14 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
             console.log('$scope.editBoolean: ', $scope.editBoolean[input]);
         };
 
-        $scope.addConnection = function () {
-            console.log('you clicked me!');
+        $scope.addConnection = function (id1, id2) {
+            ProspectsService.addConnection(id1, id2);
+            console.log('you clicked me!', id1, id2);
         };
+
+        $scope.reloadRoute = function() {
+            $route.reload();
+        }
 
 
         $scope.getSearch = function () {
@@ -89,23 +94,36 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
             };
 
             $scope.selectedItemChange = function (item) {
-                console.log('Item changed to', item);
+                console.log('Item changed to', item.id);
             };
 
             $scope.loadAll = function () {
                 // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
                 var list = [];
+                // var personId = [];
                 console.log('DIRECTORY:', vm.directory.list);
                 for (var i = 0; i < vm.directory.list.length; i++) {
-                    list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
+                    list.push({name: vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname, id: vm.directory.list[i].id});
+                    // personId.push(vm.directory.list[i].id);
                 }
                 console.log('LIST:', list);
-                var allListings = list.map(function (name) {
+                console.log('id', vm.directory.list.id)
+                var allListings = list.map(function (person) {
+                    
                     return {
-                        value: name.toLowerCase(),
-                        display: name
+                        value: person.name.toLowerCase(),
+                        display: person.name,
+                        id: person.id
+                         
+                        
+                         
                     };
                 });
+                // var allIds = personId.map(function (id) {
+                //     return {
+                //         id: id
+                //     };
+                // });
                 return allListings;
             };
 

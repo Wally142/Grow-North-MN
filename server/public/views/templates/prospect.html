@@ -78,7 +78,7 @@
                                     </p>
 
                                 </div>
-                                <md-button ng-click="approve(profile.list[0].id, profile.list[0].approved)">Approve</md-button>
+                                <md-button ng-click="approve(profile.list[0].id, profile.list[0].approved); reloadRoute()">Approve</md-button>
                                 <md-button ng-click="delete(profile.list[0].id)">Delete</md-button>
                                 <div>
 
@@ -106,6 +106,7 @@
                                                         No results matching "{{searchText}}" were found.
                                                     </md-not-found>
                                                 </md-autocomplete>
+                                                <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">please work</md-button>
                                                 
                                             </div>
                                 </div>

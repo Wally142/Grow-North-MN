@@ -13,7 +13,29 @@ router.get('/:id', function (req, res) {
             client.query("SELECT * FROM prospects WHERE id = $1", [dbId], function (queryErr, resultObj) {
                 done();
                 if (queryErr) {
-                    console.log(queryErr)
+                    console.log(queryErr);
+                    res.sendStatus(500);
+                } else {
+                    console.log(resultObj.rows);
+                    res.send(resultObj.rows);
+                }
+            });
+        }
+    });
+});// end  GET profile
+
+router.get('/connections/:id', function (req, res) {
+    var dbId= req.params.id;
+    console.log('get Profile', dbId );
+    pool.connect(function (error, client, done) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(404);
+        } else {
+            client.query("SELECT person2, firstname, lastname, company FROM connections FULL JOIN prospects ON connections.person2=prospects.id WHERE person1=$1", [dbId], function (queryErr, resultObj) {
+                done();
+                if (queryErr) {
+                    console.log(queryErr);
                     res.sendStatus(500);
                 } else {
                     console.log(resultObj.rows);

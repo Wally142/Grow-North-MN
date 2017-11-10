@@ -2,8 +2,12 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
     console.log('DirectoryController created');
     $scope.currentNavItem = 'directory'; // tells nav bar which item to indicate as 'selected'
     var vm = this;
-    vm.directory = { list: [] };
-    vm.approval = { list: [] };
+    vm.directory = {
+        list: []
+    };
+    vm.approval = {
+        list: []
+    };
     vm.profile = ProspectsService.profile;
 
     vm.getDirectory = function () {
@@ -17,13 +21,13 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
         vm.getProfile(id);
         console.log('prospect profile', vm.profile.list);
         $mdDialog.show({
-            controller: DialogController,
-            templateUrl: '/views/templates/prospect.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose: true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-        })
+                controller: DialogController,
+                templateUrl: '/views/templates/prospect.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+            })
             .then(function (answer) {
                 $scope.status = 'You said the information was "' + answer + '".';
             }, function () {
@@ -33,6 +37,8 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
 
     function DialogController(ProspectsService, $scope, $mdDialog) {
         $scope.profile = ProspectsService.profile;
+        $scope.connections = ProspectsService.connections;
+
         $scope.commentIn = '';
         // holds true/false values for ng-shows
         $scope.editBoolean = {};
@@ -66,57 +72,62 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
             ProspectsService.updateDetails(id, details, column);
             $scope.editBoolean[column] = !$scope.editBoolean[column];
         };
-        $scope.showEdit = function(input){
+        $scope.showEdit = function (input) {
             $scope.editBoolean[input] = !$scope.editBoolean[input];
-            console.log('$scope.editBoolean: ', $scope.editBoolean[input]);  
+            console.log('$scope.editBoolean: ', $scope.editBoolean[input]);
         };
 
+        $scope.addConnection = function () {
+            console.log('you clicked me!');
+        };
+
+
         $scope.getSearch = function () {
-            
+
             $scope.searchTextChange = function (text) {
-                        console.log('Text changed to', text);
+                console.log('Text changed to', text);
+            };
+
+            $scope.selectedItemChange = function (item) {
+                console.log('Item changed to', item);
+            };
+
+            $scope.loadAll = function () {
+                // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
+                var list = [];
+                console.log('DIRECTORY:', vm.directory.list);
+                for (var i = 0; i < vm.directory.list.length; i++) {
+                    list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
+                }
+                console.log('LIST:', list);
+                var allListings = list.map(function (name) {
+                    return {
+                        value: name.toLowerCase(),
+                        display: name
                     };
-            
-                    $scope.selectedItemChange = function (item) {
-                        console.log('Item changed to', item);
-                    };
-            
-                    $scope.loadAll = function () {
-                        // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
-                        var list = [];
-                        console.log('DIRECTORY:', vm.directory.list);
-                        for (var i = 0; i < vm.directory.list.length; i++) {
-                            list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
-                        }
-                        console.log('LIST:', list);
-                        var allListings = list.map(function (name) {
-                            return {
-                                value: name.toLowerCase(),
-                                display: name
-                            };
-                        });
-                        return allListings;
-                    };
-            
-                    $scope.createFilterFor = function (query) {
-                        var lowerCaseQuery = angular.lowercase(query);
-                        return function filterFn(listing) {
-                            return (listing.value.indexOf(lowerCaseQuery) === 0);
-                        };
-                    };
-            
-                    $scope.querySearch = function (query) {
-                        if (query) {
-                            var results = query ? $scope.listings.filter($scope.createFilterFor(query)) : $scope.listings;
-                            return results;
-                        } else {
-                            return [];
-                        }
-                    };
-            
-                    $scope.listings = $scope.loadAll();
-                    // vm.searchText = "";
+                });
+                return allListings;
+            };
+
+            $scope.createFilterFor = function (query) {
+                var lowerCaseQuery = angular.lowercase(query);
+                return function filterFn(listing) {
+                    return (listing.value.indexOf(lowerCaseQuery) === 0);
                 };
+            };
+
+            $scope.querySearch = function (query) {
+                if (query) {
+                    var results = query ? $scope.listings.filter($scope.createFilterFor(query)) : $scope.listings;
+                    return results;
+                } else {
+                    return [];
+                }
+            };
+
+            $scope.listings = $scope.loadAll();
+            // vm.searchText = "";
+        };
     }
     // unused
     // vm.delete = function (id) {

@@ -8,6 +8,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.directory = {list:[]};
     self.approval = {list:[]};
     self.profile = {list: []};
+    self.connections = {list: []};
 
 
     // metrics display functions 
@@ -86,6 +87,7 @@ myApp.service('ProspectsService', function ($http, $location) {
         $http.get('/profilesRoute/' + thisId).then(function (response) {
             console.log(response);
             self.profile.list = response.data;
+            self.getConnections(thisId);
         });
     };
 
@@ -133,5 +135,15 @@ myApp.service('ProspectsService', function ($http, $location) {
             self.getProfile(thisId);
         });
     };
-    
+
+    self.getConnections = function(id) {
+        var thisId = id;
+        console.log('In getConnections with id: ', thisId);
+        $http.get('/profilesRoute/connections/' + thisId).then(function (response) {
+            console.log(response);
+            self.connections.list = response.data;
+
+        });
+    };
+
 }); // end service

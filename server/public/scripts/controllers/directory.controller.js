@@ -147,68 +147,12 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
             // vm.searchText = "";
         };
     }
-    // unused
-    // vm.delete = function (id) {
-    //     ProspectsService.deleteApproval(id);
-    // };
-
-    // vm.approve = function (id, status) {
-    //     ProspectsService.updateApproval(id, status);
-    //     console.log('you clicked me!', id, status);
-    // };
 
     vm.getApproval = function () {
         ProspectsService.getApproval();
         vm.approval = ProspectsService.approval;
         console.log('directory controller hit with', vm.approval);
     };
-
-    // vm.getSearch = function () {
-
-    //     vm.searchTextChange = function (text) {
-    //         console.log('Text changed to', text);
-    //     };
-
-    //     vm.selectedItemChange = function (item) {
-    //         console.log('Item changed to', item);
-    //     };
-
-    //     vm.loadAll = function () {
-    //         // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
-    //         var list = [];
-    //         console.log('DIRECTORY:', vm.directory.list);
-    //         for (var i = 0; i < vm.directory.list.length; i++) {
-    //             list.push(vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname);
-    //         }
-    //         console.log('LIST:', list);
-    //         var allListings = list.map(function (name) {
-    //             return {
-    //                 value: name.toLowerCase(),
-    //                 display: name
-    //             };
-    //         });
-    //         return allListings;
-    //     };
-
-    //     vm.createFilterFor = function (query) {
-    //         var lowerCaseQuery = angular.lowercase(query);
-    //         return function filterFn(listing) {
-    //             return (listing.value.indexOf(lowerCaseQuery) === 0);
-    //         };
-    //     };
-
-    //     vm.querySearch = function (query) {
-    //         if (query) {
-    //             var results = query ? vm.listings.filter(vm.createFilterFor(query)) : [];
-    //             return results;
-    //         } else {
-    //             return [];
-    //         }
-    //     };
-
-    //     vm.listings = vm.loadAll();
-    //     // vm.searchText = "";
-    // };
 
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id);

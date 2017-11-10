@@ -1,29 +1,29 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <md-content class="dashboard colorContent" ng-init="MC.getMentorNumbers(); MC.getMenteeNumbers(); MC.getConnectionNumbers()">
-    <!-- <md-card class="dashSearch">
+  <!-- <md-card class="dashSearch">
         <md-content class="md-padding" layout="row" layout-align="center">
             <md-nav-bar md-selected-nav-item="currentNavItem" class="navItem" nav-bar-aria-label="navigation links">
                 <md-nav-item md-nav-href="#/dashboard" name="Dashboard">Admin Dashboard</md-nav-item>
                 <md-nav-item md-nav-href="#/directory" name="Directory">Directory</md-nav-item>
                 <md-input-container class="md-icon-float md-block"> -->
-    <!-- Use floating label instead of placeholder -->
-    <!-- <md-icon md-svg-src="../../img/magnify.svg" class="search"></md-icon>
+  <!-- Use floating label instead of placeholder -->
+  <!-- <md-icon md-svg-src="../../img/magnify.svg" class="search"></md-icon>
                     <input type="text" placeholder="Search">
                 </md-input-container>
             </md-nav-bar>
         </md-content>
     </md-card> -->
-    <div layout="row">
-        <md-card class="dashMetrics" flex="33">
-            <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3" md-row-height-gt-md="3:2" md-row-height="3:2"
-                md-gutter="12px" md-gutter-gt-sm="8px">
-                <md-grid-tile class="dashCard" md-rowspan="3" md-colspan="3" md-colspan-sm="2" md-colspan-xs="2">
-                    <h2>{{MC.mentors.list.length}}</h2>
-                    <md-grid-tile-footer class="gridFooter" layout="column">
-                        <p class="footerCaption">Number of Mentors</p>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-                <!-- <md-grid-tile class="dashCard" flex="33" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+  <div layout="row">
+    <md-card class="dashMetrics" flex="33">
+      <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3" md-row-height-gt-md="3:2" md-row-height="3:2"
+        md-gutter="12px" md-gutter-gt-sm="8px">
+        <md-grid-tile class="dashCard" md-rowspan="3" md-colspan="3" md-colspan-sm="2" md-colspan-xs="2">
+          <h2>{{MC.mentors.list.length}}</h2>
+          <md-grid-tile-footer class="gridFooter" layout="column">
+            <p class="footerCaption">Number of Mentors</p>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+        <!-- <md-grid-tile class="dashCard" flex="33" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
                     <h2>{{MC.mentee.list.length}}</h2>
                     <md-grid-tile-footer class="gridFooter" layout="column">
                         <p class="footerCaption">Number of Mentees</p>
@@ -35,108 +35,117 @@
                         <p class="footerCaption">Total Connections Made</p>
                     </md-grid-tile-footer>
                 </md-grid-tile> -->
-            </md-grid-list>
-        </md-card>
-        <md-card class="dashMetrics" flex="33">
-            <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3" md-row-height-gt-md="3:2" md-row-height="3:2"
-                md-gutter="12px" md-gutter-gt-sm="8px">
-                <md-grid-tile class="dashCard" md-rowspan="3" md-colspan="3" md-colspan-sm="2" md-colspan-xs="2">
-                    <h2>{{MC.mentee.list.length}}</h2>
-                    <md-grid-tile-footer class="gridFooter" layout="column">
-                        <p class="footerCaption">Number of Mentees</p>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-            </md-grid-list>
-        </md-card>
-        <md-card class="dashMetrics" flex="33">
-            <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3" md-row-height-gt-md="3:2" md-row-height="3:2"
-                md-gutter="12px" md-gutter-gt-sm="8px">
-                <md-grid-tile class="dashCard" md-rowspan="3" md-colspan="3" md-colspan-sm="2" md-colspan-xs="2">
-                    <h2>{{MC.connections.list.length}}</h2>
-                    <md-grid-tile-footer class="gridFooter" layout="column">
-                        <p class="footerCaption">Total Connections Made</p>
-                    </md-grid-tile-footer>
-                </md-grid-tile>
-            </md-grid-list>
-        </md-card>
-    </div>
+      </md-grid-list>
+    </md-card>
+    <md-card class="dashMetrics" flex="33">
+      <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3" md-row-height-gt-md="3:2" md-row-height="3:2"
+        md-gutter="12px" md-gutter-gt-sm="8px">
+        <md-grid-tile class="dashCard" md-rowspan="3" md-colspan="3" md-colspan-sm="2" md-colspan-xs="2">
+          <h2>{{MC.mentee.list.length}}</h2>
+          <md-grid-tile-footer class="gridFooter" layout="column">
+            <p class="footerCaption">Number of Mentees</p>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+      </md-grid-list>
+    </md-card>
+    <md-card class="dashMetrics" flex="33">
+      <md-grid-list md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="3" md-row-height-gt-md="3:2" md-row-height="3:2"
+        md-gutter="12px" md-gutter-gt-sm="8px">
+        <md-grid-tile class="dashCard" md-rowspan="3" md-colspan="3" md-colspan-sm="2" md-colspan-xs="2">
+          <h2>{{MC.connections.list.length}}</h2>
+          <md-grid-tile-footer class="gridFooter" layout="column">
+            <p class="footerCaption">Total Connections Made</p>
+          </md-grid-tile-footer>
+        </md-grid-tile>
+      </md-grid-list>
+    </md-card>
+  </div>
 
-    <md-card class="awaitingApproval" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()">
-        <!-- <h2>Intake forms awaiting approval go here!</h2>
+  <md-card class="awaitingApproval" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()">
+    <!-- <h2>Intake forms awaiting approval go here!</h2>
        <section layout="row">
            <div flex> -->
-        <md-toolbar class="approvalList">
-            <div class="md-toolbar-tools" layout="row">
-                <!-- add in ng-show and ng-hide for button clicks to toggle sorting -->
-                <!-- <md-button>
+    <md-toolbar class="approvalList">
+      <div class="md-toolbar-tools" layout="row">
+        <!-- add in ng-show and ng-hide for button clicks to toggle sorting -->
+        <!-- <md-button>
                     <i class="material-icons">arrow_drop_down</i>Name
                 </md-button> -->
-                <div flex="20">
-                <md-button ng-show="MC.sortMethod!=='name'" ng-click="MC.sort('name')">Name</md-button>
-                <md-button ng-show="MC.sortMethod=='name' && MC.reverse == true" ng-click="MC.sort('name')">Name
-                    <i class="material-icons">arrow_drop_up</i>
-                </md-button>
-                <md-button ng-show="MC.sortMethod=='name' && MC.reverse == false" ng-click="MC.sort('name')">Name
-                    <i class="material-icons">arrow_drop_down</i>
-                </md-button>
-                </div>
-                <div flex="20">
-                <md-button>Phone</md-button>
-                <!-- <md-button ng-show="MC.sortMethod=='phone' && MC.reverse == true" ng-click="MC.sort('phone')">Phone
+        <div flex="20">
+          <md-button ng-show="MC.sortMethod!=='name'" ng-click="MC.sort('name')">Name</md-button>
+          <md-button ng-show="MC.sortMethod=='name' && MC.reverse == true" ng-click="MC.sort('name')">Name
+            <i class="material-icons">arrow_drop_up</i>
+          </md-button>
+          <md-button ng-show="MC.sortMethod=='name' && MC.reverse == false" ng-click="MC.sort('name')">Name
+            <i class="material-icons">arrow_drop_down</i>
+          </md-button>
+        </div>
+        <div flex="20">
+          <md-button>Phone</md-button>
+          <!-- <md-button ng-show="MC.sortMethod=='phone' && MC.reverse == true" ng-click="MC.sort('phone')">Phone
                     <i class="material-icons">arrow_drop_up</i>
                 </md-button>
                 <md-button ng-show="MC.sortMethod=='phone' && MC.reverse == false" ng-click="MC.sort('phone')">Phone
                     <i class="material-icons">arrow_drop_down</i>
                 </md-button> -->
-                </div>
-                <div flex="20">
-                <md-button>Email</md-button>
-                <!-- <md-button ng-show="MC.sortMethod=='email' && MC.reverse == true" ng-click="MC.sort('email')">Email
+        </div>
+        <div flex="20">
+          <md-button>Email</md-button>
+          <!-- <md-button ng-show="MC.sortMethod=='email' && MC.reverse == true" ng-click="MC.sort('email')">Email
                     <i class="material-icons">arrow_drop_up</i>
                 </md-button>
                 <md-button ng-show="MC.sortMethod=='email' && MC.reverse == false" ng-click="MC.sort('email')">Email
                     <i class="material-icons">arrow_drop_down</i>
                 </md-button> -->
-                </div>
-                <div flex="20">
-                <md-button ng-show="MC.sortMethod!=='date'" ng-click="MC.sort('date')">Date Submitted</md-button>
-                <md-button ng-show="MC.sortMethod=='date' && MC.reverse == true" ng-click="MC.sort('date')">Date Submitted
-                    <i class="material-icons">arrow_drop_up</i>
-                </md-button>
-                <md-button ng-show="MC.sortMethod=='date' && MC.reverse == false" ng-click="MC.sort('date')">Date Submitted
-                    <i class="material-icons">arrow_drop_down</i>
-                </md-button>
-                </div>
-                <div flex="20"></div>
-            </div>
-        </md-toolbar>
-        <md-content>
-            <md-list>
-                <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse" ng-value="listing.id">
-                    <div class="md-list-item-text" flex="20">
-                        <p>{{listing.firstname}} {{listing.lastname}}</p>
-                    </div>
-                    <div class="md-list-item-text" flex="20">
-                        <p>{{listing.phone}}</p>
-                    </div>
-                    <div class="md-list-item-text" flex="20">
-                        <p>{{listing.email}}</p>
-                    </div>
-                    <div class="md-list-item-text" flex="20">
-                        <p>{{listing.startdate | date: 'MMMM d, y h:mm a'}}</p>
-                    </div>
-                    <div flex="20">
-                    <md-button ng-click="showProfile($event, listing.id)">Review</md-button>
-                    </div>
-                </md-list-item>
-                <!-- <md-list-item class="adminApproval md-2-line" layout="row">
+        </div>
+        <div flex="20" layout="row" layout-align="space-between center">
+          <md-button ng-show="MC.sortMethod!=='date'" ng-click="MC.sort('date')">Date Submitted</md-button>
+          <md-button ng-show="MC.sortMethod=='date' && MC.reverse == true" ng-click="MC.sort('date')">Date Submitted
+            <i class="material-icons">arrow_drop_up</i>
+          </md-button>
+          <md-button ng-show="MC.sortMethod=='date' && MC.reverse == false" ng-click="MC.sort('date')">Date Submitted
+            <i class="material-icons">arrow_drop_down</i>
+          </md-button>
+          <!-- <md-button class="md-icon-button fltRgt"> -->
+          <i class="material-icons fltRgt">search</i>
+            <!-- <md-tooltip md-direction="top">Instant search is enabled</md-tooltip> -->
+          <!-- </md-button> -->
+        </div>
+        <div flex="20">
+          <md-input-container class="md-block instaSearch" md-no-float="true">
+            <input name="search" ng-model="MC.query" md-no-asterisk="true" placeholder="Instant Search">
+          </md-input-container>
+        </div>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list>
+        <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+          ng-value="listing.id">
+          <div class="md-list-item-text" flex="20">
+            <p>{{listing.firstname}} {{listing.lastname}}</p>
+          </div>
+          <div class="md-list-item-text" flex="20">
+            <p>{{listing.phone}}</p>
+          </div>
+          <div class="md-list-item-text" flex="20">
+            <p>{{listing.email}}</p>
+          </div>
+          <div class="md-list-item-text" flex="20">
+            <p>{{listing.startdate | date: 'MMMM d, y h:mm a'}}</p>
+          </div>
+          <div flex="20">
+            <md-button ng-click="showProfile($event, listing.id)">Review</md-button>
+          </div>
+        </md-list-item>
+        <!-- <md-list-item class="adminApproval md-2-line" layout="row">
                             <div class="md-list-item-text">
                                 <p>Hey! This will be ng-repeated eventually, and clickable too!</p>
                             </div>
                         </md-list-item> -->
-            </md-list>
-        </md-content>
-        </div>
-        </section>
-    </md-card>
+      </md-list>
+    </md-content>
+    </div>
+    </section>
+  </md-card>
 </md-content>

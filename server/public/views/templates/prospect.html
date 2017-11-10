@@ -77,6 +77,8 @@
                                         {{ profile.list[0].company }}
                                     </p>
                                 </div>
+                                <md-button ng-click="approve(profile.list[0].id, profile.list[0].approved)">Approve</md-button>
+                                <md-button ng-click="delete(profile.list[0].id)">Delete</md-button>
                                 <div>
                                     <p class="detailsQuestions">
                                         Connections made:

@@ -44,14 +44,17 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
         };
         $scope.cancel = function () {
             $mdDialog.cancel();
+            vm.getDirectory();
         };
         $scope.delete = function (id) {
             console.log('delete account func called for user id: ', id);
             ProspectsService.deleteProfile(id);
             $mdDialog.cancel();
-            vm.getDirectory();
         };
-
+        $scope.approve = function (id, status) {
+            ProspectsService.updateApproval(id, status);
+            console.log('you clicked me!', id, status);
+        };
         $scope.updateComments = function (id, comment) {
             console.log('comment func called with id and comment: ', id, comment);
             ProspectsService.updateComments(id, comment);
@@ -115,15 +118,15 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
                     // vm.searchText = "";
                 };
     }
+    // unused
+    // vm.delete = function (id) {
+    //     ProspectsService.deleteApproval(id);
+    // };
 
-    vm.delete = function (id) {
-        ProspectsService.deleteApproval(id);
-    };
-
-    vm.approve = function (id, status) {
-        ProspectsService.updateApproval(id, status);
-        console.log('you clicked me!', id, status);
-    };
+    // vm.approve = function (id, status) {
+    //     ProspectsService.updateApproval(id, status);
+    //     console.log('you clicked me!', id, status);
+    // };
 
     vm.getApproval = function () {
         ProspectsService.getApproval();

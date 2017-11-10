@@ -126,8 +126,7 @@
                         <p>{{listing.startdate | date: 'MMMM d, y h:mm a'}}</p>
                     </div>
                     <div flex="20">
-                    <md-button ng-click="DC.approve(listing.id, listing.approved)">Approve</md-button>
-                    <md-button ng-click="DC.delete(listing.id)">Delete</md-button>
+                    <md-button ng-click="showProfile($event, listing.id)">Review</md-button>
                     </div>
                 </md-list-item>
                 <!-- <md-list-item class="adminApproval md-2-line" layout="row">

@@ -10,7 +10,7 @@ router.get('/:id', function (req, res) {
             console.log(error);
             res.sendStatus(404);
         } else {
-            client.query("SELECT * FROM prospects WHERE approved = true AND id = $1", [dbId], function (queryErr, resultObj) {
+            client.query("SELECT * FROM prospects WHERE id = $1", [dbId], function (queryErr, resultObj) {
                 done();
                 if (queryErr) {
                     console.log(queryErr)

@@ -133,4 +133,5 @@ myApp.service('ProspectsService', function ($http, $location) {
             self.getProfile(thisId);
         });
     };
+    
 }); // end service

@@ -15,7 +15,9 @@
                     <md-content class="md-padding">
                         <div layout="column" id="avatarDiv">
                             <img src="/img/avatar.png" height="100px" />
-                            <md-icon md-svg-src="img/trash.svg" ng-click="delete(profile.list[0].id)"></md-icon>
+                            <md-button ng-click="delete(profile.list[0].id)">
+                                <md-icon md-svg-src="img/trash.svg"></md-icon>
+                            </md-button>
                         </div>
                         <md-dialog-content>
                             <div class="md-dialog-content">
@@ -75,6 +77,8 @@
                                         {{ profile.list[0].company }}
                                     </p>
                                 </div>
+                                <md-button ng-click="approve(profile.list[0].id, profile.list[0].approved)">Approve</md-button>
+                                <md-button ng-click="delete(profile.list[0].id)">Delete</md-button>
                                 <div>
                                     <p class="detailsQuestions">
                                         Connections made:

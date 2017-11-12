@@ -40,6 +40,6 @@ id SERIAL PRIMARY KEY,
 username varchar(55),
 password varchar(60),
 email varchar(100),
-reset_token, varchar(40) 
-reset_token_expires, timestamp
+reset_token varchar(40),
+reset_token_expires timestamp
 );

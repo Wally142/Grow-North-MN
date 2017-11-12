@@ -111,13 +111,29 @@ router.get('/:email', function(req, res, next){
 
                     client.query(query, values, function(error){
                         done();
-                        // TRY THIS WITHOUT token LATER???
                         callback(error, token)
                     })
                 }
             });
         },
-        function(token, done) {
+        function(token, callback){
+            pool.connect(function(err, client, done){
+                if (err){
+                    console.log('Error connecting:', err);
+                }else{
+                    var values = [email];
+                    var query = 'SELECT username FROM users WHERE email = $1';
+
+                    client.query(query, values, function(error, result){
+                        console.log('Result from reset email query', result);
+                        var username = result.rows[0].username;
+                        done();
+                        callback(error, token, username)
+                    })
+                }
+            });
+        },
+        function(token, username, done) {
             console.log('Sending email')
             var transporter = nodemailer.createTransport({
                 service: 'Hotmail',
@@ -132,8 +148,11 @@ router.get('/:email', function(req, res, next){
                 subject: 'Grow North App Password Reset',
                 // CHANGE THIS MESSAGE AT SOME POINT
                 // WHAT URL AFTER DEPLOY???
-                html: '<p>You\'re receiving this email because a password reset request was sent to the Grow North App.</p>' +
-                '<a href="http://localhost:5000/resetRoute/reset/' + email + '/' + token + '">Click here to reset password</a>' +
+                html: '<p>Hi!</p>' +
+                '<p>You\'re receiving this email because a username/password request was sent to the Grow North App.</p>' +
+                '<p>Your Grow North username is.......</p>' + 
+                '<p>' + username + '</p>' +
+                '<a href="http://localhost:5000/resetRoute/reset/' + email + '/' + token + '">Click here if you would like to reset your password</a>' +
                 '<p>You will receive an email with your new password shortly, and will be redirected to the Grow North login page</p>' +
                 '<p>If you didn\'t make this request... that\'s pretty concerning.</p>' 
             };

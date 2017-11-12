@@ -24,7 +24,8 @@ CREATE TABLE prospects (
  story VARCHAR (1000),
  comments VARCHAR (3000),
  startdate TIMESTAMP DEFAULT current_timestamp,
- approved BOOLEAN default false
+ approved BOOLEAN default false,
+ tags TEXT[]
  );
 
 CREATE TABLE connections (

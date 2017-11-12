@@ -202,12 +202,12 @@ md-card.awaitingApproval {
   margin-top: 14px;
 }
 
-md-input-container:not(.md-input-invalid).md-input-focused .md-input,
-md-input-container:not(.md-input-invalid) .md-input {
+md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,
+md-input-container:not(.md-input-invalid).instaSearch  .md-input {
   border-color: rgb(250, 250, 250);
   color: rgb(250, 250, 250) !important;
 }
 
-md-input-container:not(.md-input-invalid) .md-input::-webkit-input-placeholder {
+md-input-container:not(.md-input-invalid).instaSearch .md-input::-webkit-input-placeholder {
   color: rgba(250, 250, 250, 0.5) !important;
 }

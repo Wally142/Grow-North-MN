@@ -143,5 +143,29 @@ router.post('/connections', function (req, res) {
 
 }); //end post connection
 
+router.put('/tags/:id', function (req, res) {
+    console.log('in tags PUT req for id and body: ', req.params.id, req.body);
+    var dbId = req.params.id;
+    var item = req.body.tags;
+    pool.connect(function (error, client, done) {
+        if (error) {
+            console.log(error);
+            res.sendStatus(404);
+        } else {
+            var queryString = "UPDATE prospects SET tags = $2 WHERE id = $1";
+            var values = [dbId, item];
+            client.query(queryString, values, function (queryErr, resultObj) {
+                if (queryErr) {
+                    console.log('Query Error on PUT comment route', queryErr);
+                    res.sendStatus(500);
+                } else {
+                    res.sendStatus(202);
+                }
+                done();
+            });
+        }
+    });
+}); // end UPDATE comments
+
 
 module.exports = router;

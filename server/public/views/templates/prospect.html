@@ -200,6 +200,10 @@
                         <p ng-show="!editBoolean.comments">
                             {{ profile.list[0].comments }}
                         </p>
+                        <p class="detailsQuestions">
+                            Tags:
+                        </p>
+                        <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
                     </md-content>
                 </md-tab>
             </md-tabs>

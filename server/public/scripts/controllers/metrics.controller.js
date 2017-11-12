@@ -11,6 +11,7 @@ myApp.controller('MetricsController', function (ProspectsService, UserService, $
     vm.connections = { list: [] };
     vm.sortMethod = 'name';
     vm.reverse = false;
+    vm.query = '';
 
     vm.sort = function (method) {
         vm.reverse = (vm.sortMethod === method) ? !vm.reverse : false;

@@ -146,4 +146,18 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    self.addConnection = function (id1, id2) {
+        console.log('Post contact');
+        $http({
+            method: 'POST',
+            url: '/profilesRoute/connections',
+            data: {
+                person1: id1,
+                person2: id2
+            }
+        }).then(function (response) {
+            console.log('in service connection POST with', response);
+        })
+    }
+
 }); // end service

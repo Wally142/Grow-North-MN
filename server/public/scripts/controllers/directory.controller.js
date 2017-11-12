@@ -5,6 +5,10 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     UserService.getuser()
 
     var vm = this;
+    vm.sortMethod = 'name';
+    vm.reverse = false;
+    vm.query = '';
+
     vm.directory = {
         list: []
     };
@@ -12,6 +16,11 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         list: []
     };
     vm.profile = ProspectsService.profile;
+
+    vm.sort = function (method) {
+        vm.reverse = (vm.sortMethod === method) ? !vm.reverse : false;
+        vm.sortMethod = method;
+    }
 
     vm.getDirectory = function () {
         ProspectsService.getDirectory();

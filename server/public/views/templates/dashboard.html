@@ -61,7 +61,7 @@
     </md-card>
   </div>
 
-  <md-card class="awaitingApproval" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()">
+  <md-card class="cardList" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()">
     <!-- <h2>Intake forms awaiting approval go here!</h2>
        <section layout="row">
            <div flex> -->
@@ -118,7 +118,7 @@
         </div>
       </div>
     </md-toolbar>
-    <md-content>
+    <!-- <md-content> -->
       <md-list>
         <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
           ng-value="listing.id">
@@ -144,7 +144,7 @@
                             </div>
                         </md-list-item> -->
       </md-list>
-    </md-content>
+    <!-- </md-content> -->
     </div>
     </section>
   </md-card>

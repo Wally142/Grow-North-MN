@@ -1,7 +1,12 @@
 myApp.controller('DirectoryController', function (ProspectsService, $http, $scope, $mdDialog) {
     console.log('DirectoryController created');
     $scope.currentNavItem = 'directory'; // tells nav bar which item to indicate as 'selected'
+    
     var vm = this;
+    vm.sortMethod = 'name';
+    vm.reverse = false;
+    vm.query = '';
+
     vm.directory = {
         list: []
     };
@@ -9,6 +14,11 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
         list: []
     };
     vm.profile = ProspectsService.profile;
+
+    vm.sort = function (method) {
+        vm.reverse = (vm.sortMethod === method) ? !vm.reverse : false;
+        vm.sortMethod = method;
+    }
 
     vm.getDirectory = function () {
         ProspectsService.getDirectory();

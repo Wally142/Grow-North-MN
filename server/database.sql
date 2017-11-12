@@ -24,7 +24,8 @@ CREATE TABLE prospects (
  story VARCHAR (1000),
  comments VARCHAR (3000),
  startdate TIMESTAMP DEFAULT current_timestamp,
- approved BOOLEAN default false
+ approved BOOLEAN default false,
+ tags TEXT[]
  );
 
 CREATE TABLE connections (
@@ -38,5 +39,7 @@ CREATE TABLE users (
 id SERIAL PRIMARY KEY,
 username varchar(55),
 password varchar(60),
-email varchar(100)
+email varchar(100),
+reset_token, varchar(40) 
+reset_token_expires, timestamp
 );

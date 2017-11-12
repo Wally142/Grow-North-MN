@@ -60,6 +60,7 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
         $scope.approve = function (id, status) {
             ProspectsService.updateApproval(id, status);
             console.log('you clicked me!', id, status);
+            $scope.cancel();
         };
         $scope.updateComments = function (id, comment) {
             console.log('comment func called with id and comment: ', id, comment);
@@ -84,8 +85,11 @@ myApp.controller('DirectoryController', function (ProspectsService, $http, $scop
 
         $scope.reloadRoute = function() {
             $route.reload();
-        }
+        };
 
+        $scope.$watchCollection('profile.list[0].tags', function(){
+            ProspectsService.changeTag($scope.profile.list[0].id);
+        });
 
         $scope.getSearch = function () {
 

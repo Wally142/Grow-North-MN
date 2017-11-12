@@ -158,6 +158,19 @@ myApp.service('ProspectsService', function ($http, $location) {
         }).then(function (response) {
             console.log('in service connection POST with', response);
         })
-    }
+    };
+
+    self.changeTag = function(id){
+        console.log('id, tag array: ', id, self.profile.list[0].tags);
+        $http({
+            method: 'PUT',
+            url: '/profilesRoute/tags/' + id,
+            data: {
+                tags: self.profile.list[0].tags
+            }
+        }).then(function(response){
+            console.log('service changeTag response: ', response); 
+        });
+    };
 
 }); // end service

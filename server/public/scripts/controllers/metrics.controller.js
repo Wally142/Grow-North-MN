@@ -1,6 +1,8 @@
-myApp.controller('MetricsController', function (ProspectsService, $scope) {
+myApp.controller('MetricsController', function (ProspectsService, UserService, $scope) {
     console.log('MetricsController created');
     var vm = this;
+
+    UserService.getuser();
 
     $scope.currentNavItem = 'dashboard'; // tells nav bar which item to indicate as 'selected'
     

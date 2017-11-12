@@ -1,6 +1,9 @@
-myApp.controller('DirectoryController', function (ProspectsService, $http, $scope, $mdDialog) {
+myApp.controller('DirectoryController', function (ProspectsService, UserService, $http, $scope, $mdDialog) {
     console.log('DirectoryController created');
     $scope.currentNavItem = 'directory'; // tells nav bar which item to indicate as 'selected'
+
+    UserService.getuser()
+
     var vm = this;
     vm.directory = {
         list: []

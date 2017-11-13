@@ -60,6 +60,14 @@ myApp.controller('SurveyController', function (FormService, $scope) {
     }
   }
 
+  vm.form4Nav = function (page) {
+    console.log('$scope.surveyForm3.$valid ->', $scope.surveyForm3.$valid);
+
+    if ($scope.surveyForm3.$valid || page === 0 || page === 1 || page === 2) {
+      vm.page = page;
+    }
+  }
+
   vm.detectRadio = function () {
     switch (vm.radioSelect) {
       case 'mentor':
@@ -80,6 +88,7 @@ myApp.controller('SurveyController', function (FormService, $scope) {
   vm.grabInputs = function () {
     console.log('vm.formInput', vm.formInput);
     FormService.addContact(vm.formInput);
+    vm.form4Nav(4);
   };
 
 

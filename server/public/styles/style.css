@@ -219,3 +219,14 @@ md-input-container:not(.md-input-invalid).instaSearch .md-input::-webkit-input-p
 md-button.headerBtn {
   padding-left: 0 !important;
 }
+
+/* form pages */
+.confirmTitle {
+  text-align: center;
+}
+
+.confirmTitleText {
+  font-weight: bold;
+  font-size: 16pt;
+}
+/* end form pages */

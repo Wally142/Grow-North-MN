@@ -270,9 +270,9 @@
     <!-- Form 4 -->
     <md-card layout-padding ng-show="SC.page===3" flex>
         <form name="surveyForm3" ng-submit="SC.grabInputs()">
-            <md-card-title>
+            <md-card-title class="confirmTitle">
                 <md-card-title-text>
-                    Confirm your information
+                    <p class="confirmTitleText">Confirm your information</p>
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
@@ -362,7 +362,16 @@
             </div>
         </form>
     </md-card>
+    <!-- Form 5 -->
+    <md-card layout-padding ng-show="SC.page===4" flex>
+        <md-card-title class="confirmTitle">
+            <md-card-title-text>
+                <p class="confirmTitleText">Thank you for submitting your information!</p>
+            </md-card-title-text>
+        </md-card-title>
+        <div layout="row" layout-align="center center" layout-margin>
+            <md-button class="md-raised md-primary" href="http://www.grownorthmn.com/">Return to Grow North MN</md-button>
+        </div>
+    </md-card>
     <div flex="15"></div>
 </md-content>
-
-<!-- separate forms -->

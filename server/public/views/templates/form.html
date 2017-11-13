@@ -146,7 +146,7 @@
                 <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form1Nav(3)">
                 <div flex="10"></div>
             </div>
-            <div flex="100">
+            <div ng-if="SC.formInput.mentor" flex="100">
                 <h4>Mentor</h4>
             </div>
             <div layout="column" layout-gt-sm="row" layout-wrap>
@@ -176,11 +176,11 @@
                     </div>
                 </md-input-container>
             </div>
-            <div flex="100">
+            <div ng-if="SC.formInput.mentee" flex="100">
                 <h4>Mentee</h4>
             </div>
             <div layout="column" layout-gt-sm="row" layout-wrap>
-                <md-input-container ng-if="SC.formInput.mentee" flex flex-gt-sm="50">
+                <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What are you struggling with?</label>
                     <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.struggle" required>
                     <div ng-messages="surveyForm.struggle.$error">
@@ -189,7 +189,7 @@
                 </md-input-container>
             <!-- </div>
             <div layout="column" layout-gt-sm="row"> -->
-                <md-input-container ng-if="SC.formInput.mentee" flex flex-gt-sm="50">
+                <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What ecosystem does your business reside in?</label>
                     <input name="ecosystem" md-maxlength="500" type="text" ng-model="SC.formInput.ecosystem" required>
                     <div ng-messages="surveyForm.ecosystem.$error">

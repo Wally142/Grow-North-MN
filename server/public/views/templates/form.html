@@ -3,9 +3,9 @@
     <div flex-gt-sm="15"></div>
     <md-card layout-padding ng-show="SC.page===0" flex>
         <form name="surveyForm0" ng-submit="SC.form0Nav(1)">
-            <md-card-title>
+            <md-card-title class="confirmTitle">
                 <md-card-title-text>
-                    Tell us about yourself
+                    <p class="confirmTitleText">Tell us about yourself</p>
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
@@ -130,9 +130,9 @@
     <!-- Start of Form 2 -->
     <md-card layout-padding ng-show="SC.page===1" flex>
         <form name="surveyForm1" ng-submit="SC.form0Nav(2)">
-            <md-card-title>
+            <md-card-title class="confirmTitle">
                 <md-card-title-text>
-                    We have just a few more questions for you
+                    <p class="confirmTitleText">We have just a few more questions for you</p>
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
@@ -238,9 +238,9 @@
     <!-- Start of Form 3 -->
     <md-card layout-padding ng-show="SC.page===2" flex>
         <form name="surveyForm2" ng-submit="SC.form2Nav(3)">
-            <md-card-title>
+            <md-card-title class="confirmTitle">
                 <md-card-title-text>
-                    Terms and Conditions
+                    <p class="confirmTitleText">Terms and Conditions</p>
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
@@ -374,7 +374,7 @@
     <md-card layout-padding ng-show="SC.page===4" flex>
         <md-card-title class="confirmTitle">
             <md-card-title-text>
-                <p class="confirmTitleText">Thank you for submitting your information!</p>
+                <p class="confirmTitleText">Thank you for your submission!</p>
             </md-card-title-text>
         </md-card-title>
         <div layout="row" layout-align="center center" layout-margin>

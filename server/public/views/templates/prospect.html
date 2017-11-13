@@ -40,6 +40,12 @@
                                     <p ng-show="!editBoolean.lastname">
                                         {{ profile.list[0].lastname }}
                                     </p>
+                                    <md-checkbox ng-model="profile.list[0].mentor" ng-value="profile.list[0].mentor" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentor, 'mentor')" aria-label="Mentor">
+                                        Mentor
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="profile.list[0].mentee" ng-value="profile.list[0].mentee" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentee, 'mentee')" aria-label="Mentee">
+                                        Mentee
+                                    </md-checkbox>
                                     <p class="detailsQuestions">
                                         Email
                                         <md-icon md-svg-src="img/pencil.svg" ng-click="showEdit('email')"></md-icon>

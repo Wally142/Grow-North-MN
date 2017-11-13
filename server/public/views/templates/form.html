@@ -1,7 +1,7 @@
 <div ng-include="'views/partials/header.html'"></div>
-<md-content id="formContent" class="colorContent" layout="row">
-    <div flex="15"></div>
-    <md-card layout-padding ng-show="SC.page===0" flex id="formCard">
+<md-content id="formContent" class="colorContent" layout="row" layout-padding>
+    <div flex-gt-sm="15"></div>
+    <md-card layout-padding ng-show="SC.page===0" flex>
         <form name="surveyForm0" ng-submit="SC.form0Nav(1)">
             <md-card-title>
                 <md-card-title-text>
@@ -30,22 +30,22 @@
                 <div flex="10">Test</div>
                 <div flex="5"></div>
             </div> -->
-            <div layout="row">
-                <md-input-container flex="50">
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
                     <label>First Name</label>
                     <input type="text" name="firstname" md-maxlength="50" md-minlength="1" maxlength="50" ng-model="SC.formInput.firstname" required>
                     <div ng-messages="surveyForm0.referral.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container flex="50">
+                <md-input-container flex>
                     <label>Last Name</label>
                     <input name="lastname" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.lastname" required>
                     <div ng-messages="surveyForm0.referral.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container flex="50">
+                <md-input-container flex>
                     <label>Email</label>
                     <input name="email" md-maxlength="50" maxlength="50" type="email" ng-model="SC.formInput.email" required>
                     <div ng-messages="surveyForm0.email.$error">
@@ -54,8 +54,8 @@
                     </div>
                 </md-input-container>
             </div>
-            <div layout="row">
-                <md-input-container flex="33">
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
                     <label>Phone</label>
                     <input name="phone" md-minlength="14" md-maxlength="14" maxlength="14" type="text" phone-input ng-model="SC.formInput.phone"
                         required>
@@ -64,14 +64,14 @@
                         <div ng-message="minlength">Please enter a valid phone number.</div>
                     </div>
                 </md-input-container>
-                <md-input-container flex="33">
+                <md-input-container flex>
                     <label>Company</label>
                     <input name="company" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.company" required>
                     <div ng-messages="surveyForm0.company.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container flex="33">
+                <md-input-container flex>
                     <label>Job Title</label>
                     <input name="title" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.title" required>
                     <div ng-messages="surveyForm0.title.$error">
@@ -79,7 +79,7 @@
                     </div>
                 </md-input-container>
             </div>
-            <div layout="row">
+            <div layout="column" layout-gt-sm="row">
                 <md-input-container flex>
                     <label>How did you hear about Grow North?</label>
                     <input name="referral" md-maxlength="500" type="text" ng-model="SC.formInput.referral" required>
@@ -88,8 +88,8 @@
                     </div>
                 </md-input-container>
             </div>
-            <div layout="row">
-                <div flex="50" layout="column" layout-align="center center">
+            <div layout="column" layout-gt-sm="row">
+                <div flex layout="column" layout-align="center center">
                     <md-input-container flex="50">
                         <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
                     </md-input-container>
@@ -123,7 +123,7 @@
                 </md-input-container> -->
             </div>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised md-primary" type="submit" flex="20">Next</md-button>
+                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-sm="20">Next</md-button>
             </div>
         </form>
     </md-card>
@@ -132,7 +132,7 @@
         <form name="surveyForm1" ng-submit="SC.form0Nav(2)">
             <md-card-title>
                 <md-card-title-text>
-                    Tell us MORE about yourself
+                    We have just a few more questions for you
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
@@ -146,8 +146,11 @@
                 <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form1Nav(3)">
                 <div flex="10"></div>
             </div>
-            <div layout="row">
-                <md-input-container ng-if="SC.formInput.mentor" flex="50">
+            <div flex="100">
+                <h4>Mentor</h4>
+            </div>
+            <div layout="column" layout-gt-sm="row" layout-wrap>
+                <md-input-container ng-if="SC.formInput.mentor" flex>
                     <!-- make a checkbox system -->
                     <label>Level of Involvement?</label>
                     <input name="involvement" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.involvement" required>
@@ -155,7 +158,7 @@
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-if="SC.formInput.mentor" flex="50">
+                <md-input-container ng-if="SC.formInput.mentor" flex>
                     <!-- possibly revise due to redundancy -->
                     <label>How can I help?</label>
                     <input name="howhelp" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.howhelp" required>
@@ -163,57 +166,62 @@
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-            </div>
-            <div layout="row">
-                <md-input-container ng-if="SC.formInput.mentor" flex="50">
+            <!-- </div>
+            <div layout="column" layout-gt-sm="row"> -->
+                <md-input-container ng-if="SC.formInput.mentor" flex="100">
                     <label>Provide a specific example of your experience with a startup.</label>
                     <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="SC.formInput.experience" required></textarea>
                     <div ng-messages="surveyForm.experience.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-if="SC.formInput.mentee" flex="50">
+            </div>
+            <div flex="100">
+                <h4>Mentee</h4>
+            </div>
+            <div layout="column" layout-gt-sm="row" layout-wrap>
+                <md-input-container ng-if="SC.formInput.mentee" flex flex-gt-sm="50">
                     <label>What are you struggling with?</label>
                     <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.struggle" required>
                     <div ng-messages="surveyForm.struggle.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-            </div>
-            <div layout="row">
-                <md-input-container ng-if="SC.formInput.mentee" flex="50">
+            <!-- </div>
+            <div layout="column" layout-gt-sm="row"> -->
+                <md-input-container ng-if="SC.formInput.mentee" flex flex-gt-sm="50">
                     <label>What ecosystem does your business reside in?</label>
                     <input name="ecosystem" md-maxlength="500" type="text" ng-model="SC.formInput.ecosystem" required>
                     <div ng-messages="surveyForm.ecosystem.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-if="SC.formInput.mentee" flex="50">
+                <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>How many employees do you have?</label>
                     <input name="employees" md-maxlength="500" type="text" ng-model="SC.formInput.employees" required>
                     <div ng-messages="surveyForm.employees.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-            </div>
-            <div layout="row">
-                <md-input-container ng-if="SC.formInput.mentee" flex="50">
+            <!-- </div>
+            <div layout="column" layout-gt-sm="row"> -->
+                <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What is your business's yearly revenue</label>
                     <input name="revenue" md-maxlength="500" type="text" ng-model="SC.formInput.revenue" required>
                     <div ng-messages="surveyForm.revenue.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-                <md-input-container ng-if="SC.formInput.mentee" flex="50">
+                <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What is your distribution area?</label>
                     <input name="distribution" md-maxlength="500" type="text" ng-model="SC.formInput.distribution" required>
                     <div ng-messages="surveyForm.distribution.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-            </div>
-            <div layout="row">
-                <md-input-container ng-if="SC.formInput.mentee" flex="50">
+            <!-- </div>
+            <div layout="column" layout-gt-sm="row"> -->
+                <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What's your story?</label>
                     <textarea rows="4" name="story" md-maxlength="500" type="text" ng-model="SC.formInput.story" required></textarea>
                     <div ng-messages="surveyForm.story.$error">
@@ -222,8 +230,8 @@
                 </md-input-container>
             </div>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised" ng-click="SC.page=0" flex="20">Previous</md-button>
-                <md-button class="md-raised md-primary" type="submit" flex="20">Next</md-button>
+                <md-button class="md-raised" ng-click="SC.page=0" flex="50" flex-gt-sm="20">Previous</md-button>
+                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-sm="20">Next</md-button>
             </div>
         </form>
     </md-card>
@@ -232,7 +240,7 @@
         <form name="surveyForm2" ng-submit="SC.form2Nav(3)">
             <md-card-title>
                 <md-card-title-text>
-                    Form 3
+                    Terms and Conditions
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
@@ -262,8 +270,8 @@
                 </div>
             </md-input-container>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised" ng-click="SC.page=1" flex="20">Previous</md-button>
-                <md-button class="md-raised md-primary" type="submit" flex="20">Next</md-button>
+                <md-button class="md-raised" ng-click="SC.page=1" flex="50" flex-gt-sm="20">Previous</md-button>
+                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-sm="20">Next</md-button>
             </div>
         </form>
     </md-card>
@@ -287,7 +295,7 @@
                 <div flex="10"></div>
             </div>
             <div layout="row" layout-margin>
-                <div flex="10"></div>
+                <div flex="0" flex-gt-md="10"></div>
                 <md-card layout-padding id="confirmCard" flex>
                     <div>
                         <h4>Contact Info</h4>
@@ -354,15 +362,15 @@
                         </div>
                     </div>
                 </md-card>
-                <div flex="10"></div>
+                <div flex="0" flex-gt-md="10"></div>
             </div>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised" ng-click="SC.page=2" flex="20">Previous</md-button>
-                <md-button class="md-primary md-raised" type="submit" flex="20">Submit</md-button>
+                <md-button class="md-raised" ng-click="SC.page=2" flex="50" flex-gt-sm="20">Previous</md-button>
+                <md-button class="md-primary md-raised" type="submit" flex="50" flex-gt-sm="20">Submit</md-button>
             </div>
         </form>
     </md-card>
-    <div flex="15"></div>
+    <div flex-gt-sm="15"></div>
 </md-content>
 
 <!-- separate forms -->

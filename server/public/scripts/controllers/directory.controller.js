@@ -5,7 +5,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     UserService.getuser();
 
     var vm = this;
-    vm.sortMethod = 'name';
+    vm.sortMethod = 'lastname';
     vm.reverse = false;
     vm.query = '';
 

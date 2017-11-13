@@ -157,8 +157,22 @@ myApp.service('ProspectsService', function ($http, $location) {
             }
         }).then(function (response) {
             console.log('in service connection POST with', response);
-        })
+            self.getConnections(id1);
+        });
     };
+
+    self.deleteConnection = function(id1, id2) {
+        var connectionId = id1;
+        var profileId =id2;
+        console.log('profileID:', id2, "connectionsId", id1);
+        return $http({
+            method: 'DELETE',
+            url: '/profilesRoute/connections/' + connectionId
+            }).then(function(response) {
+            console.log('deleteApproval response:', response);
+            self.getConnections(id2);
+        });
+    }; // end deleteConnection
 
     self.changeTag = function(id){
         console.log('id, tag array: ', id, self.profile.list[0].tags);

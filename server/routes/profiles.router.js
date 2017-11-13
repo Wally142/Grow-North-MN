@@ -37,7 +37,7 @@ router.get('/connections/:id', function (req, res) {
                 console.log(error);
                 res.sendStatus(404);
             } else {
-                client.query("SELECT person2, firstname, lastname, company FROM connections FULL JOIN prospects ON connections.person2=prospects.id WHERE person1=$1", [dbId], function (queryErr, resultObj) {
+                client.query("SELECT connections.id, person2, firstname, lastname, company FROM connections FULL JOIN prospects ON connections.person2=prospects.id WHERE person1=$1", [dbId], function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
                         console.log(queryErr);
@@ -167,5 +167,28 @@ router.put('/tags/:id', function (req, res) {
     });
 }); // end UPDATE comments
 
+router.delete('/connections/:id', function (req, res) {
+    if (req.isAuthenticated()){
+        console.log('delete Connections with ', req.params.id);
+        var connectionId = req.params.id;
+        
+        pool.connect(function (error, client, done) {
+            if (error) {
+                console.log(error);
+                res.sendStatus(404);
+            } else {
+                client.query("DELETE FROM connections WHERE connections.id =$1;", [connectionId], function (queryErr, resultObj) {
+                    done();
+                    if (queryErr) {
+                        console.log(queryErr);
+                        res.sendStatus(500);
+                    } else {
+                        res.sendStatus(202);
+                    }
+                });
+            }
+        });
+    }
+});// end DELETE connection
 
 module.exports = router;

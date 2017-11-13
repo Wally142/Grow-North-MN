@@ -50,7 +50,11 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     function DialogController(ProspectsService, $scope, $mdDialog, $route) {
         $scope.profile = ProspectsService.profile;
         $scope.connections = ProspectsService.connections;
+        $scope.pencilIcon = false;
 
+        $scope.togglePencilIcon = function(){
+            $scope.pencilIcon = !$scope.pencilIcon;
+        };
         $scope.commentIn = '';
         // holds true/false values for ng-shows
         $scope.editBoolean = {};

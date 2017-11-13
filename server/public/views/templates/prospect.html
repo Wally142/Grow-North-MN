@@ -40,6 +40,12 @@
                                     <p ng-show="!editBoolean.lastname">
                                         {{ profile.list[0].lastname }}
                                     </p>
+                                    <md-checkbox ng-model="profile.list[0].mentor" ng-value="profile.list[0].mentor" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentor, 'mentor')" aria-label="Mentor">
+                                        Mentor
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="profile.list[0].mentee" ng-value="profile.list[0].mentee" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentee, 'mentee')" aria-label="Mentee">
+                                        Mentee
+                                    </md-checkbox>
                                     <p class="detailsQuestions">
                                         Email
                                         <md-icon md-svg-src="img/pencil.svg" ng-click="showEdit('email')"></md-icon>
@@ -88,7 +94,8 @@
                                     </p>
                                     <div>
                                         <div class="connections" ng-repeat="connection in connections.list">
-                                            <p>{{connection.firstname}} {{connection.lastname}}</p>
+                                            <p> 
+                                                <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon> {{connection.firstname}} {{connection.lastname}}</p>
                                         </div>
                                         <p>Add a Connection:</p>
                                         <md-autocomplete ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
@@ -101,7 +108,7 @@
                                                 No results matching "{{searchText}}" were found.
                                             </md-not-found>
                                         </md-autocomplete>
-                                        <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">please work</md-button>
+                                        <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
 
                                     </div>
                                 </div>

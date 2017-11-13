@@ -2,10 +2,10 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     console.log('DirectoryController created');
     $scope.currentNavItem = 'directory'; // tells nav bar which item to indicate as 'selected'
 
-    UserService.getuser()
+    UserService.getuser();
 
     var vm = this;
-    vm.sortMethod = 'name';
+    vm.sortMethod = 'lastname';
     vm.reverse = false;
     vm.query = '';
 
@@ -20,7 +20,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     vm.sort = function (method) {
         vm.reverse = (vm.sortMethod === method) ? !vm.reverse : false;
         vm.sortMethod = method;
-    }
+    };
 
     vm.getDirectory = function () {
         ProspectsService.getDirectory();
@@ -68,6 +68,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             console.log('delete account func called for user id: ', id);
             ProspectsService.deleteProfile(id);
             $mdDialog.cancel();
+            $scope.reloadRoute();
         };
         $scope.approve = function (id, status) {
             ProspectsService.updateApproval(id, status);
@@ -95,8 +96,14 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             console.log('you clicked me!', id1, id2);
         };
 
-        $scope.reloadRoute = function() {
-            $route.reload();
+        $scope.deleteConnection = function (id1, id2) {
+            ProspectsService.deleteConnection(id1, id2);
+            console.log('Profile ID:', id1, id2);
+            
+        };
+
+        $scope.reloadRoute = function(id) {
+            $route.reload(id);
         };
 
         $scope.$watchCollection('profile.list[0].tags', function(){
@@ -123,7 +130,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
                     // personId.push(vm.directory.list[i].id);
                 }
                 console.log('LIST:', list);
-                console.log('id', vm.directory.list.id)
+                console.log('id', vm.directory.list.id);
                 var allListings = list.map(function (person) {
                     
                     return {

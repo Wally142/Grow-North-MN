@@ -187,4 +187,20 @@ myApp.service('ProspectsService', function ($http, $location) {
         });
     };
 
+    self.connectionComment = function(id, comment) {
+        console.log('comment on connections with ID:', id);
+        var thisId = id;
+        var newComment = {
+            comments: comment
+        };
+        $http({
+            method: 'PUT',
+            url: '/profilesRoute/connections/' + thisId,
+            data: newComment
+        }).then(function (response) {
+            console.log('Approval Update response:', response);
+            
+        });
+    };
+
 }); // end service

@@ -39,7 +39,7 @@
                     </div>
                     </md-toolbar>
                     <md-list>
-                    <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.paginatedListings track by $index">
+                    <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.paginatedListings track by $index | orderBy:DC.sortMethod:DC.reverse | filter:DC.query">
                         <div flex="20">
                             {{ listing.lastname }}, {{ listing.firstname }}
                         </div>

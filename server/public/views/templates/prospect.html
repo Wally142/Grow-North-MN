@@ -197,31 +197,46 @@
                 </md-tab>
                 <md-tab label="Connections">
                         <md-content class="md-padding">
-                                <p>Add a Connection:</p>
-                                <md-autocomplete ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
-                                    md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)"
-                                    md-item-text="item.display" md-min-length="0" placeholder="Search the directory">
-                                    <md-item-template>
-                                        <span-md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
-                                    </md-item-template>
-                                    <md-not-found>
-                                        No results matching "{{searchText}}" were found.
-                                    </md-not-found>
-                                </md-autocomplete>
-                                <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
-                    <p class="detailsQuestions">
-                        Connections made:
-                    </p>
-                    <div>
-                        <div class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname">
-                            <p> 
-                                <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon> {{connection.firstname}} {{connection.lastname}}</p>
+                            <div flex="50">
+                            <p>Add a Connection:</p>
+                            <md-autocomplete flex="100" ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
+                                md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)"
+                                md-item-text="item.display" md-min-length="0" placeholder="Search the directory">
+                                <md-item-template>
+                                    <span-md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                                </md-item-template>
+                                <md-not-found>
+                                    No results matching "{{searchText}}" were found.
+                                </md-not-found>
+                            </md-autocomplete>
                         </div>
-                    </div>
+                            <div flex="50">
+                                    <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
+                            <p class="detailsQuestions">Connections made:</p>
+                            <div>
+                                <div class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname">
+                                    <p> 
+                                        <div class="connectionListing" ng-click="showComments(connection.id)" ng-hide="DC.commentsOn">
+                                        <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon> 
+                                            {{connection.firstname}} {{connection.lastname}}
+                                        </div>
+                                        <textarea ng-hide="!commentsOn" ng-model="commentsIn" ng-value="connection.comments"></textarea>
+                                        <p ng-show="!commentsOn">{{connection.comments}}</p>
+                                        <md-icon md-svg-src="img/check.svg" ng-hide="DC.commentsOn" ng-click="connectionComment(connection.id, commentsIn); DC.getProfile(profile.list[0].id);"></md-icon>
+                                    <br>
+                                    Connected on {{connection.date | date: 'mediumDate'}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                 </md-content>
                 </md-tab>
                 <md-tab label="Notes">
                     <md-content class="md-padding">
+                            <p class="detailsQuestions">
+                                    Tags:
+                                </p>
+                                <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
                         <p class="detailsQuestions">
                             Comments:
                             <md-icon md-svg-src="img/pencil.svg" ng-click="showEdit('comments')"></md-icon>
@@ -232,10 +247,6 @@
                         <p ng-show="!editBoolean.comments">
                             {{ profile.list[0].comments }}
                         </p>
-                        <p class="detailsQuestions">
-                            Tags:
-                        </p>
-                        <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
                     </md-content>
                 </md-tab>
             </md-tabs>

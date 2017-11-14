@@ -37,7 +37,7 @@ router.get('/connections/:id', function (req, res) {
                 console.log(error);
                 res.sendStatus(404);
             } else {
-                client.query("SELECT connections.id, person2, person1, firstname, lastname, company FROM connections FULL JOIN prospects ON connections.person2=prospects.id OR connections.person1=prospects.id WHERE person1=$1 OR person2=$1;", [dbId], function (queryErr, resultObj) {
+                client.query("SELECT connections.id, person2, person1, firstname, lastname, company, date, connections.comments FROM connections FULL JOIN prospects ON connections.person2=prospects.id OR connections.person1=prospects.id WHERE person1=$1 OR person2=$1;", [dbId], function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
                         console.log(queryErr);
@@ -190,5 +190,35 @@ router.delete('/connections/:id', function (req, res) {
         });
     }
 });// end DELETE connection
+
+
+router.put('/connections/:id', function (req, res) {
+    if (req.isAuthenticated()){
+        console.log('in updateConnectionComments with', req.params.id);
+        var dbId = req.params.id;
+        var comment = req.body.comments;
+    
+        console.log('connection comments', dbId, comment);
+    
+        pool.connect(function (error, client, done) {
+            if (error) {
+                console.log(error);
+                res.sendStatus(404);
+            } else {
+                var queryString = "UPDATE connections SET comments = $2 WHERE id=$1";
+                var values = [dbId, comment];
+                client.query(queryString, values, function (queryErr, resultObj) {
+                    if (queryErr) {
+                        console.log('Query Error on PUT connection comment route', queryErr);
+                        res.sendStatus(500);
+                    } else {
+                        res.sendStatus(202);
+                    }
+                    done();
+                });
+            }
+        });
+    }
+}); // end UPDATE connection comments
 
 module.exports = router;

@@ -12,6 +12,8 @@ myApp.controller('SurveyController', function (FormService, $scope) {
     phone: null,
     company: null,
     title: null,
+    website: null,
+    linkedin: null,
     referral: null,
     permission: false,
     mentor: false,

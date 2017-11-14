@@ -37,7 +37,7 @@ router.get('/connections/:id', function (req, res) {
                 console.log(error);
                 res.sendStatus(404);
             } else {
-                client.query("SELECT connections.id, person2, firstname, lastname, company FROM connections FULL JOIN prospects ON connections.person2=prospects.id WHERE person1=$1", [dbId], function (queryErr, resultObj) {
+                client.query("SELECT connections.id, person2, person1, firstname, lastname, company FROM connections FULL JOIN prospects ON connections.person2=prospects.id OR connections.person1=prospects.id WHERE person1=$1 OR person2=$1;", [dbId], function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
                         console.log(queryErr);

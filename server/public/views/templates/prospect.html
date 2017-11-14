@@ -89,7 +89,7 @@
                                     <md-button ng-click="delete(profile.list[0].id)">Delete</md-button>
                                 </md-dialog-actions>
                                 <div ng-if="profile.list[0].approved">
-                                    <p class="detailsQuestions">
+                                    <!-- <p class="detailsQuestions">
                                         Connections made:
                                     </p>
                                     <div>
@@ -110,7 +110,7 @@
                                         </md-autocomplete>
                                         <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
 
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </div>
@@ -194,6 +194,31 @@
                             <p ng-show="!editBoolean.story">{{ profile.list[0].story }}</p>
                         </div>
                     </md-content>
+                </md-tab>
+                <md-tab label="Connections">
+                        <md-content class="md-padding">
+                                <p>Add a Connection:</p>
+                                <md-autocomplete ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
+                                    md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)"
+                                    md-item-text="item.display" md-min-length="0" placeholder="Search the directory">
+                                    <md-item-template>
+                                        <span-md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                                    </md-item-template>
+                                    <md-not-found>
+                                        No results matching "{{searchText}}" were found.
+                                    </md-not-found>
+                                </md-autocomplete>
+                                <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
+                    <p class="detailsQuestions">
+                        Connections made:
+                    </p>
+                    <div>
+                        <div class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname">
+                            <p> 
+                                <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon> {{connection.firstname}} {{connection.lastname}}</p>
+                        </div>
+                    </div>
+                </md-content>
                 </md-tab>
                 <md-tab label="Notes">
                     <md-content class="md-padding">

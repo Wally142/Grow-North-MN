@@ -120,7 +120,7 @@
     </md-toolbar>
     <!-- <md-content> -->
       <md-list>
-        <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+        <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.paginatedToBeApproved | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
           ng-value="listing.id">
           <div class="md-list-item-text" flex="20">
             <p>{{listing.firstname}} {{listing.lastname}}</p>
@@ -138,6 +138,9 @@
             <md-button ng-click="showProfile($event, listing.id)">Review</md-button>
           </div>
         </md-list-item>
+        <md-collection-pagination class="pagination-buttons" collection="DC.approval.list" paginated-collection="DC.paginatedToBeApproved"
+                  per-page=8></md-collection-pagination>
+
         <!-- <md-list-item class="adminApproval md-2-line" layout="row">
                             <div class="md-list-item-text">
                                 <p>Hey! This will be ng-repeated eventually, and clickable too!</p>

@@ -22,6 +22,21 @@
                         <md-dialog-content>
                             <div class="md-dialog-content">
                                 <div>
+                                    <div>
+                                        <div ng-mouseenter="pencil.firstname = true" ng-mouseleave="pencil.firstname = false">
+                                            <p class="detailsQuestions">
+                                                First name
+                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.firstname}" ng-click="showEdit('firstname')"></md-icon>
+                                            </p>
+                                        </div>
+                                        <input ng-show="editBoolean.firstname" ng-value="profile.list[0].firstname" type="text" , ng-model="firstnameIn">
+                                        <!-- <md-icon md-svg-src="img/check.svg" ng-show="editBoolean.firstname" ng-click="updateDetails(profile.list[0].id, firstnameIn, 'firstname')"></md-icon> -->
+                                        <md-button class="md-raised md-primary" ng-show="editBoolean.firstname" ng-click="updateDetails(profile.list[0].id, firstnameIn, 'firstname')">Save</md-button>
+                                        <p ng-show="!editBoolean.firstname">
+                                            {{ profile.list[0].firstname }}
+                                        </p>
+                                    </div>
+
                                     <p class="detailsQuestions">
                                         First name
                                         <md-icon md-svg-src="img/pencil.svg" ng-click="showEdit('firstname')"></md-icon>
@@ -40,10 +55,12 @@
                                     <p ng-show="!editBoolean.lastname">
                                         {{ profile.list[0].lastname }}
                                     </p>
-                                    <md-checkbox ng-model="profile.list[0].mentor" ng-value="profile.list[0].mentor" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentor, 'mentor')" aria-label="Mentor">
+                                    <md-checkbox ng-model="profile.list[0].mentor" ng-value="profile.list[0].mentor" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentor, 'mentor')"
+                                        aria-label="Mentor">
                                         Mentor
                                     </md-checkbox>
-                                    <md-checkbox ng-model="profile.list[0].mentee" ng-value="profile.list[0].mentee" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentee, 'mentee')" aria-label="Mentee">
+                                    <md-checkbox ng-model="profile.list[0].mentee" ng-value="profile.list[0].mentee" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentee, 'mentee')"
+                                        aria-label="Mentee">
                                         Mentee
                                     </md-checkbox>
                                     <p class="detailsQuestions">
@@ -196,8 +213,8 @@
                     </md-content>
                 </md-tab>
                 <md-tab label="Connections">
-                        <md-content class="md-padding">
-                            <div flex="50">
+                    <md-content class="md-padding">
+                        <div flex="50">
                             <p>Add a Connection:</p>
                             <md-autocomplete flex="100" ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
                                 md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)"
@@ -210,33 +227,32 @@
                                 </md-not-found>
                             </md-autocomplete>
                         </div>
-                            <div flex="50">
-                                    <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
+                        <div flex="50">
+                            <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
                             <p class="detailsQuestions">Connections made:</p>
                             <div>
                                 <div class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname">
-                                    <p> 
+                                    <p>
                                         <div class="connectionListing" ng-click="showComments(connection.id)" ng-hide="DC.commentsOn">
-                                        <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon> 
+                                            <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
                                             {{connection.firstname}} {{connection.lastname}}
                                         </div>
                                         <textarea ng-hide="!commentsOn" ng-model="commentsIn" ng-value="connection.comments"></textarea>
                                         <p ng-show="!commentsOn">{{connection.comments}}</p>
                                         <md-icon md-svg-src="img/check.svg" ng-hide="DC.commentsOn" ng-click="connectionComment(connection.id, commentsIn); DC.getProfile(profile.list[0].id);"></md-icon>
-                                    <br>
-                                    Connected on {{connection.date | date: 'mediumDate'}}
+                                        <br> Connected on {{connection.date | date: 'mediumDate'}}
                                     </p>
                                 </div>
                             </div>
                         </div>
-                </md-content>
+                    </md-content>
                 </md-tab>
                 <md-tab label="Notes">
                     <md-content class="md-padding">
-                            <p class="detailsQuestions">
-                                    Tags:
-                                </p>
-                                <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
+                        <p class="detailsQuestions">
+                            Tags:
+                        </p>
+                        <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
                         <p class="detailsQuestions">
                             Comments:
                             <md-icon md-svg-src="img/pencil.svg" ng-click="showEdit('comments')"></md-icon>

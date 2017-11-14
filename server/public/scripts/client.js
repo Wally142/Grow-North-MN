@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'unsavedChanges']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'mdCollectionPagination']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {

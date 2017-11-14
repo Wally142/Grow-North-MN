@@ -6,6 +6,10 @@ html {
   font-size: 14px;
 }
 
+.pagination-buttons{
+  padding: 5px;
+}
+
 .instructions .container h1 {
   font-size: 32px;
   font-weight: 600;

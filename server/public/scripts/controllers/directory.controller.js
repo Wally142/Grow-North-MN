@@ -5,6 +5,9 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     UserService.getuser();
 
     var vm = this;
+    vm.sortMethod = 'lastname';
+    vm.reverse = false;
+    vm.query = '';
 
     vm.directory = {
         list: []
@@ -54,6 +57,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     function DialogController(ProspectsService, $scope, $mdDialog, $route) {
         $scope.profile = ProspectsService.profile;
         $scope.connections = ProspectsService.connections;
+        $scope.commentsOn = false;
 
         $scope.commentIn = '';
         // holds true/false values for ng-shows
@@ -106,6 +110,17 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             
         };
 
+        $scope.connectionComment = function(id, comment) {
+            ProspectsService.connectionComment(id, comment);
+            console.log('Connection Comments:', id, comment);
+        };
+
+        $scope.showComments = function(id) {
+            $scope.commentsOn = !$scope.commentsOn;
+            console.log('HI!', $scope.commentsOn);
+            
+        };
+
         $scope.reloadRoute = function(id) {
             $route.reload(id);
         };
@@ -141,16 +156,8 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
                         value: person.name.toLowerCase(),
                         display: person.name,
                         id: person.id
-                         
-                        
-                         
                     };
                 });
-                // var allIds = personId.map(function (id) {
-                //     return {
-                //         id: id
-                //     };
-                // });
                 return allListings;
             };
 

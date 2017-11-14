@@ -72,11 +72,11 @@
                     <i class="material-icons">arrow_drop_down</i>Name
                 </md-button> -->
         <div flex="20">
-          <md-button ng-show="MC.sortMethod!=='name'" ng-click="MC.sort('name')">Name</md-button>
-          <md-button ng-show="MC.sortMethod=='name' && MC.reverse == true" ng-click="MC.sort('name')">Name
+          <md-button ng-show="MC.sortMethod!=='lastname'" ng-click="MC.sort('lastname')">Name</md-button>
+          <md-button ng-show="MC.sortMethod=='lastname' && MC.reverse == true" ng-click="MC.sort('lastname')">Name
             <i class="material-icons">arrow_drop_up</i>
           </md-button>
-          <md-button ng-show="MC.sortMethod=='name' && MC.reverse == false" ng-click="MC.sort('name')">Name
+          <md-button ng-show="MC.sortMethod=='lastname' && MC.reverse == false" ng-click="MC.sort('lastname')">Name
             <i class="material-icons">arrow_drop_down</i>
           </md-button>
         </div>
@@ -99,11 +99,11 @@
                 </md-button> -->
         </div>
         <div flex="20" layout="row" layout-align="space-between center">
-          <md-button ng-show="MC.sortMethod!=='date'" ng-click="MC.sort('date')">Date Submitted</md-button>
-          <md-button ng-show="MC.sortMethod=='date' && MC.reverse == true" ng-click="MC.sort('date')">Date Submitted
+          <md-button ng-show="MC.sortMethod!=='startdate'" ng-click="MC.sort('startdate')">Date Submitted</md-button>
+          <md-button ng-show="MC.sortMethod=='startdate' && MC.reverse == true" ng-click="MC.sort('startdate')">Date Submitted
             <i class="material-icons">arrow_drop_up</i>
           </md-button>
-          <md-button ng-show="MC.sortMethod=='date' && MC.reverse == false" ng-click="MC.sort('date')">Date Submitted
+          <md-button ng-show="MC.sortMethod=='startdate' && MC.reverse == false" ng-click="MC.sort('startdate')">Date Submitted
             <i class="material-icons">arrow_drop_down</i>
           </md-button>
           <!-- <md-button class="md-icon-button fltRgt"> -->

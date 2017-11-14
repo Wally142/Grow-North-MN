@@ -9,7 +9,7 @@ myApp.controller('MetricsController', function (ProspectsService, UserService, $
     vm.mentors = { list: [] };
     vm.mentee = { list: [] };
     vm.connections = { list: [] };
-    vm.sortMethod = 'name';
+    vm.sortMethod = 'lastname';
     vm.reverse = false;
     vm.query = '';
 

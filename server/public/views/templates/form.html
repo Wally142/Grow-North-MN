@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/header.html'"></div>
 <md-content id="formContent" class="colorContent" layout="row" layout-padding>
-    <div flex-gt-sm="15"></div>
+    <div flex-gt-md="15"></div>
     <md-card layout-padding ng-show="SC.page===0" flex>
         <form name="surveyForm0" ng-submit="SC.form0Nav(1)">
             <md-card-title>
@@ -76,6 +76,22 @@
                     <input name="title" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.title" required>
                     <div ng-messages="surveyForm0.title.$error">
                         <div ng-message="required">This information is required.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="column" layout-gt-sm="row">
+                <md-input-container flex>
+                    <label>Website</label>
+                    <input name="website" md-maxlength="100" maxlength="100" type="text" phone-input ng-model="SC.formInput.website">
+                    <div ng-messages="surveyForm0.phone.$error">
+                        <div ng-message="maxlength">Website URL cannot exceed 100 characters.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>LinkedIn</label>
+                    <input name="linkedin" md-maxlength="100" maxlength="100" type="text" ng-model="SC.formInput.linkedin">
+                    <div ng-messages="surveyForm0.company.$error">
+                        <div ng-message="maxlength">LinkedIn URL cannot exceed 100 characters.</div>
                     </div>
                 </md-input-container>
             </div>
@@ -166,7 +182,7 @@
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-            <!-- </div>
+                <!-- </div>
             <div layout="column" layout-gt-sm="row"> -->
                 <md-input-container ng-if="SC.formInput.mentor" flex="100">
                     <label>Provide a specific example of your experience with a startup.</label>
@@ -187,7 +203,7 @@
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
-            <!-- </div>
+                <!-- </div>
             <div layout="column" layout-gt-sm="row"> -->
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What ecosystem does your business reside in?</label>
@@ -203,7 +219,7 @@
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-            <!-- </div>
+                <!-- </div>
             <div layout="column" layout-gt-sm="row"> -->
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What is your business's yearly revenue</label>
@@ -219,7 +235,7 @@
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-            <!-- </div>
+                <!-- </div>
             <div layout="column" layout-gt-sm="row"> -->
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What's your story?</label>
@@ -381,5 +397,5 @@
             <md-button class="md-raised md-primary" href="http://www.grownorthmn.com/">Return to Grow North MN</md-button>
         </div>
     </md-card>
-    <div flex-gt-sm="15"></div>
+    <div flex-gt-md="15"></div>
 </md-content>

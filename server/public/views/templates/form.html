@@ -1,6 +1,6 @@
 <div ng-include="'views/partials/header.html'"></div>
 <md-content id="formContent" class="colorContent" layout="row" layout-padding>
-    <div flex-gt-md="15"></div>
+    <div hide show-gt-md flex="15"></div>
     <md-card layout-padding ng-show="SC.page===0" flex>
         <form name="surveyForm0" ng-submit="SC.form0Nav(1); surveyForm1.involvement.$setDirty()" unsaved-warning-form>
             <md-card-title>
@@ -30,7 +30,7 @@
                 <div flex="10">Test</div>
                 <div flex="5"></div>
             </div> -->
-            <div layout="column" layout-gt-sm="row">
+            <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
                     <label>First Name</label>
                     <input type="text" name="firstname" md-maxlength="50" md-minlength="1" maxlength="50" ng-model="SC.formInput.firstname" required>
@@ -54,7 +54,7 @@
                     </div>
                 </md-input-container>
             </div>
-            <div layout="column" layout-gt-sm="row">
+            <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
                     <label>Phone</label>
                     <input name="phone" md-minlength="14" md-maxlength="14" maxlength="14" type="text" phone-input ng-model="SC.formInput.phone"
@@ -79,7 +79,7 @@
                     </div>
                 </md-input-container>
             </div>
-            <div layout="column" layout-gt-sm="row">
+            <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
                     <label>Website</label>
                     <input name="website" md-maxlength="100" maxlength="100" type="text" ng-model="SC.formInput.website">
@@ -95,7 +95,7 @@
                     </div>
                 </md-input-container>
             </div>
-            <div layout="column" layout-gt-sm="row">
+            <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
                     <label>How did you hear about Grow North?</label>
                     <input name="referral" md-maxlength="500" type="text" ng-model="SC.formInput.referral" required>
@@ -104,7 +104,7 @@
                     </div>
                 </md-input-container>
             </div>
-            <div layout="column" layout-gt-sm="row">
+            <div layout="column" layout-gt-md="row">
                 <div flex layout="column" layout-align="center center">
                     <md-input-container flex="50">
                         <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
@@ -139,7 +139,7 @@
                 </md-input-container> -->
             </div>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-sm="20">Next</md-button>
+                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-md="20">Next</md-button>
             </div>
         </form>
     </md-card>
@@ -165,7 +165,7 @@
             <div ng-if="SC.formInput.mentor" flex="100">
                 <h4>Mentor</h4>
             </div>
-            <div layout="column" layout-gt-sm="row" layout-wrap>
+            <div layout="column" layout-gt-md="row" layout-wrap>
                 <md-input-container ng-if="SC.formInput.mentor" flex>
                     <!-- make a checkbox system -->
                     <label>Level of Involvement?</label>
@@ -183,7 +183,7 @@
                     </div>
                 </md-input-container>
                 <!-- </div>
-            <div layout="column" layout-gt-sm="row"> -->
+            <div layout="column" layout-gt-md="row"> -->
                 <md-input-container ng-if="SC.formInput.mentor" flex="100">
                     <label>Provide a specific example of your experience with a startup.</label>
                     <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="SC.formInput.experience" required></textarea>
@@ -195,7 +195,7 @@
             <div ng-if="SC.formInput.mentee" flex="100">
                 <h4>Mentee</h4>
             </div>
-            <div layout="column" layout-gt-sm="row" layout-wrap>
+            <div layout="column" layout-gt-md="row" layout-wrap>
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What are you struggling with?</label>
                     <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.struggle" required>
@@ -204,7 +204,7 @@
                     </div>
                 </md-input-container>
                 <!-- </div>
-            <div layout="column" layout-gt-sm="row"> -->
+            <div layout="column" layout-gt-md="row"> -->
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What ecosystem does your business reside in?</label>
                     <input name="ecosystem" md-maxlength="500" type="text" ng-model="SC.formInput.ecosystem" required>
@@ -220,7 +220,7 @@
                     </div>
                 </md-input-container>
                 <!-- </div>
-            <div layout="column" layout-gt-sm="row"> -->
+            <div layout="column" layout-gt-md="row"> -->
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What is your business's yearly revenue</label>
                     <input name="revenue" md-maxlength="500" type="text" ng-model="SC.formInput.revenue" required>
@@ -236,7 +236,7 @@
                     </div>
                 </md-input-container>
                 <!-- </div>
-            <div layout="column" layout-gt-sm="row"> -->
+            <div layout="column" layout-gt-md="row"> -->
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What's your story?</label>
                     <textarea rows="4" name="story" md-maxlength="500" type="text" ng-model="SC.formInput.story" required></textarea>
@@ -246,8 +246,8 @@
                 </md-input-container>
             </div>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised" ng-click="SC.page=0" flex="50" flex-gt-sm="20">Previous</md-button>
-                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-sm="20">Next</md-button>
+                <md-button class="md-raised" ng-click="SC.page=0" flex="50" flex-gt-md="20">Previous</md-button>
+                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-md="20">Next</md-button>
             </div>
         </form>
     </md-card>
@@ -286,8 +286,8 @@
                 </div>
             </md-input-container>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised" ng-click="SC.page=1" flex="50" flex-gt-sm="20">Previous</md-button>
-                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-sm="20">Next</md-button>
+                <md-button class="md-raised" ng-click="SC.page=1" flex="50" flex-gt-md="20">Previous</md-button>
+                <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-md="20">Next</md-button>
             </div>
         </form>
     </md-card>
@@ -381,8 +381,8 @@
                 <div flex="0" flex-gt-md="10"></div>
             </div>
             <div layout="row" layout-align="center center">
-                <md-button class="md-raised" ng-click="SC.page=2" flex="50" flex-gt-sm="20">Previous</md-button>
-                <md-button class="md-primary md-raised" type="submit" flex="50" flex-gt-sm="20">Submit</md-button>
+                <md-button class="md-raised" ng-click="SC.page=2" flex="50" flex-gt-md="20">Previous</md-button>
+                <md-button class="md-primary md-raised" type="submit" flex="50" flex-gt-md="20">Submit</md-button>
             </div>
         </form>
     </md-card>
@@ -397,5 +397,5 @@
             <md-button class="md-raised md-primary" href="http://www.grownorthmn.com/">Return to Grow North MN</md-button>
         </div>
     </md-card>
-    <div flex-gt-md="15"></div>
+    <div hide show-gt-md flex="15"></div>
 </md-content>

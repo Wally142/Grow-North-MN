@@ -56,6 +56,14 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
       templateUrl: '/views/templates/autocomplete.html',
       controller: 'DirectoryController as DC'
     })
+    .when('/logout', {
+      controller: 'LoginController',
+      resolve: {
+        logout: function(UserService){
+          UserService.logout();
+        }
+      }
+    })
     .otherwise({
       redirectTo: 'home'
     });

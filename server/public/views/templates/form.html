@@ -2,7 +2,7 @@
 <md-content id="formContent" class="colorContent" layout="row" layout-padding>
     <div flex-gt-md="15"></div>
     <md-card layout-padding ng-show="SC.page===0" flex>
-        <form name="surveyForm0" ng-submit="SC.form0Nav(1)" unsaved-warning-form>
+        <form name="surveyForm0" ng-submit="SC.form0Nav(1); surveyForm1.involvement.$setDirty()" unsaved-warning-form>
             <md-card-title>
                 <md-card-title-text>
                     Tell us about yourself
@@ -145,7 +145,7 @@
     </md-card>
     <!-- Start of Form 2 -->
     <md-card layout-padding ng-show="SC.page===1" flex>
-        <form name="surveyForm1" ng-submit="SC.form0Nav(2)" unsaved-warning-form>
+        <form name="surveyForm1" ng-submit="SC.form0Nav(2); surveyForm2.legal.$setDirty()" unsaved-warning-form>
             <md-card-title>
                 <md-card-title-text>
                     We have just a few more questions for you
@@ -253,7 +253,7 @@
     </md-card>
     <!-- Start of Form 3 -->
     <md-card layout-padding ng-show="SC.page===2" flex>
-        <form name="surveyForm2" ng-submit="SC.form2Nav(3)" unsaved-warning-form>
+        <form name="surveyForm2" ng-submit="SC.form2Nav(3); surveyForm3.$setDirty()" unsaved-warning-form>
             <md-card-title>
                 <md-card-title-text>
                     Terms and Conditions

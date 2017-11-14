@@ -2,7 +2,7 @@
 <md-content id="formContent" class="colorContent" layout="row" layout-padding>
     <div flex-gt-md="15"></div>
     <md-card layout-padding ng-show="SC.page===0" flex>
-        <form name="surveyForm0" ng-submit="SC.form0Nav(1)">
+        <form name="surveyForm0" ng-submit="SC.form0Nav(1)" unsaved-warning-form>
             <md-card-title>
                 <md-card-title-text>
                     Tell us about yourself
@@ -82,7 +82,7 @@
             <div layout="column" layout-gt-sm="row">
                 <md-input-container flex>
                     <label>Website</label>
-                    <input name="website" md-maxlength="100" maxlength="100" type="text" phone-input ng-model="SC.formInput.website">
+                    <input name="website" md-maxlength="100" maxlength="100" type="text" ng-model="SC.formInput.website">
                     <div ng-messages="surveyForm0.phone.$error">
                         <div ng-message="maxlength">Website URL cannot exceed 100 characters.</div>
                     </div>
@@ -145,7 +145,7 @@
     </md-card>
     <!-- Start of Form 2 -->
     <md-card layout-padding ng-show="SC.page===1" flex>
-        <form name="surveyForm1" ng-submit="SC.form0Nav(2)">
+        <form name="surveyForm1" ng-submit="SC.form0Nav(2)" unsaved-warning-form>
             <md-card-title>
                 <md-card-title-text>
                     We have just a few more questions for you
@@ -253,7 +253,7 @@
     </md-card>
     <!-- Start of Form 3 -->
     <md-card layout-padding ng-show="SC.page===2" flex>
-        <form name="surveyForm2" ng-submit="SC.form2Nav(3)">
+        <form name="surveyForm2" ng-submit="SC.form2Nav(3)" unsaved-warning-form>
             <md-card-title>
                 <md-card-title-text>
                     Terms and Conditions
@@ -293,7 +293,7 @@
     </md-card>
     <!-- Form 4 -->
     <md-card layout-padding ng-show="SC.page===3" flex>
-        <form name="surveyForm3" ng-submit="SC.grabInputs()">
+        <form name="surveyForm3" ng-submit="SC.grabInputs()" unsaved-warning-form>
             <md-card-title class="confirmTitle">
                 <md-card-title-text>
                     <p class="confirmTitleText">Confirm your information</p>

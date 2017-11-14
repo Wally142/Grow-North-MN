@@ -39,7 +39,7 @@
                     </div>
                     </md-toolbar>
                     <md-list>
-                    <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.directory.list track by $index">
+                    <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.paginatedListings track by $index">
                         <div flex="20">
                             {{ listing.lastname }}, {{ listing.firstname }}
                         </div>
@@ -61,6 +61,7 @@
                             <span ng-if="!listing.mentee">No</span>
                         </div>
                     </md-list-item>
+                    <md-collection-pagination collection="DC.directory.list" paginated-collection="DC.paginatedListings"></md-collection-pagination>
         </md-list>
         <!-- </md-content> -->
     </md-card>

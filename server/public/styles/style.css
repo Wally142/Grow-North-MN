@@ -301,3 +301,40 @@ md-button.headerBtn {
   font-size: 16pt;
 }
 /* end form pages */
+
+md-grid-tile {
+  background-color: tomato;
+}
+
+.connections {
+  text-align: center;
+  background-color:#447063;
+  padding: 4px;
+}
+
+
+.connectCard {
+  text-align: center;
+}
+
+.deleteIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.editIcon {
+  cursor: pointer;
+}
+
+textarea {
+  resize:none;
+  margin: 8px;
+  height: 90%;
+  width: 90%;
+}
+
+.md-button .saveComments {
+  height: 5px;
+}

@@ -6,12 +6,26 @@ html {
   font-size: 14px;
 }
 
+
+.parallax {
+   
+    background-image: url("../../img/raspberries.png");
+
+    min-height: 50px; 
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+  
 h1 h2 h3 h4 h5 h6 {
   font-family: "EB Garamond";
 }
 
 .formTitle {
   padding: 8px, 0, 8px, 0;
+
 }
 
 .pagination-buttons{
@@ -23,22 +37,31 @@ h1 h2 h3 h4 h5 h6 {
   font-weight: 600;
 }
 
-.instructions {
-  background-color: rgb(255, 255, 255);
-  /* color: #DDDDDD; */
-  padding: 15px;
-}
 
 #logo {
-  height: 100px;
+display: block;
+margin: auto;
+width: 50%;
+padding: 10px;
 }
 
-md-content.colorContent {
-  background-color: #36594f;
+md-content.colorContent  {
+  /* background-color: #000000; */
+     
+    background-image: url("../../img/raspberries.png");
+
+    /* Set a specific height */
+    min-height: 500px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
-  background-color: #36594f;
+  background-color: #000000;
 }
 
 #formCard {
@@ -174,7 +197,7 @@ md-grid-list {
 
 .fltLft {
   float: left;
-  background-color: rgb(250, 250, 250);
+  background-color: rgb(33, 38, 174);
 }
 
 .fltLft img {

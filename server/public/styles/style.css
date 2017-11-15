@@ -196,7 +196,10 @@ md-card.cardList {
 }
 
 
-/* directory profile view */
+/* profile view */
+.approveBtnDiv {
+  text-align: center;
+}
 
 #avatarDiv {
   float: right;
@@ -210,6 +213,29 @@ md-card.cardList {
 .instaSearch {
   margin-top: 14px;
 }
+
+.pencilHide {
+  opacity: 0;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.pencilShow {
+  opacity: 1;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+a {
+  text-decoration: none;
+}
+/* end profile view */
 
 md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,
 md-input-container:not(.md-input-invalid).instaSearch .md-input {

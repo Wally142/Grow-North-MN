@@ -89,11 +89,16 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             ProspectsService.updateComments(id, comment);
             $scope.editBoolean.comments = !$scope.editBoolean.comments;
         };
-
+        
         $scope.updateDetails = function (id, details, column) {
             console.log('update details with', id, details, column);
-            ProspectsService.updateDetails(id, details, column);
-            $scope.editBoolean[column] = !$scope.editBoolean[column];
+            // check if user has alerted info, cancel if nothing change
+            if (details !== undefined){
+                ProspectsService.updateDetails(id, details, column);
+                $scope.editBoolean[column] = !$scope.editBoolean[column];
+            } else {
+                $scope.showEdit(column);
+            }
         };
         $scope.showEdit = function (input) {
             $scope.editBoolean[input] = !$scope.editBoolean[input];

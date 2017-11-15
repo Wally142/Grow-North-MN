@@ -196,8 +196,7 @@ md-card.cardList {
 }
 
 
-/* directory profile view */
-
+/* profile view */
 #avatarDiv {
   float: right;
 }
@@ -210,6 +209,25 @@ md-card.cardList {
 .instaSearch {
   margin-top: 14px;
 }
+
+.pencilHide {
+  opacity: 0;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+
+.pencilShow {
+  opacity: 1;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  transition:.5s;
+}
+/* end profile view */
 
 md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,
 md-input-container:not(.md-input-invalid).instaSearch .md-input {
@@ -235,64 +253,3 @@ md-button.headerBtn {
   font-size: 16pt;
 }
 /* end form pages */
-
-#test {
-  background-color: blue;
-  /* First we need to help some browsers along for this to work.
-     Just because a vendor prefix is there, doesn't mean it will
-     work in a browser made by that vendor either, it's just for
-     future-proofing purposes I guess. */
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
-}
-#test:hover { 
-  background-color: red;
-}
-
-.pencilHide {
-  opacity: 0;
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
-}
-
-.pencilShow {
-  opacity: 1;
-  /* First we need to help some browsers along for this to work.
-     Just because a vendor prefix is there, doesn't mean it will
-     work in a browser made by that vendor either, it's just for
-     future-proofing purposes I guess. */
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
-}
-
-.pencil {
-  opacity: .25;
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;
-}
-
-.pencil:hover { 
-  opacity: 1;
-  -o-transition:.5s;
-  -ms-transition:.5s;
-  -moz-transition:.5s;
-  -webkit-transition:.5s;
-  /* ...and now for the proper property */
-  transition:.5s;  
-}

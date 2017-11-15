@@ -14,9 +14,9 @@
                 <md-tab label="Profile">
                     <md-content class="md-padding">
                         <div layout="column" id="avatarDiv">
-                            <img src="/img/avatar.png" height="100px" />
-                            <md-button ng-click="delete(profile.list[0].id)">
-                                <md-icon md-svg-src="img/trash.svg"></md-icon>
+                            <img src="/img/profile.svg" height="100px" />
+                            <md-button class="md-raised md-primary" ng-click="delete(profile.list[0].id)">
+                                Delete User
                             </md-button>
                         </div>
                         <md-dialog-content>
@@ -83,10 +83,10 @@
                                                     <md-icon md-svg-src="img/check.svg" ng-show="editBoolean.phone" ng-click="updateDetails(profile.list[0].id, phoneIn, 'phone')"></md-icon>
                                                 </p>
                                             </div>
-                                            <input ng-show="editBoolean.phone" ng-value="profile.list[0].phone" type="text" , ng-model="phoneIn">
+                                            <input ng-show="editBoolean.phone" ng-value="profile.list[0].phone" type="text" ng-model="phoneIn" maxlength="14" phone-input>
                                             <md-button class="md-raised md-primary" ng-show="editBoolean.phone" ng-click="updateDetails(profile.list[0].id, phoneIn, 'phone')">Save</md-button>
                                             <p ng-show="!editBoolean.phone">
-                                                {{ profile.list[0].phone }}
+                                                ({{ profile.list[0].phone.slice(0,3) }}) {{ profile.list[0].phone.slice(3,6) }}-{{ profile.list[0].phone.slice(6,10) }}
                                             </p>
                                         </div>
                                         <div>
@@ -153,6 +153,9 @@
                 </md-tab>
                 <md-tab label="Details">
                     <md-content class="md-padding">
+                        <div layout="column" id="avatarDiv">
+                            <img src="/img/details.svg" height="100px" />
+                        </div>
                         <div>
                             <div ng-mouseenter="pencil.referral = true" ng-mouseleave="pencil.referral = false">
                                 <p class="detailsQuestions">
@@ -279,6 +282,9 @@
                 </md-tab>
                 <md-tab label="Connections">
                     <md-content class="md-padding">
+                        <div layout="column" id="avatarDiv">
+                            <img src="/img/transfer.svg" height="100px" />
+                        </div>
                         <div flex="50">
                             <p>Add a Connection:</p>
                             <md-autocomplete flex="100" ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
@@ -314,6 +320,9 @@
                 </md-tab>
                 <md-tab label="Notes">
                     <md-content class="md-padding">
+                        <div layout="column" id="avatarDiv">
+                            <img src="/img/edit.svg" height="100px" />
+                        </div>
                         <p class="detailsQuestions">
                             Tags:
                         </p>

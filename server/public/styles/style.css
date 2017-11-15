@@ -196,12 +196,13 @@ md-grid-list {
 }
 
 .fltLft {
+  height: 100%;
   float: left;
   background-color: rgb(33, 38, 174);
 }
 
 .fltLft img {
-  height: 68px;
+  height: 100%;
   padding: 5px;
 }
 
@@ -215,7 +216,8 @@ md-grid-list {
 }
 
 .noBg {
-  background-color: rgb(250, 250, 250)
+  background-color: rgb(250, 250, 250);
+  height: 42px;
 }
 
 md-card.dashMetrics {

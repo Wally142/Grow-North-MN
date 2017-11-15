@@ -6,6 +6,10 @@ html {
   font-size: 14px;
 }
 
+md-content.md-default-theme, md-content {
+    color: rgba(255, 255, 255, 0.87);
+    background-color: transparent;
+}
 
 .parallax {
    
@@ -50,7 +54,7 @@ h1 h2 h3 h4 h5 h6 {
 /* #logo {
 display: block;
 margin: auto;
-width: 50%;
+width: 150px;
 padding: 10px;
 } */
 
@@ -123,9 +127,9 @@ ul {
 }
 
 
-/* li {
+li {
   float: left;
-} */
+}
 
 li a {
   display: block;
@@ -158,9 +162,9 @@ md-nav-bar md-nav-ink-bar {
   background: #447063 !important;
 }
 
-.md-button._md-nav-button {
+/* .md-button._md-nav-button {
   color: #447063;
-}
+} */
 
 md-grid-list {
   display: flex;
@@ -206,7 +210,7 @@ md-grid-list {
 
 .fltLft {
   float: left;
-  background-color: rgb(33, 38, 174);
+  /* background-color: rgb(0, 0, 0); */
 }
 
 .fltLft img {
@@ -223,9 +227,9 @@ md-grid-list {
   padding-left: 0;
 }
 
-.noBg {
+/* .noBg {
   background-color: rgb(250, 250, 250)
-}
+} */
 
 md-card.dashMetrics {
   padding: 0;

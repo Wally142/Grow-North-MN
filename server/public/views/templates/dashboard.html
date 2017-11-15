@@ -120,7 +120,7 @@
     </md-toolbar>
     <!-- <md-content> -->
       <md-list>
-        <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" layout-align="center center" ng-repeat="listing in DC.paginatedToBeApproved | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+        <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.paginatedToBeApproved | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
           ng-value="listing.id">
           <div class="md-list-item-text" flex="20">
             <p>{{listing.firstname}} {{listing.lastname}}</p>
@@ -151,4 +151,73 @@
     </div>
     </section>
   </md-card>
+  <md-content class="colorContent" layout="row" ng-init="DC.getDirectory()">
+    <!-- <div flex="10"></div> -->
+    <md-card class="cardList" flex>
+        <!-- <md-content class="directory" ng-init="DC.getDirectory()"> -->
+            <md-toolbar class="approvalList">
+                <div class="md-toolbar-tools" layout="row">
+                    <!-- <md-list-item class="adminApproval md-2-line" layout="row"> -->
+                    <div flex="20">
+                        <md-button class="headerBtn" ng-show="DC.sortMethod!=='lastname'" ng-click="DC.sort('lastname')">Name</md-button>
+                        <md-button class="headerBtn" ng-show="DC.sortMethod=='lastname' && DC.reverse == true" ng-click="DC.sort('lastname')">Name
+                            <i class="material-icons">arrow_drop_up</i>
+                        </md-button>
+                        <md-button class="headerBtn" ng-show="DC.sortMethod=='lastname' && DC.reverse == false" ng-click="DC.sort('lastname')">Name
+                            <i class="material-icons">arrow_drop_down</i>
+                        </md-button>
+                    </div>
+                    <div flex="20">
+                        <md-button class="headerBtn">Phone</md-button>
+                    </div>
+                    <div flex="20">
+                        <md-button class="headerBtn">Email</md-button>
+                    </div>
+                    <div flex="20">
+                        <md-button class="headerBtn" ng-show="DC.sortMethod!=='startdate'" ng-click="DC.sort('startdate')">Date Submitted</md-button>
+                        <md-button class="headerBtn" ng-show="DC.sortMethod=='startdate' && DC.reverse == true" ng-click="DC.sort('startdate')">Date Submitted
+                            <i class="material-icons">arrow_drop_up</i>
+                        </md-button>
+                        <md-button class="headerBtn" ng-show="DC.sortMethod=='startdate' && DC.reverse == false" ng-click="DC.sort('startdate')">Date Submitted
+                            <i class="material-icons">arrow_drop_down</i>
+                        </md-button>
+                    </div>
+                    <div flex="10">
+                        <md-button class="headerBtn">Mentor</md-button>
+                    </div>
+                    <div flex="10">
+                        <md-button class="headerBtn">Mentee</md-button>
+                    </div>
+                    </div>
+                    </md-toolbar>
+                    <md-list>
+                    <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.paginatedListings | orderBy:DC.sortMethod:DC.reverse | filter:DC.query track by $index">
+                        <div flex="20">
+                            {{ listing.lastname }}, {{ listing.firstname }}
+                        </div>
+                        <div flex="20">
+                            {{ listing.phone }}
+                        </div>
+                        <div flex="20">
+                            {{ listing.email }}
+                        </div>
+                        <div flex="20">
+                            {{ listing.startdate | date: 'longDate' }}
+                        </div>
+                        <div flex="10">
+                            <span ng-if="listing.mentor">Yes</span>
+                            <span ng-if="!listing.mentor">No</span>
+                        </div>
+                        <div flex="10">
+                            <span ng-if="listing.mentee">Yes</span>
+                            <span ng-if="!listing.mentee">No</span>
+                        </div>
+                    </md-list-item>
+                    
+        </md-list>
+        <md-collection-pagination class="pagination-buttons" collection="DC.directory.list" paginated-collection="DC.paginatedListings" per-page=8></md-collection-pagination>
+        <!-- </md-content> -->
+    </md-card>
+    <!-- <div flex="10"></div> -->
+</md-content>
 </md-content>

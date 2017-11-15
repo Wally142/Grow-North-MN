@@ -58,6 +58,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.profile = ProspectsService.profile;
         $scope.connections = ProspectsService.connections;
         $scope.commentsOn = false;
+        $scope.pencil = {};
 
         $scope.commentIn = '';
         // holds true/false values for ng-shows

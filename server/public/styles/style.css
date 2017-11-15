@@ -37,13 +37,22 @@ h1 h2 h3 h4 h5 h6 {
   font-weight: 600;
 }
 
+.instructions {
+  background-color: rgb(255, 255, 255);
+  /* color: #DDDDDD; */
+  padding: 15px;
+}
 
 #logo {
+  height: 100px;
+}
+
+/* #logo {
 display: block;
 margin: auto;
 width: 50%;
 padding: 10px;
-}
+} */
 
 md-content.colorContent  {
   /* background-color: #000000; */

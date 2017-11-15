@@ -67,14 +67,14 @@
                 </md-input-container>
                 <md-input-container flex>
                     <label>Company</label>
-                    <input name="company" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.company" required>
+                    <input name="company" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.company">
                     <div ng-messages="surveyForm0.company.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
                 </md-input-container>
                 <md-input-container flex>
                     <label>Job Title</label>
-                    <input name="title" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.title" required>
+                    <input name="title" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.title">
                     <div ng-messages="surveyForm0.title.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
@@ -82,17 +82,17 @@
             </div>
             <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
-                    <label>Website</label>
-                    <input name="website" md-maxlength="100" maxlength="100" type="text" ng-model="SC.formInput.website">
-                    <div ng-messages="surveyForm0.phone.$error">
-                        <div ng-message="maxlength">Website URL cannot exceed 100 characters.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container flex>
                     <label>LinkedIn</label>
                     <input name="linkedin" md-maxlength="100" maxlength="100" type="text" ng-model="SC.formInput.linkedin">
                     <div ng-messages="surveyForm0.company.$error">
                         <div ng-message="maxlength">LinkedIn URL cannot exceed 100 characters.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container flex>
+                    <label>Website</label>
+                    <input name="website" md-maxlength="100" maxlength="100" type="text" ng-model="SC.formInput.website">
+                    <div ng-messages="surveyForm0.phone.$error">
+                        <div ng-message="maxlength">Website URL cannot exceed 100 characters.</div>
                     </div>
                 </md-input-container>
             </div>
@@ -106,17 +106,17 @@
                 </md-input-container>
             </div>
             <div layout="column" layout-gt-md="row">
-                <div flex layout="column" layout-align="center center">
+                <!-- <div flex layout="column" layout-align="center center">
                     <md-input-container flex="50">
                         <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
                     </md-input-container>
-                </div>
+                </div> -->
                 <md-input-container flex>
                     <p>
                         <strong>Please select at least one of the following:</strong>
                     </p>
-                    <md-checkbox name="mentor" ng-model="SC.formInput.mentor" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you interesting in mentoring?</md-checkbox>
-                    <md-checkbox name="mentee" ng-model="SC.formInput.mentee" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you seeking help from a mentor?</md-checkbox>
+                    <md-checkbox name="mentor" ng-model="SC.formInput.mentor" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you interested in volunteering or getting involved in the startup community?</md-checkbox>
+                    <md-checkbox name="mentee" ng-model="SC.formInput.mentee" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you looking for help or resources in the community?</md-checkbox>
                     <div ng-messages="surveyForm0.mentor.$error && surveyForm0.mentee.$error">
                         <div ng-message="required">You must select an option before proceeding</div>
                     </div>
@@ -164,9 +164,23 @@
                 </md-card-title-text>
             </md-card-title>
             <div ng-if="SC.formInput.mentor" flex="100">
-                <h4>Mentor</h4>
+                <h4>Volunteering</h4>
             </div>
             <div layout="column" layout-gt-md="row" layout-wrap>
+                <md-input-container flex="100">
+                    <p>
+                        Thank you for your interest in getting involved in Minnesota's food and agriculture startup community. How are you interested
+                        in helping?
+                    </p>
+                    <p>Mentoring</p>
+                    <md-checkbox name="mentor" ng-model="SC.formInput.mentor1">Via email</md-checkbox>
+                    <md-checkbox name="mentee" ng-model="SC.formInput.mentor2">Meeting for coffee</md-checkbox>
+                    <md-checkbox name="mentee" ng-model="SC.formInput.mentor3">Meeting for coffee</md-checkbox>
+                    <p>Events</p>
+                    <md-checkbox name="mentor" ng-model="SC.formInput.mentor4">Volunteering the day of event</md-checkbox>
+                    <md-checkbox name="mentee" ng-model="SC.formInput.mentor5">Event planning</md-checkbox>
+                    <md-checkbox name="mentee" ng-model="SC.formInput.mentor6">Teaching</md-checkbox>
+                </md-input-container>
                 <md-input-container ng-if="SC.formInput.mentor" flex>
                     <!-- make a checkbox system -->
                     <label>Level of Involvement?</label>
@@ -244,6 +258,11 @@
                     <div ng-messages="surveyForm.story.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
+                </md-input-container>
+            </div>
+            <div flex layout="column" layout-align="center center">
+                <md-input-container flex="50">
+                    <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
                 </md-input-container>
             </div>
             <div layout="row" layout-align="center center">

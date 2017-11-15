@@ -9,7 +9,7 @@ html {
 
 .parallax {
    
-    background-image: url("../../img/raspberries.png");
+    background-image: url("../../img/grapes.png");
 
     min-height: 50px; 
 
@@ -48,7 +48,7 @@ padding: 10px;
 md-content.colorContent  {
   /* background-color: #000000; */
      
-    background-image: url("../../img/raspberries.png");
+    background-image: url("../../img/grapes.png");
 
     /* Set a specific height */
     min-height: 500px; 

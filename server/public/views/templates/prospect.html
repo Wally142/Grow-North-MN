@@ -15,8 +15,11 @@
                     <md-content class="md-padding">
                         <div layout="column" id="avatarDiv">
                             <img src="/img/profile.svg" height="100px" />
-                            <md-button class="md-raised md-primary" ng-click="delete(profile.list[0].id)">
-                                Delete User
+                            <md-input-container>
+                                <md-checkbox ng-model="deleteConfirm">Delete account</md-checkbox>
+                            </md-input-container>
+                            <md-button class="md-raised md-primary" ng-show="deleteConfirm" ng-click="delete(profile.list[0].id)">
+                                Sure?
                             </md-button>
                         </div>
                         <md-dialog-content>

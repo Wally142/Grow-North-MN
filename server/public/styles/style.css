@@ -197,6 +197,10 @@ md-card.cardList {
 
 
 /* profile view */
+.approveBtnDiv {
+  text-align: center;
+}
+
 #avatarDiv {
   float: right;
 }

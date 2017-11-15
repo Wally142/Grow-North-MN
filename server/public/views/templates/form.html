@@ -3,11 +3,6 @@
     <div hide show-gt-md flex="15"></div>
     <md-card layout-padding ng-show="SC.page===0" flex>
         <form name="surveyForm0" ng-submit="SC.form0Nav(1); surveyForm1.involvement.$setDirty()" unsaved-warning-form>
-            <md-card-title>
-                <md-card-title-text>
-                    Tell us about yourself
-                </md-card-title-text>
-            </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
                 <div flex="10"></div>
                 <img src="../../img/numeric-1-box.png">
@@ -19,6 +14,12 @@
                 <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form0Nav(3)">
                 <div flex="10"></div>
             </div>
+            <md-card-title class="formTitle">
+                <md-card-title-text layout="row" layout-align="center center">
+                    <h1>Tell us about yourself.</h1>
+                </md-card-title-text>
+            </md-card-title>
+            
             <!-- <div layout="row" layout-align="center center" layout-margin>
                 <div flex="5"></div>
                 <div flex="10">Test</div>
@@ -146,11 +147,6 @@
     <!-- Start of Form 2 -->
     <md-card layout-padding ng-show="SC.page===1" flex>
         <form name="surveyForm1" ng-submit="SC.form0Nav(2); surveyForm2.legal.$setDirty()" unsaved-warning-form>
-            <md-card-title>
-                <md-card-title-text>
-                    We have just a few more questions for you
-                </md-card-title-text>
-            </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
                 <div flex="10"></div>
                 <img src="../../img/numeric-1-box.png" ng-click="SC.form1Nav(0)">
@@ -162,6 +158,11 @@
                 <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form1Nav(3)">
                 <div flex="10"></div>
             </div>
+            <md-card-title class="formTitle">
+                <md-card-title-text layout="row" layout-align="center center">
+                    <h1>Great! We want to help! Give us a little more information.</h1>
+                </md-card-title-text>
+            </md-card-title>
             <div ng-if="SC.formInput.mentor" flex="100">
                 <h4>Mentor</h4>
             </div>
@@ -254,11 +255,6 @@
     <!-- Start of Form 3 -->
     <md-card layout-padding ng-show="SC.page===2" flex>
         <form name="surveyForm2" ng-submit="SC.form2Nav(3); surveyForm3.$setDirty()" unsaved-warning-form>
-            <md-card-title>
-                <md-card-title-text>
-                    Terms and Conditions
-                </md-card-title-text>
-            </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
                 <div flex="10"></div>
                 <img src="../../img/numeric-1-box.png" ng-click="SC.form2Nav(0)">
@@ -270,6 +266,11 @@
                 <img src="../../img/numeric-4-box-outline.png" ng-click="SC.form2Nav(3)">
                 <div flex="10"></div>
             </div>
+            <md-card-title class="formTitle">
+                <md-card-title-text layout="row" layout-align="center center">
+                    <h1>Terms and conditions</h1>
+                </md-card-title-text>
+            </md-card-title>
             <p>Lorem ipsum dolor sit amet, sed graeci virtute voluptatum no, nostro utamur usu ad. Eam in perfecto oportere,
                 qui alterum tibique reprimique ad. Ea inimicus deterruisset vis, ei exerci animal dissentiet usu, quo labores
                 accumsan ex. At sea quis purto. Eam impedit legendos prodesset in, per melius denique reformidans ex, nisl
@@ -294,11 +295,6 @@
     <!-- Form 4 -->
     <md-card layout-padding ng-show="SC.page===3" flex>
         <form name="surveyForm3" ng-submit="SC.grabInputs()" unsaved-warning-form>
-            <md-card-title class="confirmTitle">
-                <md-card-title-text>
-                    <p class="confirmTitleText">Confirm your information</p>
-                </md-card-title-text>
-            </md-card-title>
             <div layout="row" layout-align="center center" layout-margin>
                 <div flex="10"></div>
                 <img src="../../img/numeric-1-box.png" ng-click="SC.form3Nav(0)">
@@ -310,6 +306,11 @@
                 <img src="../../img/numeric-4-box.png">
                 <div flex="10"></div>
             </div>
+            <md-card-title class="formTitle">
+                <md-card-title-text layout="row" layout-align="center center">
+                    <h1>Confirm your information.</h1>
+                </md-card-title-text>
+            </md-card-title>
             <div layout="row" layout-margin>
                 <div flex="0" flex-gt-md="10"></div>
                 <md-card layout-padding id="confirmCard" flex>

@@ -231,6 +231,10 @@ md-card.cardList {
   -webkit-transition:.5s;
   transition:.5s;
 }
+
+a {
+  text-decoration: none;
+}
 /* end profile view */
 
 md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,

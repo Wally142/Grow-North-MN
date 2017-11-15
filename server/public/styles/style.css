@@ -261,3 +261,19 @@ md-button.headerBtn {
   font-size: 16pt;
 }
 /* end form pages */
+
+md-grid-tile {
+  background-color: tomato;
+}
+
+.connections {
+  text-align: center;
+}
+
+.connectCard {
+  text-align: center;
+}
+
+.deleteIcon {
+  cursor: pointer;
+}

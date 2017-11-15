@@ -292,23 +292,18 @@
                                 </md-not-found>
                             </md-autocomplete>
                         </div>
-                        <div flex="50">
-                            <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
-                            <p class="detailsQuestions">Connections made:</p>
-                            <div>
-                                <div class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname">
-                                    <p>
-                                        <div class="connectionListing" ng-click="showComments(connection.id)" ng-hide="DC.commentsOn">
-                                            <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
-                                            {{connection.firstname}} {{connection.lastname}}
-                                        </div>
-                                        <textarea ng-hide="!commentsOn" ng-model="commentsIn" ng-value="connection.comments"></textarea>
-                                        <p ng-show="!commentsOn">{{connection.comments}}</p>
-                                        <md-icon md-svg-src="img/check.svg" ng-hide="DC.commentsOn" ng-click="connectionComment(connection.id, commentsIn); DC.getProfile(profile.list[0].id);"></md-icon>
-                                        <br> Connected on {{connection.date | date: 'mediumDate'}}
-                                    </p>
-                                </div>
-                            </div>
+                        <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
+                        <p class="detailsQuestions">Connections made:</p>
+                        <div class="connectCard" layout="row" layout-wrap class="text-center">
+                            <md-card flex="30" class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname" md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
+                                <md-content class="cardContent">
+                                    <h3>{{connection.firstname}} {{connection.lastname}}</h3>
+                                    <p>{{connection.company}}</p>
+                                    <p>Connected on: {{connection.date | date: shortDate}}</p>
+                                    <md-button>Show/Hide Comments</md-button>
+                                    <md-icon class="deleteIcon" md-svg-src="img/trash.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
+                                </md-content>
+                        </md-card>
                         </div>
                     </md-content>
                 </md-tab>

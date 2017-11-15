@@ -49,11 +49,28 @@
   </div>
 
 
-  <md-card class="cardList" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex>
+  <!-- <md-card class="cardList" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex> -->
     <!-- <h2>Intake forms awaiting approval go here!</h2>
        <section layout="row">
            <div flex> -->
-    <md-toolbar class="approvalList accordion ng-isolate-scope">
+
+              <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center none">
+                  <md-button  class="md-raised md-primary" id="awaiting-approval-button" ng-click="$mdMenu.open()" id="notification-menu-header">
+                    Pending intake forms
+                  </md-button>
+                  <md-menu-content width="200x" flex="100">
+                    <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+                      ng-value="listing.id">
+                      <md-button>
+                        <div layout="row">
+                          <div flex="50">{{listing.firstname}} {{listing.lastname}}</div>
+                          <div flex="50">{{listing.startdate | date: 'MMMM d, y'}}</div>
+                        </div>
+                      </md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+    <!-- <md-toolbar class="approvalList accordion ng-isolate-scope">
       <div class="md-toolbar-tools" layout="row">
         <div flex="20">
           <md-button ng-show="MC.sortMethod!=='lastname'" ng-click="MC.sort('lastname')">Name</md-button>
@@ -86,7 +103,7 @@
           </md-input-container>
         </div>
       </div>
-    </md-toolbar>
+    </md-toolbar> -->
 
     <!-- <md-content> -->
     <!-- <md-list>
@@ -112,9 +129,9 @@
         per-page=8></md-collection-pagination>
     </md-list> -->
     <!-- </md-content> -->
-</div>
+<!-- </div>
 </section>
-</md-card>
+</md-card> -->
 <!-- Div holding all dashboard stuff -->
 </div>
 <md-content ng-controller="DirectoryController as DC" class="colorContent" layout="row" ng-init="DC.getDirectory()">

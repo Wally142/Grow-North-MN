@@ -6,6 +6,13 @@ html {
   font-size: 14px;
 }
 
+md-menu-content.md-menu-bar-menu.md-dense {
+  padding: 0;
+}
+
+md-menu-content {
+  width: 40vw !important;
+}
 
 .parallax {
    
@@ -282,6 +289,12 @@ md-input-container:not(.md-input-invalid).instaSearch .md-input::-webkit-input-p
 
 md-button.headerBtn {
   padding-left: 0 !important;
+}
+
+#awaiting-approval-button {
+  font-size: larger;
+  height: 50%;
+  width: 80%;
 }
 
 /* form pages */

@@ -120,7 +120,7 @@
     </md-toolbar>
     <!-- <md-content> -->
       <md-list>
-        <md-list-item class="adminApproval md-2-line" layout="row" layout-align="center center" ng-repeat="listing in DC.paginatedToBeApproved | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+        <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" layout-align="center center" ng-repeat="listing in DC.paginatedToBeApproved | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
           ng-value="listing.id">
           <div class="md-list-item-text" flex="20">
             <p>{{listing.firstname}} {{listing.lastname}}</p>

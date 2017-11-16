@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'mdCollectionPagination']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'mdCollectionPagination', 'angAccordion']);
 
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
@@ -47,10 +47,6 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
     .when('/dashboard', {
       templateUrl: '/views/templates/dashboard.html',
       controller: 'MetricsController as MC'
-    })
-    .when('/directory', {
-      templateUrl: '/views/templates/directory.html',
-      controller: 'DirectoryController as DC'
     })
     .when('/autocomplete', {
       templateUrl: '/views/templates/autocomplete.html',

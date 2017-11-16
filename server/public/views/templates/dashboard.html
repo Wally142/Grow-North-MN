@@ -10,18 +10,6 @@
           </md-grid-tile-header>
           <h2>{{MC.mentors.list.length}}</h2>
         </md-grid-tile>
-        <!-- <md-grid-tile class="dashCard" flex="33" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
-                          <h2>{{MC.mentee.list.length}}</h2>
-                          <md-grid-tile-footer class="gridFooter" layout="column">
-                              <p class="footerCaption">Number of Mentees</p>
-                          </md-grid-tile-footer>
-                      </md-grid-tile>
-                      <md-grid-tile class="dashCard" flex="33" md-rowspan="1" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
-                          <h2>{{MC.connections.list.length}}</h2>
-                          <md-grid-tile-footer class="gridFooter" layout="column">
-                              <p class="footerCaption">Total Connections Made</p>
-                          </md-grid-tile-footer>
-                      </md-grid-tile> -->
       </md-grid-list>
     </md-card>
     <md-card class="dashMetrics" flex="33">
@@ -47,100 +35,28 @@
       </md-grid-list>
     </md-card>
   </div>
-
-
-  <!-- <md-card class="cardList" ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex> -->
-    <!-- <h2>Intake forms awaiting approval go here!</h2>
-       <section layout="row">
-           <div flex> -->
-
-              <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center none">
-                  <md-button  class="md-raised md-primary" id="awaiting-approval-button" ng-click="$mdMenu.open()" id="notification-menu-header">
-                    Pending intake forms
-                  </md-button>
-                  <md-menu-content width="200x" flex="100">
-                    <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
-                      ng-value="listing.id">
-                      <md-button>
-                        <div layout="row">
-                          <div flex="50">{{listing.firstname}} {{listing.lastname}}</div>
-                          <div flex="50">{{listing.startdate | date: 'MMMM d, y'}}</div>
-                        </div>
-                      </md-button>
-                    </md-menu-item>
-                  </md-menu-content>
-                </md-menu>
-    <!-- <md-toolbar class="approvalList accordion ng-isolate-scope">
-      <div class="md-toolbar-tools" layout="row">
-        <div flex="20">
-          <md-button ng-show="MC.sortMethod!=='lastname'" ng-click="MC.sort('lastname')">Name</md-button>
-          <md-button ng-show="MC.sortMethod=='lastname' && MC.reverse == true" ng-click="MC.sort('lastname')">Name
-            <i class="material-icons">arrow_drop_up</i>
-          </md-button>
-          <md-button ng-show="MC.sortMethod=='lastname' && MC.reverse == false" ng-click="MC.sort('lastname')">Name
-            <i class="material-icons">arrow_drop_down</i>
-          </md-button>
-        </div>
-        <div flex="20">
-          <md-button>Phone</md-button>
-        </div>
-        <div flex="20">
-          <md-button>Email</md-button>
-        </div>
-        <div flex="20" layout="row" layout-align="space-between center">
-          <md-button ng-show="MC.sortMethod!=='startdate'" ng-click="MC.sort('startdate')">Date Submitted</md-button>
-          <md-button ng-show="MC.sortMethod=='startdate' && MC.reverse == true" ng-click="MC.sort('startdate')">Date Submitted
-            <i class="material-icons">arrow_drop_up</i>
-          </md-button>
-          <md-button ng-show="MC.sortMethod=='startdate' && MC.reverse == false" ng-click="MC.sort('startdate')">Date Submitted
-            <i class="material-icons">arrow_drop_down</i>
-          </md-button>
-          <i class="material-icons fltRgt">search</i>
-        </div>
-        <div flex="20">
-          <md-input-container class="md-block instaSearch" md-no-float="true">
-            <input name="search" ng-model="MC.query" md-no-asterisk="true" placeholder="Instant Search">
-          </md-input-container>
-        </div>
-      </div>
-    </md-toolbar> -->
-
-    <!-- <md-content> -->
-    <!-- <md-list>
-      <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" layout-align="center center"
-        ng-repeat="listing in DC.paginatedToBeApproved | orderBy:MC.sortMethod:MC.reverse | filter:MC.query" ng-value="listing.id">
-        <div class="md-list-item-text" flex="20">
-          <p>{{listing.firstname}} {{listing.lastname}}</p>
-        </div>
-        <div class="md-list-item-text" flex="20">
-          <p>{{listing.phone}}</p>
-        </div>
-        <div class="md-list-item-text" flex="20">
-          <p>{{listing.email}}</p>
-        </div>
-        <div class="md-list-item-text" flex="20">
-          <p>{{listing.startdate | date: 'MMMM d, y h:mm a'}}</p>
-        </div>
-        <div flex="20">
-          <md-button ng-click="showProfile($event, listing.id)">Review</md-button>
-        </div>
-      </md-list-item>
-      <md-collection-pagination class="pagination-buttons" collection="DC.approval.list" paginated-collection="DC.paginatedToBeApproved"
-        per-page=8></md-collection-pagination>
-    </md-list> -->
-    <!-- </md-content> -->
-<!-- </div>
-</section>
-</md-card> -->
-<!-- Div holding all dashboard stuff -->
+  <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center none">
+    <md-button class="md-raised md-primary" id="awaiting-approval-button" ng-click="$mdMenu.open()" id="notification-menu-header">
+      Pending intake forms
+    </md-button>
+    <md-menu-content width="200x" flex="100">
+      <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+        ng-value="listing.id">
+        <md-button>
+          <div layout="row">
+            <div flex="50">{{listing.firstname}} {{listing.lastname}}</div>
+            <div flex="50">{{listing.startdate | date: 'MMMM d, y'}}</div>
+          </div>
+        </md-button>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
 </div>
+<!-- Directory -->
 <md-content ng-controller="DirectoryController as DC" class="colorContent" layout="row" ng-init="DC.getDirectory()">
-  <!-- <div flex="10"></div> -->
   <md-card class="cardList" flex>
-    <!-- <md-content class="directory" ng-init="DC.getDirectory()"> -->
     <md-toolbar class="approvalList">
       <div class="md-toolbar-tools" layout="row">
-        <!-- <md-list-item class="adminApproval md-2-line" layout="row"> -->
         <div flex="20">
           <md-button class="headerBtn" ng-show="DC.sortMethod!=='lastname'" ng-click="DC.sort('lastname')">Name</md-button>
           <md-button class="headerBtn" ng-show="DC.sortMethod=='lastname' && DC.reverse == true" ng-click="DC.sort('lastname')">Name
@@ -200,7 +116,5 @@
     </md-list>
     <md-collection-pagination class="pagination-buttons" collection="DC.directory.list" paginated-collection="DC.paginatedListings"
       per-page=8></md-collection-pagination>
-    <!-- </md-content> -->
   </md-card>
-  <!-- <div flex="10"></div> -->
 </md-content>

@@ -55,8 +55,9 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     function DialogController(ProspectsService, $scope, $mdDialog, $route) {
         $scope.profile = ProspectsService.profile;
         $scope.connections = ProspectsService.connections;
-        $scope.commentsOn = false;
+        
         $scope.pencil = {};
+        $scope.commentsOn = {comment: ""};
         $scope.deleteConfirm = false;
 
         $scope.commentIn = '';
@@ -120,8 +121,12 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             console.log('Connection Comments:', id, comment);
         };
 
-        $scope.showComments = function(id) {
-            $scope.commentsOn = !$scope.commentsOn;
+        $scope.showComments = function(index, comment) {
+            if ($scope.commentsOn[index] === undefined) {
+            $scope.commentsOn[index] = false;
+            }
+            $scope.commentsOn[index] = !$scope.commentsOn[index];
+            $scope.commentsOn.comment = comment;
             console.log('HI!', $scope.commentsOn);
             
         };

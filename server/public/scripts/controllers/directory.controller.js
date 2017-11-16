@@ -59,7 +59,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.connections = ProspectsService.connections;
         
         $scope.pencil = {};
-        $scope.commentsOn = {comment: ""};
+        $scope.commentsOn = false;
         $scope.deleteConfirm = false;
 
         $scope.commentIn = '';
@@ -123,13 +123,28 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             console.log('Connection Comments:', id, comment);
         };
 
-        $scope.showComments = function(index, comment) {
-            if ($scope.commentsOn[index] === undefined) {
-            $scope.commentsOn[index] = false;
-            }
-            $scope.commentsOn[index] = !$scope.commentsOn[index];
-            $scope.commentsOn.comment = comment;
-            console.log('HI!', $scope.commentsOn);
+        $scope.showComments = function(id) {
+            // if ($scope.commentsOn[index] === undefined) {
+            // $scope.commentsOn[index] = false;
+            // }
+            console.log('id', id);
+            $scope.commentsOn = !$scope.commentsOn;
+            console.log($scope.connections.list);
+            for (var i=0; i < $scope.connections.list.length; i++) {
+
+                if (id == $scope.connections.list[i].id) {
+                    console.log('comments', $scope.connections.list[i].comments);
+                    $scope.connections.comment = $scope.connections.list[i].comments;
+                     
+                } else {
+                    console.log('WHYYYYYYY');
+                    
+                } 
+                
+                
+                
+            }console.log('this comment:', $scope.connections.comment);
+            // console.log('HI!', $scope.connections.comments);
             
         };
 

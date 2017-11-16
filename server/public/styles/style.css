@@ -15,7 +15,7 @@ md-menu-content {
 }
 
 md-content.md-default-theme, md-content {
-    background-color: transparent;
+    background-color: rgb (250, 250, 250);
 }
 
 .parallax {

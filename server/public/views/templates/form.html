@@ -174,23 +174,23 @@
                     </p>
                     <div layout="row" layout-align="center center">
                         <!-- <div flex="50" layout="column"> -->
-                            <!-- <div>
+                        <!-- <div>
                                 <p>Mentoring</p>
                             </div> -->
-                            <div flex>
-                                <md-input-container>
-                                    <label>Choose up to three options:</label>
-                                    <!-- <md-select ng-model="SC.formInput.involvement" ng-change="SC.selectTest(SC.formInput.involvement)" multiple> -->
-                                    <md-select ng-model="SC.formInput.involvement" multiple>
-                                        <md-optgroup label="Mentoring">
-                                            <md-option ng-disabled="SC.involveSelect[$index]" ng-repeat="eachThing in SC.mentorValues" ng-value='eachThing'>{{eachThing}}</md-option>
-                                        </md-optgroup>
-                                        <md-optgroup label="Events">
-                                            <md-option ng-repeat="eachThing in SC.eventsValues" ng-value="eachThing">{{eachThing}}</md-option>
-                                        </md-optgroup>
-                                    </md-select>
-                                </md-input-container>
-                                <!-- <md-checkbox name="mentor" ng-model="SC.formInput.mentor1">Via email</md-checkbox>
+                        <div flex>
+                            <md-input-container>
+                                <label>Choose up to three options:</label>
+                                <!-- <md-select ng-model="SC.formInput.involvement" ng-change="SC.selectTest(SC.formInput.involvement)" multiple> -->
+                                <md-select ng-model="SC.formInput.involvement" multiple>
+                                    <md-optgroup label="Mentoring">
+                                        <md-option ng-repeat="eachThing in SC.mentorValues" ng-value="eachThing">{{eachThing}}</md-option>
+                                    </md-optgroup>
+                                    <md-optgroup label="Events">
+                                        <md-option ng-repeat="eachThing in SC.eventsValues" ng-value="eachThing">{{eachThing}}</md-option>
+                                    </md-optgroup>
+                                </md-select>
+                            </md-input-container>
+                            <!-- <md-checkbox name="mentor" ng-model="SC.formInput.mentor1">Via email</md-checkbox>
                                 <br>
                                 <md-checkbox name="mentee" ng-model="SC.formInput.mentor2">Meeting for coffee</md-checkbox>
                                 <br>
@@ -216,8 +216,7 @@
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
                 <md-input-container flex="100">
-                    <label>Give us a brief overview of your experience. We would love to hear if you have worked with startups
-                        before!
+                    <label>Give us a brief overview of your experience. We would love to hear if you have worked with startups before!
                     </label>
                     <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="SC.formInput.experience"></textarea>
                     <div ng-messages="surveyForm.experience.$error">
@@ -261,12 +260,27 @@
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
                 <div ng-if="SC.formInput.mentee" flex="100">
-                    What are you looking for help with? (select up to three)
+                    What are you looking for help with?
                     <md-input-container>
+                        <label>Select up to 3 options:</label>
                         <md-select ng-model="SC.formInput.howhelp" multiple>
+                            <md-optgroup label="Select up to 3 options:">
                             <md-option ng-repeat="eachValue in SC.howhelpValues" ng-value='eachValue'>{{eachValue}}</md-option>
+                            </md-optgroup>
                         </md-select>
                         <!-- <md-checkbox ng-repeat="eachValue in SC.howhelpValues" ng-model="SC.formInput.howhelp" ng-value="eachValue">{{ eachValue }}</md-checkbox> -->
+                    </md-input-container>
+                </div>
+                <div flex="100">
+                    What type of business do you operate?
+                    <md-input-container>
+                        <label>Select all that apply:</label>
+                        <!-- <md-select ng-model="SC.formInput.involvement" ng-change="SC.selectTest(SC.formInput.involvement)" multiple> -->
+                        <md-select ng-model="SC.formInput.ecosystem" multiple>
+                            <md-optgroup label="Select all that apply:">
+                                <md-option ng-repeat="eachThing in SC.ecosystemValues" ng-value='eachThing'>{{eachThing}}</md-option>
+                            </md-optgroup>
+                        </md-select>
                     </md-input-container>
                 </div>
                 <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
@@ -379,61 +393,67 @@
                         <p>{{SC.formInput.email}}</p>
                         <p>{{SC.formInput.phone}}</p>
                         <p>{{SC.formInput.title}}, {{SC.formInput.company}}</p>
+                        <p>LinkedIn: {{SC.formInput.linkedin}}</p>
+                        <p>Website: {{SC.formInput.website}}</p>
                         <md-divider></md-divider>
                         <p>How did you hear about Grow North?
                             <br>
                             <span class="surveyAnswer">{{SC.formInput.referral}}</span>
                         </p>
-                        <p>Do we have permission to discuss your business with others in our network?
+                        <p>Are you interested in volunteering or getting involved in the startup community?
                             <br>
-                            <span class="surveyAnswer">{{SC.formInput.permission}}</span>
+                            <!-- <span class="surveyAnswer">{{SC.formInput.mentor}}</span> -->
+                            <span ng-if="SC.formInput.mentor">Yes</span>
+                            <span ng-if="!SC.formInput.mentor">No</span>
                         </p>
-                        <p>Are you interested in mentoring?
+                        <p>Are you looking for help or resources in the community?
                             <br>
-                            <span class="surveyAnswer">{{SC.formInput.mentor}}</span>
+                            <span ng-if="SC.formInput.mentee">Yes</span>
+                            <span ng-if="!SC.formInput.mentee">No</span>
                         </p>
-                        <p>Are you seeking help from a mentor?
-                            <br>
-                            <span class="surveyAnswer">{{SC.formInput.mentee}}</span>
-                        </p>
-                        <div>
-                            <p>Level of involvement?
+                        <div ng-if="SC.formInput.involvement.length > 0 || SC.formInput.experience !== null">
+                            <h4>Questions for volunteers</h4>
+                            <p ng-if="SC.formInput.involvement.length > 0">How are you interested in helping?
                                 <br>
-                                <span class="surveyAnswer">{{SC.formInput.involvement}}</span>
+                                <ul>
+                                    <li ng-repeat="thing in SC.formInput.involvement">{{thing}}</li>
+                                </ul>
                             </p>
-                            <p>How can I help?
-                                <br>
-                                <span class="surveyAnswer">{{SC.formInput.howHelp}}</span>
-                            </p>
-                            <p>Provide a specific example of your experience with a startup.
+                            <p ng-if="SC.formInput.experience !== null">Give us a brief overview of your experience.
                                 <br>
                                 <span class="surveyAnswer">{{SC.formInput.experience}}</span>
                             </p>
                         </div>
-                        <div>
-                            <p>What are you struggling with?
-                                <br>
-                                <span class="surveyAnswer">{{SC.formInput.struggle}}</span>
-                            </p>
-                            <p>What ecosystem does your business reside in?
-                                <br>
-                                <span class="surveyAnswer">{{SC.formInput.ecosystem}}</span>
-                            </p>
-                            <p>How many employees do you have?
-                                <br>
-                                <span class="surveyAnswer">{{SC.formInput.employees}}</span>
-                            </p>
-                            <p>What is your business's yearly revenue?
-                                <br>
-                                <span class="surveyAnswer">{{SC.formInput.revenue}}</span>
-                            </p>
-                            <p>What is your distribution area?
-                                <br>
-                                <span class="surveyAnswer">{{SC.formInput.distribution}}</span>
-                            </p>
-                            <p>What's your story?
+                        <div ng-if="SC.formInput.revenue !== null || SC.formInput.employees !== null || SC.formInput.howHelp.length > 0 || SC.formInput.ecosystem.length > 0">
+                            <h4>Questions for entrepreneurs</h4>
+                            <p ng-if="SC.formInput.story !== null">What's your business story?
                                 <br>
                                 <span class="surveyAnswer">{{SC.formInput.story}}</span>
+                            </p>
+                            <p ng-if="SC.formInput.revenue !== null || SC.formInput.employees !== null">Give us a sense of your business size.
+                                <br>
+                                <span class="surveyAnswer" ng-if="SC.formInput.revenue !== null">Revenue: {{SC.formInput.revenue}}</span><br>
+                                <span class="surveyAnswer" ng-if="SC.formInput.employees !== null">Number of Employees: {{SC.formInput.employees}}</span>
+                            </p>
+                            <p ng-if="SC.formInput.howHelp.length > 0">What are you looking for help with?
+                                <br>
+                                <ul>
+                                    <li ng-repeat="thing in SC.formInput.howHelp">{{thing}}</li>
+                                </ul>
+                            </p>
+                            <p ng-if="SC.formInput.ecosystem.length > 0">What type of business do you operate?
+                                <br>
+                                <ul>
+                                    <li ng-repeat="thing in SC.formInput.ecosystem">{{thing}}</li>
+                                </ul>
+                            </p>
+                        </div>
+                        <div>
+                            <p>Would you like us to contact you prior to sharing information about your business with other Grow North MN volunteers and
+                            startups?
+                                <br>
+                                <span ng-if="SC.formInput.permission">Yes</span>
+                                <span ng-if="!SC.formInput.permission">No</span>
                             </p>
                         </div>
                     </div>

@@ -18,8 +18,8 @@ router.post('/form', function (req, res) {
             console.log(error);
             res.sendStatus(404);
         } else {
-            var queryString = 'INSERT INTO prospects (firstname, lastname, email, phone, company, image, title, referral, permission, mentor, mentee, involvement, howhelp, experience, struggle, ecosystem, employees, revenue, distribution, story, tags) VALUES ($1, $2, $3, $4, $5, $6 , $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21);';
-            var items = [grow.firstname, grow.lastname, grow.email, grow.phone, grow.company, grow.image, grow.title, grow.referral, grow.permission, grow.mentor, grow.mentee, grow.involvement, grow.howhelp, grow.experience, grow.struggle, grow.ecosystem, grow.employees, grow.revenue, grow.distribution, grow.story, defaultTags];
+            var queryString = 'INSERT INTO prospects (firstname, lastname, email, phone, linkedin, website, company, title, referral, permission, mentor, mentee, involvement, howhelp, experience, ecosystem, employees, revenue, distribution, story, tags) VALUES ($1, $2, $3, $4, $5, $6 , $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21);';
+            var items = [grow.firstname, grow.lastname, grow.email, grow.phone, grow.linkedin, grow.website, grow.company, grow.title, grow.referral, grow.permission, grow.mentor, grow.mentee, grow.involvement, grow.howhelp, grow.experience, grow.ecosystem, grow.employees, grow.revenue, grow.distribution, grow.story, defaultTags];
             client.query(queryString, items, function (queryErr, resultObj) {
                 done();
                 if (queryErr) {

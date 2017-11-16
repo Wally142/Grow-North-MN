@@ -297,26 +297,30 @@
                         <div class="bizCards">
                             <div layout="row">
                                 <div class="connectCard" layout="row" layout-wrap class="text-center" flex="60">
-                                    <md-card flex="45" class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname"
+                                    <md-card flex="45" class="connections" ng-repeat="connection in connections.list | orderBy: 'lastname'" ng-if="connection.firstname!=profile.list[0].firstname"
                                         md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
                                         <md-content class="cardContent">
                                             <h3>{{connection.firstname}} {{connection.lastname}}</h3>
                                             <md-icon class="deleteIcon" md-svg-src="img/trash.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
                                             <p>{{connection.company}}</p>
-                                            <p>Connected on: {{connection.date | date: shortDate}}</p>
-                                            <md-button class="editIcon" ng-click="showComments($index, connection.comments)">Edit Comments</md-button>
+                                            <p>Connected on: {{connection.date | date: shortDate}} </p>
+                                            <md-button class="editIcon" ng-click="showComments(connections.list[$index].id)">Notes</md-button>
                                             <!-- <textarea ng-hide="!commentsOn[$index]" ng-model="commentsIn" ng-value="connection.comments" rows="6" cols="40"></textarea> -->
                                             <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
-                                            <!-- <md-button class="md-raised md-primary saveComments" ng-show="commentsOn[$index]" ng-click="connectionComment(connection.id, commentsIn); DC.getProfile(profile.list[0].id); showComments($index)">Save</md-icon> -->
                                         </md-content>
                                     </md-card>
                                 </div>
-                                <div class="connecetionComments" flex="40">
-                                    <textarea  ng-model="commentsIn" ng-value="connection.comments" rows="6" cols="40"></textarea>
-                                    <p>{{commentsOn.comment}}</p>
+                                <div ng-show="commentsOn" class="connecetionComments" flex="40">
+                                    <!-- <h3>Notes on {{profile.list[0].firstname}} {{profile.list[0].lastname}} and {{connections.firstname}} {{connections.lastname}}</h3> -->
+                                    <p ng-hide="editOn">{{connections.comment}}</p>
+                                    
+                                    <textarea ng-show="editOn" ng-model="commentsIn" ng-value="connections.comment" rows="6" cols="40"></textarea>
                                     <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
-                                    <md-button class="md-raised md-primary saveComments" ng-show="commentsOn[$index]" ng-click="connectionComment(connection.id, commentsIn); DC.getProfile(profile.list[0].id); showComments($index)">Save</md-icon>
+                                    <div class="saveComments">
+                                        <md-button ng-hide="editOn" class="md-raised md-primary editComments" ng-click="showEdit()">Edit</md-button>
+                                    <md-button ng-show="editOn" class="md-raised md-primary" ng-click="connectionComment(connections.id, commentsIn); showComments(connections.id); showEdit();">Save</md-icon>
                                     </md-button>
+                                </div>
                                 </div>
 
                             </div>

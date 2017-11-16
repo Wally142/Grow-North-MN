@@ -55,10 +55,12 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     function DialogController(ProspectsService, $scope, $mdDialog, $route) {
         $scope.profile = ProspectsService.profile;
         $scope.connections = ProspectsService.connections;
-        
+
         $scope.pencil = {};
-        $scope.commentsOn = {comment: ""};
+        $scope.commentsOn = false;
         $scope.deleteConfirm = false;
+        $scope.editOn = false;
+        
 
         $scope.commentIn = '';
         // holds true/false values for ng-shows
@@ -89,11 +91,11 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             ProspectsService.updateComments(id, comment);
             $scope.editBoolean.comments = !$scope.editBoolean.comments;
         };
-        
+
         $scope.updateDetails = function (id, details, column) {
             console.log('update details with', id, details, column);
             // check if user has alerted info, cancel if nothing change
-            if (details !== undefined){
+            if (details !== undefined) {
                 ProspectsService.updateDetails(id, details, column);
                 $scope.editBoolean[column] = !$scope.editBoolean[column];
             } else {
@@ -113,29 +115,53 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.deleteConnection = function (id1, id2) {
             ProspectsService.deleteConnection(id1, id2);
             console.log('Profile ID:', id1, id2);
-            
+
         };
 
-        $scope.connectionComment = function(id, comment) {
-            ProspectsService.connectionComment(id, comment);
+        $scope.connectionComment = function (id, comment) {
+            ProspectsService.connectionComment(id, comment).then(function() {
             console.log('Connection Comments:', id, comment);
+            $scope.getProfile($scope.profile.list[0].id, id);
+            });
         };
 
-        $scope.showComments = function(index, comment) {
-            if ($scope.commentsOn[index] === undefined) {
-            $scope.commentsOn[index] = false;
+        $scope.showComments = function (id) {
+            $scope.commentsOn = !$scope.commentsOn;
+            console.log($scope.connections.list);
+            for (var i = 0; i < $scope.connections.list.length; i++) {
+
+                if (id == $scope.connections.list[i].id) {
+                    console.log('comments', $scope.connections.list[i].comments);
+                    $scope.connections.comment = ProspectsService.connections.list[i].comments;
+                    $scope.connections.id = id;
+                    $scope.connections.firstname = ProspectsService.connections.list[i].firstname;
+                    $scope.connections.lastname = ProspectsService.connections.list[i].lastname;
+                }
             }
-            $scope.commentsOn[index] = !$scope.commentsOn[index];
-            $scope.commentsOn.comment = comment;
-            console.log('HI!', $scope.commentsOn);
+            return $scope.connections.comment;
+         };
+
+         $scope.getProfile = function (profileId, connectionId) {
+            ProspectsService.getProfile(profileId).then(function() {
+                ProspectsService.getConnections(profileId).then(function() {
+                    $scope.connections = ProspectsService.connections; 
+                    $scope.showComments(connectionId);                
+                });
+            });
+            $scope.profile = ProspectsService.profile;
+        };
+
+        $scope.showEdit = function () {
+            $scope.editOn = !$scope.editOn;
+            
             
         };
 
-        $scope.reloadRoute = function(id) {
+        $scope.reloadRoute = function (id) {
             $route.reload(id);
         };
 
-        $scope.$watchCollection('profile.list[0].tags', function(){
+        $scope.$watchCollection('profile.list[0].tags', function () {
             ProspectsService.changeTag($scope.profile.list[0].id);
         });
 
@@ -155,13 +181,16 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
                 // var personId = [];
                 console.log('DIRECTORY:', vm.directory.list);
                 for (var i = 0; i < vm.directory.list.length; i++) {
-                    list.push({name: vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname, id: vm.directory.list[i].id});
+                    list.push({
+                        name: vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname,
+                        id: vm.directory.list[i].id
+                    });
                     // personId.push(vm.directory.list[i].id);
                 }
                 console.log('LIST:', list);
                 console.log('id', vm.directory.list.id);
                 var allListings = list.map(function (person) {
-                    
+
                     return {
                         value: person.name.toLowerCase(),
                         display: person.name,
@@ -199,7 +228,12 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     };
 
     vm.getProfile = function (id) {
-        ProspectsService.getProfile(id);
+        ProspectsService.getProfile(id).then(function() {
+            ProspectsService.getConnections(id).then(function() {
+                $scope.connections = ProspectsService.connections; 
+                // $scope.showComments(id);                
+            });
+        });
         vm.profile = ProspectsService.profile;
     };
 

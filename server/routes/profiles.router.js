@@ -31,7 +31,7 @@ router.get('/:id', function (req, res) {
 router.get('/connections/:id', function (req, res) {
     if (req.isAuthenticated()){
         var dbId= req.params.id;
-        console.log('get Profile', dbId );
+        console.log('get Connections', dbId );
         pool.connect(function (error, client, done) {
             if (error) {
                 console.log(error);
@@ -177,7 +177,7 @@ router.delete('/connections/:id', function (req, res) {
                 console.log(error);
                 res.sendStatus(404);
             } else {
-                client.query("DELETE FROM connections WHERE connections.id =$1;", [connectionId], function (queryErr, resultObj) {
+                client.query("DELETE FROM connections WHERE connections.id = $1;", [connectionId], function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
                         console.log(queryErr);
@@ -220,5 +220,30 @@ router.put('/connections/:id', function (req, res) {
         });
     }
 }); // end UPDATE connection comments
+
+// router.get('/commentsConnections/:id', function (req, res) {
+//     if (req.isAuthenticated()){
+//         var dbId = req.params.id;
+        
+//         console.log('get Connections comments');
+//         pool.connect(function (error, client, done) {
+//             if (error) {
+//                 console.log(error);
+//                 res.sendStatus(404);
+//             } else {
+//                 client.query("SELECT id, comments FROM connections WHERE id = $1;",[dbId], function (queryErr, resultObj) {
+//                     done();
+//                     if (queryErr) {
+//                         console.log(queryErr);
+//                         res.sendStatus(500);
+//                     } else {
+//                         console.log(resultObj.rows);
+//                         res.send(resultObj.rows);
+//                     }
+//                 });
+//             }
+//         });
+//      }
+// });// end  GET profile
 
 module.exports = router;

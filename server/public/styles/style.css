@@ -365,6 +365,10 @@ textarea {
   width: 90%;
 }
 
-.md-button .saveComments {
-  height: 5px;
+.saveComments {
+  text-align: center;
+}
+
+.editComments {
+  bottom: 2px;
 }

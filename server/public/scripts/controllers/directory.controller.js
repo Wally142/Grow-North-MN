@@ -61,6 +61,10 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.deleteConfirm = false;
         $scope.editOn = false;
         
+        $scope.testFunc = function(){
+            console.log('testfunc called');
+            
+        };
 
         $scope.commentIn = '';
         // holds true/false values for ng-shows
@@ -151,7 +155,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             $scope.profile = ProspectsService.profile;
         };
 
-        $scope.showEdit = function () {
+        $scope.showEditComment = function () {
             $scope.editOn = !$scope.editOn;
             
             

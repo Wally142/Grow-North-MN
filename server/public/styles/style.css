@@ -338,3 +338,7 @@ textarea {
 .saveComments {
   text-align: center;
 }
+
+.editComments {
+  bottom: 2px;
+}

@@ -9,6 +9,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.approval = {list:[]};
     self.profile = {list: []};
     self.connections = {list: []};
+    self.comments = {list: []};
 
 
     // metrics display functions 
@@ -84,7 +85,7 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.getProfile = function (id) {
         var thisId = id;
         console.log('In getProfile with id: ', thisId);
-        $http.get('/profilesRoute/' + thisId).then(function (response) {
+        return $http.get('/profilesRoute/' + thisId).then(function (response) {
             console.log(response);
             self.profile.list = response.data;
             self.getConnections(thisId);
@@ -139,10 +140,9 @@ myApp.service('ProspectsService', function ($http, $location) {
     self.getConnections = function(id) {
         var thisId = id;
         console.log('In getConnections with id: ', thisId);
-        $http.get('/profilesRoute/connections/' + thisId).then(function (response) {
+        return $http.get('/profilesRoute/connections/' + thisId).then(function (response) {
             console.log(response);
             self.connections.list = response.data;
-
         });
     };
 
@@ -193,14 +193,22 @@ myApp.service('ProspectsService', function ($http, $location) {
         var newComment = {
             comments: comment
         };
-        $http({
+        return $http({
             method: 'PUT',
             url: '/profilesRoute/connections/' + thisId,
             data: newComment
         }).then(function (response) {
             console.log('Approval Update response:', response);
-            
         });
     };
+
+    // self.getConnectionComments = function(id){
+    //     var thisId = id;
+    //     $http.get('/profilesRoute/commentsConnections/' + thisId).then(function (response) {
+    //         console.log('response');
+    //         self.comments.list = response.data;
+    //         console.log(self.comments.list);
+    //     });
+    // };
 
 }); // end service

@@ -28,8 +28,8 @@
   </div>
   <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center center">
     <md-button class="md-raised" id="awaiting-approval-button" ng-click="$mdMenu.open()" id="notification-menu-header" layout="row" layout-align="center center">
-      Pending intake forms
-      <md-icon  ng-if="DC.approval.list.length>0" md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon>
+      <span ng-if="DC.approval.list.length>0">Pending intake forms<md-icon md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon></span>
+      <span ng-if="DC.approval.list.length===0">No pending intake forms</span>
     </md-button>
     <md-menu-content width="200x" flex="100">
       <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"

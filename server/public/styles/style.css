@@ -94,13 +94,10 @@ body {
 }
 
 #intake-button-icon {
-  height: 100% !important;
+  min-width: 40px;
+  min-height: 40px;
   color: red;
-  margin: 10px;
-}
-
-md-icon#intake-button-icon.ng-scope {
-  height: 100%;
+  margin: 0 0 0 10px;
 }
 
 #container {

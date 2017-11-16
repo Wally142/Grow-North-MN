@@ -164,25 +164,26 @@
                 </md-card-title-text>
             </md-card-title>
             <div ng-if="SC.formInput.mentor" flex="100">
-                <h4>Volunteering</h4>
+                <h4>Questions for volunteers</h4>
             </div>
-            <div layout="column" layout-gt-md="row" layout-wrap>
+            <div layout="column" layout-gt-md="row" ng-if="SC.formInput.mentor" layout-wrap>
                 <md-input-container flex="100">
                     <p>
                         Thank you for your interest in getting involved in Minnesota's food and agriculture startup community. How are you interested
                         in helping?
                     </p>
                     <div layout="row" layout-align="center center">
-                        <div flex="50" layout="column" layout-align="center center">
+                        <!-- <div flex="50" layout="column"> -->
                             <!-- <div>
                                 <p>Mentoring</p>
                             </div> -->
-                            <div>
+                            <div flex>
                                 <md-input-container>
                                     <label>Choose up to three options:</label>
+                                    <!-- <md-select ng-model="SC.formInput.involvement" ng-change="SC.selectTest(SC.formInput.involvement)" multiple> -->
                                     <md-select ng-model="SC.formInput.involvement" multiple>
                                         <md-optgroup label="Mentoring">
-                                            <md-option ng-repeat="eachThing in SC.mentorValues" ng-value='eachThing'>{{eachThing}}</md-option>
+                                            <md-option ng-disabled="SC.involveSelect[$index]" ng-repeat="eachThing in SC.mentorValues" ng-value='eachThing'>{{eachThing}}</md-option>
                                         </md-optgroup>
                                         <md-optgroup label="Events">
                                             <md-option ng-repeat="eachThing in SC.eventsValues" ng-value="eachThing">{{eachThing}}</md-option>
@@ -194,12 +195,7 @@
                                 <md-checkbox name="mentee" ng-model="SC.formInput.mentor2">Meeting for coffee</md-checkbox>
                                 <br>
                                 <md-checkbox name="mentee" ng-model="SC.formInput.mentor3">Meeting for coffee</md-checkbox> -->
-                            </div>
-                        </div>
-                        <div flex="50" layout="column" layout-align="center center">
-                            <div>
-                                <p>Events</p>
-                            </div>
+                            <!-- </div> -->
                         </div>
                     </div>
                 </md-input-container>
@@ -219,9 +215,9 @@
                 </md-input-container> -->
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
-                <md-input-container ng-if="SC.formInput.mentor" flex="100">
-                    <label>"Give us a brief overview of your experience. We would love to hear if you have worked with startups
-                        before!"
+                <md-input-container flex="100">
+                    <label>Give us a brief overview of your experience. We would love to hear if you have worked with startups
+                        before!
                     </label>
                     <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="SC.formInput.experience"></textarea>
                     <div ng-messages="surveyForm.experience.$error">
@@ -230,7 +226,7 @@
                 </md-input-container>
             </div>
             <div ng-if="SC.formInput.mentee" flex="100">
-                <h4>Startup</h4>
+                <h4>Questions for entrepreneurs</h4>
             </div>
             <div layout="column" layout-gt-md="row" layout-wrap>
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">

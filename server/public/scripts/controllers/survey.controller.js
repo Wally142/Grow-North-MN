@@ -4,6 +4,7 @@ myApp.controller('SurveyController', function (FormService, $scope) {
 
   vm.page = 0;
   $scope.currencyVal;
+  vm.involveSelect = {};
 
   vm.formInput = {
     firstname: null,
@@ -36,6 +37,22 @@ myApp.controller('SurveyController', function (FormService, $scope) {
     ecosystem: []
   };
 
+  // vm.selectTest = function (array) {
+  //   console.log('It did a thing!');
+  //   if (array.length > 2) {
+  //     for (var i = 0; i < array.length; i++) {
+  //       for (var j = 0; j < vm.mentorValues.length; j++) {
+  //         if (array[i] === vm.mentorValues[j]) {
+  //           vm.involveSelect[j] = false;
+  //           console.log('vm.involveSelect ->', vm.involveSelect);
+  //         } else {
+  //           vm.involveSelect[j] = true;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
   // form checkbox values
   vm.mentorValues = ['Via email', 'Meeting for coffee', 'Formalized mentorship'];
   vm.eventsValues = ['Volunteering the day of event', 'Event planning', 'Teaching'];
@@ -47,9 +64,9 @@ myApp.controller('SurveyController', function (FormService, $scope) {
 
   vm.form0Nav = function (page) {
     console.log('$scope.surveyForm0.$valid ->', $scope.surveyForm0.$valid);
-    
+
     if ($scope.surveyForm0.$valid) {
-      vm.page=page;
+      vm.page = page;
     }
   }
 
@@ -153,7 +170,9 @@ myApp.directive('phoneInput', function ($filter, $browser) {
 myApp.filter('tel', function () {
   return function (tel) {
     console.log(tel);
-    if (!tel) { return ''; }
+    if (!tel) {
+      return '';
+    }
 
     var value = tel.toString().trim().replace(/^\+/, '');
 
@@ -178,14 +197,12 @@ myApp.filter('tel', function () {
     if (number) {
       if (number.length > 3) {
         number = number.slice(0, 3) + '-' + number.slice(3, 7);
-      }
-      else {
+      } else {
         number = number;
       }
 
       return ("(" + city + ") " + number).trim();
-    }
-    else {
+    } else {
       return "(" + city;
     }
 

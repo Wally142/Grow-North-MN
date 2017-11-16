@@ -93,6 +93,16 @@ body {
   margin-top: 14px;
 }
 
+#intake-button-icon {
+  height: 100% !important;
+  color: red;
+  margin: 10px;
+}
+
+md-icon#intake-button-icon.ng-scope {
+  height: 100%;
+}
+
 #container {
   margin-top: 10px;
 }
@@ -115,6 +125,14 @@ body {
 
 .message:nth-child(even) {
   background-color: #f8f8f8;
+}
+
+.metric-display {
+  padding: 0;
+}
+
+.metric-toolbar {
+  text-align: center;
 }
 
 .btn-danger {

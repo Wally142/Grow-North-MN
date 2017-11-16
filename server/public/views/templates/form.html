@@ -251,55 +251,62 @@
                     <md-input-container>
                         <label>Number of Employees</label>
                         <md-select ng-model="SC.formInput.employees">
-                            <md-option ng-repeat="eachThing in SC.employeesValues" ng-value="eachThing">{{eachThing}}</md-option>
+                            <md-option ng-repeat="eachThing in SC.employeesValues" ng-model="SC.formInput.employees" ng-value="eachThing">{{eachThing}}</md-option>
                         </md-select>
                     </md-input-container>
                 </div>
-                <md-input-container ng-if="SC.formInput.mentee" flex="100">
+                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What are you struggling with?</label>
                     <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.struggle" required>
                     <div ng-messages="surveyForm.struggle.$error">
                         <div ng-message="required">This information is required.</div>
                     </div>
-                </md-input-container>
+                </md-input-container> -->
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
-                <md-input-container ng-if="SC.formInput.mentee" flex="100">
-                    <label>What ecosystem does your business reside in?</label>
-                    <input name="ecosystem" md-maxlength="500" type="text" ng-model="SC.formInput.ecosystem" required>
-                    <div ng-messages="surveyForm.ecosystem.$error">
-                        <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container ng-if="SC.formInput.mentee" flex="100">
+                <div ng-if="SC.formInput.mentee" flex="100">
+                    What are you looking for help with? (select up to three)
+                    <md-input-container>
+                        <md-select ng-model="SC.formInput.howhelp" multiple>
+                            <md-option ng-repeat="eachValue in SC.howhelpValues" ng-value='eachValue'>{{eachValue}}</md-option>
+                        </md-select>
+                        <!-- <md-checkbox ng-repeat="eachValue in SC.howhelpValues" ng-model="SC.formInput.howhelp" ng-value="eachValue">{{ eachValue }}</md-checkbox> -->
+                    </md-input-container>
+                </div>
+                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
+                    <label>What type of business do you operate?</label>
+                    <input name="ecosystem" md-maxlength="500" type="text" ng-model="SC.formInput.ecosystem">
+                </md-input-container> -->
+                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>How many employees do you have?</label>
                     <input name="employees" md-maxlength="500" type="text" ng-model="SC.formInput.employees" required>
                     <div ng-messages="surveyForm.employees.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
-                </md-input-container>
+                </md-input-container> -->
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
-                <md-input-container ng-if="SC.formInput.mentee" flex="100">
+                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What is your business's yearly revenue</label>
                     <input name="revenue" md-maxlength="500" type="text" ng-model="SC.formInput.revenue" required>
                     <div ng-messages="surveyForm.revenue.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
-                </md-input-container>
-                <md-input-container ng-if="SC.formInput.mentee" flex="100">
+                </md-input-container> -->
+                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>What is your distribution area?</label>
                     <input name="distribution" md-maxlength="500" type="text" ng-model="SC.formInput.distribution" required>
                     <div ng-messages="surveyForm.distribution.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
-                </md-input-container>
+                </md-input-container> -->
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
             </div>
             <div flex layout="column" layout-align="center center">
                 <md-input-container flex="50">
-                    <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
+                    <md-checkbox ng-model="SC.formInput.permission">Would you like us to contact you prior to sharing information about your business with other Grow North
+                        MN volunteers and startups?</md-checkbox>
                 </md-input-container>
             </div>
             <div layout="row" layout-align="center center">

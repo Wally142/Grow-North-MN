@@ -314,7 +314,7 @@
                                     <textarea  ng-model="commentsIn" ng-value="connections.comment" rows="6" cols="40"></textarea>
                                     <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
                                     <div class="saveComments">
-                                    <md-button class="md-raised md-primary" ng-click="connectionComment(connections.list[$index].id, connections.list[0].comment); DC.getProfile(profile.list[0].id); showComments($index)">Save</md-icon>
+                                    <md-button class="md-raised md-primary" ng-click="connectionComment(connections.id, commentsIn); DC.getProfile(profile.list[0].id); showComments($index)">Save</md-icon>
                                     </md-button>
                                 </div>
                                 </div>

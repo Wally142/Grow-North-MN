@@ -124,10 +124,6 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         };
 
         $scope.showComments = function(id) {
-            // if ($scope.commentsOn[index] === undefined) {
-            // $scope.commentsOn[index] = false;
-            // }
-            console.log('id', id);
             $scope.commentsOn = !$scope.commentsOn;
             console.log($scope.connections.list);
             for (var i=0; i < $scope.connections.list.length; i++) {
@@ -135,6 +131,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
                 if (id == $scope.connections.list[i].id) {
                     console.log('comments', $scope.connections.list[i].comments);
                     $scope.connections.comment = $scope.connections.list[i].comments;
+                    $scope.connections.id = id;
                      
                 } else {
                     console.log('WHYYYYYYY');

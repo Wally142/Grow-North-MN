@@ -48,10 +48,6 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
       templateUrl: '/views/templates/dashboard.html',
       controller: 'MetricsController as MC'
     })
-    .when('/directory', {
-      templateUrl: '/views/templates/directory.html',
-      controller: 'DirectoryController as DC'
-    })
     .when('/autocomplete', {
       templateUrl: '/views/templates/autocomplete.html',
       controller: 'DirectoryController as DC'

@@ -317,8 +317,8 @@
                                     <textarea ng-show="editOn" ng-model="commentsIn" ng-value="connections.comment" rows="6" cols="40"></textarea>
                                     <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
                                     <div class="saveComments">
-                                        <md-button ng-hide="editOn" class="md-raised md-primary editComments" ng-click="showEdit()">Edit</md-button>
-                                    <md-button ng-show="editOn" class="md-raised md-primary" ng-click="connectionComment(connections.id, commentsIn); showComments(connections.id); showEdit();">Save</md-icon>
+                                        <md-button ng-hide="editOn" class="md-raised md-primary editComments" ng-click="showEditComment()">Edit</md-button>
+                                    <md-button ng-show="editOn" class="md-raised md-primary" ng-click="connectionComment(connections.id, commentsIn); showComments(connections.id); showEditComment();">Save</md-icon>
                                     </md-button>
                                 </div>
                                 </div>

@@ -16,25 +16,18 @@ myApp.controller('SurveyController', function (FormService, $scope) {
     website: null,
     linkedin: null,
     referral: null,
-    permission: false,
     mentor: false,
     mentee: false,
-    // involvement: null,
-    // howhelp: null,
-    experience: null,
-    struggle: null,
-    ecosystem: null,
-    // employees: null,
-    // revenue: null,
-    distribution: null,
-    story: null,
-    legal: false,
-    // new:
     involvement: [],
-    revenue: [],
-    employees: [],
+    experience: null,
+    story: null,
+    revenue: null,
+    employees: null,
+    distribution: null,
     howhelp: [],
-    ecosystem: []
+    ecosystem: [],
+    permission: false,
+    legal: false,
   };
 
   // vm.selectTest = function (array) {
@@ -56,7 +49,7 @@ myApp.controller('SurveyController', function (FormService, $scope) {
   // form checkbox values
   vm.mentorValues = ['Via email', 'Meeting for coffee', 'Formalized mentorship'];
   vm.eventsValues = ['Volunteering the day of event', 'Event planning', 'Teaching'];
-  vm.revenueValues = ['$ 0 - 10,000', '$ 10,000 - 50,000', '$ 50,000 +'];
+  vm.revenueValues = ['$0 - $10,000', '$10,000 - $50,000', '$50,000 +'];
   vm.employeesValues = ['0 - 10', '10 - 20', '20 +'];
   vm.distributionValues = [];
   vm.howhelpValues = ['Food safety information', 'Manufacturing help', 'Financial resources', 'A mentor or advisor', 'General information'];
@@ -102,31 +95,11 @@ myApp.controller('SurveyController', function (FormService, $scope) {
     }
   }
 
-  vm.detectRadio = function () {
-    switch (vm.radioSelect) {
-      case 'mentor':
-        vm.formInput.mentor = true;
-        vm.formInput.mentee = false;
-        break;
-      case 'mentee':
-        vm.formInput.mentor = false;
-        vm.formInput.mentee = true;
-        break;
-      case 'both':
-        vm.formInput.mentor = true;
-        vm.formInput.mentee = true;
-        break;
-    }
-  }
-
   vm.grabInputs = function () {
     console.log('vm.formInput', vm.formInput);
     FormService.addContact(vm.formInput);
     vm.form4Nav(4);
   };
-
-
-
 });
 
 myApp.directive('phoneInput', function ($filter, $browser) {

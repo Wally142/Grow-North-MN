@@ -3,7 +3,7 @@
   <div flex="60" layout="row">
     <md-card class="metric-display" layout="row" flex="33">
       <md-toolbar class="md-toolbar-tools" flex="80" class="metric-toolbar">
-        <h5>Number of Mentors</h5>
+        <h5>Number of Volunteers</h5>
       </md-toolbar>
       <div flex layout="row" layout-align="center center">
         <h2>{{MC.mentors.list.length}}</h2>
@@ -11,7 +11,7 @@
     </md-card>
     <md-card class="metric-display" layout="row" flex="33">
       <md-toolbar class="md-toolbar-tools" flex="80" class="metric-toolbar">
-        <h5>Number of Mentees</h5>
+        <h5>Number of Entrepreneurs</h5>
       </md-toolbar>
       <div flex layout="row" layout-align="center center">
         <h2>{{MC.mentee.list.length}}</h2>
@@ -32,7 +32,7 @@
       <span ng-if="DC.approval.list.length===0">No pending intake forms</span>
     </md-button>
     <md-menu-content width="200x" flex="100">
-      <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+      <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:DC.sortMethod:DC.reverse | filter:DC.query"
         ng-value="listing.id">
         <md-button>
           <div layout="row">
@@ -46,6 +46,10 @@
 </div>
 <!-- Directory -->
 <div ng-controller="DirectoryController as DC" class="colorContent" layout="row" ng-init="DC.getDirectory()">
+  <md-input-container class="md-block instaSearch" md-no-float="true">
+    <input name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Instant Search">
+  </md-input-container>
+  <i class="material-icons searchBtn">search</i>
   <md-card class="cardList" flex>
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">

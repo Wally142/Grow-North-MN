@@ -8,9 +8,9 @@ router.post('/form', function (req, res) {
     // set tag column value to null array
     var tagsArray = [];
     if (grow.mentor){
-        tagsArray.push('mentor');
+        tagsArray.push('volunteer');
     } if (grow.mentee){
-        tagsArray.push('mentee');
+        tagsArray.push('entrepreneur');
     }
     var defaultTags = '{' + tagsArray + '}';
     pool.connect(function (error, client, done) {

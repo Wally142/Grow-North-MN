@@ -280,6 +280,12 @@ md-card.cardList {
   right: 30px;
 }
 
+.searchBtn {
+  position: absolute;
+  top: 40px;
+  right: 2px;
+}
+
 .pencilHide {
   opacity: 0;
   -o-transition:.5s;

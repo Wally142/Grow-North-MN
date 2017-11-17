@@ -32,7 +32,7 @@
       <span ng-if="DC.approval.list.length===0">No pending intake forms</span>
     </md-button>
     <md-menu-content width="200x" flex="100">
-      <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:MC.sortMethod:MC.reverse | filter:MC.query"
+      <md-menu-item ng-click="showProfile($event, listing.id)" ng-repeat="listing in DC.approval.list | orderBy:DC.sortMethod:DC.reverse | filter:DC.query"
         ng-value="listing.id">
         <md-button>
           <div layout="row">
@@ -46,6 +46,9 @@
 </div>
 <!-- Directory -->
 <div ng-controller="DirectoryController as DC" class="colorContent" layout="row" ng-init="DC.getDirectory()">
+  <md-input-container class="md-block instaSearch" md-no-float="true">
+    <input name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Instant Search">
+  </md-input-container>
   <md-card class="cardList" flex>
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">

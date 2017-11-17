@@ -275,7 +275,9 @@ md-card.cardList {
 }
 
 .instaSearch {
-  margin-top: 14px;
+  position: absolute;
+  top: 18px;
+  right: 30px;
 }
 
 .pencilHide {
@@ -301,15 +303,15 @@ a {
 }
 /* end profile view */
 
-md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,
+/* md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,
 md-input-container:not(.md-input-invalid).instaSearch .md-input {
   border-color: rgb(250, 250, 250);
   color: rgb(250, 250, 250) !important;
-}
+} */
 
-md-input-container:not(.md-input-invalid).instaSearch .md-input::-webkit-input-placeholder {
+/* md-input-container:not(.md-input-invalid).instaSearch .md-input::-webkit-input-placeholder {
   color: rgba(250, 250, 250, 0.5) !important;
-}
+} */
 
 md-button.headerBtn {
   padding-left: 0 !important;

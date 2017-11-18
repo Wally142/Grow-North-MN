@@ -379,3 +379,43 @@ textarea {
 .editComments {
   bottom: 2px;
 }
+
+/* div holding p tag */
+/* .detailsQuestions {
+  margin-top: 5px;
+  padding: 0px;
+} */
+
+/* .textDiv {
+  margin: 0px;
+  padding: 0px;
+} */
+
+.pQuestion {
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.pData {
+  margin-bottom: 3px;
+  margin-top: 0px;
+  text-indent: 2px;
+  padding-bottom: 6px;
+  padding-top: 2px;
+}
+
+/* md-input-container */
+.inputData {
+  margin: 0px;
+  padding: 0px;
+  height: 33px;
+}
+
+.saveBtn {
+  min-height: 25px;
+  line-height: 25px;
+  min-width: 60px;
+  width: 60px;
+  padding: 0px;
+  margin: 0px;
+}

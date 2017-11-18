@@ -95,12 +95,14 @@
   </md-menu>
 </div>
 <!-- Directory -->
-<div ng-controller="DirectoryController as DC" class="colorContent" layout="row" ng-init="DC.getDirectory()">
-  <md-input-container class="md-block instaSearch" md-no-float="true">
-    <input name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Search">
+<div ng-controller="DirectoryController as DC" class="colorContent" layout="row"  ng-init="DC.getDirectory()">
+  <div class="md-block instaSearch">
+  <md-input-container  md-no-float="true" >
+    <input id="searchWidth" name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Search">
   </md-input-container>
   <!-- <md-button aria-label="Twitter" class="md-icon-button md-raised md-accent searchBtn" ng-href="/logout"> -->
     <i class="material-icons searchBtn">search</i>
+</div>
   <!-- </md-button> -->
   <md-card class="cardList" flex>
     <md-toolbar>

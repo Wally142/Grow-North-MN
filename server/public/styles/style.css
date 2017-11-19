@@ -280,20 +280,25 @@ md-card.cardList {
 
 .instaSearch {
   position: absolute;
-  top: 18px;
-  right: 35px;
+  font-size: 29px;
+  top: 15px;
+  right: 20%;
+  color:#447063;
 }
-
-.searchBtn {
+#searchWidth{
+  width: 350px;
+  color:#447063;
+}
+/* .searchBtn {
   position: absolute;
-  top: 40px;
-  right: 7px;
-}
+  top: 0px;
+  right: ;
+} */
 
 .fabTools {
   position: absolute;
   top: 13px;
-  right: 215px;
+  right: 57px;
 }
 
 .fabMenuIcon {

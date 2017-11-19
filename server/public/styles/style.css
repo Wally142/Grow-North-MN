@@ -413,11 +413,15 @@ top: 25%;
   max-height: 250px;
   overflow-y: scroll;
 }
+
+.md-button.md-raised:hover {
+  background: lightgrey !important;
+}
+
 .pending-list-name-field {
   text-align: left;
 }
 
 .pending-list-date-field {
   text-align: right;
-
 }

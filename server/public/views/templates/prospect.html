@@ -274,7 +274,33 @@
                         </div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Connections">
+
+                <md-tab label="Notes">
+                    <md-content class="md-padding">
+                        <div layout="column" id="avatarDiv">
+                            <img src="/img/edit.svg" height="100px" />
+                        </div>
+                        <p class="detailsQuestions">
+                            Tags:
+                        </p>
+                        <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
+                        <div>
+                            <div ng-mouseenter="pencil.comments = true" ng-mouseleave="pencil.comments = false">
+                                <p class="detailsQuestions">
+                                    Comments
+                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.comments}" ng-click="showEdit('comments')"></md-icon>
+                                </p>
+                            </div>
+                            <textarea ng-show="editBoolean.comments" ng-model="commentIn" ng-value="profile.list[0].comments"></textarea>
+                            <md-button class="md-raised md-primary" ng-show="editBoolean.comments" ng-click="updateDetails(profile.list[0].id, commentIn, 'comments')">Save</md-button>
+                            <p ng-show="!editBoolean.comments">
+                                {{ profile.list[0].comments }}
+                            </p>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+                <md-tab label="Connections" ng-if="profile.list[0].approved">
                     <md-content class="md-padding">
                         <div layout="column" id="avatarDiv">
                             <img src="/img/transfer.svg" height="100px" />
@@ -325,30 +351,6 @@
                                 </div>
 
                             </div>
-                    </md-content>
-                </md-tab>
-                <md-tab label="Notes">
-                    <md-content class="md-padding">
-                        <div layout="column" id="avatarDiv">
-                            <img src="/img/edit.svg" height="100px" />
-                        </div>
-                        <p class="detailsQuestions">
-                            Tags:
-                        </p>
-                        <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
-                        <div>
-                            <div ng-mouseenter="pencil.comments = true" ng-mouseleave="pencil.comments = false">
-                                <p class="detailsQuestions">
-                                    Comments
-                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.comments}" ng-click="showEdit('comments')"></md-icon>
-                                </p>
-                            </div>
-                            <textarea ng-show="editBoolean.comments" ng-model="commentIn" ng-value="profile.list[0].comments"></textarea>
-                            <md-button class="md-raised md-primary" ng-show="editBoolean.comments" ng-click="updateDetails(profile.list[0].id, commentIn, 'comments')">Save</md-button>
-                            <p ng-show="!editBoolean.comments">
-                                {{ profile.list[0].comments }}
-                            </p>
-                        </div>
                     </md-content>
                 </md-tab>
             </md-tabs>

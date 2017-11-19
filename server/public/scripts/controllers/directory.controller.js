@@ -60,6 +60,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.commentsOn = false;
         $scope.deleteConfirm = false;
         $scope.editOn = false;
+        $scope.isApproved = false;
         
         $scope.testFunc = function(){
             console.log('testfunc called');
@@ -87,7 +88,8 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         };
         $scope.approve = function (id, status) {
             ProspectsService.updateApproval(id, status);
-            console.log('you clicked me!', id, status);
+            $scope.isApproved = !$scope.isApproved;
+            console.log('you clicked me!', id, status, "toggle connections shown:", vm.approved);
             $scope.cancel();
         };
         $scope.updateComments = function (id, comment) {

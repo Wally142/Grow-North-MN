@@ -379,3 +379,7 @@ textarea {
 .editComments {
   bottom: 2px;
 }
+
+.md-button.md-raised:hover {
+  background: lightgrey !important;
+}

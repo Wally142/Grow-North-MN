@@ -418,7 +418,7 @@ md-grid-tile {
   text-align: center;
   background-color:#447063;
   padding: 4px;
-  max-height: 55%;
+  max-height: 180px;
 }
 
 .cardContent {
@@ -428,6 +428,7 @@ md-grid-tile {
 .connectCard {
   text-align: center;
   max-height: 200px;
+  /* margin: 1%; */
 }
 
 .deleteIcon {
@@ -479,12 +480,12 @@ pre, code {
 }
 
 .titleComments {
-position: absolute;
+/* position: absolute; */
 top: 25%;
 }
 
 .paragraphNotes {
-  max-height: 250px;
+  max-height: 265px;
   overflow-y: scroll;
 }
 

@@ -39,7 +39,7 @@ h1 h2 h3 h4 h5 h6 {
 
 }
 
-.pagination-buttons{
+.pagination-buttons {
   padding: 5px;
 }
 
@@ -330,6 +330,58 @@ md-card.cardList {
 a {
   text-decoration: none;
 }
+
+.profileLink {
+  text-decoration: none;
+  color: #36594f;
+}
+
+.pQuestion {
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.pData {
+  margin-bottom: 3px;
+  margin-top: 0px;
+  text-indent: 2px;
+  padding-bottom: 6px;
+  padding-top: 2px;
+}
+
+/* md-input-container */
+.inputData {
+  margin: 0px;
+  padding: 0px;
+  height: 33px;
+}
+
+.saveBtn {
+  min-height: 25px;
+  line-height: 25px;
+  min-width: 60px;
+  width: 60px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.liData {
+  display: list-item;
+  list-style-type: none;
+  list-style-position: inside;
+  margin-left: 4px;
+  float: none;
+  overflow: scroll;
+}
+/* sets height and width of profile view */
+.divPage {
+  max-height: 500px;
+  min-height: 300px;
+}
+
+.pContact {
+  font-weight: bold;
+}
 /* end profile view */
 
 /* md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,
@@ -342,8 +394,20 @@ md-input-container:not(.md-input-invalid).instaSearch .md-input {
   color: rgba(250, 250, 250, 0.5) !important;
 } */
 
-md-button.headerBtn {
-  padding-left: 0 !important;
+.headerBtn.md-button {
+  padding: 0;
+  margin: 0;
+  min-width: 1%;
+  min-height: 37px;
+  line-height: 37px;
+}
+
+.md-button.headerBtn:not([disabled]):hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.padRght {
+  padding-right: 3px;
 }
 
 #awaiting-approval-button {
@@ -376,6 +440,7 @@ md-grid-tile {
 
 .connectCard {
   text-align: center;
+  max-height: 200px;
 }
 
 .deleteIcon {
@@ -392,7 +457,7 @@ md-grid-tile {
 textarea {
   resize:none;
   margin: 8px;
-  height: 90%;
+  height: 70%;
   width: 90%;
 }
 
@@ -402,4 +467,30 @@ textarea {
 
 .editComments {
   bottom: 2px;
+}
+
+.md-button.md-raised.white-button:hover {
+  background: lightgrey !important;
+}
+
+.titleComments {
+position: absolute;
+top: 25%;
+}
+
+.paragraphNotes {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.md-button.md-raised:hover {
+  background: lightgrey !important;
+}
+
+.pending-list-name-field {
+  text-align: left;
+}
+
+.pending-list-date-field {
+  text-align: right;
 }

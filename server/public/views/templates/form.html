@@ -16,7 +16,8 @@
             </div>
             <md-card-title class="formTitle">
                 <md-card-title-text layout="row" layout-align="center center">
-                    <h1>Tell us about yourself.</h1>
+                    <h1>Welcome to Grow North! We are here to serve the community and one way we do that is by facilitating connections
+                        between entrepreneurs and experts. To serve you better, we would love to hear about you.</h1>
                 </md-card-title-text>
             </md-card-title>
 
@@ -99,24 +100,19 @@
             <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
                     <label>How did you hear about Grow North?</label>
-                    <input name="referral" md-maxlength="500" type="text" ng-model="SC.formInput.referral" required>
+                    <input name="referral" md-maxlength="500" type="text" ng-model="SC.formInput.referral">
                     <div ng-messages="surveyForm0.referral.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
             </div>
             <div layout="column" layout-gt-md="row">
-                <!-- <div flex layout="column" layout-align="center center">
-                    <md-input-container flex="50">
-                        <md-checkbox ng-model="SC.formInput.permission">Do we have permission to discuss your business with others in our network?</md-checkbox>
-                    </md-input-container>
-                </div> -->
                 <md-input-container flex>
                     <p>
                         <strong>Please select at least one of the following:</strong>
                     </p>
                     <md-checkbox name="mentor" ng-model="SC.formInput.mentor" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you interested in volunteering or getting involved in the startup community?</md-checkbox>
-                    <md-checkbox name="mentee" ng-model="SC.formInput.mentee" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you looking for help or resources in the community?</md-checkbox>
+                    <md-checkbox name="mentee" ng-model="SC.formInput.mentee" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)">Are you an entrepreneur looking for help or resources from the community?</md-checkbox>
                     <div ng-messages="surveyForm0.mentor.$error && surveyForm0.mentee.$error">
                         <div ng-message="required">You must select an option before proceeding</div>
                     </div>
@@ -160,7 +156,8 @@
             </div>
             <md-card-title class="formTitle">
                 <md-card-title-text layout="row" layout-align="center center">
-                    <h1>Great! We want to help! Give us a little more information.</h1>
+                    <h1 ng-if="SC.formInput.mentor">Great! We want to help! To serve you best, we need a little more information.</h1>
+                    <h1 ng-if="SC.formInput.mentee && !SC.formInput.mentor">Great! We would love help, but we need a little more information.</h1>
                 </md-card-title-text>
             </md-card-title>
             <div ng-if="SC.formInput.mentor" flex="100">
@@ -170,7 +167,7 @@
                 <md-input-container flex="100">
                     <p>
                         Thank you for your interest in getting involved in Minnesota's food and agriculture startup community. How are you interested
-                        in helping?
+                        in helping out?
                     </p>
                     <div layout="row" layout-align="center center">
                         <!-- <div flex="50" layout="column"> -->
@@ -179,7 +176,7 @@
                             </div> -->
                         <div flex>
                             <md-input-container>
-                                <label>Choose up to three options:</label>
+                                <label>Select all that apply</label>
                                 <!-- <md-select ng-model="SC.formInput.involvement" ng-change="SC.selectTest(SC.formInput.involvement)" multiple> -->
                                 <md-select ng-model="SC.formInput.involvement" multiple>
                                     <md-optgroup label="Mentoring">
@@ -216,7 +213,8 @@
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
                 <md-input-container flex="100">
-                    <label>Give us a brief overview of your experience. We would love to hear if you have worked with startups before!
+                    <label>Give us a brief overview of your experience. We would love to hear if you have worked with startups before
+                        (in or out of Minnesota).
                     </label>
                     <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="SC.formInput.experience"></textarea>
                     <div ng-messages="surveyForm.experience.$error">
@@ -229,13 +227,13 @@
             </div>
             <div layout="column" layout-gt-md="row" layout-wrap>
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
-                    <label>What's your business story?</label>
+                    <label>First, we would love hear more about you, your story, and the story of your business.</label>
                     <textarea rows="4" name="story" md-maxlength="500" type="text" ng-model="SC.formInput.story" required></textarea>
                     <div ng-messages="surveyForm.story.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container>
-                <div>
+                <div ng-if="SC.formInput.mentee">
                     <p>Give us a sense of your business size.</p>
                     <md-input-container>
                         <label>Revenue</label>
@@ -248,6 +246,13 @@
                         <md-select ng-model="SC.formInput.employees">
                             <md-option ng-repeat="eachThing in SC.employeesValues" ng-model="SC.formInput.employees" ng-value="eachThing">{{eachThing}}</md-option>
                         </md-select>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Other (where are you sold, number of stores/clients, etc.)</label>
+                        <input name="distribution" md-maxlength="500" type="text" ng-model="SC.formInput.distribution">
+                        <div ng-messages="surveyForm.distribution.$error">
+                            <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
+                        </div>
                     </md-input-container>
                 </div>
                 <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
@@ -262,16 +267,16 @@
                 <div ng-if="SC.formInput.mentee" flex="100">
                     What are you looking for help with?
                     <md-input-container>
-                        <label>Select up to 3 options:</label>
+                        <label>Select all that apply:</label>
                         <md-select ng-model="SC.formInput.howhelp" multiple>
-                            <md-optgroup label="Select up to 3 options:">
-                            <md-option ng-repeat="eachValue in SC.howhelpValues" ng-value='eachValue'>{{eachValue}}</md-option>
+                            <md-optgroup label="Select all that apply:">
+                                <md-option ng-repeat="eachValue in SC.howhelpValues" ng-value='eachValue'>{{eachValue}}</md-option>
                             </md-optgroup>
                         </md-select>
                         <!-- <md-checkbox ng-repeat="eachValue in SC.howhelpValues" ng-model="SC.formInput.howhelp" ng-value="eachValue">{{ eachValue }}</md-checkbox> -->
                     </md-input-container>
                 </div>
-                <div flex="100">
+                <div ng-if="SC.formInput.mentee" flex="100">
                     What type of business do you operate?
                     <md-input-container>
                         <label>Select all that apply:</label>
@@ -303,20 +308,15 @@
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
                 </md-input-container> -->
-                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
-                    <label>What is your distribution area?</label>
-                    <input name="distribution" md-maxlength="500" type="text" ng-model="SC.formInput.distribution" required>
-                    <div ng-messages="surveyForm.distribution.$error">
-                        <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
-                    </div>
-                </md-input-container> -->
                 <!-- </div>
             <div layout="column" layout-gt-md="row"> -->
             </div>
-            <div flex layout="column" layout-align="center center">
-                <md-input-container flex="50">
-                    <md-checkbox ng-model="SC.formInput.permission">Would you like us to contact you prior to sharing information about your business with other Grow North
-                        MN volunteers and startups?</md-checkbox>
+            <div flex="100">
+                <md-input-container>
+                    <label>
+                        Anything else you would like to share?
+                    </label>
+                    <textarea rows="4" name="anythingelse" md-maxlength="500" type="text" ng-model="SC.formInput.anythingelse"></textarea>
                 </md-input-container>
             </div>
             <div layout="row" layout-align="center center">
@@ -341,18 +341,36 @@
             </div>
             <md-card-title class="formTitle">
                 <md-card-title-text layout="row" layout-align="center center">
-                    <h1>Terms and conditions</h1>
+                    <h1>Terms and Conditions</h1>
                 </md-card-title-text>
             </md-card-title>
-            <p>Lorem ipsum dolor sit amet, sed graeci virtute voluptatum no, nostro utamur usu ad. Eam in perfecto oportere,
-                qui alterum tibique reprimique ad. Ea inimicus deterruisset vis, ei exerci animal dissentiet usu, quo labores
-                accumsan ex. At sea quis purto. Eam impedit legendos prodesset in, per melius denique reformidans ex, nisl
-                iracundia duo ei. An facer tollit malorum quo, quem copiosae gubergren sed in. Nihil aperiri qui ei, deleniti
-                eleifend signiferumque an usu. Suavitate voluptatum mel eu, his cu putant copiosae erroribus. Omnes recusabo
-                inciderint mea at, ius et liber debet singulis, ut fierent constituto mediocritatem eam. No lorem quaerendum
-                per, eum eu nostro legimus.
+            <p>
+                The Grow North Community Database is a tool to drive connectivity in Minnesota. The information in the database will be used
+                by Grow North and not given to any third party or be public to any other organization, including those included
+                in the database. Inclusion in this directory is voluntary and will not result in any liability against Grow
+                North, The Holmes Center for Entrepreneur or the University of Minnesota.
             </p>
-
+            <p>
+                We are the sole owners of the information collected on this site. We only have access to/collect information that you voluntarily
+                give us via email or other direct contact from you. We will not sell or rent this information to anyone.
+            </p>
+            <p>
+                We will use your information to respond to you, regarding the reason you contacted us. We will not share your information
+                with any third party outside of our organization, other than as necessary to fulfill your request, e.g. to
+                ship an order.
+            </p>
+            <p>
+                Unless you ask us not to, we may contact you via email in the future to tell you about specials, new products or services,
+                or changes to this privacy policy.
+            </p>
+            <p>
+                In no event shall Grow North, The Grow North Community Database does not assume any responsibility for the recommendations,
+                referrals, or endorsements made by the connections created or advice given. We do not verify the license
+                or the qualifications of any professional or business listed. Understand also that inclusion or omission
+                of particular professionals, businesses, organizations, or services does not imply a recommendation, or lack
+                of, by Grow North. You may opt out from this database or change data at any time - please contact Grow North
+                directly at hello@grownorthmn.com.
+            </p>
             <md-input-container>
                 <md-checkbox name="legal" ng-model="SC.formInput.legal" ng-required="true">Do you agree to these terms?</md-checkbox>
                 <div ng-messages="surveyForm2.legal.$error">
@@ -381,7 +399,7 @@
             </div>
             <md-card-title class="formTitle">
                 <md-card-title-text layout="row" layout-align="center center">
-                    <h1>Confirm your information.</h1>
+                    <h1>Please confirm your information.</h1>
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-margin>
@@ -392,9 +410,10 @@
                         <p>{{SC.formInput.firstname}} {{SC.formInput.lastname}}</p>
                         <p>{{SC.formInput.email}}</p>
                         <p>{{SC.formInput.phone}}</p>
-                        <p>{{SC.formInput.title}}, {{SC.formInput.company}}</p>
-                        <p>LinkedIn: {{SC.formInput.linkedin}}</p>
-                        <p>Website: {{SC.formInput.website}}</p>
+                        <p>{{SC.formInput.title}}</p>
+                        <p>{{SC.formInput.company}}</p>
+                        <p ng-if="SC.formInput.linkedin !== null">LinkedIn: {{SC.formInput.linkedin}}</p>
+                        <p ng-if="SC.formInput.website !== null">Website: {{SC.formInput.website}}</p>
                         <md-divider></md-divider>
                         <p>How did you hear about Grow North?
                             <br>
@@ -406,17 +425,17 @@
                             <span ng-if="SC.formInput.mentor">Yes</span>
                             <span ng-if="!SC.formInput.mentor">No</span>
                         </p>
-                        <p>Are you looking for help or resources in the community?
+                        <p>Are you an entrepreneur looking for help or resources from the community?                               
                             <br>
-                            <span ng-if="SC.formInput.mentee">Yes</span>
-                            <span ng-if="!SC.formInput.mentee">No</span>
+                            <span class="surveyAnswer" ng-if="SC.formInput.mentee">Yes</span>
+                            <span class="surveyAnswer" ng-if="!SC.formInput.mentee">No</span>
                         </p>
                         <div ng-if="SC.formInput.involvement.length > 0 || SC.formInput.experience !== null">
                             <h4>Questions for volunteers</h4>
-                            <p ng-if="SC.formInput.involvement.length > 0">How are you interested in helping?
+                            <p ng-if="SC.formInput.involvement.length > 0">How are you interested in helping out?
                                 <br>
                                 <ul>
-                                    <li ng-repeat="thing in SC.formInput.involvement">{{thing}}</li>
+                                    <li class="surveyAnswer" ng-repeat="thing in SC.formInput.involvement">{{thing}}</li>
                                 </ul>
                             </p>
                             <p ng-if="SC.formInput.experience !== null">Give us a brief overview of your experience.
@@ -426,34 +445,36 @@
                         </div>
                         <div ng-if="SC.formInput.revenue !== null || SC.formInput.employees !== null || SC.formInput.howHelp.length > 0 || SC.formInput.ecosystem.length > 0">
                             <h4>Questions for entrepreneurs</h4>
-                            <p ng-if="SC.formInput.story !== null">What's your business story?
+                            <p ng-if="SC.formInput.story !== null">What's your story?
                                 <br>
                                 <span class="surveyAnswer">{{SC.formInput.story}}</span>
                             </p>
                             <p ng-if="SC.formInput.revenue !== null || SC.formInput.employees !== null">Give us a sense of your business size.
                                 <br>
-                                <span class="surveyAnswer" ng-if="SC.formInput.revenue !== null">Revenue: {{SC.formInput.revenue}}</span><br>
+                                <span class="surveyAnswer" ng-if="SC.formInput.revenue !== null">Revenue: {{SC.formInput.revenue}}</span>
+                                <br>
                                 <span class="surveyAnswer" ng-if="SC.formInput.employees !== null">Number of Employees: {{SC.formInput.employees}}</span>
+                                <br>
+                                <span class="surveyAnswer" ng-if="SC.formInput.distribution !== null">Other (where are you sold, number of stores/clients, etc): {{SC.formInput.distribution}}</span>
                             </p>
                             <p ng-if="SC.formInput.howHelp.length > 0">What are you looking for help with?
                                 <br>
                                 <ul>
-                                    <li ng-repeat="thing in SC.formInput.howHelp">{{thing}}</li>
+                                    <li class="surveyAnswer" ng-repeat="thing in SC.formInput.howHelp">{{thing}}</li>
                                 </ul>
                             </p>
                             <p ng-if="SC.formInput.ecosystem.length > 0">What type of business do you operate?
                                 <br>
                                 <ul>
-                                    <li ng-repeat="thing in SC.formInput.ecosystem">{{thing}}</li>
+                                    <li class="surveyAnswer" ng-repeat="thing in SC.formInput.ecosystem">{{thing}}</li>
                                 </ul>
                             </p>
                         </div>
-                        <div>
-                            <p>Would you like us to contact you prior to sharing information about your business with other Grow North MN volunteers and
-                            startups?
+                        <div ng-if="SC.formInput.anythingelse">
+                            <p>Anything else you would like to share?
                                 <br>
-                                <span ng-if="SC.formInput.permission">Yes</span>
-                                <span ng-if="!SC.formInput.permission">No</span>
+                                <span class="surveyAnswer" ng-if="SC.formInput.anythingelse !== null">{{ SC.formInput.anythingelse }}</span>
+                                <span class="surveyAnswer" ng-if="SC.formInput.anythingelse == null">(No comments entered.)</span>
                             </p>
                         </div>
                     </div>
@@ -470,7 +491,7 @@
     <md-card layout-padding ng-show="SC.page===4" flex>
         <md-card-title class="confirmTitle">
             <md-card-title-text>
-                <p class="confirmTitleText">Thank you for submitting your information!</p>
+                <p class="confirmTitleText">Thank you so much for submitting your information! Someone from Grow North MN will contact you soon.</p>
             </md-card-title-text>
         </md-card-title>
         <div layout="row" layout-align="center center" layout-margin>

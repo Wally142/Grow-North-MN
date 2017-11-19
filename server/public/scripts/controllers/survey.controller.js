@@ -49,10 +49,10 @@ myApp.controller('SurveyController', function (FormService, $scope) {
   // form checkbox values
   vm.mentorValues = ['Via email', 'Meeting for coffee', 'Formalized mentorship'];
   vm.eventsValues = ['Volunteering the day of event', 'Event planning', 'Teaching'];
-  vm.revenueValues = ['$0 - $10,000', '$10,000 - $50,000', '$50,000 +'];
+  vm.revenueValues = ['$0 - $50,000', '$50,000 - $200,000', '$200,000 +'];
   vm.employeesValues = ['0 - 10', '10 - 20', '20 +'];
   vm.distributionValues = [];
-  vm.howhelpValues = ['Food safety information', 'Manufacturing help', 'Financial resources', 'A mentor or advisor', 'General information'];
+  vm.howhelpValues = ['Food safety information', 'Manufacturing help', 'Capital (raising, preparing for)', 'A general mentor or advisor', 'Marketing strategy and/or advertising', 'General business information'];
   vm.ecosystemValues = ['Packaged goods', 'Restaurant', 'Beverage (alcohol/non-alcohol)', 'Value added farming', 'Agtech'];
 
   vm.form0Nav = function (page) {

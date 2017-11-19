@@ -58,6 +58,11 @@ h1 h2 h3 h4 h5 h6 {
   height: 100px;
 }
 
+#dashLogo {
+  height: 80px;
+  padding: 10px 0 0 10px;
+}
+
 /* #logo {
 display: block;
 margin: auto;
@@ -276,13 +281,27 @@ md-card.cardList {
 .instaSearch {
   position: absolute;
   top: 18px;
-  right: 30px;
+  right: 35px;
 }
 
 .searchBtn {
   position: absolute;
   top: 40px;
-  right: 2px;
+  right: 7px;
+}
+
+.fabTools {
+  position: absolute;
+  top: 13px;
+  right: 215px;
+}
+
+.fabMenuIcon {
+  margin-top: 16px;
+}
+
+.fabIcon {
+  margin-top: 8px;
 }
 
 .pencilHide {
@@ -404,6 +423,7 @@ md-grid-tile {
 
 .connectCard {
   text-align: center;
+  max-height: 200px;
 }
 
 .deleteIcon {
@@ -420,7 +440,7 @@ md-grid-tile {
 textarea {
   resize:none;
   margin: 8px;
-  height: 90%;
+  height: 70%;
   width: 90%;
 }
 
@@ -432,13 +452,28 @@ textarea {
   bottom: 2px;
 }
 
-/* div holding p tag */
-/* .detailsQuestions {
-  margin-top: 5px;
-  padding: 0px;
-} */
+.md-button.md-raised.white-button:hover {
+  background: lightgrey !important;
+}
 
-/* .textDiv {
-  margin: 0px;
-  padding: 0px;
-} */
+.titleComments {
+position: absolute;
+top: 25%;
+}
+
+.paragraphNotes {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.md-button.md-raised:hover {
+  background: lightgrey !important;
+}
+
+.pending-list-name-field {
+  text-align: left;
+}
+
+.pending-list-date-field {
+  text-align: right;
+}

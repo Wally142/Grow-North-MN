@@ -399,7 +399,7 @@ textarea {
   bottom: 2px;
 }
 
-.md-button.md-raised:hover {
+.md-button.md-raised.white-button:hover {
   background: lightgrey !important;
 }
 

@@ -371,6 +371,7 @@ md-grid-tile {
 
 .connectCard {
   text-align: center;
+  max-height: 200px;
 }
 
 .deleteIcon {
@@ -387,7 +388,7 @@ md-grid-tile {
 textarea {
   resize:none;
   margin: 8px;
-  height: 90%;
+  height: 70%;
   width: 90%;
 }
 
@@ -399,6 +400,16 @@ textarea {
   bottom: 2px;
 }
 
+
+.titleComments {
+position: absolute;
+top: 25%;
+}
+
+.paragraphNotes {
+  max-height: 250px;
+  overflow-y: scroll;
+
 .md-button.md-raised:hover {
   background: lightgrey !important;
 }
@@ -409,4 +420,5 @@ textarea {
 
 .pending-list-date-field {
   text-align: right;
+
 }

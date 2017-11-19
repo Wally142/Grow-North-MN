@@ -435,12 +435,17 @@ md-grid-tile {
   text-align: center;
   background-color:#447063;
   padding: 4px;
+  max-height: 180px;
 }
 
+.cardContent {
+  max-height: 100%;
+}
 
 .connectCard {
   text-align: center;
   max-height: 200px;
+  /* margin: 1%; */
 }
 
 .deleteIcon {
@@ -459,6 +464,24 @@ textarea {
   margin: 8px;
   height: 70%;
   width: 90%;
+  word-wrap: normal;
+}
+
+#editNotes {
+  resize:none;
+  margin: 8px;
+  height: 200px;
+  width: 90%;
+  word-wrap: normal;
+}
+
+pre {
+font-family: "Open Sans", sans-serif;
+white-space: normal;
+}
+
+pre, code {
+  white-space: pre-line;
 }
 
 .saveComments {
@@ -474,13 +497,20 @@ textarea {
 }
 
 .titleComments {
-position: absolute;
+/* position: absolute; */
 top: 25%;
 }
 
 .paragraphNotes {
-  max-height: 250px;
+  max-height: 265px;
   overflow-y: scroll;
+}
+
+.paragraphNotesWide {
+  max-height: 350px;
+  overflow-y: scroll;
+  word-wrap: normal;
+  /* max-width: 85%; */
 }
 
 .pending-list-name-field {

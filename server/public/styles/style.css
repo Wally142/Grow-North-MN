@@ -130,6 +130,7 @@ body {
 
 .metric-display {
   padding: 0;
+  margin: 15px 10px 20px 75px; 
 }
 
 .metric-toolbar {
@@ -260,7 +261,8 @@ md-card.dashMetrics {
 }
 
 md-card.cardList {
-  padding: 0;
+  padding: 0px;
+  margin: 10px 75px 10px 75px;
 }
 
 
@@ -345,6 +347,7 @@ md-button.headerBtn {
   font-size: larger;
   height: 50%;
   width: 80%;
+  margin-right: 25px;
 }
 
 /* form pages */

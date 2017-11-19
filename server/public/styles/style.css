@@ -306,6 +306,58 @@ md-card.cardList {
 a {
   text-decoration: none;
 }
+
+.profileLink {
+  text-decoration: none;
+  color: #36594f;
+}
+
+.pQuestion {
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+
+.pData {
+  margin-bottom: 3px;
+  margin-top: 0px;
+  text-indent: 2px;
+  padding-bottom: 6px;
+  padding-top: 2px;
+}
+
+/* md-input-container */
+.inputData {
+  margin: 0px;
+  padding: 0px;
+  height: 33px;
+}
+
+.saveBtn {
+  min-height: 25px;
+  line-height: 25px;
+  min-width: 60px;
+  width: 60px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.liData {
+  display: list-item;
+  list-style-type: none;
+  list-style-position: inside;
+  margin-left: 4px;
+  float: none;
+  overflow: scroll;
+}
+/* sets height and width of profile view */
+.divPage {
+  max-height: 500px;
+  min-height: 300px;
+}
+
+.pContact {
+  font-weight: bold;
+}
 /* end profile view */
 
 /* md-input-container:not(.md-input-invalid).instaSearch.md-input-focused .md-input,
@@ -390,41 +442,3 @@ textarea {
   margin: 0px;
   padding: 0px;
 } */
-
-.pQuestion {
-  margin-bottom: 3px;
-  font-weight: bold;
-}
-
-.pData {
-  margin-bottom: 3px;
-  margin-top: 0px;
-  text-indent: 2px;
-  padding-bottom: 6px;
-  padding-top: 2px;
-}
-
-/* md-input-container */
-.inputData {
-  margin: 0px;
-  padding: 0px;
-  height: 33px;
-}
-
-.saveBtn {
-  min-height: 25px;
-  line-height: 25px;
-  min-width: 60px;
-  width: 60px;
-  padding: 0px;
-  margin: 0px;
-}
-
-.liData {
-  display: list-item;
-  list-style-type: none;
-  list-style-position: inside;
-  margin-left: 4px;
-  float: none;
-  overflow: scroll;
-}

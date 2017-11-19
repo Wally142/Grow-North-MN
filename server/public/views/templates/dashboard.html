@@ -74,7 +74,7 @@
     </md-card>
   </div>
   <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center center">
-    <md-button class="md-raised" id="awaiting-approval-button" ng-click="DC.approval.list.length===0||$mdMenu.open()" id="notification-menu-header" layout="row" layout-align="center center">
+    <md-button class="md-raised white-button" id="awaiting-approval-button" ng-click="DC.approval.list.length===0||$mdMenu.open()" id="notification-menu-header" layout="row" layout-align="center center">
       <span ng-if="DC.approval.list.length>0">Pending intake forms<md-icon md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon></span>
       <span ng-if="DC.approval.list.length===0">No pending intake forms</span>
     </md-button>

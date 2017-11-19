@@ -400,6 +400,9 @@ textarea {
   bottom: 2px;
 }
 
+.md-button.md-raised.white-button:hover {
+  background: lightgrey !important;
+}
 
 .titleComments {
 position: absolute;
@@ -409,11 +412,7 @@ top: 25%;
 .paragraphNotes {
   max-height: 250px;
   overflow-y: scroll;
-
-.md-button.md-raised:hover {
-  background: lightgrey !important;
 }
-
 .pending-list-name-field {
   text-align: left;
 }

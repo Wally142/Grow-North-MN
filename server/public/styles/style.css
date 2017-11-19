@@ -418,8 +418,12 @@ md-grid-tile {
   text-align: center;
   background-color:#447063;
   padding: 4px;
+  max-height: 55%;
 }
 
+.cardContent {
+  max-height: 100%;
+}
 
 .connectCard {
   text-align: center;
@@ -442,6 +446,24 @@ textarea {
   margin: 8px;
   height: 70%;
   width: 90%;
+  word-wrap: normal;
+}
+
+#editNotes {
+  resize:none;
+  margin: 8px;
+  height: 200px;
+  width: 90%;
+  word-wrap: normal;
+}
+
+pre {
+font-family: "Open Sans", sans-serif;
+white-space: normal;
+}
+
+pre, code {
+  white-space: pre-line;
 }
 
 .saveComments {
@@ -464,6 +486,13 @@ top: 25%;
 .paragraphNotes {
   max-height: 250px;
   overflow-y: scroll;
+}
+
+.paragraphNotesWide {
+  max-height: 350px;
+  overflow-y: scroll;
+  word-wrap: normal;
+  /* max-width: 85%; */
 }
 
 .md-button.md-raised:hover {

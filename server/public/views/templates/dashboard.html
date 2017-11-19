@@ -74,8 +74,11 @@
     </md-card>
   </div>
   <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center center">
-    <md-button class="md-raised" id="awaiting-approval-button" ng-click="DC.approval.list.length===0||$mdMenu.open()" id="notification-menu-header" layout="row" layout-align="center center">
-      <span ng-if="DC.approval.list.length>0">Pending intake forms<md-icon md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon></span>
+    <md-button class="md-raised" id="awaiting-approval-button" ng-click="DC.approval.list.length===0||$mdMenu.open()" id="notification-menu-header"
+      layout="row" layout-align="center center">
+      <span ng-if="DC.approval.list.length>0">Pending intake forms
+        <md-icon md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon>
+      </span>
       <span ng-if="DC.approval.list.length===0">No pending intake forms</span>
     </md-button>
     <md-menu-content width="200x" flex="100">
@@ -97,55 +100,79 @@
     <input name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Search">
   </md-input-container>
   <!-- <md-button aria-label="Twitter" class="md-icon-button md-raised md-accent searchBtn" ng-href="/logout"> -->
-    <i class="material-icons searchBtn">search</i>
+  <i class="material-icons searchBtn">search</i>
   <!-- </md-button> -->
   <md-card class="cardList" flex>
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
-        <div flex="20">
-          <md-button class="headerBtn" ng-show="DC.sortMethod!=='lastname'" ng-click="DC.sort('lastname')">Name</md-button>
-          <md-button class="headerBtn" ng-show="DC.sortMethod=='lastname' && DC.reverse == true" ng-click="DC.sort('lastname')">Name
+        <div flex="20" layout-padding>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod!=='lastname'" ng-click="DC.sort('lastname')">Name</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='lastname' && DC.reverse == true" ng-click="DC.sort('lastname')">Name
             <i class="material-icons">arrow_drop_up</i>
           </md-button>
-          <md-button class="headerBtn" ng-show="DC.sortMethod=='lastname' && DC.reverse == false" ng-click="DC.sort('lastname')">Name
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='lastname' && DC.reverse == false" ng-click="DC.sort('lastname')">Name
             <i class="material-icons">arrow_drop_down</i>
           </md-button>
         </div>
-        <div flex="20">
-          <md-button class="headerBtn">Phone</md-button>
-        </div>
-        <div flex="20">
-          <md-button class="headerBtn">Email</md-button>
-        </div>
-        <div flex="20">
-          <md-button class="headerBtn" ng-show="DC.sortMethod!=='startdate'" ng-click="DC.sort('startdate')">Date Submitted</md-button>
-          <md-button class="headerBtn" ng-show="DC.sortMethod=='startdate' && DC.reverse == true" ng-click="DC.sort('startdate')">Date Submitted
+        <div flex="20" layout-padding>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod!=='company'" ng-click="DC.sort('company')">Company</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='company' && DC.reverse == true" ng-click="DC.sort('company')">Company
             <i class="material-icons">arrow_drop_up</i>
           </md-button>
-          <md-button class="headerBtn" ng-show="DC.sortMethod=='startdate' && DC.reverse == false" ng-click="DC.sort('startdate')">Date Submitted
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='company' && DC.reverse == false" ng-click="DC.sort('company')">Company
+            <i class="material-icons">arrow_drop_down</i>
+          </md-button>
+        </div>
+        <div flex="20" layout-padding>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod!=='title'" ng-click="DC.sort('title')">Job Title</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='title' && DC.reverse == true" ng-click="DC.sort('title')">Job Title
+            <i class="material-icons">arrow_drop_up</i>
+          </md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='title' && DC.reverse == false" ng-click="DC.sort('title')">Job Title
+            <i class="material-icons">arrow_drop_down</i>
+          </md-button>
+        </div>
+        <div flex="20" layout-padding>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod!=='startdate'" ng-click="DC.sort('startdate')">Date Submitted</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='startdate' && DC.reverse == true" ng-click="DC.sort('startdate')">Date Submitted
+            <i class="material-icons">arrow_drop_up</i>
+          </md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='startdate' && DC.reverse == false" ng-click="DC.sort('startdate')">Date Submitted
             <i class="material-icons">arrow_drop_down</i>
           </md-button>
         </div>
         <div flex="10">
-          <md-button class="headerBtn">Volunteer</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod!=='mentor'" ng-click="DC.sort('mentor')">Volunteer</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='mentor' && DC.reverse == true" ng-click="DC.sort('mentor')">Volunteer
+            <i class="material-icons">arrow_drop_up</i>
+          </md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='mentor' && DC.reverse == false" ng-click="DC.sort('mentor')">Volunteer
+            <i class="material-icons">arrow_drop_down</i>
+          </md-button>
         </div>
         <div flex="10">
-          <md-button class="headerBtn">Entrepreneur</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod!=='mentee'" ng-click="DC.sort('mentee')">Entrepreneur</md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='mentee' && DC.reverse == true" ng-click="DC.sort('mentee')">Entrepreneur
+            <i class="material-icons">arrow_drop_up</i>
+          </md-button>
+          <md-button md-no-ink="true" class="headerBtn" ng-show="DC.sortMethod=='mentee' && DC.reverse == false" ng-click="DC.sort('mentee')">Entrepreneur
+            <i class="material-icons">arrow_drop_down</i>
+          </md-button>
         </div>
       </div>
     </md-toolbar>
     <md-list>
       <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.paginatedListings | orderBy:DC.sortMethod:DC.reverse | filter:DC.query track by $index">
-        <div flex="20">
+        <div flex="20" layout-padding>
           {{ listing.lastname }}, {{ listing.firstname }}
         </div>
-        <div flex="20">
-          {{ listing.phone }}
+        <div flex="20" layout-padding>
+          {{ listing.company }}
         </div>
-        <div flex="20">
-          {{ listing.email }}
+        <div flex="20" layout-padding>
+          {{ listing.title }}
         </div>
-        <div flex="20">
+        <div flex="20" layout-padding>
           {{ listing.startdate | date: 'longDate' }}
         </div>
         <div flex="10">

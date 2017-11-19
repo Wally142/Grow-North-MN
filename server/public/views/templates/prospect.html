@@ -65,14 +65,16 @@
                                     </div>
                                     <div>
                                         <div>
-                                            <md-checkbox ng-model="profile.list[0].mentor" ng-value="profile.list[0].mentor" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentor, 'mentor')"
-                                                aria-label="Mentor">
-                                                Volunteer
-                                            </md-checkbox>
-                                            <md-checkbox ng-model="profile.list[0].mentee" ng-value="profile.list[0].mentee" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentee, 'mentee')"
-                                                aria-label="Mentee">
-                                                Entrepreneur
-                                            </md-checkbox>
+                                            <p class="pQuestion">
+                                                <md-checkbox ng-model="profile.list[0].mentor" ng-value="profile.list[0].mentor" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentor, 'mentor')"
+                                                    aria-label="Mentor">
+                                                    Volunteer
+                                                </md-checkbox>
+                                                <md-checkbox ng-model="profile.list[0].mentee" ng-value="profile.list[0].mentee" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentee, 'mentee')"
+                                                    aria-label="Mentee">
+                                                    Entrepreneur
+                                                </md-checkbox>
+                                            </p>
                                         </div>
                                         <div>
                                             <div ng-mouseenter="pencil.email = true" ng-mouseleave="pencil.email = false">
@@ -108,6 +110,43 @@
                                             </p>
                                         </div>
                                         <div>
+                                            <div ng-mouseenter="pencil.website = true" ng-mouseleave="pencil.website = false">
+                                                <p class="pQuestion">
+                                                    Website
+                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.website}" ng-click="showEdit('website')"></md-icon>
+                                                </p>
+                                            </div>
+                                            <md-input-container ng-show="editBoolean.website" class="inputData">
+                                                <input ng-show="editBoolean.website" ng-value="profile.list[0].website" type="text" ng-model="websiteIn" maxlength="14" phone-input>
+                                            </md-input-container>
+                                            <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.website" ng-click="updateDetails(profile.list[0].id, websiteIn, 'website')">Save</md-button>
+                                            <p class="pData" ng-show="!editBoolean.website">
+                                                <a href="{{ profile.list[0].website }}" target="_blank">
+                                                    {{ profile.list[0].website }}
+                                                </a>
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <div ng-mouseenter="pencil.linkedin = true" ng-mouseleave="pencil.linkedin = false">
+                                                <p ng-hide="profile.list[0].linkedin" class="pQuestion">
+                                                    LinkedIn
+                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.linkedin}" ng-click="showEdit('linkedin')"></md-icon>
+                                                </p>
+                                                <p class="pQuestion" ng-show="!editBoolean.linkedin && profile.list[0].linkedin">
+                                                    <a href="{{ profile.list[0].linkedin }}" target="_blank">
+                                                        <img src="img/linkedin.png" height="20px" />
+                                                        <!-- {{ profile.list[0].linkedin }} -->
+                                                    </a>
+                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.linkedin}" ng-click="showEdit('linkedin')"></md-icon>
+                                                </p>
+                                            </div>
+                                            <md-input-container ng-show="editBoolean.linkedin" class="inputData">
+                                                <input ng-show="editBoolean.linkedin" ng-value="profile.list[0].linkedin" type="text" ng-model="linkedinIn" maxlength="14"
+                                                    phone-input>
+                                            </md-input-container>
+                                            <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.linkedin" ng-click="updateDetails(profile.list[0].id, linkedinIn, 'linkedin')">Save</md-button>
+                                        </div>
+                                        <div>
                                             <div ng-mouseenter="pencil.title = true" ng-mouseleave="pencil.title = false">
                                                 <p class="pQuestion">
                                                     Job Title
@@ -128,7 +167,6 @@
                                                 <p class="pQuestion">
                                                     Company
                                                     <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.company}" ng-click="showEdit('company')"></md-icon>
-
                                                 </p>
                                             </div>
                                             <md-input-container ng-show="editBoolean.company" class="inputData">
@@ -200,7 +238,11 @@
                                 <input ng-show="editBoolean.involvement" ng-value="profile.list[0].involvement" type="text" , ng-model="involvementIn">
                             </md-input-container>
                             <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.involvement" ng-click="updateDetails(profile.list[0].id, involvementIn, 'involvement')">Save</md-button>
-                            <p class="pData" ng-show="!editBoolean.involvement">{{ profile.list[0].involvement }}</p>
+                            <ul class="pData" ng-show="!editBoolean.involvement">
+                                <li class="liData" ng-repeat="eachValue in profile.list[0].involvement">
+                                    {{ eachValue }}
+                                </li>
+                            </ul>
                         </div>
                         <div>
                             <div ng-mouseenter="pencil.howhelp = true" ng-mouseleave="pencil.howhelp = false">
@@ -213,7 +255,11 @@
                                 <input ng-show="editBoolean.howhelp" ng-value="profile.list[0].howhelp" type="text" , ng-model="howhelpIn">
                             </md-input-container>
                             <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.howhelp" ng-click="updateDetails(profile.list[0].id, howhelpIn, 'howhelp')">Save</md-button>
-                            <p class="pData" ng-show="!editBoolean.howhelp">{{ profile.list[0].howhelp }}</p>
+                            <ul class="pData" ng-show="!editBoolean.howhelp">
+                                <li class="liData" ng-repeat="eachValue in profile.list[0].howhelp">
+                                    {{ eachValue }}
+                                </li>
+                            </ul>
                         </div>
                         <div>
                             <div ng-mouseenter="pencil.experience = true" ng-mouseleave="pencil.experience = false">
@@ -239,7 +285,11 @@
                                 <input ng-show="editBoolean.ecosystem" ng-value="profile.list[0].ecosystem" type="text" , ng-model="ecosystemIn">
                             </md-input-container>
                             <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.ecosystem" ng-click="updateDetails(profile.list[0].id, ecosystemIn, 'ecosystem')">Save</md-button>
-                            <p class="pData" ng-show="!editBoolean.ecosystem">{{ profile.list[0].ecosystem }}</p>
+                            <ul class="pData" ng-show="!editBoolean.ecosystem">
+                                <li class="liData" ng-repeat="eachValue in profile.list[0].ecosystem">
+                                    {{ eachValue }}
+                                </li>
+                            </ul>
                         </div>
                         <div>
                             <div ng-mouseenter="pencil.employees = true" ng-mouseleave="pencil.employees = false">

@@ -409,6 +409,7 @@ top: 25%;
 .paragraphNotes {
   max-height: 250px;
   overflow-y: scroll;
+}
 
 .md-button.md-raised:hover {
   background: lightgrey !important;
@@ -420,5 +421,4 @@ top: 25%;
 
 .pending-list-date-field {
   text-align: right;
-
 }

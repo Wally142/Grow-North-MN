@@ -483,10 +483,6 @@ top: 25%;
   overflow-y: scroll;
 }
 
-.md-button.md-raised:hover {
-  background: lightgrey !important;
-}
-
 .pending-list-name-field {
   text-align: left;
 }

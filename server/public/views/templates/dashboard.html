@@ -1,4 +1,51 @@
-<div ng-include="'views/partials/nav.html'"></div>
+<!-- <div ng-include="'views/partials/nav.html'"></div> -->
+<img id="dashLogo" src="../../img/grownorth.png">
+<div class="fabTools" layout="row" layout-align="center center">
+  <md-fab-speed-dial md-open="MC.isOpen" md-direction="left" class="md-fling" ng-cloak>
+    <md-fab-trigger>
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <i class="material-icons fabMenuIcon">menu</i>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-fab-actions>
+      <md-button aria-label="Twitter" class="md-fab md-raised md-mini md-accent" ng-href="/logout">
+        <i class="material-icons fabIcon">exit_to_app</i>
+        <md-tooltip md-direction="bottom">Logout</md-tooltip>
+      </md-button>
+      <md-button aria-label="Facebook" class="md-fab md-raised md-mini md-accent" ng-href="/user" target="_blank">
+        <i class="material-icons fabIcon">account_box</i>
+        <md-tooltip md-direction="bottom">Manage Account</md-tooltip>
+      </md-button>
+      <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini md-accent" ng-href="/form" target="_blank">
+        <i class="material-icons fabIcon">assignment</i>
+        <md-tooltip md-direction="bottom">Survey</md-tooltip>
+      </md-button>
+    </md-fab-actions>
+  </md-fab-speed-dial>
+</div>
+
+<!-- <div class="lock-size" layout="row" layout-align="center center" ng-cloak>
+  <md-fab-speed-dial md-open="false" md-direction="left" md-fling>
+    <md-fab-trigger>
+      <md-button aria-label="menu" class="md-fab md-warn">
+        <i class="material-icons">menu</i>
+      </md-button>
+    </md-fab-trigger>
+
+    <md-fab-actions>
+      <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+        <i class="material-icons">exit_to_app</i>
+      </md-button>
+      <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+        <i class="material-icons">account_box</i>
+      </md-button>
+      <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+        <i class="material-icons">assignment</i>
+      </md-button>
+    </md-fab-actions>
+  </md-fab-speed-dial>
+</div> -->
 <div ng-init="MC.getMentorNumbers(); MC.getMenteeNumbers(); MC.getConnectionNumbers()" layout="row">
   <div flex="60" layout="row">
     <md-card class="metric-display" layout="row" flex="33">
@@ -27,7 +74,7 @@
     </md-card>
   </div>
   <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center center">
-    <md-button class="md-raised" id="awaiting-approval-button" ng-click="$mdMenu.open()" id="notification-menu-header" layout="row" layout-align="center center">
+    <md-button class="md-raised" id="awaiting-approval-button" ng-click="DC.approval.list.length===0||$mdMenu.open()" id="notification-menu-header" layout="row" layout-align="center center">
       <span ng-if="DC.approval.list.length>0">Pending intake forms<md-icon md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon></span>
       <span ng-if="DC.approval.list.length===0">No pending intake forms</span>
     </md-button>
@@ -36,8 +83,8 @@
         ng-value="listing.id">
         <md-button>
           <div layout="row">
-            <div flex="50">{{listing.firstname}} {{listing.lastname}}</div>
-            <div flex="50">{{listing.startdate | date: 'MMMM d, y'}}</div>
+            <div flex="50" class="pending-list-name-field">{{listing.firstname}} {{listing.lastname}}</div>
+            <div flex="50" class="pending-list-date-field">{{listing.startdate | date: 'MMMM d, y'}}</div>
           </div>
         </md-button>
       </md-menu-item>
@@ -49,7 +96,9 @@
   <md-input-container class="md-block instaSearch" md-no-float="true">
     <input name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Search">
   </md-input-container>
-  <i class="material-icons searchBtn">search</i>
+  <!-- <md-button aria-label="Twitter" class="md-icon-button md-raised md-accent searchBtn" ng-href="/logout"> -->
+    <i class="material-icons searchBtn">search</i>
+  <!-- </md-button> -->
   <md-card class="cardList" flex>
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">

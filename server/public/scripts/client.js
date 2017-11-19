@@ -78,9 +78,9 @@ myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
     '800': '223e36',
     '900': '162e26',
     'A100': '427063',
-    'A200': '3dffbb',
-    'A400': '0affa9',
-    'A700': '00f09c',
+    'A200': '427063', // 3dffbb
+    'A400': '427063', // 0affa9
+    'A700': '427063', // 00f09c
     'contrastDefaultColor': 'light',
     'contrastDarkColors': [
       '50',

@@ -280,13 +280,13 @@ md-card.cardList {
 
 .instaSearch {
   position: absolute;
-  font-size: larger;
+  font-size: 29px;
   top: 15px;
-  right: 42%;
+  right: 20%;
   color:#447063;
 }
-#searchWidth {
-  width: 250px;
+#searchWidth{
+  width: 350px;
   color:#447063;
 }
 /* .searchBtn {

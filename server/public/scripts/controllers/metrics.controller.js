@@ -13,6 +13,17 @@ myApp.controller('MetricsController', function (ProspectsService, UserService, $
     vm.reverse = false;
     vm.query = '';
 
+    vm.topDirections = ['left', 'up'];
+    vm.bottomDirections = ['down', 'right'];
+
+    vm.isOpen = false;
+
+    vm.availableModes = ['md-fling', 'md-scale'];
+    vm.selectedMode = 'md-fling';
+
+    vm.availableDirections = ['up', 'down', 'left', 'right'];
+    vm.selectedDirection = 'up';
+
     vm.sort = function (method) {
         vm.reverse = (vm.sortMethod === method) ? !vm.reverse : false;
         vm.sortMethod = method;

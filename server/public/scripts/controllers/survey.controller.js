@@ -26,25 +26,9 @@ myApp.controller('SurveyController', function (FormService, $scope) {
     distribution: null,
     howhelp: [],
     ecosystem: [],
-    permission: false,
+    anythingelse: null,
     legal: false,
   };
-
-  // vm.selectTest = function (array) {
-  //   console.log('It did a thing!');
-  //   if (array.length > 2) {
-  //     for (var i = 0; i < array.length; i++) {
-  //       for (var j = 0; j < vm.mentorValues.length; j++) {
-  //         if (array[i] === vm.mentorValues[j]) {
-  //           vm.involveSelect[j] = false;
-  //           console.log('vm.involveSelect ->', vm.involveSelect);
-  //         } else {
-  //           vm.involveSelect[j] = true;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
 
   // form checkbox values
   vm.mentorValues = ['Via email', 'Meeting for coffee', 'Formalized mentorship'];

@@ -11,7 +11,6 @@ CREATE DATABASE grow-north;
   company VARCHAR (200),
   title VARCHAR (200),
   referral VARCHAR (600),
-  permission BOOLEAN default false,
   mentor BOOLEAN default false,
   mentee BOOLEAN default false,
   involvement TEXT[],
@@ -25,7 +24,8 @@ CREATE DATABASE grow-north;
   comments VARCHAR (3000),
   startdate TIMESTAMP DEFAULT current_timestamp,
   approved BOOLEAN default false,
-  tags TEXT[]
+  tags TEXT[],
+  anythingelse VARCHAR (1000)
   );
 
 -- CREATE TABLE prospects (

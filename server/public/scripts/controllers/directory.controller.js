@@ -60,6 +60,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.commentsOn = false;
         $scope.deleteConfirm = false;
         $scope.editOn = false;
+        $scope.isApproved = false;
         
         $scope.testFunc = function(){
             console.log('testfunc called');
@@ -87,7 +88,8 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         };
         $scope.approve = function (id, status) {
             ProspectsService.updateApproval(id, status);
-            console.log('you clicked me!', id, status);
+            $scope.isApproved = !$scope.isApproved;
+            console.log('you clicked me!', id, status, "toggle connections shown:", vm.approved);
             $scope.cancel();
         };
         $scope.updateComments = function (id, comment) {
@@ -135,7 +137,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             for (var i = 0; i < $scope.connections.list.length; i++) {
 
                 if (id == $scope.connections.list[i].id) {
-                    console.log('comments', $scope.connections.list[i].comments);
+                    console.log('comments from', $scope.connections.list[i].firstname, $scope.connections.list[i].lastname, ":",  $scope.connections.list[i].comments);
                     $scope.connections.comment = ProspectsService.connections.list[i].comments;
                     $scope.connections.id = id;
                     $scope.connections.firstname = ProspectsService.connections.list[i].firstname;

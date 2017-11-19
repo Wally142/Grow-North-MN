@@ -36,8 +36,8 @@
         ng-value="listing.id">
         <md-button>
           <div layout="row">
-            <div flex="50">{{listing.firstname}} {{listing.lastname}}</div>
-            <div flex="50">{{listing.startdate | date: 'MMMM d, y'}}</div>
+            <div flex="50" class="pending-list-name-field">{{listing.firstname}} {{listing.lastname}}</div>
+            <div flex="50" class="pending-list-date-field">{{listing.startdate | date: 'MMMM d, y'}}</div>
           </div>
         </md-button>
       </md-menu-item>

@@ -383,3 +383,11 @@ textarea {
 .md-button.md-raised:hover {
   background: lightgrey !important;
 }
+
+.pending-list-name-field {
+  text-align: left;
+}
+
+.pending-list-date-field {
+  text-align: right;
+}

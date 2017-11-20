@@ -280,7 +280,7 @@
                                         </md-input-container>
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.involvement" ng-click="updateDetails(profile.list[0].id, involvementIn, 'involvement')">Save</md-button>
                                         <ul class="pData" ng-show="!editBoolean.involvement">
-                                            <li class="liData" ng-repeat="eachValue in profile.list[0].involvement">
+                                            <li class="liData" ng-repeat="eachValue in profile.list[0].involvement track by $index">
                                                 {{ eachValue }}
                                             </li>
                                         </ul>
@@ -297,7 +297,7 @@
                                         </md-input-container>
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.howhelp" ng-click="updateDetails(profile.list[0].id, howhelpIn, 'howhelp')">Save</md-button>
                                         <ul class="pData" ng-show="!editBoolean.howhelp">
-                                            <li class="liData" ng-repeat="eachValue in profile.list[0].howhelp">
+                                            <li class="liData" ng-repeat="eachValue in profile.list[0].howhelp track by $index">
                                                 {{ eachValue }}
                                             </li>
                                         </ul>
@@ -327,7 +327,7 @@
                                         </md-input-container>
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.ecosystem" ng-click="updateDetails(profile.list[0].id, ecosystemIn, 'ecosystem')">Save</md-button>
                                         <ul class="pData" ng-show="!editBoolean.ecosystem">
-                                            <li class="liData" ng-repeat="eachValue in profile.list[0].ecosystem">
+                                            <li class="liData" ng-repeat="eachValue in profile.list[0].ecosystem track by $index">
                                                 {{ eachValue }}
                                             </li>
                                         </ul>
@@ -443,8 +443,7 @@
                         <div class="bizCards">
                             <div layout="row">
                                 <div class="connectCard" layout="row" layout-wrap class="text-center" flex="60">
-
-                                    <md-card flex="45" class="connections" ng-repeat="connection in connections.list" ng-if="connection.firstname!=profile.list[0].firstname"
+                                    <md-card flex="45" class="connections" ng-repeat="connection in connections.list track by $index" ng-if="connection.firstname!=profile.list[0].firstname"
                                         md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
                                         <md-content class="cardContent">
                                             <h3>{{connection.firstname}} {{connection.lastname}}</h3>

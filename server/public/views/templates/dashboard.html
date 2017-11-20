@@ -161,7 +161,7 @@
       </div>
     </md-toolbar>
     <md-list>
-      <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.paginatedListings | orderBy:DC.sortMethod:DC.reverse | filter:DC.query track by $index">
+      <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.loadAll.list | orderBy:DC.sortMethod:DC.reverse | filter:DC.query track by $index">
         <div flex="20" layout-padding>
           {{ listing.lastname }}, {{ listing.firstname }}
         </div>
@@ -185,7 +185,7 @@
       </md-list-item>
 
     </md-list>
-    <md-collection-pagination class="pagination-buttons" collection="DC.directory.list" paginated-collection="DC.paginatedListings"
+    <md-collection-pagination class="pagination-buttons" collection="DC.loadAll.list" paginated-collection="DC.paginatedListings"
       per-page=8></md-collection-pagination>
   </md-card>
 </div>

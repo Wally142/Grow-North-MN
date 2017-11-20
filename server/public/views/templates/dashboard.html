@@ -175,12 +175,10 @@
           {{ listing.startdate | date: 'longDate' }}
         </div>
         <div flex="10">
-          <span ng-if="listing.mentor">Yes</span>
-          <span ng-if="!listing.mentor">No</span>
+          <span ng-if="listing.mentor"><md-icon md-svg-src="img/check_mark.svg"></md-icon></span>
         </div>
         <div flex="10">
-          <span ng-if="listing.mentee">Yes</span>
-          <span ng-if="!listing.mentee">No</span>
+          <span ng-if="listing.mentee"><md-icon md-svg-src="img/check_mark.svg"></md-icon></span>
         </div>
       </md-list-item>
 

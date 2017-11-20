@@ -317,11 +317,11 @@ md-card.cardList {
   position: absolute;
   font-size: 29px;
   top: 15px;
-  right: 20%;
+  right: 19.8%;
   color:#447063;
 }
 #searchWidth{
-  width: 350px;
+  width: 200px;
   color:#447063;
 }
 /* .searchBtn {
@@ -333,7 +333,7 @@ md-card.cardList {
 .fabTools {
   position: absolute;
   top: 13px;
-  right: 57px;
+  right: 17px;
 }
 
 .fabMenuIcon {

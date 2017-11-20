@@ -181,6 +181,15 @@ md-card {
   padding: 1%;
 }
 
+div.connectCard {
+  height: 380px;
+  overflow: scroll;
+}
+
+md-card.connections.ng-scope {
+  max-height: 177px;
+}
+
 .dashSearch {
   text-align: center;
 }

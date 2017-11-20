@@ -15,9 +15,10 @@
                 <div flex="10"></div>
             </div>
             <md-card-title class="formTitle">
-                <md-card-title-text layout="row" layout-align="center center">
-                    <h1>Welcome to Grow North! We are here to serve the community and one way we do that is by facilitating connections
-                        between entrepreneurs and experts. To serve you better, we would love to hear about you.</h1>
+                <md-card-title-text layout="column" layout-align="center center">
+                    <h1 class="headingText">Welcome to Grow North!</h1>
+                    <h3 class="headingText">We are here to serve the community and one way we do that is by facilitating connections between entrepreneurs
+                        and experts. To serve you better, we would love to hear about you.</h3>
                 </md-card-title-text>
             </md-card-title>
 
@@ -156,8 +157,8 @@
             </div>
             <md-card-title class="formTitle">
                 <md-card-title-text layout="row" layout-align="center center">
-                    <h1 ng-if="SC.formInput.mentor">Great! We want to help! To serve you best, we need a little more information.</h1>
-                    <h1 ng-if="SC.formInput.mentee && !SC.formInput.mentor">Great! We would love help, but we need a little more information.</h1>
+                    <h2 class="headingText" ng-if="SC.formInput.mentor">Great! We want to help! To serve you best, we need a little more information.</h2>
+                    <h2 class="headingText" ng-if="SC.formInput.mentee && !SC.formInput.mentor">Great! We would love help, but we need a little more information.</h2>
                 </md-card-title-text>
             </md-card-title>
             <div ng-if="SC.formInput.mentor" flex="100">
@@ -354,7 +355,7 @@
             </div>
             <md-card-title class="formTitle">
                 <md-card-title-text layout="row" layout-align="center center">
-                    <h1>Terms and Conditions</h1>
+                    <h2 class="headingText">Terms and Conditions</h2>
                 </md-card-title-text>
             </md-card-title>
             <p>
@@ -412,7 +413,7 @@
             </div>
             <md-card-title class="formTitle">
                 <md-card-title-text layout="row" layout-align="center center">
-                    <h1>Please confirm your information.</h1>
+                    <h2 class="headingText">Please confirm your information.</h2>
                 </md-card-title-text>
             </md-card-title>
             <div layout="row" layout-margin>
@@ -501,10 +502,10 @@
         </form>
     </md-card>
     <!-- Form 5 -->
-    <md-card layout-padding ng-show="SC.page===4" flex>
+    <md-card class="submitCard" layout="column" layout-padding ng-show="SC.page===4" flex>
         <md-card-title class="confirmTitle">
             <md-card-title-text>
-                <p class="confirmTitleText">Thank you so much for submitting your information! Someone from Grow North MN will contact you soon.</p>
+                <h2 class="headingText">Thank you so much for submitting your information! Someone from Grow North MN will contact you soon.</h2>
             </md-card-title-text>
         </md-card-title>
         <div layout="row" layout-align="center center" layout-margin>

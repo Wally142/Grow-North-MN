@@ -62,24 +62,38 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.editOn = false;
         $scope.isApproved = false;
         
-        $scope.testFunc = function(){
-            console.log('testfunc called');
-            
-        };
+        // $scope.testFunction = function(){            // testing function
+        //     console.log('testFunction called');
+        // };
 
-        $scope.testEditArray = function(value){
-            console.log('testEditArray value: ', value);
-            
+        $scope.updateArray = function(id, index, value, column){
+            // grab profile id, index of array value, input value, and array name (column)
+            console.log('updateArray values: ', id, index, value, column);
+            if (value == undefined){
+                // console.log('No value input.');
+                // call showEdit function
+            } else if (value == ''){
+                // remove array value, update array
+                // console.log('Delete array index value: ', value);
+                vm.profile.list[0][column].splice(index, 1);
+                $scope.updateDetails(id, vm.profile.list[0][column], column);
+            } else {
+                // edit array value, update array
+                // console.log('update array values id, index, value, column: ', id, index, value, column);
+                vm.profile.list[0][column][index] = value;
+                $scope.updateDetails(id, vm.profile.list[0][column], column);
+            }
         };
-        $scope.testDeleteArray = function(value){
-            console.log('testDeleteArray value: ', value);
-            console.log('profile.list[0].involvement: ', vm.profile.list[0].involvement);
-            vm.profile.list[0].involvement
-                                    
-        };
-        $scope.testAddArray = function(value){
-            console.log('testAddArray value: ', value);
-            
+        $scope.testAddArray = function(id, value, column){
+            console.log('testAddArray values id, value, column ', value);
+            if (value == undefined || value == ''){
+                console.log('No value input.');
+                // call showEdit function / toggle "+" icon
+            } else {
+                // add value to array, call updateDetails
+                vm.profile.list[0][column].push(value);
+                $scope.updateDetails(id, vm.profile.list[0][column], column);
+            }
         };
 
         $scope.commentIn = '';

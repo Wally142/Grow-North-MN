@@ -292,14 +292,13 @@
                                                 INVOLVEMENT
                                             </p>
                                         </div>
+                                        <input ng-model="involvementAddIn">
+                                        <md-button ng-click="testAddArray(profile.list[0].id, involvementAddIn, 'involvement')">ADD</md-button>
                                         <ul class="pData">
                                             <li class="liData" ng-repeat="eachValue in profile.list[0].involvement track by $index">
                                                 {{ eachValue }}
                                                 <input ng-value="profile.list[0].involvement[$index]" ng-model="involvementIn[$index]">
-                                                <md-button ng-click="testEditArray($index)">UPDATE</md-button>
-                                                
-                                                <md-button ng-click="testDeleteArray($index)">DELETE</md-button>
-                                                <md-button ng-click="testAddArray($index)">ADD</md-button>
+                                                <md-button ng-click="updateArray(profile.list[0].id, $index, involvementIn[$index], 'involvement')">UPDATE</md-button>
                                             </li>
                                         </ul>
                                     </div>

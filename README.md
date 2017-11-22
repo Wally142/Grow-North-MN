@@ -33,8 +33,8 @@ Dashboard screenshot:
 <img src="readme_images/dashboard.png" height="300px">
 </p>
 <br>
-<p>
 Profile view screenshot:
+<p>
 <br>
 <img src="readme_images/profile.png" height="300px">
 </p>

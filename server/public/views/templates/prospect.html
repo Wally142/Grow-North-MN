@@ -267,7 +267,7 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div flex="40">
+                                <!-- <div flex="40">
                                     <div>
                                         <div ng-mouseenter="pencil.involvement = true" ng-mouseleave="pencil.involvement = false">
                                             <p class="pQuestion">
@@ -284,7 +284,26 @@
                                                 {{ eachValue }}
                                             </li>
                                         </ul>
+                                    </div> -->
+                    <!-- involvement test -->
+                                    <div>
+                                        <div>
+                                            <p class="pQuestion">
+                                                INVOLVEMENT
+                                            </p>
+                                        </div>
+                                        <ul class="pData">
+                                            <li class="liData" ng-repeat="eachValue in profile.list[0].involvement track by $index">
+                                                {{ eachValue }}
+                                                <input ng-value="profile.list[0].involvement[$index]" ng-model="involvementIn[$index]">
+                                                <md-button ng-click="testEditArray($index)">UPDATE</md-button>
+                                                
+                                                <md-button ng-click="testDeleteArray($index)">DELETE</md-button>
+                                                <md-button ng-click="testAddArray($index)">ADD</md-button>
+                                            </li>
+                                        </ul>
                                     </div>
+                    <!-- end involvement test -->
                                     <div>
                                         <div ng-mouseenter="pencil.howhelp = true" ng-mouseleave="pencil.howhelp = false">
                                             <p class="pQuestion">

@@ -67,6 +67,21 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             
         };
 
+        $scope.testEditArray = function(value){
+            console.log('testEditArray value: ', value);
+            
+        };
+        $scope.testDeleteArray = function(value){
+            console.log('testDeleteArray value: ', value);
+            console.log('profile.list[0].involvement: ', vm.profile.list[0].involvement);
+            vm.profile.list[0].involvement
+                                    
+        };
+        $scope.testAddArray = function(value){
+            console.log('testAddArray value: ', value);
+            
+        };
+
         $scope.commentIn = '';
         // holds true/false values for ng-shows
         $scope.editBoolean = {};

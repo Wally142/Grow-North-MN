@@ -28,12 +28,16 @@ Copy and paste entry in database.sql file in home directory to create necessary 
 ## Screen Shots
 
 Dashboard screenshot:
+<p>
 <br>
 <img src="readme_images/dashboard.png" height="300px">
+</p>
 <br>
+<p>
 Profile view screenshot:
 <br>
 <img src="readme_images/profile.png" height="300px">
+</p>
 <br>
 
 ## Documentation

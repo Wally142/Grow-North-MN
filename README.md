@@ -1,32 +1,72 @@
 # Grow-North-MN
-Group Project
 
-# Known issues:
+Deployed URL: 
+grownorth.herokuapp.com
 
-Directory page:
-- After deleting profile, sometimes page will refresh before profile deleted and still show up in directory until manually.
+Full stack web application built for Grow North MN. This app facilitates connection building between food and agriculture businesses. Admin and guest are the users. Guests can access the survey form to enter their information about their business, which adds this data to a database that can be acccessed by the admin side. The admin can create an account, change password, and log in. Once logged in, admin can view the directory of all persons in the database, read their information, update any line, and delete the person's profile. Admin can also create connections between profiles and add comments about profile or connection.
 
-#Clean up:
-- Do we actually need $http injected into DirectoryController?
-- vm.approve and vm.getApproval functions needed in DirectoryController?
+## Built With
 
-#SQL syntax for updating array values:
---INSERT INTO tag_test VALUES (3, '{thing2}');
+JavaScript, AngularJS, Node.js, Express.js, PostgreSql, Angular Material, HTML5, CSS, Material Design icons, Passport, Md Pagination.
 
---replace existing array:
-UPDATE tag_test SET tags = '{thing4, thing5, thing6}' WHERE id = 3;
+## Getting Started
 
---update array position [3] value:
-UPDATE tag_test SET tags[3] = 'thing4' WHERE id = 3;
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-#icon sourcing links:
+### Prerequisites
 
-<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+Link to software that is required to install the app (e.g. node).
+- [Node.js](https://nodejs.org/en/)
+- [Postico] (https://eggerapps.at/postico/)
 
-<div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+### Installing
 
-<div>Icons made by <a href="https://www.flaticon.com/authors/gregor-cresnar" title="Gregor Cresnar">Gregor Cresnar</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+NPM install.
+Copy and paste entry in database.sql file in home directory to create necessary tables in Postico.
 
-<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+ +Steps to get the development environment running.
 
-class='md-icon-btn' something like this 
+## Screen Shots
+
+Dashboard screenshot:
+<p>
+<br>
+<img src="readme_images/dashboard.png" height="400px">
+</p>
+<br>
+Profile view screenshot:
+<p>
+<br>
+<img src="readme_images/profile.png" height="400px">
+</p>
+<br>
+
+## Documentation
+
+### Completed Features
+
+- Admin log in.
+- Password reset.
+- Survey form.
+- Directory view.
+- Search directory by single word or single tag.
+- View and approve new entries.
+- Profile view for each entry in directory.
+- Edit single entries in profile view.
+- Add comments to profile.
+- Add connections between entries in directory.
+- Add comments for each connection.
+
+### Next Steps
+
+- Pagination with search ability for directory.
+- Edit list items in profile (involvement, how do they want to help, ecosystem).
+
+## Deployment
+
+## Authors
+Katie Campbell, Nestor Gomez-Jimenez, Evan Kearney, Mike Pettman, Cam Schnackel, Greg Wallerus.
+
+## Acknowledgments
+
+-Scott Bromander and Kris Szafranski for base passport code.

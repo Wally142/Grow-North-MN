@@ -2,11 +2,11 @@
 <div layout="row" layout-align="center">
     <md-button class="groupX left md-raised" ng-click="setCurrent(1)"><i class="material-icons fabIcon">first_page</i></md-button>
     <md-button title="Previous page" class="groupX middle md-raised" ng-class="{ disabled : pagination.current == 1 }" ng-click="setCurrent(pagination.current - 1)"><i class="material-icons fabIcon">chevron_left</i></md-button>
-    <md-button ng-if="pagination.current>2" class="groupX middle md-raised md-mini" ng-click="setCurrent(pagination.current - 2)">{{pagination.current - 2}}</md-button>
-    <md-button ng-if="pagination.current>1" class="groupX middle md-raised" ng-click="setCurrent(pagination.current - 1)">{{pagination.current - 1}}</md-button>
+    <!-- <md-button ng-if="pagination.current>2" class="groupX middle md-raised md-mini" ng-click="setCurrent(pagination.current - 2)">{{pagination.current - 2}}</md-button>
+    <md-button ng-if="pagination.current>1" class="groupX middle md-raised" ng-click="setCurrent(pagination.current - 1)">{{pagination.current - 1}}</md-button> -->
     <md-button class="groupX middle md-raised md-primary md-mini">{{pagination.current}}</md-button>
-    <md-button ng-if="range.upper<range.total" class="groupX middle md-raised" ng-click="setCurrent(pagination.current + 1)">{{pagination.current + 1}}</md-button>
-    <md-button ng-if="range.upper<range.total-8" class="groupX middle md-raised" ng-click="setCurrent(pagination.current + 2)">{{pagination.current + 2}}</md-button>    
+    <!-- <md-button ng-if="range.upper<range.total" class="groupX middle md-raised" ng-click="setCurrent(pagination.current + 1)">{{pagination.current + 1}}</md-button>
+    <md-button ng-if="range.upper<range.total-8" class="groupX middle md-raised" ng-click="setCurrent(pagination.current + 2)">{{pagination.current + 2}}</md-button>     -->
     <md-button title="Next page" class="groupX middle md-raised" ng-class="{ disabled : pagination.current == pagination.last }" ng-click="setCurrent(pagination.current + 1)"><i class="material-icons fabIcon">chevron_right</i></md-button>
     <md-button class="groupX right md-raised" ng-click="setCurrent(pagination.last)"><i class="material-icons fabIcon">last_page</i></md-button>
 </div>

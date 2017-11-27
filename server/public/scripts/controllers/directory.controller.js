@@ -276,6 +276,61 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         };
     }
 
+    $scope.showSettings = function (ev) {
+        console.log('showSettings called');
+        $mdDialog.show({
+            controller: SettingsDialogController,
+            templateUrl: '/views/templates/user.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        })
+            .then(function (answer) {
+                $scope.status = 'You said the information was "' + answer + '".';
+            }, function () {
+                $scope.status = 'You cancelled the dialog.';
+            });
+    };
+
+    function SettingsDialogController(UserService, $scope, $mdDialog, $route) {
+        
+        $scope.userObject = UserService.userObject;
+        $scope.userObject.message = 'Here you can update admin info including your email and password.';
+
+        $scope.updateEmail = function (email) {
+            if ($scope.email === $scope.emailConfirm) {
+                UserService.updateEmail(email);
+                $scope.userObject.message = 'Your email has been successfully changed'
+                $scope.email = '';
+                $scope.emailConfirm = '';
+                $scope.emailUpdate = !$scope.emailUpdate;
+            } else {
+                $scope.userObject.message = 'Email addresses didn\'t match';
+                $scope.email = '';
+                $scope.emailConfirm = '';
+            }
+        }
+
+        $scope.updatePassword = function (password) {
+            if ($scope.password === $scope.passwordConfirm) {
+                UserService.updatePassword(password);
+                $scope.userObject.message = 'Your password has been successfully changed'
+                $scope.password = '';
+                $scope.passwordConfirm = '';
+                $scope.passwordUpdate = !$scope.passwordUpdate;
+            } else {
+                $scope.userObject.message = 'Passwords didn\'t match';
+                $scope.password = '';
+                $scope.passwordConfirm = '';
+            }
+        }
+
+        $scope.resetMsg = function () {
+            $scope.userObject.message = 'Here you can update admin info including your email and password.';
+        }
+    };
+
     vm.getApproval = function () {
         ProspectsService.getApproval();
         vm.approval = ProspectsService.approval;

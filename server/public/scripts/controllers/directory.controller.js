@@ -61,16 +61,20 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.deleteConfirm = false;
         $scope.editOn = false;
         $scope.isApproved = false;
-
-        // $scope.testFunction = function(){            // testing function
-        //     console.log('testFunction called');
-        // };
+        $scope.commentIn = '';
+        // hold true/false values for ng-shows
+        // must set all editBoolean values for array columns as arrays
+        $scope.editBoolean = {
+            involvement: [],
+            howhelp: [],
+            ecosystem: [],
+        };
 
         $scope.updateArray = function (id, index, value, column) {
             // grab profile id, index of array value, input value, and array name (column)
             // console.log('updateArray values: ', id, index, value, column);
             if (value == undefined) {
-                console.log('No value input.');
+                // console.log('No value input.');
                 // toggle editBoolean
                 $scope.editBoolean[column][index] = !$scope.editBoolean[column][index];
             } else if (value == '') {
@@ -93,24 +97,14 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             if (value == undefined || value == '') {
                 console.log('No value input.');
                 $scope.editBoolean[columnAdd] = !$scope.editBoolean[columnAdd];
-                // toggle "+" icon
             } else {
-                // add value to array, call updateDetails
+                // add value to array, call updateDetails, toggle EditBoolean
                 vm.profile.list[0][column].push(value);
                 ProspectsService.updateDetails(id, vm.profile.list[0][column], column);
                 $scope.editBoolean[columnAdd] = !$scope.editBoolean[columnAdd];
             }
         };
 
-        $scope.commentIn = '';
-        // hold true/false values for ng-shows
-        // must set all editBoolean values for array columns as arrays
-        $scope.editBoolean = {
-            involvement: [],
-            howhelp: [],
-            ecosystem: [],
-        };
-        
         $scope.hide = function () {
             $mdDialog.hide();
         };
@@ -152,18 +146,12 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         };
         $scope.showEdit = function (input) {
             $scope.editBoolean[input] = !$scope.editBoolean[input];
-            console.log('$scope.editBoolean.', input, ': ', $scope.editBoolean[input]);
+            // console.log('$scope.editBoolean.', input, ': ', $scope.editBoolean[input]);
         };
 
         $scope.showEditArray = function (input, index) {
-            // var inputIndex = input + index;
-            // $scope.editBoolean[inputIndex] = !$scope.editBoolean[inputIndex];
-            // console.log('$scope.editBoolean.', inputIndex, ': ', $scope.editBoolean[inputIndex]);
             $scope.editBoolean[input][index] = !$scope.editBoolean[input][index];
-            // $scope.editBoolean.input[index] = !$scope.editBoolean.input[index];
-            // $scope.editBoolean[input] = !$scope.editBoolean[input];
-            // console.log('$scope.editBoolean.', input, ': ', $scope.editBoolean[input]);
-            console.log('$scope.editBoolean.', input, '[', index, ']', ': ', $scope.editBoolean[input][index]);
+            // console.log('$scope.editBoolean.', input, '[', index, ']', ': ', $scope.editBoolean[input][index]);
         };
 
         // $scope.testFunction = function(input){            // testing function

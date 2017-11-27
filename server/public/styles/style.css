@@ -305,6 +305,15 @@ a {
   font-weight: bold;
 }
 
+.iconButton {
+  min-height: 28px;
+  line-height: 28px;
+  min-width: 28px;
+  width: 28px;
+  padding: 0px;
+  margin: 0px;
+}
+
 /* end profile view */
 
 .headerBtn.md-button {

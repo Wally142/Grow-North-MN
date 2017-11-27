@@ -102,7 +102,7 @@
                                             <p class='pQuestion'>
                                                 Last name
                                                 <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.lastname}" ng-click="showEdit('lastname')">
-                                                <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
                                                 </md-button>
                                             </p>
                                         </div>
@@ -131,7 +131,9 @@
                                             <div ng-mouseenter="pencil.email = true" ng-mouseleave="pencil.email = false">
                                                 <p class="pQuestion">
                                                     Email
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.email}" ng-click="showEdit('email')"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.email}" ng-click="showEdit('email')">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </p>
                                             </div>
                                             <md-input-container ng-show="editBoolean.email" class="inputData">
@@ -146,8 +148,9 @@
                                             <div ng-mouseenter="pencil.phone = true" ng-mouseleave="pencil.phone = false">
                                                 <p class="pQuestion">
                                                     Phone
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.phone}" ng-click="showEdit('phone')"></md-icon>
-
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.phone}" ng-click="showEdit('phone')">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </p>
                                             </div>
                                             <md-input-container ng-show="editBoolean.phone" class="inputData">
@@ -164,7 +167,9 @@
                                             <div ng-mouseenter="pencil.website = true" ng-mouseleave="pencil.website = false">
                                                 <p class="pQuestion">
                                                     Website
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.website}" ng-click="showEdit('website')"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.website}" ng-click="showEdit('website')">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </p>
                                             </div>
                                             <md-input-container ng-show="editBoolean.website" class="inputData">
@@ -181,7 +186,9 @@
                                             <div ng-mouseenter="pencil.linkedin = true" ng-mouseleave="pencil.linkedin = false">
                                                 <p class="pQuestion">
                                                     LinkedIn
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.linkedin}" ng-click="showEdit('linkedin')"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.linkedin}" ng-click="showEdit('linkedin')">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </p>
                                             </div>
                                             <md-input-container ng-show="editBoolean.linkedin" class="inputData">
@@ -199,7 +206,9 @@
                                             <div ng-mouseenter="pencil.title = true" ng-mouseleave="pencil.title = false">
                                                 <p class="pQuestion">
                                                     Job Title
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.title}" ng-click="showEdit('title')"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.title}" ng-click="showEdit('title')">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </p>
                                             </div>
                                             <md-input-container ng-show="editBoolean.title" class="inputData">
@@ -214,7 +223,9 @@
                                             <div ng-mouseenter="pencil.company = true" ng-mouseleave="pencil.company = false">
                                                 <p class="pQuestion">
                                                     Company
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.company}" ng-click="showEdit('company')"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.company}" ng-click="showEdit('company')">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </p>
                                             </div>
                                             <md-input-container ng-show="editBoolean.company" class="inputData">
@@ -230,7 +241,9 @@
                                         <div ng-mouseenter="pencil.referral = true" ng-mouseleave="pencil.referral = false">
                                             <p class="pQuestion">
                                                 Referred by
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.referral}" ng-click="showEdit('referral')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.referral}" ng-click="showEdit('referral')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.referral" class="inputData">
@@ -247,14 +260,18 @@
                                         <div ng-mouseenter="pencil.involvementAdd = true" ng-mouseleave="pencil.involvementAdd = false">
                                             <p class="pQuestion">
                                                 Involvement
-                                                <md-icon md-svg-src="img/plus.svg" class="pencilHide" ng-class="{pencilShow: pencil.involvementAdd}" ng-click="showEdit('involvementAdd')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.involvementAdd}" ng-click="showEdit('involvementAdd')">
+                                                    <md-icon md-svg-src="img/plus.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <ul class="pData">
                                             <li class="liData" ng-repeat="eachValue in profile.list[0].involvement track by $index">
                                                 <div ng-show="!editBoolean.involvement[$index]" ng-mouseenter="pencil.involvement[$index] = true" ng-mouseleave="pencil.involvement[$index] = false">
                                                     {{ eachValue }}
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.involvement[$index]}" ng-click="showEditArray('involvement', $index)"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.involvement[$index]}" ng-click="showEditArray('involvement', $index)">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </div>
                                                 <div ng-show="editBoolean.involvement[$index]">
                                                     <md-input-container class="inputData">
@@ -277,14 +294,18 @@
                                         <div ng-mouseenter="pencil.howhelpAdd = true" ng-mouseleave="pencil.howhelpAdd = false">
                                             <p class="pQuestion">
                                                 How do they want to help
-                                                <md-icon md-svg-src="img/plus.svg" class="pencilHide" ng-class="{pencilShow: pencil.howhelpAdd}" ng-click="showEdit('howhelpAdd')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.howhelpAdd}" ng-click="showEdit('howhelpAdd')">
+                                                    <md-icon md-svg-src="img/plus.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <ul class="pData">
                                             <li class="liData" ng-repeat="eachValue in profile.list[0].howhelp track by $index">
                                                 <div ng-show="!editBoolean.howhelp[$index]" ng-mouseenter="pencil.howhelp[$index] = true" ng-mouseleave="pencil.howhelp[$index] = false">
                                                     {{ eachValue }}
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.howhelp[$index]}" ng-click="showEditArray('howhelp', $index)"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.howhelp[$index]}" ng-click="showEditArray('howhelp', $index)">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </div>
                                                 <div ng-show="editBoolean.howhelp[$index]">
                                                     <md-input-container class="inputData">
@@ -307,7 +328,9 @@
                                         <div ng-mouseenter="pencil.experience = true" ng-mouseleave="pencil.experience = false">
                                             <p class="pQuestion">
                                                 Experience
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.experience}" ng-click="showEdit('experience')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.experience}" ng-click="showEdit('experience')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.experience" class="inputData">
@@ -320,14 +343,18 @@
                                         <div ng-mouseenter="pencil.ecosystemAdd = true" ng-mouseleave="pencil.ecosystemAdd = false">
                                             <p class="pQuestion">
                                                 Ecosystem
-                                                <md-icon md-svg-src="img/plus.svg" class="pencilHide" ng-class="{pencilShow: pencil.ecosystemAdd}" ng-click="showEdit('ecosystemAdd')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.ecosystemAdd}" ng-click="showEdit('ecosystemAdd')">
+                                                    <md-icon md-svg-src="img/plus.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <ul class="pData">
                                             <li class="liData" ng-repeat="eachValue in profile.list[0].ecosystem track by $index">
                                                 <div ng-show="!editBoolean.ecosystem[$index]" ng-mouseenter="pencil.ecosystem[$index] = true" ng-mouseleave="pencil.ecosystem[$index] = false">
                                                     {{ eachValue }}
-                                                    <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.ecosystem[$index]}" ng-click="showEditArray('ecosystem', $index)"></md-icon>
+                                                    <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.ecosystem[$index]}" ng-click="showEditArray('ecosystem', $index)">
+                                                        <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                    </md-button>
                                                 </div>
                                                 <div ng-show="editBoolean.ecosystem[$index]">
                                                     <md-input-container class="inputData">
@@ -350,7 +377,9 @@
                                         <div ng-mouseenter="pencil.employees = true" ng-mouseleave="pencil.employees = false">
                                             <p class="pQuestion">
                                                 # of Employees
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.employees}" ng-click="showEdit('employees')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.employees}" ng-click="showEdit('employees')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.employees" class="inputData">
@@ -363,7 +392,9 @@
                                         <div ng-mouseenter="pencil.revenue = true" ng-mouseleave="pencil.revenue = false">
                                             <p class="pQuestion">
                                                 Revenue
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.revenue}" ng-click="showEdit('revenue')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.revenue}" ng-click="showEdit('revenue')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.revenue" class="inputData">
@@ -376,7 +407,9 @@
                                         <div ng-mouseenter="pencil.distribution = true" ng-mouseleave="pencil.distribution = false">
                                             <p class="pQuestion">
                                                 Distribution area
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.distribution}" ng-click="showEdit('distribution')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.distribution}" ng-click="showEdit('distribution')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.distribution" class="inputData">
@@ -389,7 +422,9 @@
                                         <div ng-mouseenter="pencil.story = true" ng-mouseleave="pencil.story = false">
                                             <p class="pQuestion">
                                                 Story
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.story}" ng-click="showEdit('story')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.story}" ng-click="showEdit('story')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.story" class="inputData">
@@ -402,7 +437,9 @@
                                         <div ng-mouseenter="pencil.anythingelse = true" ng-mouseleave="pencil.anythingelse = false">
                                             <p class="pQuestion">
                                                 Anything else
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.anythingelse}" ng-click="showEdit('anythingelse')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.anythingelse}" ng-click="showEdit('anythingelse')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.anythingelse" class="inputData">
@@ -480,7 +517,9 @@
                                             md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
                                             <md-content class="cardContent" ng-class="{selectedConnection: commentsColorOn[$index]}" ng-model="commentsOn">
                                                 <h3>{{connection.firstname}} {{connection.lastname}}</h3>
-                                                <md-icon class="deleteIcon" md-svg-src="img/trash.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
+                                                <md-button class="deleteIcon iconButton" ng-click="deleteConnection(connection.id, profile.list[0].id)">
+                                                    <md-icon md-svg-src="img/trash.svg"></md-icon>
+                                                </md-button>
                                                 <p>{{connection.company}}</p>
                                                 <p>Connected on: {{connection.date | date: shortDate}} </p>
                                                 <md-button class="editIcon" ng-click="showComments(connections.list[$index].id, $index)">Notes</md-button>

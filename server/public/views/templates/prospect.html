@@ -15,7 +15,7 @@
                     <md-content class="md-padding">
                         <md-dialog-content>
                             <div class="md-dialog-content divPage">
-                                <div class="approveBtnDiv" ng-if="!profile.list[0].approved">
+                                <div class="centerText" ng-if="!profile.list[0].approved">
                                     <md-button class="md-raised md-primary" ng-click="approve(profile.list[0].id, profile.list[0].approved); reloadRoute()">
                                         Approve Account
                                     </md-button>
@@ -498,7 +498,7 @@
                             <p class="pQuestion">Connections made:</p>
                             <div class="bizCards">
                                 <div layout="row">
-                                    <div class="connectCard" layout="row" layout-wrap class="text-center" flex="60">
+                                    <div class="connectCard centerText" layout="row" layout-wrap flex="60">
                                         <md-card flex="45" class="connections" ng-repeat="connection in connections.list track by $index" ng-if="connection.firstname!=profile.list[0].firstname"
                                             md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
                                             <md-content class="cardContent" ng-class="{selectedConnection: commentsColorOn[$index]}" ng-model="commentsOn">

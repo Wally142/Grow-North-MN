@@ -69,32 +69,6 @@
                                             </a>
                                         </p>
                                     </div>
-
-                                    <div ng-if="profile.list[0].approved">
-                                        <!-- <p class="pQuestion">
-                                        Connections made:
-                                    </p>
-                                    <div>
-                                        <div class="connections" ng-repeat="connection in connections.list">
-                                            <p> 
-                                                <md-icon md-svg-src="img/clear-x.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon> {{connection.firstname}} {{connection.lastname}}</p>
-                                        </div>
-                                        <p>Add a Connection:</p>
-                                        <md-autocomplete ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
-                                            md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)"
-                                            md-item-text="item.display" md-min-length="0" placeholder="Search the directory">
-                                            <md-item-template>
-                                                <span-md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
-                                            </md-item-template>
-                                            <md-not-found>
-                                                No results matching "{{searchText}}" were found.
-                                            </md-not-found>
-                                        </md-autocomplete>
-                                        <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
-
-                                    </div> -->
-                                    </div>
-
                                 </div>
                         </md-dialog-content>
                     </md-content>
@@ -108,14 +82,15 @@
                                         <div class="pQuestion" ng-mouseenter="pencil.firstname = true" ng-mouseleave="pencil.firstname = false">
                                             <p class='pQuestion'>
                                                 First name
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.firstname}" ng-click="showEdit('firstname')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.firstname}" ng-click="showEdit('firstname')">
+                                                    <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <div>
                                             <md-input-container ng-show="editBoolean.firstname" class="inputData">
                                                 <input ng-value="profile.list[0].firstname" type="text" ng-model="firstnameIn">
                                             </md-input-container>
-                                            <!-- <md-icon md-svg-src="img/check.svg" ng-show="editBoolean.firstname" ng-click="updateDetails(profile.list[0].id, firstnameIn, 'firstname')"></md-icon> -->
                                             <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.firstname" ng-click="updateDetails(profile.list[0].id, firstnameIn, 'firstname')">Save</md-button>
                                             <p class="pData" ng-show="!editBoolean.firstname">
                                                 {{ profile.list[0].firstname }}
@@ -126,7 +101,9 @@
                                         <div ng-mouseenter="pencil.lastname = true" ng-mouseleave="pencil.lastname = false">
                                             <p class='pQuestion'>
                                                 Last name
-                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.lastname}" ng-click="showEdit('lastname')"></md-icon>
+                                                <md-button class="pencilHide iconButton" ng-class="{pencilShow: pencil.lastname}" ng-click="showEdit('lastname')">
+                                                <md-icon md-svg-src="img/pencil.svg"></md-icon>
+                                                </md-button>
                                             </p>
                                         </div>
                                         <md-input-container ng-show="editBoolean.lastname" class="inputData">

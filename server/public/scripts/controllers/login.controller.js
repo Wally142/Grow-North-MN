@@ -47,13 +47,15 @@ myApp.controller('LoginController', function($http, $location, UserService) {
         });
       }
     }
-
     vm.passwordReset = function(email) {
       console.log('Send reset email');
+      //Make request to server with user-entered email as parameter
       $http.get('/resetRoute/' + email).then(function(response){
         console.log(response);
       });
+      //Empty reset field
       vm.email = '';
+      //Update message to user
       vm.message = 'Check your email. You should receive instructions on how to reset your password.'
     }
 });

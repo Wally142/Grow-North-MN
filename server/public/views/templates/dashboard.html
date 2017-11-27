@@ -96,7 +96,7 @@
   </md-menu>
 </div>
 <!-- Directory -->
-<div ng-controller="DirectoryController as DC" class="colorContent" layout="row" ng-init="DC.getDirectory()">
+<div ng-controller="DirectoryController as DC" class="colorContent" layout="column" ng-init="DC.getDirectory()">
   <div class="md-block instaSearch">
     <md-input-container md-no-float="true">
       <input id="searchWidth" name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Search">
@@ -106,8 +106,6 @@
   </div>
   <!-- </md-button> -->
   <md-card class="cardList" flex>
-      <dir-pagination-controls template-url="views/partials/paginationControls.html" max-size="8" direction-links="true" boundary-links="true">
-      </dir-pagination-controls>
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
         <div flex="20" layout-padding>
@@ -193,9 +191,7 @@
       </md-list-item>
 
     </md-list>
-      <dir-pagination-controls template-url="views/partials/paginationControls.html" max-size="8" direction-links="true" boundary-links="true">
-      </dir-pagination-controls>
-    <!-- <md-collection-pagination class="pagination-buttons" collection="DC.directory.list" paginated-collection="DC.paginatedListings"
-      per-page=8></md-collection-pagination> -->
   </md-card>
+  <dir-pagination-controls template-url="views/partials/paginationControls.html" max-size="8" direction-links="true" boundary-links="true">
+  </dir-pagination-controls>
 </div>

@@ -1,5 +1,7 @@
 <!-- <div ng-include="'views/partials/nav.html'"></div> -->
-<a href="/dashboard"><img id="dashLogo" src="../../img/grownorth.png"></a>
+<a href="/dashboard">
+  <img id="dashLogo" src="../../img/grownorth.png">
+</a>
 <div class="fabTools" layout="row" layout-align="center center">
   <md-fab-speed-dial md-open="MC.isOpen" md-direction="left" class="md-fling" ng-cloak>
     <md-fab-trigger>
@@ -73,8 +75,11 @@
     </md-card>
   </div>
   <md-menu ng-controller="DirectoryController as DC" ng-init="DC.getApproval()" flex layout="row" layout-align="center center">
-    <md-button class="md-raised white-button" id="awaiting-approval-button" ng-click="DC.approval.list.length===0||$mdMenu.open()" id="notification-menu-header" layout="row" layout-align="center center">
-      <span ng-if="DC.approval.list.length>0">Pending intake forms<md-icon md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon></span>
+    <md-button class="md-raised white-button" id="awaiting-approval-button" ng-click="DC.approval.list.length===0||$mdMenu.open()"
+      id="notification-menu-header" layout="row" layout-align="center center">
+      <span ng-if="DC.approval.list.length>0">Pending intake forms
+        <md-icon md-svg-src="/img/ic_fiber_new_48px.svg" id="intake-button-icon"></md-icon>
+      </span>
       <span ng-if="DC.approval.list.length===0">No pending intake forms</span>
     </md-button>
     <md-menu-content width="200x" flex="100">
@@ -91,14 +96,14 @@
   </md-menu>
 </div>
 <!-- Directory -->
-<div ng-controller="DirectoryController as DC" class="colorContent" layout="row"  ng-init="DC.getDirectory()">
+<div ng-controller="DirectoryController as DC" class="colorContent" layout="row" ng-init="DC.getDirectory()">
   <div class="md-block instaSearch">
-  <md-input-container  md-no-float="true" >
-    <input id="searchWidth" name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Search">
-  </md-input-container>
-  <!-- <md-button aria-label="Twitter" class="md-icon-button md-raised md-accent searchBtn" ng-href="/logout"> -->
-  <i class="material-icons searchBtn">search</i>
-</div>
+    <md-input-container md-no-float="true">
+      <input id="searchWidth" name="search" ng-model="DC.query" md-no-asterisk="true" placeholder="Search">
+    </md-input-container>
+    <!-- <md-button aria-label="Twitter" class="md-icon-button md-raised md-accent searchBtn" ng-href="/logout"> -->
+    <i class="material-icons searchBtn">search</i>
+  </div>
   <!-- </md-button> -->
   <md-card class="cardList" flex>
     <md-toolbar>
@@ -174,10 +179,14 @@
           {{ listing.startdate | date: 'longDate' }}
         </div>
         <div flex="10">
-          <span ng-if="listing.mentor"><md-icon md-svg-src="img/check_mark.svg"></md-icon></span>
+          <span ng-if="listing.mentor">
+            <md-icon md-svg-src="img/check_mark.svg"></md-icon>
+          </span>
         </div>
         <div flex="10">
-          <span ng-if="listing.mentee"><md-icon md-svg-src="img/check_mark.svg"></md-icon></span>
+          <span ng-if="listing.mentee">
+            <md-icon md-svg-src="img/check_mark.svg"></md-icon>
+          </span>
         </div>
       </md-list-item>
 

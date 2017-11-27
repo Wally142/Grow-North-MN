@@ -106,6 +106,8 @@
   </div>
   <!-- </md-button> -->
   <md-card class="cardList" flex>
+      <dir-pagination-controls template-url="views/partials/paginationControls.html" max-size="8" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
     <md-toolbar>
       <div class="md-toolbar-tools" layout="row">
         <div flex="20" layout-padding>
@@ -165,7 +167,7 @@
       </div>
     </md-toolbar>
     <md-list>
-      <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" ng-repeat="listing in DC.paginatedListings | orderBy:DC.sortMethod:DC.reverse | filter:DC.query track by $index">
+      <md-list-item class="adminApproval md-2-line" ng-click="showProfile($event, listing.id)" layout="row" dir-paginate="listing in DC.directory.list | orderBy:DC.sortMethod:DC.reverse | filter:DC.query | itemsPerPage:8">
         <div flex="20" layout-padding>
           {{ listing.lastname }}, {{ listing.firstname }}
         </div>
@@ -191,7 +193,9 @@
       </md-list-item>
 
     </md-list>
-    <md-collection-pagination class="pagination-buttons" collection="DC.directory.list" paginated-collection="DC.paginatedListings"
-      per-page=8></md-collection-pagination>
+      <dir-pagination-controls template-url="views/partials/paginationControls.html" max-size="8" direction-links="true" boundary-links="true">
+      </dir-pagination-controls>
+    <!-- <md-collection-pagination class="pagination-buttons" collection="DC.directory.list" paginated-collection="DC.paginatedListings"
+      per-page=8></md-collection-pagination> -->
   </md-card>
 </div>

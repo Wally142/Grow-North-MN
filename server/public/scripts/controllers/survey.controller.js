@@ -79,7 +79,28 @@ myApp.controller('SurveyController', function (FormService, $scope) {
     }
   }
 
+  // remove http(s):// from input URL's
+  vm.formatURL = function (website, linkedin) {
+    if (website.substr(0, 7) === 'http://') {
+      // remove http:// from website listing
+      vm.formInput.website = website.substr(7);
+    } else if (website.substr(0, 8) === 'https://') {
+      // remove https:// from website listing
+      vm.formInput.website = website.substr(8);
+    }
+    if (linkedin.substr(0, 7) === 'http://') {
+      // remove http:// from linkedin listing
+      vm.formInput.linkedin = linkedin.substr(7);
+    } else if (linkedin.substr(0, 8) === 'https://') {
+      // remove https:// from linkedin listing
+      vm.formInput.linkedin = linkedin.substr(8);
+    }
+  }
+
   vm.grabInputs = function () {
+    var website = vm.formInput.website.toLowerCase();
+    var linkedin = vm.formInput.linkedin.toLowerCase();
+    vm.formatURL(website, linkedin);
     console.log('vm.formInput', vm.formInput);
     FormService.addContact(vm.formInput);
     vm.form4Nav(4);

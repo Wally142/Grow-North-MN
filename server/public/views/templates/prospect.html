@@ -495,21 +495,19 @@
                                 <div class="connectCard" layout="row" layout-wrap class="text-center" flex="60">
                                     <md-card flex="45" class="connections" ng-repeat="connection in connections.list track by $index" ng-if="connection.firstname!=profile.list[0].firstname"
                                         md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
-                                        <md-content class="cardContent">
+                                        <md-content class="cardContent" ng-class="{selectedConnection: commentsColorOn[$index]}" ng-model="commentsOn">
                                             <h3>{{connection.firstname}} {{connection.lastname}}</h3>
                                             <md-icon class="deleteIcon" md-svg-src="img/trash.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
                                             <p>{{connection.company}}</p>
                                             <p>Connected on: {{connection.date | date: shortDate}} </p>
-                                            <md-button class="editIcon" ng-click="showComments(connections.list[$index].id)">Notes</md-button>
+                                            <md-button class="editIcon" ng-click="showComments(connections.list[$index].id, $index)">Notes</md-button>
                                             <!-- <textarea ng-hide="!commentsOn[$index]" ng-model="commentsIn" ng-value="connection.comments" rows="6" cols="40"></textarea> -->
                                             <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
                                         </md-content>
                                     </md-card>
                                 </div>
                                 <div ng-show="commentsOn" class="connectionComments" flex="40">
-                                    <h3 class="titleComments">Notes on {{profile.list[0].firstname}} {{profile.list[0].lastname}} and {{connections.firstname}}
-                                        {{connections.lastname}}
-                                    </h3>
+                                    <h3 class="titleComments" >Connection Notes:</h3>
                                     <pre class="paragraphNotes" ng-hide="editOn">{{connections.comment}}</pre>
                                     <textarea ng-show="editOn" ng-model="commentsIn" ng-value="connections.comment" rows="6" cols="40"></textarea>
                                     <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->

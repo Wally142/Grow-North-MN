@@ -421,6 +421,19 @@
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.story" ng-click="updateDetails(profile.list[0].id, storyIn, 'story')">Save</md-button>
                                         <p class="pData" ng-show="!editBoolean.story">{{ profile.list[0].story }}</p>
                                     </div>
+                                    <div>
+                                        <div ng-mouseenter="pencil.anythingelse = true" ng-mouseleave="pencil.anythingelse = false">
+                                            <p class="pQuestion">
+                                                Anything else
+                                                <md-icon md-svg-src="img/pencil.svg" class="pencilHide" ng-class="{pencilShow: pencil.anythingelse}" ng-click="showEdit('anythingelse')"></md-icon>
+                                            </p>
+                                        </div>
+                                        <md-input-container ng-show="editBoolean.anythingelse" class="inputData">
+                                            <input ng-show="editBoolean.anythingelse" ng-value="profile.list[0].anythingelse" type="text" ng-model="anythingelseIn">
+                                        </md-input-container>
+                                        <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.anythingelse" ng-click="updateDetails(profile.list[0].id, anythingelseIn, 'anythingelse')">Save</md-button>
+                                        <p class="pData" ng-show="!editBoolean.anythingelse">{{ profile.list[0].anythingelse }}</p>
+                                    </div>
                                 </div>
                                 <div id="avatarDiv">
                                     <img src="/img/details.svg" height="100px" />

@@ -6,6 +6,7 @@
     <div ng-show="!passwordUpdate">
         <div layout="row" layout-align="center center">
             <md-button ng-show="!emailUpdate" class="md-raised md-primary" ng-click="emailUpdate=!emailUpdate; resetMsg()" flex="50">Update email</md-button>
+
         </div>
         <div ng-show="emailUpdate" layout="column">
             <form name="emailChange" ng-submit="updateEmail(email)" layout="row" layout-align="center center"

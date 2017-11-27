@@ -69,9 +69,9 @@ md-content.md-default-theme, md-content {
   border-radius: 0 10px 10px 0;
 }
 
-.md-button.current {
+/* .md-button.current {
   
-}
+} */
 
 .parallax {
    
@@ -595,4 +595,16 @@ top: 25%;
 
 .pending-list-date-field {
   text-align: right;
+}
+
+.about {
+  color: white;
+  float: right;
+  font-size: 16px;
+  margin-right: 40px;
+}
+
+.info {
+  text-align: center;
+  color: #447063;
 }

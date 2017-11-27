@@ -1,32 +1,47 @@
-<div ng-include="'views/partials/nav.html'"></div>
-<div class="parallax" class="container" layout-padding layout="row" layout-align="center none">
-    <md-card flex=50>
-        <h1 id="welcome" class="lead">Welcome, {{uc.userObject.userName}}!</h1>
-        <h4>{{uc.userObject.message}}</h4>
-        <div>
-            <md-button ng-click="emailUpdate=!emailUpdate">Update email</md-button>
+<div layout-padding>
+    <h1>Admin settings for
+        <span style="text-transform: capitalize">{{userObject.userName}}</span>
+    </h1>
+    <h4>{{userObject.message}}</h4>
+    <div ng-show="!passwordUpdate">
+        <div layout="row" layout-align="center center">
+            <md-button ng-show="!emailUpdate" class="md-raised md-primary" ng-click="emailUpdate=!emailUpdate" flex="50">Update email</md-button>
         </div>
         <div ng-show="emailUpdate" layout="column">
-            <md-input-container>
-                <label>Update email</label>
-                <input type="email" ng-model="uc.email">
-            </md-input-container>
-            <md-button ng-click="uc.updateEmail(uc.email)">Submit</md-button>
+            <form name="emailChange" ng-submit="updateEmail(email); emailUpdate=!emailUpdate" layout="row" layout-align="center center" layout-wrap>
+                <md-input-container flex="100">
+                    <label>Enter your new email</label>
+                    <input name="email" type="email" ng-model="email" required>
+                    <div ng-messages="emailChange.email.$error">
+                        <div ng-message="required">Please enter an email address.</div>
+                        <div ng-message="email">Email address is invalid.</div>
+                    </div>
+                </md-input-container>
+                <div layout="row" layout-align="center center" flex="100">
+                    <md-button class="md-raised md-primary" type="submit" flex="50">Submit</md-button>
+                    <md-button class="md-raised md-warn" ng-click="emailUpdate=!emailUpdate" flex="50">Cancel</md-button>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <div>
-            <md-button ng-click="passwordUpdate=!passwordUpdate">Update password</md-button>
+    <div ng-show="!emailUpdate">
+        <div layout="row" layout-align="center center">
+            <md-button ng-show="!passwordUpdate" class="md-raised md-primary" ng-click="passwordUpdate=!passwordUpdate" flex="50">Update password</md-button>
         </div>
         <div ng-show="passwordUpdate" layout="column">
             <md-input-container>
                 <label>Enter your new password</label>
-                <input type="password" ng-model="uc.password">
+                <input type="password" ng-model="password">
             </md-input-container>
             <md-input-container>
                 <label>Confirm your new password</label>
-                <input type="password" ng-model="uc.passwordConfirm">
+                <input type="password" ng-model="passwordConfirm">
             </md-input-container>
-            <md-button ng-click="uc.updatePassword(uc.password)">Submit</md-button>
+            <div layout="row" layout-align="center center">
+                <md-button class="md-raised md-primary" ng-click="updatePassword(password)" flex="50">Submit</md-button>
+                <md-button class="md-raised md-warn" ng-click="passwordUpdate=!passwordUpdate" flex="50">Cancel</md-button>
+            </div>
         </div>
-    </md-card>
+    </div>
 </div>

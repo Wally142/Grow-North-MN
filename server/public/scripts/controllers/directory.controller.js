@@ -258,7 +258,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             $scope.createFilterFor = function (query) {
                 var lowerCaseQuery = angular.lowercase(query);
                 return function filterFn(listing) {
-                    return (listing.value.indexOf(lowerCaseQuery) === 0);
+                    return (listing.value.indexOf(lowerCaseQuery) >= 0);
                 };
             };
 

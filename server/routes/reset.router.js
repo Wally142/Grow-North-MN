@@ -7,15 +7,13 @@ var encryptLib = require('../modules/encryption');
 
 var nodemailer = require('nodemailer');
 
+//Route receives email and token, then creates and sets new password
 router.get('/reset/:email/:token', function(req, res, next){
     var email = req.params.email;
     var reset_token = req.params.token;
-
-    console.log('Hit /reset/reset');
-    console.log('email:', email);
-    console.log('Reset token:', reset_token);
-
+    //Waterfall runs tasks in a progression
     async.waterfall([
+        //Query database to compare reset token to user's, then check if it's expired
         function(callback){
             pool.connect(function(err, client, done){
                 if (err){
@@ -31,12 +29,11 @@ router.get('/reset/:email/:token', function(req, res, next){
             })
         },
         function(tokendata, callback){
-            console.log('queryResult:', tokendata);
-            console.log('Reset token from query:', tokendata.reset_token);
-            console.log('Token expiration from query:', tokendata.reset_token_expires);
+            //If reset token doesn't match, or is expired, create error string
             if (reset_token != tokendata.reset_token ||
                 new Date(tokendata.reset_token_expires).getTime() < new Date(Date.now()).getTime()){
                     callback(null, 'Token invalid or expired');
+            //Otherwise create new password
             }else{
                 crypto.randomBytes(4, function(err, buffer){
                     var newPass = buffer.toString('hex');
@@ -45,9 +42,10 @@ router.get('/reset/:email/:token', function(req, res, next){
             }
         },
         function(newPass, callback){
-            console.log('newPass:', newPass);
+            //If error string is received, do nothing
             if (newPass === 'Token invalid or expired'){
                 callback(null, 'Task cancelled');
+            //Otherwise set new password
             }else{
                 var password = encryptLib.encryptPassword(newPass);
                 pool.connect(function(err, client, done) {
@@ -62,6 +60,7 @@ router.get('/reset/:email/:token', function(req, res, next){
             }
         },
         function(newPass, callback){
+            //Initiate nodemailer to send new password to user
             var transporter = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -73,8 +72,6 @@ router.get('/reset/:email/:token', function(req, res, next){
                 from: 'grownorth.mailer@gmail.com',
                 to: email,
                 subject: 'Grow North App Password Reset',
-                // CHANGE THIS MESSAGE AT SOME POINT
-                // WHAT URL AFTER DEPLOY???
                 html: '<p>Your password has been changed to ' + newPass + '</p>' +
                 '<p>You are advised to change your password immediately</p>'
             };
@@ -83,24 +80,28 @@ router.get('/reset/:email/:token', function(req, res, next){
             });
         }
     ], function(err, newPass) {
-        console.log('Redirecting');
+        //Redirect to root url
         if (err) return next(err);
         res.redirect('/');
       });
 })
 
+//Route triggers mailer to send username and password reset link to user's email
 router.get('/:email', function(req, res, next){
     var email = req.params.email;
+    //Create a deadline one hour from current time to reset password
     var reset_deadline = new Date(Date.now() + 3600000);
     console.log (email, reset_deadline);
-
+    //Waterfall runs tasks in a progression
     async.waterfall([
+        //Create a reset token
         function(callback) {
           crypto.randomBytes(20, function(err, buffer) {
             var token = buffer.toString('hex');
             callback(err, token);
           });
         },
+        //Attach reset token and reset expiration to user in database
         function(token, callback){
             pool.connect(function(err, client, done){
                 if (err){
@@ -116,6 +117,7 @@ router.get('/:email', function(req, res, next){
                 }
             });
         },
+        //Get username by email
         function(token, callback){
             pool.connect(function(err, client, done){
                 if (err){
@@ -134,7 +136,7 @@ router.get('/:email', function(req, res, next){
             });
         },
         function(token, username, done) {
-            console.log('Sending email')
+            //Initiate mailer to send username and password reset link to user's email
             var transporter = nodemailer.createTransport({
                 service: 'Gmail',
                 auth: {
@@ -146,13 +148,11 @@ router.get('/:email', function(req, res, next){
                 from: 'grownorth.mailer@gmail.com',
                 to: email,
                 subject: 'Grow North App Password Reset',
-                // CHANGE THIS MESSAGE AT SOME POINT
-                // WHAT URL AFTER DEPLOY???
                 html: '<p>Hi!</p>' +
                 '<h3>You\'re receiving this email because a username/password request was sent to the Grow North App.</h3>' +
                 '<p>Your Grow North username is.......</p>' + 
                 '<p><strong>' + username + '</strong></p>' +
-                '<a href="http://localhost:5000/resetRoute/reset/' + email + '/' + token + '">Click here if you would like to reset your password</a>' +
+                '<a href="grownorth.herokuapp.com/resetRoute/reset/' + email + '/' + token + '">Click here if you would like to reset your password</a>' +
                 '<h3>You will receive an email with your new password shortly, and will be redirected to the Grow North login page</h3>'
             };
             transporter.sendMail(mailOptions, function(err, info){

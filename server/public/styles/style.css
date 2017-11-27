@@ -567,3 +567,7 @@ top: 25%;
 .pending-list-date-field {
   text-align: right;
 }
+
+.selectedConnection {
+  background-color: lightgrey;
+}

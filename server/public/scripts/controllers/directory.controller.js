@@ -38,13 +38,13 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         vm.getProfile(id);
         console.log('prospect profile', vm.profile.list);
         $mdDialog.show({
-                controller: DialogController,
-                templateUrl: '/views/templates/prospect.html',
-                parent: angular.element(document.body),
-                targetEvent: ev,
-                clickOutsideToClose: true,
-                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-            })
+            controller: DialogController,
+            templateUrl: '/views/templates/prospect.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose: true,
+            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        })
             .then(function (answer) {
                 $scope.status = 'You said the information was "' + answer + '".';
             }, function () {
@@ -61,44 +61,56 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.deleteConfirm = false;
         $scope.editOn = false;
         $scope.isApproved = false;
-        
+
         // $scope.testFunction = function(){            // testing function
         //     console.log('testFunction called');
         // };
 
-        $scope.updateArray = function(id, index, value, column){
+        $scope.updateArray = function (id, index, value, column) {
             // grab profile id, index of array value, input value, and array name (column)
-            console.log('updateArray values: ', id, index, value, column);
-            if (value == undefined){
-                // console.log('No value input.');
-                // call showEdit function
-            } else if (value == ''){
-                // remove array value, update array
+            // console.log('updateArray values: ', id, index, value, column);
+            if (value == undefined) {
+                console.log('No value input.');
+                // toggle editBoolean
+                $scope.editBoolean[column][index] = !$scope.editBoolean[column][index];
+            } else if (value == '') {
                 // console.log('Delete array index value: ', value);
+                // remove array value, update array, toggle editBoolean
                 vm.profile.list[0][column].splice(index, 1);
-                $scope.updateDetails(id, vm.profile.list[0][column], column);
+                ProspectsService.updateDetails(id, vm.profile.list[0][column], column);
+                $scope.editBoolean[column][index] = !$scope.editBoolean[column][index];
             } else {
-                // edit array value, update array
                 // console.log('update array values id, index, value, column: ', id, index, value, column);
+                // edit array value, update array, toggle editBoolean
                 vm.profile.list[0][column][index] = value;
-                $scope.updateDetails(id, vm.profile.list[0][column], column);
+                ProspectsService.updateDetails(id, vm.profile.list[0][column], column);
+                $scope.editBoolean[column][index] = !$scope.editBoolean[column][index];
             }
         };
-        $scope.testAddArray = function(id, value, column){
-            console.log('testAddArray values id, value, column ', value);
-            if (value == undefined || value == ''){
+        $scope.addArray = function (id, value, column) {
+            // console.log('addArray values id, value, column ', value);
+            var columnAdd = column + 'Add';
+            if (value == undefined || value == '') {
                 console.log('No value input.');
-                // call showEdit function / toggle "+" icon
+                $scope.editBoolean[columnAdd] = !$scope.editBoolean[columnAdd];
+                // toggle "+" icon
             } else {
                 // add value to array, call updateDetails
                 vm.profile.list[0][column].push(value);
-                $scope.updateDetails(id, vm.profile.list[0][column], column);
+                ProspectsService.updateDetails(id, vm.profile.list[0][column], column);
+                $scope.editBoolean[columnAdd] = !$scope.editBoolean[columnAdd];
             }
         };
 
         $scope.commentIn = '';
-        // holds true/false values for ng-shows
-        $scope.editBoolean = {};
+        // hold true/false values for ng-shows
+        // must set all editBoolean values for array columns as arrays
+        $scope.editBoolean = {
+            involvement: [],
+            howhelp: [],
+            ecosystem: [],
+        };
+        
         $scope.hide = function () {
             $mdDialog.hide();
         };
@@ -133,14 +145,30 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             if (details !== undefined) {
                 ProspectsService.updateDetails(id, details, column);
                 $scope.editBoolean[column] = !$scope.editBoolean[column];
+                // console.log('editBoolean.', column, ': ', $scope.editBoolean[column]);
             } else {
                 $scope.showEdit(column);
             }
         };
         $scope.showEdit = function (input) {
             $scope.editBoolean[input] = !$scope.editBoolean[input];
-            console.log('$scope.editBoolean: ', $scope.editBoolean[input]);
+            console.log('$scope.editBoolean.', input, ': ', $scope.editBoolean[input]);
         };
+
+        $scope.showEditArray = function (input, index) {
+            // var inputIndex = input + index;
+            // $scope.editBoolean[inputIndex] = !$scope.editBoolean[inputIndex];
+            // console.log('$scope.editBoolean.', inputIndex, ': ', $scope.editBoolean[inputIndex]);
+            $scope.editBoolean[input][index] = !$scope.editBoolean[input][index];
+            // $scope.editBoolean.input[index] = !$scope.editBoolean.input[index];
+            // $scope.editBoolean[input] = !$scope.editBoolean[input];
+            // console.log('$scope.editBoolean.', input, ': ', $scope.editBoolean[input]);
+            console.log('$scope.editBoolean.', input, '[', index, ']', ': ', $scope.editBoolean[input][index]);
+        };
+
+        // $scope.testFunction = function(input){            // testing function
+        //     console.log('testFunction called with input array: ', input);
+        // };
 
         $scope.addConnection = function (id1, id2) {
             ProspectsService.addConnection(id1, id2);
@@ -154,9 +182,9 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         };
 
         $scope.connectionComment = function (id, comment) {
-            ProspectsService.connectionComment(id, comment).then(function() {
-            console.log('Connection Comments:', id, comment);
-            $scope.getProfile($scope.profile.list[0].id, id);
+            ProspectsService.connectionComment(id, comment).then(function () {
+                console.log('Connection Comments:', id, comment);
+                $scope.getProfile($scope.profile.list[0].id, id);
             });
         };
 
@@ -166,7 +194,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             for (var i = 0; i < $scope.connections.list.length; i++) {
 
                 if (id == $scope.connections.list[i].id) {
-                    console.log('comments from', $scope.connections.list[i].firstname, $scope.connections.list[i].lastname, ":",  $scope.connections.list[i].comments);
+                    console.log('comments from', $scope.connections.list[i].firstname, $scope.connections.list[i].lastname, ":", $scope.connections.list[i].comments);
                     $scope.connections.comment = ProspectsService.connections.list[i].comments;
                     $scope.connections.id = id;
                     $scope.connections.firstname = ProspectsService.connections.list[i].firstname;
@@ -174,13 +202,13 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
                 }
             }
             return $scope.connections.comment;
-         };
+        };
 
-         $scope.getProfile = function (profileId, connectionId) {
-            ProspectsService.getProfile(profileId).then(function() {
-                ProspectsService.getConnections(profileId).then(function() {
-                    $scope.connections = ProspectsService.connections; 
-                    $scope.showComments(connectionId);                
+        $scope.getProfile = function (profileId, connectionId) {
+            ProspectsService.getProfile(profileId).then(function () {
+                ProspectsService.getConnections(profileId).then(function () {
+                    $scope.connections = ProspectsService.connections;
+                    $scope.showComments(connectionId);
                 });
             });
             $scope.profile = ProspectsService.profile;
@@ -188,8 +216,8 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
 
         $scope.showEditComment = function () {
             $scope.editOn = !$scope.editOn;
-            
-            
+
+
         };
 
         $scope.reloadRoute = function (id) {
@@ -263,9 +291,9 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     };
 
     vm.getProfile = function (id) {
-        ProspectsService.getProfile(id).then(function() {
-            ProspectsService.getConnections(id).then(function() {
-                $scope.connections = ProspectsService.connections; 
+        ProspectsService.getProfile(id).then(function () {
+            ProspectsService.getConnections(id).then(function () {
+                $scope.connections = ProspectsService.connections;
                 // $scope.showComments(id);                
             });
         });

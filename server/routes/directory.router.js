@@ -4,7 +4,6 @@ var pool = require('../modules/pool.js');
 
 router.get('/', function (req, res) {
     if(req.isAuthenticated()){
-        console.log('get Directory');
         pool.connect(function (error, client, done) {
             if (error) {
                 console.log(error);
@@ -16,7 +15,6 @@ router.get('/', function (req, res) {
                         console.log(queryErr);
                         res.sendStatus(500);
                     } else {
-                        console.log(resultObj.rows);
                         res.send(resultObj.rows);
                     }
                 });
@@ -29,7 +27,6 @@ router.get('/', function (req, res) {
 
 router.get('/unapproved', function (req, res) {
     if (req.isAuthenticated()){
-        console.log('get Directory');
         pool.connect(function (error, client, done) {
             if (error) {
                 console.log(error);
@@ -41,7 +38,6 @@ router.get('/unapproved', function (req, res) {
                         console.log(queryErr);
                         res.sendStatus(500);
                     } else {
-                        console.log(resultObj.rows);
                         res.send(resultObj.rows);
                     }
                 });
@@ -54,7 +50,6 @@ router.get('/unapproved', function (req, res) {
 
 router.delete('/unapproved/:id', function (req, res) {
     if (req.isAuthenticated()){
-        console.log('get Directory with ', req.params.id);
         var dbId = req.params.id;
         pool.connect(function (error, client, done) {
             if (error) {
@@ -79,14 +74,12 @@ router.delete('/unapproved/:id', function (req, res) {
 
 router.put('/unapproved/:id', function(req, res){
     if (req.isAuthenticated()){
-        console.log('in updateApproval with', req.params.id);
         var dbId = req.params.id;
         var approved = req.body.approved;
         var newApproval = false;
         if (approved === false) {
             newApproval = true;
         } 
-        console.log('new stuff', newApproval);
         
         pool.connect(function (error, client, done) {
             if (error) {

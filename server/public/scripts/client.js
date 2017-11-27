@@ -3,7 +3,6 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngMaterial', 'ngMessages', 'mdC
 /// Routes ///
 myApp.config(function($routeProvider, $locationProvider, $mdThemingProvider) {
   $locationProvider.hashPrefix('');
-  console.log('myApp -- config');
   $routeProvider
     .when('/home', {
       templateUrl: '/views/templates/home.html',

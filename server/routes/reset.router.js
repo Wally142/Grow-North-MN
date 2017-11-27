@@ -21,7 +21,6 @@ router.get('/reset/:email/:token', function(req, res, next){
                 }else{
                     client.query('SELECT reset_token, reset_token_expires FROM users WHERE email = $1', [email], function(error, result){
                         done();
-                        console.log('RESULT:', result);
                         var tokendata = result.rows[0];
                         callback(error, tokendata);
                     })

@@ -1,5 +1,4 @@
 myApp.controller('LoginController', function($http, $location, UserService) {
-    console.log('LoginController created');
     var vm = this;
     vm.user = {
       username: '',
@@ -14,19 +13,19 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       if(vm.user.username === '' || vm.user.password === '') {
         vm.message = "You left a field blank";
       } else {
-        console.log('LoginController -- login -- sending to server...', vm.user);
+        console.log('LoginController -- login -- sending to server...');
         $http.post('/', vm.user).then(function(response) {
           if(response.data.username) {
-            console.log('LoginController -- login -- success: ', response.data);
+            console.log('LoginController -- login -- success: ');
             // location works with SPA (ng-route)
             UserService.userObject.loggedIn = true;
             $location.path('/dashboard'); // http://localhost:5000/#/user
           } else {
-            console.log('LoginController -- login -- failure: ', response);
+            console.log('LoginController -- login -- failure: ');
             vm.message = "Access denied";
           }
         }).catch(function(response){
-          console.log('LoginController -- registerUser -- failure: ', response);
+          console.log('LoginController -- registerUser -- failure: ');
           vm.message = "Access denied";
         });
       }
@@ -51,7 +50,7 @@ myApp.controller('LoginController', function($http, $location, UserService) {
       console.log('Send reset email');
       //Make request to server with user-entered email as parameter
       $http.get('/resetRoute/' + email).then(function(response){
-        console.log(response);
+        console.log('reset');
       });
       //Empty reset field
       vm.email = '';

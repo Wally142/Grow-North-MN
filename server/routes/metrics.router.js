@@ -3,7 +3,6 @@ var router = express.Router();
 var pool = require('../modules/pool.js');
 
 router.get('/mentors', function (req, res) {
-    console.log('get Mentors');
     if (req.isAuthenticated()){
         pool.connect(function (error, client, done) {
             if (error) {
@@ -16,7 +15,6 @@ router.get('/mentors', function (req, res) {
                         console.log(queryErr)
                         res.sendStatus(500);
                     } else {
-                        console.log(resultObj.rows);
                         res.send(resultObj.rows);
                     }
                 });
@@ -28,7 +26,6 @@ router.get('/mentors', function (req, res) {
 });// end  GET mentors
 
 router.get('/mentees', function (req, res) {
-    console.log('get Mentees');
     if (req.isAuthenticated()){
         pool.connect(function (error, client, done) {
             if (error) {
@@ -41,7 +38,6 @@ router.get('/mentees', function (req, res) {
                         console.log(queryErr)
                         res.sendStatus(500);
                     } else {
-                        console.log("mentEE", resultObj.rows);
                         res.send(resultObj.rows);
                     }
                 });
@@ -54,7 +50,6 @@ router.get('/mentees', function (req, res) {
 
 router.get('/connections', function (req, res) {
     if (req.isAuthenticated()){
-        console.log('get connections');
         pool.connect(function (error, client, done) {
             if (error) {
                 console.log(error);
@@ -66,7 +61,6 @@ router.get('/connections', function (req, res) {
                         console.log(queryErr)
                         res.sendStatus(500);
                     } else {
-                        console.log("connections", resultObj.rows);
                         res.send(resultObj.rows);
                     }
                 });

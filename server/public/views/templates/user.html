@@ -1,7 +1,17 @@
-<div layout-padding>
-    <h1>Admin settings for
+<md-dialog flex="40">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Admin settings for <span style="text-transform: capitalize">{{userObject.userName}}</span></h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                X
+            </md-button>
+        </div>
+    </md-toolbar>
+    <!-- <h1>Admin settings for
         <span style="text-transform: capitalize">{{userObject.userName}}</span>
-    </h1>
+    </h1> -->
+    <md-content layout-padding>
     <h4>{{userObject.message}}</h4>
     <div ng-show="!passwordUpdate">
         <div layout="row" layout-align="center center">
@@ -61,4 +71,4 @@
                 </div>
         </div>
     </div>
-</div>
+</md-dialog>

@@ -30,6 +30,7 @@ html {
   padding: 0;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
+  background: transparent;
 }
 
 md-menu-content.md-menu-bar-menu.md-dense {
@@ -144,9 +145,9 @@ md-content.colorContent  {
     background-size: cover;
 }
 
-body {
+/* body {
   background-color: #000000;
-}
+} */
 
 #formCard {
   margin: 30px 0 30px 0;

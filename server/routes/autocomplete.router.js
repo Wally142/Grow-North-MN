@@ -3,7 +3,6 @@ var router = express.Router();
 var pool = require('../modules/pool.js');
 
 router.get('/', function (req, res) {
-    console.log('get Search Directory');
     pool.connect(function (error, client, done) {
         if (error) {
             console.log(error);
@@ -15,7 +14,6 @@ router.get('/', function (req, res) {
                     console.log(queryErr);
                     res.sendStatus(500);
                 } else {
-                    console.log(resultObj.rows);
                     res.send(resultObj.rows);
                 }
             });

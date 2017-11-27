@@ -5,11 +5,10 @@ var encryptLib = require('../modules/encryption');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
-  console.log('get /user route');
   // check if logged in
   if(req.isAuthenticated()) {
     // send back user object from database
-    console.log('logged in', req.user);
+    console.log('logged in');
     var userInfo = {
       username : req.user.username
     };
@@ -82,6 +81,5 @@ router.put('/password', function(req, res){
     res.sendStatus(403);
   }
 })
-
 
 module.exports = router;

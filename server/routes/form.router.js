@@ -3,7 +3,6 @@ var router = express.Router();
 var pool = require('../modules/pool.js');
 
 router.post('/form', function (req, res) {
-    console.log('in router post', req.body);
     var grow = req.body;
     // set tag column value to null array
     var tagsArray = [];

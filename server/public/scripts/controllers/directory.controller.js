@@ -1,5 +1,4 @@
-myApp.controller('DirectoryController', function (ProspectsService, UserService, $http, $scope, $mdDialog) {
-    console.log('DirectoryController created');
+myApp.controller('DirectoryController', function (ProspectsService, UserService, $scope, $mdDialog) {
     $scope.currentNavItem = 'directory'; // tells nav bar which item to indicate as 'selected'
 
     UserService.getuser();
@@ -30,13 +29,10 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     vm.getDirectory = function () {
         ProspectsService.getDirectory();
         vm.directory = ProspectsService.directory;
-        console.log('directory controller hit with', vm.directory);
     };
 
     $scope.showProfile = function (ev, id) {
-        console.log('showProfile called for user: ', id);
         vm.getProfile(id);
-        console.log('prospect profile', vm.profile.list);
         $mdDialog.show({
             controller: DialogController,
             templateUrl: '/views/templates/prospect.html',
@@ -116,7 +112,6 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             vm.getDirectory();
         };
         $scope.delete = function (id) {
-            console.log('delete account func called for user id: ', id);
             ProspectsService.deleteProfile(id);
             $mdDialog.cancel();
             $scope.reloadRoute();
@@ -124,54 +119,40 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.approve = function (id, status) {
             ProspectsService.updateApproval(id, status);
             $scope.isApproved = !$scope.isApproved;
-            console.log('you clicked me!', id, status, "toggle connections shown:", vm.approved);
             $scope.cancel();
         };
         $scope.updateComments = function (id, comment) {
-            console.log('comment func called with id and comment: ', id, comment);
             ProspectsService.updateComments(id, comment);
             $scope.editBoolean.comments = !$scope.editBoolean.comments;
         };
 
         $scope.updateDetails = function (id, details, column) {
-            console.log('update details with', id, details, column);
             // check if user has alerted info, cancel if nothing change
             if (details !== undefined) {
                 ProspectsService.updateDetails(id, details, column);
                 $scope.editBoolean[column] = !$scope.editBoolean[column];
-                // console.log('editBoolean.', column, ': ', $scope.editBoolean[column]);
             } else {
                 $scope.showEdit(column);
             }
         };
         $scope.showEdit = function (input) {
             $scope.editBoolean[input] = !$scope.editBoolean[input];
-            // console.log('$scope.editBoolean.', input, ': ', $scope.editBoolean[input]);
         };
 
         $scope.showEditArray = function (input, index) {
             $scope.editBoolean[input][index] = !$scope.editBoolean[input][index];
-            // console.log('$scope.editBoolean.', input, '[', index, ']', ': ', $scope.editBoolean[input][index]);
         };
-
-        // $scope.testFunction = function(input){            // testing function
-        //     console.log('testFunction called with input array: ', input);
-        // };
 
         $scope.addConnection = function (id1, id2) {
             ProspectsService.addConnection(id1, id2);
-            console.log('you clicked me!', id1, id2);
         };
 
         $scope.deleteConnection = function (id1, id2) {
             ProspectsService.deleteConnection(id1, id2);
-            console.log('Profile ID:', id1, id2);
-
         };
 
         $scope.connectionComment = function (id, comment) {
             ProspectsService.connectionComment(id, comment).then(function () {
-                console.log('Connection Comments:', id, comment);
                 $scope.getProfile($scope.profile.list[0].id, id);
             });
         };
@@ -179,14 +160,13 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.showComments = function (id, index) {
             $scope.commentsOn = !$scope.commentsOn;
             $scope.commentsColorOn = {};
-            if ($scope.commentsOn === true){
+            if ($scope.commentsOn === true) {
                 $scope.commentsColorOn[index] = !$scope.commentsColorOn[index];
             }
-            console.log($scope.connections.list);
+            
             for (var i = 0; i < $scope.connections.list.length; i++) {
 
                 if (id == $scope.connections.list[i].id) {
-                    console.log('comments from', $scope.connections.list[i].firstname, $scope.connections.list[i].lastname, ":", $scope.connections.list[i].comments);
                     $scope.connections.comment = ProspectsService.connections.list[i].comments;
                     $scope.connections.id = id;
                     $scope.connections.firstname = ProspectsService.connections.list[i].firstname;
@@ -208,8 +188,6 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
 
         $scope.showEditComment = function () {
             $scope.editOn = !$scope.editOn;
-
-
         };
 
         $scope.reloadRoute = function (id) {
@@ -231,19 +209,15 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             };
 
             $scope.loadAll = function () {
-                // var allListings = "Greg, Cam, Mike, Katie, Evan, Nestor";
                 var list = [];
-                // var personId = [];
-                console.log('DIRECTORY:', vm.directory.list);
+                
                 for (var i = 0; i < vm.directory.list.length; i++) {
                     list.push({
                         name: vm.directory.list[i].firstname + ' ' + vm.directory.list[i].lastname,
                         id: vm.directory.list[i].id
                     });
-                    // personId.push(vm.directory.list[i].id);
                 }
-                console.log('LIST:', list);
-                console.log('id', vm.directory.list.id);
+                
                 var allListings = list.map(function (person) {
 
                     return {
@@ -272,13 +246,11 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             };
 
             $scope.listings = $scope.loadAll();
-            // vm.searchText = "";
         };
     }
 
     $scope.showSettings = function (ev) {
-        console.log('showSettings called');
-        $mdDialog.show({
+            $mdDialog.show({
             controller: SettingsDialogController,
             templateUrl: '/views/templates/user.html',
             parent: angular.element(document.body),
@@ -294,7 +266,7 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     };
 
     function SettingsDialogController(UserService, $scope, $mdDialog, $route) {
-        
+
         $scope.cancel = function () {
             $mdDialog.cancel();
         };
@@ -337,14 +309,12 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
     vm.getApproval = function () {
         ProspectsService.getApproval();
         vm.approval = ProspectsService.approval;
-        console.log('directory controller hit with', vm.approval);
     };
 
     vm.getProfile = function (id) {
         ProspectsService.getProfile(id).then(function () {
             ProspectsService.getConnections(id).then(function () {
                 $scope.connections = ProspectsService.connections;
-                // $scope.showComments(id);                
             });
         });
         vm.profile = ProspectsService.profile;
@@ -352,7 +322,5 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
 
     vm.getComments = function (id, comment) {
         ProspectsServices.updateComments(id, comment);
-        console.log('service comment', id, comment);
     };
-
 }); // end controller

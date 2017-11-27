@@ -1,5 +1,4 @@
 myApp.controller('SurveyController', function (FormService, $scope) {
-  console.log('SurveyController created');
   var vm = this;
 
   vm.page = 0;
@@ -44,40 +43,30 @@ myApp.controller('SurveyController', function (FormService, $scope) {
   vm.ecosystemValues = ['Packaged goods', 'Restaurant', 'Beverage (alcohol/non-alcohol)', 'Value added farming', 'Agtech'];
 
   vm.form0Nav = function (page) {
-    console.log('$scope.surveyForm0.$valid ->', $scope.surveyForm0.$valid);
-
     if ($scope.surveyForm0.$valid) {
       vm.page = page;
     }
   }
 
   vm.form1Nav = function (page) {
-    console.log('$scope.surveyForm1.$valid ->', $scope.surveyForm1.$valid);
-
     if ($scope.surveyForm1.$valid || page === 0) {
       vm.page = page;
     }
   }
 
   vm.form2Nav = function (page) {
-    console.log('$scope.surveyForm2.$valid ->', $scope.surveyForm2.$valid);
-
     if ($scope.surveyForm2.$valid || page === 0 || page === 1) {
       vm.page = page;
     }
   }
 
   vm.form3Nav = function (page) {
-    console.log('$scope.surveyForm3.$valid ->', $scope.surveyForm3.$valid);
-
     if ($scope.surveyForm3.$valid || page === 0 || page === 1 || page === 2) {
       vm.page = page;
     }
   }
 
   vm.form4Nav = function (page) {
-    console.log('$scope.surveyForm3.$valid ->', $scope.surveyForm3.$valid);
-
     if ($scope.surveyForm3.$valid || page === 0 || page === 1 || page === 2) {
       vm.page = page;
     }
@@ -111,7 +100,6 @@ myApp.controller('SurveyController', function (FormService, $scope) {
   vm.grabInputs = function () {
     vm.formatURL();
     vm.grabOtherValues();
-    console.log('vm.formInput', vm.formInput);
     FormService.addContact(vm.formInput);
     vm.form4Nav(4);
   };
@@ -157,7 +145,6 @@ myApp.directive('phoneInput', function ($filter, $browser) {
 
 myApp.filter('tel', function () {
   return function (tel) {
-    console.log(tel);
     if (!tel) {
       return '';
     }

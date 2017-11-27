@@ -445,79 +445,85 @@
 
                 <md-tab label="Notes">
                     <md-content class="md-padding">
-                        <div layout="column" id="avatarDiv">
-                            <img src="/img/edit.svg" height="100px" />
-                        </div>
-                        <p class="detailsQuestions">
-                            Tags:
-                        </p>
-                        <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
-                        <div>
-                            <p class="detailsQuestions">
-                                Comments
-                            </p>
-                            <p ng-if="editBoolean.comments || profile.list[0].comments == null || profile.list[0].comments == ''" ng-hide="editBoolean.comments">
-                                (No comments added yet)
-                            </p>
-                            <textarea id="editNotes" ng-show="editBoolean.comments" ng-model="commentIn" ng-value="profile.list[0].comments"></textarea>
-                            <md-button class="md-raised md-primary" ng-show="editBoolean.comments" ng-click="updateDetails(profile.list[0].id, commentIn, 'comments')">Save</md-button>
-                            <div>
-                                <pre class="paragraphNotesWide" ng-show="!editBoolean.comments">
-                                    {{ profile.list[0].comments }}
-                                </pre>
-                                <md-button class="md-raised md-primary" ng-show="!editBoolean.comments" ng-click="showEdit('comments')">Add/Edit</md-button>
+                        <div class="md-dialog-content divPage">
+                            <div layout="column" id="avatarDiv">
+                                <img src="/img/edit.svg" height="100px" />
                             </div>
+                            <div flex="80">
+                                <p class="detailsQuestions">
+                                    Tags:
+                                </p>
+                                <md-chips ng-model="profile.list[0].tags" md-removable="true" md-enable-chip-edit="true"></md-chips>
+                                <div>
+                                    <p class="detailsQuestions">
+                                        Comments
+                                    </p>
+                                    <p ng-if="editBoolean.comments || profile.list[0].comments == null || profile.list[0].comments == ''" ng-hide="editBoolean.comments">
+                                        (No comments added yet)
+                                    </p>
+                                    <textarea id="editNotes" ng-show="editBoolean.comments" ng-model="commentIn" ng-value="profile.list[0].comments"></textarea>
+                                    <md-button class="md-raised md-primary" ng-show="editBoolean.comments" ng-click="updateDetails(profile.list[0].id, commentIn, 'comments')">Save</md-button>
+                                    <div>
+                                        <pre class="paragraphNotesWide" ng-show="!editBoolean.comments">
+                                            {{ profile.list[0].comments }}
+                                        </pre>
+                                        <md-button class="md-raised md-primary" ng-show="!editBoolean.comments" ng-click="showEdit('comments')">Add/Edit</md-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </md-content>
                 </md-tab>
 
                 <md-tab label="Connections" ng-if="profile.list[0].approved">
                     <md-content class="md-padding">
-                        <div layout="column" id="avatarDiv">
-                            <img src="/img/transfer.svg" height="100px" />
-                        </div>
-                        <div flex="50">
-                            <p>Add a Connection:</p>
-                            <md-autocomplete flex="100" ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
-                                md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)"
-                                md-item-text="item.display" md-min-length="0" placeholder="Search by Name">
-                                <md-item-template>
-                                    <span-md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
-                                </md-item-template>
-                                <md-not-found>
-                                    No results matching "{{searchText}}" were found.
-                                </md-not-found>
-                            </md-autocomplete>
-                        </div>
-                        <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
-                        <p class="pQuestion">Connections made:</p>
-                        <div class="bizCards">
-                            <div layout="row">
-                                <div class="connectCard centerText" layout="row" layout-wrap class="text-center" flex="60">
-                                    <md-card flex="45" class="connections" ng-repeat="connection in connections.list track by $index" ng-if="connection.firstname!=profile.list[0].firstname"
-                                        md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
-                                        <md-content class="cardContent" ng-class="{selectedConnection: commentsColorOn[$index]}" ng-model="commentsOn">
-                                            <h3>{{connection.firstname}} {{connection.lastname}}</h3>
-                                            <md-icon class="deleteIcon" md-svg-src="img/trash.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
-                                            <p>{{connection.company}}</p>
-                                            <p>Connected on: {{connection.date | date: shortDate}} </p>
-                                            <md-button class="editIcon" ng-click="showComments(connections.list[$index].id, $index)">Notes</md-button>
-                                            <!-- <textarea ng-hide="!commentsOn[$index]" ng-model="commentsIn" ng-value="connection.comments" rows="6" cols="40"></textarea> -->
-                                            <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
-                                        </md-content>
-                                    </md-card>
-                                </div>
-                                <div ng-show="commentsOn" class="connectionComments" flex="40">
-                                    <h3 class="titleComments" >Connection Notes:</h3>
-                                    <pre class="paragraphNotes" ng-hide="editOn">{{connections.comment}}</pre>
-                                    <textarea ng-show="editOn" ng-model="commentsIn" ng-value="connections.comment" rows="6" cols="40"></textarea>
-                                    <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
-                                    <div class="centerText">
-                                        <md-button ng-hide="editOn" class="md-raised md-primary editComments" ng-click="showEditComment()">Edit</md-button>
-                                        <md-button ng-show="editOn" class="md-raised md-primary" ng-click="connectionComment(connections.id, commentsIn); showComments(connections.id); showEditComment();">Save</md-icon>
-                                        </md-button>
+                        <div class="md-dialog-content divPage">
+                            <div layout="column" id="avatarDiv">
+                                <img src="/img/transfer.svg" height="100px" />
+                            </div>
+                            <div flex="50">
+                                <p>Add a Connection:</p>
+                                <md-autocomplete flex="100" ng-click="getSearch()" md-selected-item="selectedItem" md-search-text-change="searchTextChange(searchText)"
+                                    md-search-text="searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(searchText)"
+                                    md-item-text="item.display" md-min-length="0" placeholder="Search by Name">
+                                    <md-item-template>
+                                        <span-md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                                    </md-item-template>
+                                    <md-not-found>
+                                        No results matching "{{searchText}}" were found.
+                                    </md-not-found>
+                                </md-autocomplete>
+                            </div>
+                            <md-button ng-click="addConnection(profile.list[0].id, selectedItem.id)">Connect</md-button>
+                            <p class="pQuestion">Connections made:</p>
+                            <div class="bizCards">
+                                <div layout="row">
+                                    <div class="connectCard centerText" layout="row" layout-wrap flex="60">
+                                        <md-card flex="45" class="connections" ng-repeat="connection in connections.list track by $index" ng-if="connection.firstname!=profile.list[0].firstname"
+                                            md-rowspan="2" md-colspan="3" md-colspan-sm="1" md-colspan-xs="2">
+                                            <md-content class="cardContent" ng-class="{selectedConnection: commentsColorOn[$index]}" ng-model="commentsOn">
+                                                <h3>{{connection.firstname}} {{connection.lastname}}</h3>
+                                                <md-icon class="deleteIcon" md-svg-src="img/trash.svg" ng-click="deleteConnection(connection.id, profile.list[0].id)"></md-icon>
+                                                <p>{{connection.company}}</p>
+                                                <p>Connected on: {{connection.date | date: shortDate}} </p>
+                                                <md-button class="editIcon" ng-click="showComments(connections.list[$index].id, $index)">Notes</md-button>
+                                                <!-- <textarea ng-hide="!commentsOn[$index]" ng-model="commentsIn" ng-value="connection.comments" rows="6" cols="40"></textarea> -->
+                                                <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
+                                            </md-content>
+                                        </md-card>
                                     </div>
-                                </div>
+                                    <div ng-show="commentsOn" class="connectionComments" flex="40">
+                                        <h3 class="titleComments">Connection Notes:</h3>
+                                        <pre class="paragraphNotes" ng-hide="editOn">{{connections.comment}}</pre>
+                                        <textarea ng-show="editOn" ng-model="commentsIn" ng-value="connections.comment" rows="6" cols="40"></textarea>
+                                        <!-- <p ng-show="commentsOn">{{connection.comments}}</p> -->
+                                        <div class="saveComments">
+                                            <md-button ng-hide="editOn" class="md-raised md-primary editComments" ng-click="showEditComment()">Edit</md-button>
+                                            <md-button ng-show="editOn" class="md-raised md-primary" ng-click="connectionComment(connections.id, commentsIn); showComments(connections.id); showEditComment();">Save</md-button>
+                                        </div>
+                                    </div>
 
+                                </div>
                             </div>
                     </md-content>
                 </md-tab>

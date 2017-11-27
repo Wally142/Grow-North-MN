@@ -21,18 +21,6 @@
                         and experts. To serve you better, we would love to hear about you.</h3>
                 </md-card-title-text>
             </md-card-title>
-
-            <!-- <div layout="row" layout-align="center center" layout-margin>
-                <div flex="5"></div>
-                <div flex="10">Test</div>
-                <div flex="15"></div>
-                <div flex="10">Test</div>
-                <div flex="15"></div>
-                <div flex="10">Test</div>
-                <div flex="15"></div>
-                <div flex="10">Test</div>
-                <div flex="5"></div>
-            </div> -->
             <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
                     <label>First Name</label>
@@ -117,24 +105,7 @@
                     <div ng-messages="surveyForm0.mentor.$error && surveyForm0.mentee.$error">
                         <div ng-message="required">You must select an option before proceeding</div>
                     </div>
-                    <!-- <label>Are you interesting in mentoring?</label> -->
-                    <!-- <input type="checkbox" ng-required="!(SC.formInput.mentor || SC.formInput.mentee)"> -->
                 </md-input-container>
-                <!-- ng-required="!(SC.formInput.mentor || SC.formInput.mentee)" -->
-                <!-- <md-input-container flex>
-                    <p>Please select one of the following:</p>
-                    <md-radio-group ng-model="SC.radioSelect" ng-change="SC.detectRadio()">
-                        <md-radio-button value="mentor" selected>
-                            I'm interested in mentoring.
-                        </md-radio-button>
-                        <md-radio-button value="mentee">
-                            I'm interested in connecting with a mentor.
-                        </md-radio-button>
-                        <md-radio-button value="both">
-                            All the options!!
-                        </md-radio-button>
-                    </md-radio-group>
-                </md-input-container> -->
             </div>
             <div layout="row" layout-align="center center">
                 <md-button class="md-raised md-primary" type="submit" flex="50" flex-gt-md="20">Next</md-button>
@@ -171,14 +142,9 @@
                         in helping out?
                     </p>
                     <div layout="row" layout-align="center center">
-                        <!-- <div flex="50" layout="column"> -->
-                        <!-- <div>
-                                <p>Mentoring</p>
-                            </div> -->
                         <div flex>
                             <md-input-container>
                                 <label>Select all that apply</label>
-                                <!-- <md-select ng-model="SC.formInput.involvement" ng-change="SC.selectTest(SC.formInput.involvement)" multiple> -->
                                 <md-select ng-model="SC.formInput.involvement" multiple>
                                     <md-optgroup label="Mentoring">
                                         <md-option ng-repeat="eachThing in SC.mentorValues" ng-value="eachThing">{{eachThing}}</md-option>
@@ -188,31 +154,9 @@
                                     </md-optgroup>
                                 </md-select>
                             </md-input-container>
-                            <!-- <md-checkbox name="mentor" ng-model="SC.formInput.mentor1">Via email</md-checkbox>
-                                <br>
-                                <md-checkbox name="mentee" ng-model="SC.formInput.mentor2">Meeting for coffee</md-checkbox>
-                                <br>
-                                <md-checkbox name="mentee" ng-model="SC.formInput.mentor3">Meeting for coffee</md-checkbox> -->
-                            <!-- </div> -->
                         </div>
                     </div>
                 </md-input-container>
-                <!-- <md-input-container ng-if="SC.formInput.mentor" flex>
-                    <label>Level of Involvement?</label>
-                    <input name="involvement" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.involvement" required>
-                    <div ng-messages="surveyForm.involvement.$error">
-                        <div ng-message="required">This information is required.</div>
-                    </div>
-                </md-input-container>
-                <md-input-container ng-if="SC.formInput.mentor" flex>
-                    <label>How can I help?</label>
-                    <input name="howhelp" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.howhelp" required>
-                    <div ng-messages="surveyForm.howhelp.$error">
-                        <div ng-message="required">This information is required.</div>
-                    </div>
-                </md-input-container> -->
-                <!-- </div>
-            <div layout="column" layout-gt-md="row"> -->
                 <md-input-container flex="100">
                     <label>Give us a brief overview of your experience. We would love to hear if you have worked with startups before
                         (in or out of Minnesota).
@@ -262,15 +206,6 @@
                         </md-input-container>
                     </div>
                 </div>
-                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
-                    <label>What are you struggling with?</label>
-                    <input name="struggle" md-maxlength="50" maxlength="50" type="text" ng-model="SC.formInput.struggle" required>
-                    <div ng-messages="surveyForm.struggle.$error">
-                        <div ng-message="required">This information is required.</div>
-                    </div>
-                </md-input-container> -->
-                <!-- </div>
-            <div layout="column" layout-gt-md="row"> -->
                 <div layout="row" layout-xs="column">
                     <div ng-if="SC.formInput.mentee" flex="40">
                         <p>
@@ -283,7 +218,14 @@
                                     <md-option ng-repeat="eachValue in SC.howhelpValues" ng-value='eachValue'>{{eachValue}}</md-option>
                                 </md-optgroup>
                             </md-select>
-                            <!-- <md-checkbox ng-repeat="eachValue in SC.howhelpValues" ng-model="SC.formInput.howhelp" ng-value="eachValue">{{ eachValue }}</md-checkbox> -->
+                        </md-input-container>
+                        <br>
+                        <md-input-container>
+                            <label>Other help needed</label>
+                            <input name="howhelpOther" type="text" md-maxlength="50" ng-model="SC.otherValues.howhelp">
+                            <div ng-messages="surveyForm.distribution.$error">
+                                <div ng-message="md-maxlength">Your message is too long, please limit it to 50 characters.</div>
+                            </div>
                         </md-input-container>
                     </div>
                     <div flex="10"></div>
@@ -293,37 +235,22 @@
                         </p>
                         <md-input-container>
                             <label>Select all that apply:</label>
-                            <!-- <md-select ng-model="SC.formInput.involvement" ng-change="SC.selectTest(SC.formInput.involvement)" multiple> -->
                             <md-select ng-model="SC.formInput.ecosystem" multiple>
                                 <md-optgroup label="Select all that apply:">
                                     <md-option ng-repeat="eachThing in SC.ecosystemValues" ng-value='eachThing'>{{eachThing}}</md-option>
                                 </md-optgroup>
                             </md-select>
                         </md-input-container>
+                        <br>
+                        <md-input-container>
+                            <label>Other business type</label>
+                            <input name="ecosystemOther" type="text" md-maxlength="50" ng-model="SC.otherValues.ecosystem">
+                            <div ng-messages="surveyForm.distribution.$error">
+                                <div ng-message="md-maxlength">Your message is too long, please limit it to 50 characters.</div>
+                            </div>
+                        </md-input-container>
                     </div>
                 </div>
-                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
-                    <label>What type of business do you operate?</label>
-                    <input name="ecosystem" md-maxlength="500" type="text" ng-model="SC.formInput.ecosystem">
-                </md-input-container> -->
-                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
-                    <label>How many employees do you have?</label>
-                    <input name="employees" md-maxlength="500" type="text" ng-model="SC.formInput.employees" required>
-                    <div ng-messages="surveyForm.employees.$error">
-                        <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
-                    </div>
-                </md-input-container> -->
-                <!-- </div>
-            <div layout="column" layout-gt-md="row"> -->
-                <!-- <md-input-container ng-if="SC.formInput.mentee" flex="100">
-                    <label>What is your business's yearly revenue</label>
-                    <input name="revenue" md-maxlength="500" type="text" ng-model="SC.formInput.revenue" required>
-                    <div ng-messages="surveyForm.revenue.$error">
-                        <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
-                    </div>
-                </md-input-container> -->
-                <!-- </div>
-            <div layout="column" layout-gt-md="row"> -->
             </div>
             <div layout="column" layout-wrap>
                 <md-input-container>
@@ -435,7 +362,6 @@
                         </p>
                         <p>Are you interested in volunteering or getting involved in the startup community?
                             <br>
-                            <!-- <span class="surveyAnswer">{{SC.formInput.mentor}}</span> -->
                             <span ng-if="SC.formInput.mentor">Yes</span>
                             <span ng-if="!SC.formInput.mentor">No</span>
                         </p>

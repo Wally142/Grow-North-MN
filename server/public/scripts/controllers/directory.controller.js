@@ -291,6 +291,9 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
 
     function SettingsDialogController(UserService, $scope, $mdDialog, $route) {
         
+        $scope.cancel = function () {
+            $mdDialog.cancel();
+        };
         $scope.userObject = UserService.userObject;
         $scope.userObject.message = 'Here you can update admin info including your email and password.';
 

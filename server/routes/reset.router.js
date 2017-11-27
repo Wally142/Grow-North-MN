@@ -63,14 +63,14 @@ router.get('/reset/:email/:token', function(req, res, next){
         },
         function(newPass, callback){
             var transporter = nodemailer.createTransport({
-                service: 'Hotmail',
+                service: 'Gmail',
                 auth: {
-                    user: 'evanmobile@hotmail.com',
+                    user: 'grownorth.mailer@gmail.com',
                     pass: process.env.MAILERPASSWORD
                 }
             });
             var mailOptions = {
-                from: 'evanmobile@hotmail.com',
+                from: 'grownorth.mailer@gmail.com',
                 to: email,
                 subject: 'Grow North App Password Reset',
                 // CHANGE THIS MESSAGE AT SOME POINT
@@ -136,25 +136,24 @@ router.get('/:email', function(req, res, next){
         function(token, username, done) {
             console.log('Sending email')
             var transporter = nodemailer.createTransport({
-                service: 'Hotmail',
+                service: 'Gmail',
                 auth: {
-                    user: 'evanmobile@hotmail.com',
+                    user: 'grownorth.mailer@gmail.com',
                     pass: process.env.MAILERPASSWORD
                 }
             });
             var mailOptions = {
-                from: 'evanmobile@hotmail.com',
+                from: 'grownorth.mailer@gmail.com',
                 to: email,
                 subject: 'Grow North App Password Reset',
                 // CHANGE THIS MESSAGE AT SOME POINT
                 // WHAT URL AFTER DEPLOY???
                 html: '<p>Hi!</p>' +
-                '<p>You\'re receiving this email because a username/password request was sent to the Grow North App.</p>' +
+                '<h3>You\'re receiving this email because a username/password request was sent to the Grow North App.</h3>' +
                 '<p>Your Grow North username is.......</p>' + 
-                '<p>' + username + '</p>' +
+                '<p><strong>' + username + '</strong></p>' +
                 '<a href="http://localhost:5000/resetRoute/reset/' + email + '/' + token + '">Click here if you would like to reset your password</a>' +
-                '<p>You will receive an email with your new password shortly, and will be redirected to the Grow North login page</p>' +
-                '<p>If you didn\'t make this request... that\'s pretty concerning.</p>' 
+                '<h3>You will receive an email with your new password shortly, and will be redirected to the Grow North login page</h3>'
             };
             transporter.sendMail(mailOptions, function(err, info){
                 done(err, 'done');

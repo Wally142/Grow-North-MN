@@ -63,14 +63,14 @@ router.get('/reset/:email/:token', function(req, res, next){
         },
         function(newPass, callback){
             var transporter = nodemailer.createTransport({
-                service: 'Hotmail',
+                service: 'Gmail',
                 auth: {
-                    user: 'evanmobile@hotmail.com',
+                    user: 'grownorth.mailer@gmail.com',
                     pass: process.env.MAILERPASSWORD
                 }
             });
             var mailOptions = {
-                from: 'evanmobile@hotmail.com',
+                from: 'grownorth.mailer@gmail.com',
                 to: email,
                 subject: 'Grow North App Password Reset',
                 // CHANGE THIS MESSAGE AT SOME POINT
@@ -136,14 +136,14 @@ router.get('/:email', function(req, res, next){
         function(token, username, done) {
             console.log('Sending email')
             var transporter = nodemailer.createTransport({
-                service: 'Hotmail',
+                service: 'Gmail',
                 auth: {
-                    user: 'evanmobile@hotmail.com',
+                    user: 'grownorth.mailer@gmail.com',
                     pass: process.env.MAILERPASSWORD
                 }
             });
             var mailOptions = {
-                from: 'evanmobile@hotmail.com',
+                from: 'grownorth.mailer@gmail.com',
                 to: email,
                 subject: 'Grow North App Password Reset',
                 // CHANGE THIS MESSAGE AT SOME POINT

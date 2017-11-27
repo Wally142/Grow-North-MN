@@ -141,7 +141,7 @@ myApp.service('ProspectsService', function ($http, $location) {
         var thisId = id;
         console.log('In getConnections with id: ', thisId);
         return $http.get('/profilesRoute/connections/' + thisId).then(function (response) {
-            console.log(response);
+            console.log('Here are the connections:', response);
             self.connections.list = response.data;
         });
     };

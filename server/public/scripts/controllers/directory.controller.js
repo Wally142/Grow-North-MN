@@ -176,8 +176,12 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
             });
         };
 
-        $scope.showComments = function (id) {
+        $scope.showComments = function (id, index) {
             $scope.commentsOn = !$scope.commentsOn;
+            $scope.commentsColorOn = {};
+            if ($scope.commentsOn === true){
+                $scope.commentsColorOn[index] = !$scope.commentsColorOn[index];
+            }
             console.log($scope.connections.list);
             for (var i = 0; i < $scope.connections.list.length; i++) {
 

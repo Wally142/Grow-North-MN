@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var pool = require('../modules/pool.js');
 
+// GET individual profile:
 router.get('/:id', function (req, res) {
     if (req.isAuthenticated()){
         var dbId= req.params.id;
@@ -28,6 +29,7 @@ router.get('/:id', function (req, res) {
     }
 });// end  GET profile
 
+// GET all of an individual's connections:
 router.get('/connections/:id', function (req, res) {
     if (req.isAuthenticated()){
         var dbId= req.params.id;
@@ -38,7 +40,7 @@ router.get('/connections/:id', function (req, res) {
                 res.sendStatus(404);
             } else {
                 // SELECT connections.id, person2, person1, firstname, lastname, company, date, connections.comments FROM connections LEFT JOIN prospects ON connections.person2=prospects.id WHERE person1=33;
-                client.query("SELECT connections.id, person2, person1, firstname, lastname, company, date, connections.comments, approved FROM connections FULL JOIN prospects ON connections.person2=prospects.id WHERE person1=$1", [dbId], function (queryErr, resultObj) {
+                client.query("SELECT connections.id, person2, person1, firstname, lastname, company, date, connections.comments FROM connections FULL JOIN prospects ON connections.person2=prospects.id OR connections.person1=prospects.id WHERE person1=$1 OR person2=$1", [dbId], function (queryErr, resultObj) {
                     done();
                     if (queryErr) {
                         console.log(queryErr);

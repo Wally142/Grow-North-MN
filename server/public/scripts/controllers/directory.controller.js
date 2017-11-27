@@ -250,10 +250,17 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
         $scope.userObject.message = 'Here you can update admin info including your email and password.';
 
         $scope.updateEmail = function (email) {
-            UserService.updateEmail(email);
-            $scope.userObject.message = 'Your email has been successfully changed'
-            $scope.email = '';
-
+            if ($scope.email === $scope.emailConfirm) {
+                UserService.updateEmail(email);
+                $scope.userObject.message = 'Your email has been successfully changed'
+                $scope.email = '';
+                $scope.emailConfirm = '';
+                $scope.emailUpdate = !$scope.emailUpdate;
+            } else {
+                $scope.userObject.message = 'Email addresses didn\'t match';
+                $scope.email = '';
+                $scope.emailConfirm = '';
+            }
         }
 
         $scope.updatePassword = function (password) {
@@ -262,11 +269,16 @@ myApp.controller('DirectoryController', function (ProspectsService, UserService,
                 $scope.userObject.message = 'Your password has been successfully changed'
                 $scope.password = '';
                 $scope.passwordConfirm = '';
+                $scope.passwordUpdate = !$scope.passwordUpdate;
             } else {
-                $scope.userObject.message = 'Password and password confirmation didn\'t match';
+                $scope.userObject.message = 'Passwords didn\'t match';
                 $scope.password = '';
                 $scope.passwordConfirm = '';
             }
+        }
+
+        $scope.resetMsg = function () {
+            $scope.userObject.message = 'Here you can update admin info including your email and password.';
         }
     };
 

@@ -74,24 +74,28 @@ myApp.controller('SurveyController', function (FormService, $scope) {
 
   // remove http(s):// from input URL's
   vm.formatURL = function () {
-    var website = vm.formInput.website.toLowerCase();
-    var linkedin = vm.formInput.linkedin.toLowerCase();
-    if (website.substr(0, 7) === 'http://') {
-      vm.formInput.website = website.substr(7);
-    } else if (website.substr(0, 8) === 'https://') {
-      vm.formInput.website = website.substr(8);
+    if (vm.formInput.website !== null && vm.formInput.website !== '') {
+      var website = vm.formInput.website.toLowerCase();
+      if (website.substr(0, 7) === 'http://') {
+        vm.formInput.website = website.substr(7);
+      } else if (website.substr(0, 8) === 'https://') {
+        vm.formInput.website = website.substr(8);
+      }
     }
-    if (linkedin.substr(0, 7) === 'http://') {
-      vm.formInput.linkedin = linkedin.substr(7);
-    } else if (linkedin.substr(0, 8) === 'https://') {
-      vm.formInput.linkedin = linkedin.substr(8);
+    if (vm.formInput.linkedin !== null && vm.formInput.linkedin !== '') {
+      var linkedin = vm.formInput.linkedin.toLowerCase();
+      if (linkedin.substr(0, 7) === 'http://') {
+        vm.formInput.linkedin = linkedin.substr(7);
+      } else if (linkedin.substr(0, 8) === 'https://') {
+        vm.formInput.linkedin = linkedin.substr(8);
+      }
     }
   }
 
   // push user entered values into formInput arrays
-  vm.grabOtherValues = function (){
-    for (var column in vm.otherValues){
-      if (column !== null && column !== ''){
+  vm.grabOtherValues = function () {
+    for (var column in vm.otherValues) {
+      if (column !== null && column !== '') {
         vm.formInput[column].push(vm.otherValues[column]);
       }
     }

@@ -89,7 +89,7 @@
             <div layout="column" layout-gt-md="row">
                 <md-input-container flex>
                     <label>How did you hear about Grow North?</label>
-                    <input name="referral" md-maxlength="500" type="text" ng-model="SC.formInput.referral">
+                    <input name="referral" md-maxlength="500" maxlength="500" type="text" ng-model="SC.formInput.referral">
                     <div ng-messages="surveyForm0.referral.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
@@ -161,7 +161,7 @@
                     <label>Give us a brief overview of your experience. We would love to hear if you have worked with startups before
                         (in or out of Minnesota).
                     </label>
-                    <textarea rows="4" name="experience" md-maxlength="500" type="text" ng-model="SC.formInput.experience"></textarea>
+                    <textarea rows="4" name="experience" md-maxlength="500" maxlength="500" type="text" ng-model="SC.formInput.experience"></textarea>
                     <div ng-messages="surveyForm.experience.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
@@ -173,7 +173,7 @@
             <div layout="column" layout-wrap>
                 <md-input-container ng-if="SC.formInput.mentee" flex="100">
                     <label>First, we would love hear more about you, your story, and the story of your business.</label>
-                    <textarea rows="4" name="story" md-maxlength="500" type="text" ng-model="SC.formInput.story" required></textarea>
+                    <textarea rows="4" name="story" md-maxlength="500" maxlength="500" type="text" ng-model="SC.formInput.story" required></textarea>
                     <div ng-messages="surveyForm.story.$error">
                         <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                     </div>
@@ -199,7 +199,7 @@
                         </div>
                         <md-input-container flex="50">
                             <label>Other (where are you sold, number of stores/clients, etc.)</label>
-                            <input name="distribution" md-maxlength="500" type="text" ng-model="SC.formInput.distribution">
+                            <input name="distribution" md-maxlength="100" maxlength="100" type="text" ng-model="SC.formInput.distribution">
                             <div ng-messages="surveyForm.distribution.$error">
                                 <div ng-message="md-maxlength">Your message is too long, please limit it to 500 characters.</div>
                             </div>
@@ -222,7 +222,7 @@
                         <br>
                         <md-input-container>
                             <label>Other help needed</label>
-                            <input name="howhelpOther" type="text" md-maxlength="50" ng-model="SC.otherValues.howhelp">
+                            <input name="howhelpOther" type="text" md-maxlength="50" maxlength="50" ng-model="SC.otherValues.howhelp">
                             <div ng-messages="surveyForm.distribution.$error">
                                 <div ng-message="md-maxlength">Your message is too long, please limit it to 50 characters.</div>
                             </div>
@@ -244,7 +244,7 @@
                         <br>
                         <md-input-container>
                             <label>Other business type</label>
-                            <input name="ecosystemOther" type="text" md-maxlength="50" ng-model="SC.otherValues.ecosystem">
+                            <input name="ecosystemOther" type="text" md-maxlength="50" maxlength="50" ng-model="SC.otherValues.ecosystem">
                             <div ng-messages="surveyForm.distribution.$error">
                                 <div ng-message="md-maxlength">Your message is too long, please limit it to 50 characters.</div>
                             </div>
@@ -257,7 +257,10 @@
                     <label>
                         Anything else you would like to share?
                     </label>
-                    <textarea rows="4" name="anythingelse" md-maxlength="500" type="text" ng-model="SC.formInput.anythingelse"></textarea>
+                    <textarea rows="4" name="anythingelse" md-maxlength="500" maxlength="500" type="text" ng-model="SC.formInput.anythingelse"></textarea>
+                    <div ng-messages="surveyForm.distribution.$error">
+                        <div ng-message="md-maxlength">Your message is too long, please limit it to 50 characters.</div>
+                    </div>
                 </md-input-container>
             </div>
             <div layout="row" layout-align="center center">

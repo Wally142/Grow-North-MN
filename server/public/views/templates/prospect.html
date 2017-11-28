@@ -40,33 +40,29 @@
                                         <p class="pContact">
                                             Member since: {{ profile.list[0].startdate | date: longDate}}
                                         </p>
-                                        <p class="pContact" ng-show="!editBoolean.website">
+                                        <p class="pContact" ng-if="profile.list[0].website !== null && profile.list[0].website !== ''">
                                             <a class="profileLink" ng-href="http://{{ profile.list[0].website }}" target="_blank">
                                                 {{ profile.list[0].website }}
                                             </a>
                                         </p>
-                                        <p class="pContact" ng-show="!editBoolean.email">
+                                        <p class="pContact">
                                             <a class="profileLink" href="mailto:{{ profile.list[0].email }}">{{ profile.list[0].email }}</a>
                                         </p>
-                                        <p class="pContact" ng-show="!editBoolean.phone">
+                                        <p class="pContact">
                                             <a class="profileLink" href="tel:1{{profile.list[0].phone}}">
                                                 ({{ profile.list[0].phone.slice(0,3) }}) {{ profile.list[0].phone.slice(3,6) }}-{{ profile.list[0].phone.slice(6,10) }}
                                             </a>
-                                        </p>
-                                        <p class="pContact">
-                                            <md-checkbox ng-model="profile.list[0].mentor" ng-value="profile.list[0].mentor" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentor, 'mentor')"
-                                                aria-label="Mentor">
-                                                Volunteer
-                                            </md-checkbox>
-                                            <md-checkbox ng-model="profile.list[0].mentee" ng-value="profile.list[0].mentee" ng-change="updateDetails(profile.list[0].id, profile.list[0].mentee, 'mentee')"
-                                                aria-label="Mentee">
-                                                Entrepreneur
-                                            </md-checkbox>
                                         </p>
                                         <p class="pContact" ng-if="profile.list[0].linkedin !== null && profile.list[0].linkedin !== ''">
                                             <a ng-href="http://{{ profile.list[0].linkedin }}" target="_blank">
                                                 <img src="img/linkedin.png" height="20px" />
                                             </a>
+                                        </p>
+                                        <p class="pContact" ng-if="profile.list[0].mentor">
+                                            Volunteer
+                                        </p>
+                                        <p class="pContact" ng-if="profile.list[0].mentee">
+                                            Entrepreneur
                                         </p>
                                     </div>
                                 </div>

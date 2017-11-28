@@ -41,6 +41,10 @@ body,html {
   padding: 0;
 }
 
+.noBullets {
+  list-style-type: none;
+}
+
 md-menu-content {
   width: 40vw !important;
 }

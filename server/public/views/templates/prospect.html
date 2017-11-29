@@ -252,7 +252,7 @@
                                     </div>
                                 </div>
                                 <div flex="40">
-                                    <div>
+                                    <div ng-if="profile.list[0].mentor">
                                         <div ng-mouseenter="pencil.involvementAdd = true" ng-mouseleave="pencil.involvementAdd = false">
                                             <p class="pQuestion">
                                                 Involvement
@@ -286,7 +286,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div>
+                                    <div ng-if="profile.list[0].mentor">
                                         <div ng-mouseenter="pencil.howhelpAdd = true" ng-mouseleave="pencil.howhelpAdd = false">
                                             <p class="pQuestion">
                                                 How do they want to help
@@ -320,7 +320,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div>
+                                    <div ng-if="profile.list[0].mentor">
                                         <div ng-mouseenter="pencil.experience = true" ng-mouseleave="pencil.experience = false">
                                             <p class="pQuestion">
                                                 Experience
@@ -335,7 +335,7 @@
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.experience" ng-click="updateDetails(profile.list[0].id, experienceIn, 'experience')">Save</md-button>
                                         <p class="pData" ng-show="!editBoolean.experience">{{ profile.list[0].experience }}</p>
                                     </div>
-                                    <div>
+                                    <div ng-if="profile.list[0].mentee">
                                         <div ng-mouseenter="pencil.ecosystemAdd = true" ng-mouseleave="pencil.ecosystemAdd = false">
                                             <p class="pQuestion">
                                                 Ecosystem
@@ -369,7 +369,7 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <div>
+                                    <div ng-if="profile.list[0].mentee">
                                         <div ng-mouseenter="pencil.employees = true" ng-mouseleave="pencil.employees = false">
                                             <p class="pQuestion">
                                                 # of Employees
@@ -384,7 +384,7 @@
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.employees" ng-click="updateDetails(profile.list[0].id, employeesIn, 'employees')">Save</md-button>
                                         <p class="pData" ng-show="!editBoolean.employees">{{ profile.list[0].employees }}</p>
                                     </div>
-                                    <div>
+                                    <div ng-if="profile.list[0].mentee">
                                         <div ng-mouseenter="pencil.revenue = true" ng-mouseleave="pencil.revenue = false">
                                             <p class="pQuestion">
                                                 Revenue
@@ -399,7 +399,7 @@
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.revenue" ng-click="updateDetails(profile.list[0].id, revenueIn, 'revenue')">Save</md-button>
                                         <p class="pData" ng-show="!editBoolean.revenue">{{ profile.list[0].revenue }}</p>
                                     </div>
-                                    <div>
+                                    <div ng-if="profile.list[0].mentee">
                                         <div ng-mouseenter="pencil.distribution = true" ng-mouseleave="pencil.distribution = false">
                                             <p class="pQuestion">
                                                 Distribution area
@@ -414,7 +414,7 @@
                                         <md-button class="md-raised md-primary saveBtn" ng-show="editBoolean.distribution" ng-click="updateDetails(profile.list[0].id, distributionIn, 'distribution')">Save</md-button>
                                         <p class="pData" ng-show="!editBoolean.distribution">{{ profile.list[0].distribution }}</p>
                                     </div>
-                                    <div>
+                                    <div ng-if="profile.list[0].mentee">
                                         <div ng-mouseenter="pencil.story = true" ng-mouseleave="pencil.story = false">
                                             <p class="pQuestion">
                                                 Story

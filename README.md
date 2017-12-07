@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Link to software that is required to install the app (e.g. node).
 - [Node.js](https://nodejs.org/en/)
-- [Postico] (https://eggerapps.at/postico/)
+- [Postico](https://eggerapps.at/postico/)
 
 ### Installing
 
@@ -65,7 +65,7 @@ Profile view screenshot:
 ## Deployment
 
 ## Authors
-Katie Campbell, Nestor Gomez-Jimenez, Evan Kearney, Mike Pettman, Cam Schnackel, Greg Wallerus.
+[Katie Campbell](https://github.com/katyasoup), [Nestor Gomez-Jimenez](https://github.com/PresidenteGomez), [Evan Kearney](https://github.com/ejk2134), [Mike Pettman](https://github.com/mikep79), [Cam Schnackel](https://github.com/camschnackel), [Greg Wallerus](https://github.com/Wally142).
 
 ## Acknowledgments
 

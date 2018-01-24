@@ -1,7 +1,7 @@
 # Grow-North-MN
 
 Deployed URL: 
-grownorth.herokuapp.com
+grownorthdemo.herokuapp.com
 
 Full stack web application built for Grow North MN. This app facilitates connection building between food and agriculture businesses. Admin and guest are the users. Guests can access the survey form to enter their information about their business, which adds this data to a database that can be acccessed by the admin side. The admin can create an account, change password, and log in. Once logged in, admin can view the directory of all persons in the database, read their information, update any line, and delete the person's profile. Admin can also create connections between profiles and add comments about profile or connection.
 
